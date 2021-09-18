@@ -1,0 +1,38 @@
+## Glossary
+| Word | Definition|
+|:----:|:---------:|
+| Forking | Software that provides an interface between the user and the underlying operating system | 
+
+
+
+## Data streams
+
+## Redirections
+
+## Variables and Modules
+
+## Shell
+
+
+## System Programming
+
+## Forking
+
+<em><strong> "Forking is the process of duplicating a parent process into a child" </strong></em>
+
+- Apart from the address space used for the child and parent, everything regarding the parent process is identical in the  
+child.
+
+- Child and parent processes independently 
+
+## Tasks
+
+
+## Threads
+
+<em><strong> "Smallest scheduled unit in an operating system" </strong></em>
+
+- Threads exist in the space of a process, where there can be many threads to a given process.
+
+- Threads are linked to tasks as threads are only created when a program is forked in multiple parallel tasks **
+
