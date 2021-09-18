@@ -24,7 +24,7 @@ During forking, apart from the address space used for the child and parent, ever
 identically duplicated in the child. The child and the parent processes can now independently operate.
 
 > The return value from the .fork() method tells us whether we are in the child process (== 0), 
-in the parent process  (==  x > 0) or an error has occured (== x < 0)
+in the parent process  (==  x > 0) or an error has occurred (== x < 0)
 
 ```python
 import os
@@ -59,5 +59,5 @@ parent()
 
 - Threads exist in the space of a process, where there can be many threads to a given process.
 
-- Threads are linked to tasks as threads are only created when a program is forked in multiple parallel tasks **
+- Threads are linked via tasks and can only be created when a program is forked in multiple parallel tasks **
 

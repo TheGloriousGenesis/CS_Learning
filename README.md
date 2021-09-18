@@ -44,7 +44,7 @@ Repository where fundamental and exploratory computer science and machine learni
 | Basic introduction to distribution systems | Freecode introduction blog | [Link](https://www.freecodecamp.org/news/a-thorough-introduction-to-distributed-systems-3b91562c9b3c/) | - |
 | Java concurrency | Java concurrency in Practice | [Book](https://learning.oreilly.com/library/view/java-concurrency-in/0321349601/) | - |
 | Scalability in distributed systems | Concurrency and Scalability for Distributed Systems | [Book](https://learning.oreilly.com/library/view/concurrency-and-scalability/9781098106058/) | - |
-| Designing distributed systsems | Designing Distributed Systems | [Book](https://learning.oreilly.com/library/view/designing-distributed-systems/9781491983638/) | - |
+| Designing distributed systems | Designing Distributed Systems | [Book](https://learning.oreilly.com/library/view/designing-distributed-systems/9781491983638/) | - |
 
 ## Helpful Miscellaneous links to aid repository
 
@@ -52,5 +52,5 @@ Repository where fundamental and exploratory computer science and machine learni
 |:--------:|:----:|
 | Basic Markdown guide | [Link](https://www.markdownguide.org/basic-syntax/) |
 | Markdown tables generator | [Link](https://www.tablesgenerator.com/markdown_tables) |
-| Java kernal for Jupyter Notebook | [Link](https://github.com/SpencerPark/IJava#install-pre-built-binary)|
+| Java kernel for Jupyter Notebook | [Link](https://github.com/SpencerPark/IJava#install-pre-built-binary)|
 | Microsoft Recommendation systems best practice | [Link](https://github.com/microsoft/recommenders)|
