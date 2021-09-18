@@ -20,11 +20,36 @@
 
 ## Forking
 
-- Apart from the address space used for the child and parent, everything regarding the parent process is identical in the  
-child.
+During forking, apart from the address space used for the child and parent, everything regarding the parent process is 
+identically duplicated in the child. The child and the parent processes can now independently operate.
 
-- Child and parent processes independently 
+> The return value from the .fork() method tells us whether we are in the child process (== 0), 
+in the parent process  (==  x > 0) or an error has occured (== x < 0)
 
+```python
+import os
+
+def child():
+    print("\n new child ", os.getpid())
+    os._exit(0)
+    
+def parent():
+    while True:
+        newpid = os.fork()
+        ## return value from fork() tells us if we are in
+        if newpid == 0:
+            child()
+        else:
+            pids = (os.getpid(), newpid)
+            print("parent: %d , child: %d \n" % pids)
+        reply = input("q for quit / c for new fork")
+        if reply == "c":
+            continue
+        else:
+            break
+   
+parent()
+```
 ## Tasks
 
 
