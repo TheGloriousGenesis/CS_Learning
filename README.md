@@ -53,4 +53,4 @@ Repository where fundamental and exploratory computer science and machine learni
 | Basic Markdown guide | [Link](https://www.markdownguide.org/basic-syntax/) |
 | Markdown tables generator | [Link](https://www.tablesgenerator.com/markdown_tables) |
 | Java kernal for Jupyter Notebook | [Link](https://github.com/SpencerPark/IJava#install-pre-built-binary)|
-| Microsoft Recommendation systems best pratice | [Link](https://github.com/microsoft/recommenders)|
+| Microsoft Recommendation systems best practice | [Link](https://github.com/microsoft/recommenders)|
