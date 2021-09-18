@@ -1,8 +1,10 @@
-## Glossary
+# Python
+
+### Glossary
 | Word | Definition|
 |:----:|:---------:|
 | Forking | Software that provides an interface between the user and the underlying operating system | 
-
+| Threads | Smallest scheduled unit in an operating system | 
 
 
 ## Data streams
@@ -17,8 +19,6 @@
 ## System Programming
 
 ## Forking
-
-<em><strong> "Forking is the process of duplicating a parent process into a child" </strong></em>
 
 - Apart from the address space used for the child and parent, everything regarding the parent process is identical in the  
 child.
