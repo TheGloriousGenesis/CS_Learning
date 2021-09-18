@@ -1,0 +1,6 @@
+# Java
+
+### Glossary
+
+| Word | Definition|
+|:----:|:---------:|
