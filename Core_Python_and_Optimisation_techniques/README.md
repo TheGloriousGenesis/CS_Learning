@@ -1,11 +1,30 @@
 # Python
 
-### Glossary
+## Glossary
 | Word | Definition|
 |:----:|:---------:|
 | Forking | Software that provides an interface between the user and the underlying operating system | 
 | Threads | Smallest scheduled unit in an operating system | 
 
+
+## Variables
+Variables in python should not be in camelcase like Java, but supposedly separated by `_`.
+- To put formatted string , place `f` before the string in question such as the following: `print(f"Hello {firstname}")`
+#### <strong> Strings </strong>
+  - To remove empty space from end of string use the `.rstrip()`.
+  - To remove empty space from beginning of string use the `.lstrip()`.
+  - To remove empty space from both sides of string use the `.strip()`.
+#### <strong> Numbers </strong>
+  - Dividing numbers will give you a float regardless of number type.
+  - Can use underscores to make large numbers readable like the following `universe_age = 14_000_000_000`.
+  - Add commas to variables for multiple assignments `a, b, c = 1, 2, 3`.
+  - Use capital letters to represent constant type of variables in python (although there are no built-in constant types
+in python)
+
+## Lists
+- Label list as plural as they contain multiple elements so `fruits = ['apple', 'banana']` not `fruit = [...]`.
+- Square brackets `[]` indicate list.
+- 
 
 ## Data streams
 
@@ -50,6 +69,8 @@ def parent():
    
 parent()
 ```
+
+
 ## Tasks
 
 

@@ -54,11 +54,11 @@ Recommendation systems have dependencies and in order to utilise the systems.
   - The higher the support the more popular item bundle is and vice versa. Low support should not be used unless need to know 
   item frequency
 - Metrics used : Confidence
-    - used to see the strength of relations between items in groups. Does not work for high frequency items as those items are not
-  necessarily linked to each other (e.g buying sugar and phone credit at tesco doesn't mean sugar will be used for credit). Better
-  used for low occurring items.
+  - used to see the strength of relations between items in groups. Does not work for high frequency items as those items are not
+    necessarily linked to each other (e.g buying sugar and phone credit at tesco doesn't mean sugar will be used for credit). Better
+    used for low occurring items.
 - Metrics used : Lift
   - A lift > 1 means items A and item B appear more often together than expected (positive association)
   - A lift < 1 means items A and item B appear less often than together expected (negative association)
-  - A lift ~ 1 means items A and item B appear almost as often together as expected ( no link )
+  - A lift ~ 1 means items A and item B appear almost as often together as expected (no link)
 
