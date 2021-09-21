@@ -57,7 +57,7 @@ This is calculated by:
 $$
 s(A \Rightarrow B) = P (A\ \cap \ B) = s(B \Rightarrow  A)
 \\
-s(A \Rightarrow B) = \frac{no. transactions with A and B}{no. total transactions}
+s(A \Rightarrow B) = \frac{no. \ transactions \ with \ A \ and \ B}{no. \ total \ transactions}
 $$
 
 The higher the support the more popular item bundle is and vice versa. Low support should not be used unless need to know 
