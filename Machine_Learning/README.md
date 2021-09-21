@@ -51,11 +51,18 @@ Recommendation systems have dependencies and in order to utilise the systems.
   - If <strong><span style="color:red">antecedent</span></strong>, then <strong><span style="color:green">consequent</span></strong> <br>
    Example: If (customer buys) <strong><span style="color:red"> tortillas and jalapenos </span></strong> then customer buys <strong><span style="color:green"> beans and avocados</span></strong>
 - Metrics used : Support
-  - The higher the support the more popular item bundle is and vice versa. Low support should not be used unless need to know 
-  item frequency
 
-Calculated by
-$$\hat{y_i}(x_i) = \Theta_1 + x_i\Theta_2$$
+This is calculated by:
+
+$$
+s(A \Rightarrow B) = P (A\,\cap\,B) = s(B \Rightarrow  A)
+\\
+s(A \Rightarrow B) = \frac{\#\,transcations\,with\,A\,and\,B}{\#\,total\,transactions}
+$$
+
+The higher the support the more popular item bundle is and vice versa. Low support should not be used unless need to know 
+item frequency
+
 
 - Metrics used : Confidence
   - used to see the strength of relations between items in groups. Does not work for high frequency items as those items are not

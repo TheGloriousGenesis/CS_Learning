@@ -2,6 +2,9 @@
 
 Repository where fundamental and exploratory computer science and machine learning fundamentals are covered
 
+**Note:** For best experience consider installing
+[MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=en) which allows for rendering MathJax in the browser
+
 ## Core Java + Optimisation techniques
 
 | Type | Course | Source | Notes/Solutions |
