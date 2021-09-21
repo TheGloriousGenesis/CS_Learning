@@ -55,7 +55,7 @@ Recommendation systems have dependencies and in order to utilise the systems.
 This is calculated by:
 
 $$
-s(A \Rightarrow B) = P (A\,\cap\,B) = s(B \Rightarrow  A)
+s(A \Rightarrow B) = P (A\ \cap \ B) = s(B \Rightarrow  A)
 \\
 s(A \Rightarrow B) = \frac{no. transactions with A and B}{no. total transactions}
 $$
