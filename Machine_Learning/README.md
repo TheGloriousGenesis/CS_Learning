@@ -1,6 +1,6 @@
 # Machine Learning
 
-### Glossary
+## Glossary
 
 | Word | Definition|
 |:----:|:---------:|
