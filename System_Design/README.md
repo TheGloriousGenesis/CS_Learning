@@ -1,6 +1,6 @@
 # System Design
 
-### Glossary
+## Glossary
 
 | Word | Definition|
 |:----:|:---------:|

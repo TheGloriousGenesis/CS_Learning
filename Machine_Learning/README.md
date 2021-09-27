@@ -10,6 +10,32 @@
 | Confidence (Affinity Analysis) | The strength of an association rule relating to the likelihood of customer buying item A, given item B |
 | Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items | 
 
+
+## Overview - Regression
+Hypothesis function, which is used to estimate the real model is given by:
+
+$$
+H_{\theta}(x) = \theta_{i} + \theta_{j}x
+$$
+
+Cost function (also called the error function) used to see if regression model is viable!:
+
+$$
+J(\theta_{i}\theta_{j}) = \frac{1}{2}\sum_{i=1}^{m}\left ( \left ( \theta_{0} + \theta_{1} x^{(1)} \right ) - y \right ) ^2
+$$
+
+where <em>m</em> = dataset size.
+
+We are trying to minimise the amount of errors in our model, hence we need to reduce the cumulative error in the model.
+This is why we say we need to <em> minimise the error function </em>. To do so, we take the derivative of the error function
+and set this to zero to find the minima. This is called <strong> Gradient Descent</strong>. The derivative is shown below:
+
+$$
+\frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
+$$
+
+
+ 
 ## Overview
 
 - Driven by Industry need

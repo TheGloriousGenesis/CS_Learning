@@ -1,6 +1,6 @@
 # Design Patterns
 
-### Glossary
+## Glossary
 
 | Word | Definition|
 |:----:|:---------:|
