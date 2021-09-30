@@ -51,3 +51,16 @@ floating-point computation (might overflow so only use when needed)
 if values are combined via +, -, x, /, then the operands (values either side of the operator) must be converted to the 
 same type before calculations. If either double, long or float they will be converted to the respective type. Else int.
 
+## Bitwise Operators
+
+`^` == or
+
+`~` == not
+
+`>>` == shift bit pattern to the right
+
+`<<` == shift bit pattern to the left
+
+## Read input/output
+
+Use scanner to read input values:

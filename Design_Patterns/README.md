@@ -5,7 +5,8 @@
 | Word | Definition|
 |:----:|:---------:|
 | Design Pattern | Solutions to implement that addresses issues surrounding coding software for change. |
-| Observer Pattern | Dynamically updating the state of multiple variables depending on the change of information of given variable|
+| Observer Pattern | One to many dependency between objects, dynamically updating multiple objects 
+depending on the change of state of given object |
 
 ## Basics
 To understand design patterns, we must first understand Object-Orientated basics and principles. 
@@ -13,7 +14,7 @@ To understand design patterns, we must first understand Object-Orientated basics
 | OO basics| Definition |
 |:--------:|:----------:|
 | Abstraction | Ensure there is one functionality to each core piece of code/method |
-| Encapsulation | - |
+| Encapsulation | <span style="color:red">-</span> |
 | Polymorphism | Objects inheriting from same parent can be exchanged during instantiation |
 | Inheritance | Child components obtain functionality and variables from parent classes |
 
@@ -24,3 +25,6 @@ To understand design patterns, we must first understand Object-Orientated basics
 | <em> ' Program to interface, not implementation ' </em> | To ensure flexibility and extension of code base if needed |
 
 ## Observer Pattern
+*<strong> Publishers (<span style="color:green"> subject </span>) + Subscribers (<span style="color:green"> observers </span>)
+= Observer Pattern </strong>*
+
