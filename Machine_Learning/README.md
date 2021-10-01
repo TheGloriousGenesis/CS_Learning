@@ -14,7 +14,10 @@
 ## Environment set up
 Hints:
 - Use miniconda not anaconda (anaconda has a lot of overhead)
-- 
+- Create project folder and put everything in one place
+- use the following command to create the env folder in current folder 
+ `conda create --prefix ./ml_course/envs pandas numpy scikit-learn jupyter matplotlib`
+- Unfortunately can not use `--name ml_course` to rename the env with the same
 
 ## Data Modelling - Building ML Project 
 
