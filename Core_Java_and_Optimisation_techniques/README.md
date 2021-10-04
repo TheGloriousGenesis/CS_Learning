@@ -32,6 +32,8 @@ will ignore underscore when rendering the variable.
 
 > *NB: ensure that if you need precise numerical computations, use `BigDecimal` class.*
 
+`BigDecimal` and `BigInteger` used to manipulate large numbers and precision arithmetic. 
+
 ## Operators
 
 - `/` operator denotes integer division if both arguments integer, floating point otherwise. 
@@ -63,4 +65,47 @@ same type before calculations. If either double, long or float they will be conv
 
 ## Read input/output
 
-Use scanner to read input values:
+Use scanner (defined in the java.util package) to read input values from console
+`Scanner in = new Scanner(System.in)`.
+
+Use scanner also to read from file input in the following way:
+`Scanner in = new Scanner(Paths.get("myFile.txt")`
+
+If you want to read sensitive data from the console you can use `Console` class introduced in java SE 6, which allows 
+information like passwords to be hidden when input given:
+`Console cons = System.Console()` with `cons.readLine("Read line: ");` and `cons.readPassword("Read password: ");` 
+methods. 
+
+`System.out.printf("%8.2f", x)` <-- field width 8 characters and precision 2 characters.
+
+## Control flow
+
+statements/loops can be broken by using loop labels that are defined by:
+
+```java
+read_data:
+while(. . .)
+{
+    for(. . .)
+    {
+        . . .
+        break read_data;
+    }
+}
+```
+
+## Arrays
+
+To copy an array use the following statement: `Arrays.copyOf(oldArray, lengthOfNewArray)`.
+
+To sort an array use: `Arrays.sort(a)`. This uses quicksort algorithm.
+
+
+## Lambdas and comparing 
+Can compare data using class that implements either comparable or compartor interface. Preferable use comparable when 
+dealing with most cases, and comparator when dealing with 
+
+
+
+
+ 
