@@ -7,16 +7,6 @@
 | Forking | Software that provides an interface between the user and the underlying operating system | 
 | Threads | Smallest scheduled unit in an operating system |
 
-
-## Jupyter Notebook 
-Here are some general information surrounding objects that can be created in jupyter:
-
-| Type | Description |
-|:----:|:-----------:|
-| Series | Similar to a column of data (1D)|
-| Dataframe | A collection of series data (2D)|
-| Attribute (Jupyter) | gives information about the data at hand |
-| Function (Jupyter) | Executes code to manipulate or obtain insights from data |
 ## Variables
 
 Variables in python should not be in camelcase like Java, but supposedly separated by `_`.
@@ -84,6 +74,8 @@ def parent():
    
 parent()
 ```
+
+## Lambda
 
 
 ## Tasks
