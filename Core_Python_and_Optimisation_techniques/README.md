@@ -39,6 +39,9 @@ in python)
 
 ## Shell
 
+## Specific helpful commands
+`%timeit` function is very helpful to see how long a piece of code has taken to execute.
+
 
 ## System Programming
 
