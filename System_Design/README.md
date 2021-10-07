@@ -5,3 +5,50 @@
 | Word | Definition|
 |:----:|:---------:|
 | Shell | Software that provides an interface between the user and the underlying operating system | 
+
+## Introduction
+Architecturing is decomposing system into coding blocks units and optimising communication between them
+Number one reason to do new architecture is because system is at end of life.
+
+## Things to avoid when developing architecture
+
+### <span style="color:red"> Avoid Functional Decomposition </span>
+- Creates an inherit dependancy of processes before and after. 
+- Creates a time dependancy on services to be done before and after
+- Creates duplication of code throughout code base
+- Requires client knowledge to implement design (must know that A is before B)
+- Increases multiple point of entry (must go to A, then go to B). High security issue.
+- Creates coupling, creates an inability to handle change!
+- Everytime there is change in requirements, theres change in solution! Very bad
+
+### <span style="color:green"> Do: Decompose based on volatility! </span>
+- Identify areas of change (can be functional but not domain functional)
+- Encapsulate these areas in services
+- Create methods based on interactions between services (think of organs and how they encapsulate volalities)
+- Do not resonate with the change!
+
+### Create system that can do regression testing
+- test subsystems and interactions between them
+
+### Design Techniques/Processes
+- Axes of volatility
+  - Give system to the same customer over time, how will system change? (will they be happy over time with this?)
+    - Example: Same customer over time when building a house: Furniture volatility, Appliances volatility, 
+    Occupants volatility, Appearance volatility (change wallpaper, color, add bedroom), Utility volatility
+
+  - Freeze system and give it to current customers, how will customers change? (are they all the same?)
+    - Example: Same time across different customers (House now in LA instead of NY): Structure volatility, 
+    Neighbour volatility, City volatility
+  - 
+
+- Axes should be independent of each other (roughly independant as much as posisble)!
+  - 
+
+- think about scalability especially in regard to devices or how the user will interact with the system
+- Think about the underlying services hosting the functions
+- Think of the flow and how it could be impeded/blocked (can it be asynchronous? Do we need buffer to know order?)
+- The product being used, how does that evolve? (If tasked with stocks, can system deal with commodities?)
+- Globalisation regarding versions of your system
+
+
+
