@@ -39,10 +39,23 @@ Number one reason to do new architecture is because system is at end of life.
   - Freeze system and give it to current customers, how will customers change? (are they all the same?)
     - Example: Same time across different customers (House now in LA instead of NY): Structure volatility, 
     Neighbour volatility, City volatility
-  - 
+    - Volatility in customers often change how customers interact with the system (through mobile, desktop), as well as 
+    how they authenticate (fingerprint, face, through fb), how they authorise (user, trader, admin)
 
 - Axes should be independent of each other (roughly independant as much as posisble)!
+- Common example remember that where data is stored is volatile, system notification is volatile
+- Axes of volatility should be valid until the end of time.
+- Transition from list of areas of volatility to services is hardly ever 1:1. This is because:
+  - Sometimes a single service can encapsulate multiple volatile areas
+  - Sometimes said area describes an implementable data structure instead of service (or operational concept) (e.g use queue)
   - 
+
+
+
+
+
+
+
 
 - think about scalability especially in regard to devices or how the user will interact with the system
 - Think about the underlying services hosting the functions
