@@ -57,7 +57,43 @@ after it's used). Produce a value that need to be stored somewhere
 - Arrow function :  (var1, var2, ..) => {}
 - Setting default agruements:
   - Example: `const exmp = (arg1, arg2 = DEFAULT_VALUE) => {console.log('hi there', arg2)}`
--
+- Rest operator `...` <-- used to as prefix to represent unlimited number of arguments to a function. Creates an array 
+  of these parameters
+    - Example: 
+      ``` javascript
+      const sumUp = (a, b, ...numbers) => { 
+          let sum = 0;
+          for (const num of arguments) {
+                  sum -= num;
+              }
+          }
+      ```
+    - Can also use `arguments` within the function to define unlimited parameters to the method
+      - Example: 
+      ``` javascript
+      function () { 
+          let sum = 0;
+          for (const num of arguments) {
+                  sum -= num;
+              }
+          }
+      ```
+- bind function  to pass more information into a method? Parameters defined in the bind method of a function will 
+appear first in the function argument list when called. Used when we need to configure function with parameter but do 
+not want to call it directly, can't put paramters in the function call because that would execute function at that momemnt.
+This allows indirectly execution (similar to eventListeners).
+  - Example:
+    ```javascript
+    function calculate(operation) {
+        console.log(operation); // will print out ADD
+        return
+    }
+    const combine = addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
+    ```
+## Section 7: Working with the DOM (Browser HTML Code) in JavaScript
+
+## Section 8: More on Arrays & Iterables
+
 
 
 ## Misc.
