@@ -1,3 +1,5 @@
+# Javascript
+
 ## Section 1: Introduction
 - Skip
 - Weakly typed language
