@@ -9,7 +9,6 @@
 - Why do we use octal, hexadecimal numbers?
 - Why need escape sequence like \u?
 
-
 ## Data Types
 When optimising code, one must always look towards the data that is being used and how it is being stored. The following
 table shows a break-down of the primitive types and their storage:
@@ -105,7 +104,69 @@ To sort an array use: `Arrays.sort(a)`. This uses quicksort algorithm.
 Can compare data using class that implements either comparable or compartor interface. Preferable use comparable when 
 dealing with most cases, and comparator when dealing with 
 
+## Data sets
 
-
-
+|Data Type|Underlying Structure| Detail |
+|:-------:|:------------------:|:------:|
+|Hash Sets | Arrays of linked lists | Each list is called a bucket, modulo hashcode by buckets to find what bucket object placed in. If bucket already filled, then *hash collision* occurs. If hash table gets too full, *rehashing* needs to occur. This happens at a rate of load factor, where if percentage is reached, table of double the size is created | 
+|Tree Sets | Red-Black Tree | Elements in this set must implement comparable/comparator|
+|Queues/Deques | LinkedList and ArrayDeque | |
+|Priority Queues | Heap | Self organizing binary tree, Elements in this set must implement comparable/comparator |
+|TreeMap/HashMap | organises keys/hashes key| Same as sets but with keys representing where objects should be stored |
  
+## Collections
+
+- USE collections instead of concrete implementations (part of OOO principles), so code to interface!!
+- Unmodifiable views of collections allow a collection to detect whether it is being modified at runtime, if so an 
+exception is thrown and collection reminds untouched. Can be accessed through the following: `Collections.unmodifiable...`
+\+ COLLECTION_TYPE (e.g List, Set etc)
+- It it possible to set up a collection with more than one type of element within the list! To stop this from happening, 
+one can use `Collections.checkedList(..)`, which will throw error at runtime when trying to add different type.
+
+## Concurrency
+
+Multi-tasking is describes operating system ability to have more than one program running seemingly at the same time. 
+Multi-threading is similar but takes it at a program level, where a program will seemingly do multiple tasks at the same
+time. The tasks are usually created on one thread. More than one task on a thread is called multi-threaded.
+
+Processes are different to threads because processes run on a complete set of their own variables, threads share the 
+same data.
+
+### Thread
+
+####States
+To get the current state used the `Thread.getState`.
+
+Threads can exist in one of the following 6 states:
+- New: The thread has started but code has not been executed yet
+- Runnable : When new thread has started, it is in the runnable state automatically. Code could be running or not. 
+Java decides to run threads using scheduling depending on services available. It gives a set amount of time for each task
+to run, after this time, system chooses next thread to give resources to to execute. Next choice of thread depends on 
+thread priorities.
+- Blocked : When thread in this state, it is temporarily inactive. This can happen when it is trying to obtain a lock 
+from another thread.
+- Waiting : When thread in this state, it is temporarily inactive. Happens when a thread is waiting on the thread scheduler
+to get information on the state of another thread. Not much different between this and blocked.
+- Timed waiting : Methods can have timeout periods where the thread is waiting for a period of time
+- Terminated : When the run method exits naturally. Calling `.stop` or `.suspend` is currently deprecated.
+
+####Properties
+- By default, in java, all threads have a priority. 
+- Default priority is given depending on the thread that created the thread.
+- `MIN_PRIORITY =  1` and `MAX_PRIORITY = 10`. Theses levels are system dependant, where thread priorities given are 
+mapped to the priority levels of the host platform. E.g. Windows has seven priority levels, Oracle JVM for linux has none!
+- DD NOT STRUCTURE PROGRAMS SO THAT THEY DEPEND ON THREAD PRIORITY BECAUSE THEY CHANGE DEPENDING ON THE SYSTEM ITS DEPLOYED
+ON!
+
+####Daemon Threads
+- Threads that serve others e.g timer thread that sends ticks to other friends
+- If program only has daemon threads, virtual machine exits
+- Should not be used to access persistent source like file or database
+
+####Handlers
+- Threads do not catch exceptions
+- Exceptions thrown must be thrown using a handler that can be installed on a thread. The handler class must extend from 
+`Thread.UncaughtExceptionHandler` interface.
+- If default handler not installed for individual thread then it's null.
+- If handler not installed for thread, then default `ThreadGroup` object used.
+- Recommended not to use thread groups, where thread groups are ....
