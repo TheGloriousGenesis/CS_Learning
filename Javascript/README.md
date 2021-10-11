@@ -93,11 +93,53 @@ This allows indirectly execution (similar to eventListeners).
     const combine = addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
     ```
 ## Section 7: Working with the DOM (Browser HTML Code) in JavaScript
+- Skip, mainly to do with DOM interactions, not that important (cos React deals with a lot of the things mentioned)
 
 ## Section 8: More on Arrays & Iterables
+- Not every iterable is an array: could be nodelist, string, map
+- Array like objects (has length and indexes of object) NOT THE SAME as iterable
+- Different ways to create array:
+```javascript
+const numbers = [1,2,3]; // performance better
+const moreNumbers = Array(5, 2); // with single digit constructor, creates empty array with length digit
+const yetMoreNumbers = Array.of(1,2)
+const evenMoreNumbers = Array.from('Hi!'); //takes array like object or iterable and converts it
+```
+- Can store different data types within a single array e.g strings and objects in single array
+- Come operations on array include `.push` (to add element at the end), `.pop` (to remove last element),
+`.unshift` (add element to beginning of array), `.shift` (remove first element). Last two slower than first two.
+- Can add to add at indices that do not exist yet
+- Mention other common array methods, `.splice()`, `.concat()`, `.indexOf()`, `.find()/.findIndex()`, `.includes()`,
+`.forEach()`, `.map()`, `.sort()` (define your own), `.filter()`, `.reduce()`, `.join()`, `.split()`, `...` (helps extract
+elements out of an array to standalone elements - reference copying)
+- Difference between Map vs Objects :
 
+| Map | Object |
+|:---:|:------:|
+|Use any type as key| Only use strings, numbers and symbols |
+|Better performance for large quantities of data| Better for small/medium data sets|
+|Better performance adding + removing data|Easier/quicker to create|
+- Use `WeakSet`/`WeakMap` if you want to create a set/map where values can be removed and garbage collected after 
+references removed
 
-
+## Section 9: More on Objects
+- To delete a property from an object, use the `delete` before property of object.
+- Dynamic property setting with the `[value]`
+```javascript
+const dynamicValue = 'left'
+const objectValue = {
+    name :'Pam',
+    [dynamicValue]: '...'
+}
+```
+- Spread operator can overwrite values when copy from an object. 
+```javascript
+const person = {
+    age: 45,
+    name: 'Jane'
+}
+const objectValues = {...person, age: 29}
+```
 ## Misc.
 
 Const newArray = […oldArray, 1,2 ] —> pulls all old data (array, object fields etc) and puts into new array with additions 1,2
