@@ -1,9 +1,12 @@
-`# Docker
+# Docker
 
 ## Why Docker?
+
 Docker was created to solve installation problems on any computer. This means one does not have to worry about setup or program dependencies when install programs
+Docker runs on Linux environment.
 
 ## Glossary
+
 | Term|Definition|
 |:---:|:--------:|
 |Namescaping (Linux)|Portioning a section of the hard drive for certain process/es|
@@ -12,9 +15,11 @@ Docker was created to solve installation problems on any computer. This means on
 |Docker CLI| A client that communicates commands to Docker server|
 |Docker Server| A server that is in charge of creating images and containers|
 |Container| Specific grouping of resources. ![image info](./Container.png) |
-| Kernel | A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)|
+|Kernel | A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)|
+|DockerFile| Configuration file for docker image|
 
 ## What is Docker?
+
 - Ecosystem that runs container
 
 ## How does Docker work?
@@ -27,6 +32,7 @@ it takes the *FS Snapshot* and sections away a portion of the hard drive for the
 command, which starts the running of a new instance the programs/processes.
 
 ### Containers
+
 - Create container `docker create <image>` and starting container `docker start <container id>` is different!
 - `docker run` (shows logs from terminal as default) and `docker start` (doesn't show logs as default)
 - When container exited, it can be run again by `docker start` command
@@ -36,13 +42,48 @@ command, which starts the running of a new instance the programs/processes.
   - `docker kill` gives system call `SIGKILL`, doesn't give any time. Terminates container immediately
   - If `docker stop` doesn't work within 10 seconds, automatic trigger of `docker kill` is executed.
   - Preferred: `docker stop`
+- Two containers do not automatically shared their file system
+- Containers do not by default have means to access external requests (e.g through web), but do have ports which are left open for the possibility.
+This means one has to map external calls to ports within the container in order to interact with the application through local machine. This is specified at runtime
+through the `-p` command
+
+### CLI
+
 - To execute many processes within the container other than primary, use `docker exec -it <container-id> <command>`. The
 `-it` parameter allows interaction with the container through terminal
+- When processes are running, there are three default channels that are attached to each process `STDIN`, `STDOUT`, `STDERR`.
+They represent how information is given into and out of the system. the `-it` parameter on a command allows terminal to be attached
+to the `STDOUT` channel of the process
+
+### Dockerfile
+
+- Base image has no processes, just bare operating system that one can build upon
+- Each step creates temporary container from previous step image, executes commands, destroys container after taking
+snapshot of FS and primary command to image, passing image to next step.
+- When building an image from dockerfile, none of the files in your project are available unless specifically defined. Use `COPY` to move files over from local FS to container FS.
+
+Most commonly used dockerfile instructions:
+
+|Instruction|Description|
+|:---------:|:----------:|
+|`FROM`| Usually used to describe what type of base image one wants to use|
+|`RUN`| Execute command|
+|`CMD`| Defining starting command|
+|`COPY`| Move files from local FS (first arg) to container FS (second arg)|
+|`WORKDIR`| Move execution relative to folder defined (will be automatically generated if non-existence)|
 
 
-## Useful Commands
-|Command|Description|
+
+## Useful Docker Commands/Tags
+
+|Command/Tag|Description|
 |:-----:|:---------:|
 |`docker system prune`| Removes all stopped containers on disk|
 |`docker stop`| Stops container running process|
 |`docker exec -it <container-id> <command>`|Run another process in container|
+|`docker exec -it <container-id> sh`|Run shell in container|
+|`CTRL + C/D`|Exit processes|
+|`docker build -t <docker-id/project:version>.` (from folder with Dockerfile) |Build docker image|
+|`docker run <docker-id/project> <override default command OPTIONAL>` (from folder with Dockerfile) |Start docker image|
+|`./`| Current working directory |
+|`-p <local machine port> : <container port>`| Maps ports on local machine to that of container |
