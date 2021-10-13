@@ -7,6 +7,9 @@
 |Two way data binding (child to parent/parent to child)|One way data binding (parent to child)|
 |Popular for OOP (has dependancy injection) | Does not have dependancy |
 |Heavy framework: has built in routing, Ajax requests, forms, test runner/framework | Lighter framework: Doesn't have anything mentioned with Angular, have to add additional libraries|
+|Components defined by classes only |Components defined by functions and classes|
+|Stateful service classes can be used to share state across an application| Not sure|
+|Custom html elements| Custom html elements|
 
 
 ## Section 29: Optional: React Summary & Core Feature Walkthrough
@@ -55,7 +58,15 @@ externally defined
 of page
 - Special types of props determined by prefix ‘on’, is Reacts way of event listening. Instead of object in this case it wants a function.
 - React does not rerender when variables change in the class change. You have to manually state this.
+
+### Hooks
+- Allow state and lifecycle methods in functional components (functional components being simple functions)
+- Allow large functions to be split into smaller understandable pieces
 - Hooks must usually be called inside function
+- Hooks can be custom or can use inbuilt React ones `useState`: manage state, `useEffect`: manage side effects (edit DOM manually)
+- Difference in return type for React components:
+  - Render() —> Normal react 
+  - Return() —> Hook 
 - useState returns array [value, updatingFunction] where first element is current state value, second is the function you need to use to update the state e.g const [title, setTitle]
 - Hook can be called multiple times depending on how many instances of the component we have. Each instance is managed independently by react
 
@@ -118,8 +129,7 @@ To pass data through components use props and set values in component tag using 
 
 Team uses an interface instead of feeding props into a function. This means when an object extends from props it will have that as its core variables and that input into the object needs to be defined
 
-Render —> Normal react
-Return —> Hook (different functions to support —>)
+
 
 useLocalStorage() —> caching frontend
 useEffect

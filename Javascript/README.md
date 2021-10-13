@@ -1,5 +1,12 @@
 # Javascript
 
+## Difference between Java and Javascript
+
+| Java | Javascript |
+|:-----:|:--------:|
+|Strongly typed|Weakly typed|
+
+
 ## Section 1: Introduction
 - Skip
 - Weakly typed language
