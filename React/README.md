@@ -1,11 +1,79 @@
 # React
-Single page application
-Jump to Summary in Section 29
+
+### React vs Angular
+|Angular|React|
+|:-----:|:---:|
+|App with many users and interactions |App with frequently variable data|
+|Two way data binding (child to parent/parent to child)|One way data binding (parent to child)|
+|Popular for OOP (has dependancy injection) | Does not have dependancy |
+|Heavy framework: has built in routing, Ajax requests, forms, test runner/framework | Lighter framework: Doesn't have anything mentioned with Angular, have to add additional libraries|
+
 
 ## Section 29: Optional: React Summary & Core Feature Walkthrough
-- Skip 446- 454 general background to React, descriptive, how project looks, not needed, mentioning html usage and basic
+- Skip 446- 454 general background to React, descriptive, how project is structured, not needed, mentioning html usage and basic
 syntax
-- 
+
+### Components
+- Every UI piece is a component
+- Every component function gets given a prop function to work with and has state
+- Observable pattern and listens for changes to these components when figuring out whether to rerender or not
+- To improve performance, only tshe components that need rerendering are rerendered
+- Component can be referenced by a html like tag for example : `<Component />`
+- User defined components do not have built in props like `onClick` etcm they have to be configured themselves (all functions)
+- Props define what can be passed into the component at a higher(parent) level
+
+[comment]: <> (```javascript)
+
+[comment]: <> (function Model&#40;props&#41; {)
+
+[comment]: <> (    function testFunction&#40;&#41; {)
+
+[comment]: <> (        props.onClick&#40;&#41;;)
+
+[comment]: <> (    })
+    
+[comment]: <> (    return &#40;)
+
+[comment]: <> (        <div>)
+            
+[comment]: <> (        </div>)
+
+[comment]: <> (    &#41;)
+
+[comment]: <> (})
+
+[comment]: <> (```)
+
+
+### State and Props
+- Difference between state and props is that state is an internal property controlled from the component and props are 
+externally defined
+- Props can not be modified. If its been fed into the component thats it. State can be modified using the `this.setState` functionality
+- Better example: state is like attributes of a class, props like parameters.
+- React uses state in order to change values
+- `useState` is popular function. Two outputs (attribute, function) where the function conditionally triggers rerender
+of page
+- Special types of props determined by prefix ‘on’, is Reacts way of event listening. Instead of object in this case it wants a function.
+- React does not rerender when variables change in the class change. You have to manually state this.
+- Hooks must usually be called inside function
+- useState returns array [value, updatingFunction] where first element is current state value, second is the function you need to use to update the state e.g const [title, setTitle]
+- Hook can be called multiple times depending on how many instances of the component we have. Each instance is managed independently by react
+
+### Handling Events
+- A function defined without the rounded brackets on a html element event handler will bind an action to the method of
+choice. Below will print 'Hello' to the DOM.
+```javascript
+function methodToExecute() {
+    console.log('Hello');
+}
+
+return (
+    <div> 
+        <button className='btn' onClick={methodToExecute}> </button>
+    </div>
+)
+```
+
 General React - https://saurabhshah23.medium.com/react-js-architecture-features-folder-structure-design-pattern-70b7b9103f22
 
 - Export all classes to avoid conflicts
@@ -60,10 +128,4 @@ useCallback
 Mounting?
 
 React State
-- Special types of props determined by prefix ‘on’, React way of event listening. Instead of object it wants a function.
-- React does not rerender when variables change. You have to manually state this.
-- Hooks must usually be called inside function
-- useState returns array [value, updatingFunction] where first element is current state value, second the function you need to use to update the state e.g const [title, setTitle]
-- Hook can be called multiple times depending on how many instances of the component we have. Each instance is managed independently by react
-
 
