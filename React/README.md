@@ -10,7 +10,8 @@
 |Components defined by classes only |Components defined by functions and classes|
 |Stateful service classes can be used to share state across an application| Not sure|
 |Custom html elements| Custom html elements|
-
+|Angular CLI| Nothing that is useful|
+|||
 
 ## Section 29: Optional: React Summary & Core Feature Walkthrough
 - Skip 446- 454 general background to React, descriptive, how project is structured, not needed, mentioning html usage and basic
