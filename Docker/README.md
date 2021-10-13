@@ -61,6 +61,7 @@ to the `STDOUT` channel of the process
 - Each step creates temporary container from previous step image, executes commands, destroys container after taking
 snapshot of FS and primary command to image, passing image to next step.
 - When building an image from dockerfile, none of the files in your project are available unless specifically defined. Use `COPY` to move files over from local FS to container FS.
+- Docker caches the STEPS that do not change if rebuilding a dockerfile to improve performance (skips them if nothing has changed)
 
 Most commonly used dockerfile instructions:
 
@@ -71,7 +72,6 @@ Most commonly used dockerfile instructions:
 |`CMD`| Defining starting command|
 |`COPY`| Move files from local FS (first arg) to container FS (second arg)|
 |`WORKDIR`| Move execution relative to folder defined (will be automatically generated if non-existence)|
-
 
 
 ## Useful Docker Commands/Tags
