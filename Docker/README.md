@@ -17,6 +17,7 @@ Docker runs on Linux environment.
 |Container| Specific grouping of resources. ![image info](./Container.png) |
 |Kernel | A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)|
 |DockerFile| Configuration file for docker image|
+|Docker Compose| Seperate CLI to start multiple containers, automates commands|
 
 ## What is Docker?
 
@@ -73,17 +74,48 @@ Most commonly used dockerfile instructions:
 |`COPY`| Move files from local FS (first arg) to container FS (second arg)|
 |`WORKDIR`| Move execution relative to folder defined (will be automatically generated if non-existence)|
 
+- There should be different Dockerfiles for different environments (as there are different app versions for dev vs prod)
+
+### Docker volume
+- This is used to see the changes to the local file system, propagated to container.
+- Map all folders in container to folder local (ensure that there are the same folders in local and container!)
+- If there are no mirror of a file or folder in container to local, one must use the `-v` command *without* colon to tell docker
+<strong>not</strong> to map this file/folder e.g. `-v app/node_modules`.
+
+### Docker compose file
+- Used to start up multiple containers
+- services used instead of containers
+- creates containers that can freely access each other and exchange information with each other without port declaration
+between the containers
+- Can also get containers to restart if they crash
+  - Restart policies are: "no", always, on-failure, unless-stopped. Containers defaulted to "no". (Put no in quotes in yml)
+
+### Running tests in a container
+- To interact with tests, execute container in interactive mode and change default start up command
+- can execute command in current container or create second service for testing only
+
+## Tips
+- Only copy files that are needed 
+- Delete node_modules folder locally before building Dockerfile as it is done when image is built and do not need to waste time
+copying it over from local
 
 ## Useful Docker Commands/Tags
 
 |Command/Tag|Description|
-|:-----:|:---------:|
+|:---------:|:---------:|
 |`docker system prune`| Removes all stopped containers on disk|
 |`docker stop`| Stops container running process|
 |`docker exec -it <container-id> <command>`|Run another process in container|
 |`docker exec -it <container-id> sh`|Run shell in container|
 |`CTRL + C/D`|Exit processes|
 |`docker build -t <docker-id/project:version>.` (from folder with Dockerfile) |Build docker image|
-|`docker run <docker-id/project> <override default command OPTIONAL>` (from folder with Dockerfile) |Start docker image|
+|`docker build -f <filename> .` (from folder with Dockerfile) |Build docker image using specific file|
+|`docker run -d <docker-id/project> <override default command OPTIONAL>` (from folder with Dockerfile) |Start docker image in the background|
+|`docker run -it -p <local port>:<container port> <image id>` (from folder with Dockerfile) |Start docker image on given port and interact with it|
 |`./`| Current working directory |
+|`.`| Current directory|
 |`-p <local machine port> : <container port>`| Maps ports on local machine to that of container |
+|`docker-compose up -d`| Looks for docker-compose.yml file and runs config|
+|`docker-compose up --build`| To build images within docker compose file if source code changes|
+|`docker-compose down`| Stops all images created in the docker compose file|
+|`-v /app/node_modules -v $(pwd):/app` (bash/gitbash only)| Map current direct to /app folder (similar to what is done in the port) |
