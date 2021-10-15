@@ -32,6 +32,9 @@ will ignore underscore when rendering the variable.
 > *NB: ensure that if you need precise numerical computations, use `BigDecimal` class.*
 
 `BigDecimal` and `BigInteger` used to manipulate large numbers and precision arithmetic. 
+### BigDecimal and BigInteger
+
+
 
 ## Operators
 
@@ -66,6 +69,7 @@ same type before calculations. If either double, long or float they will be conv
 
 Use scanner (defined in the java.util package) to read input values from console
 `Scanner in = new Scanner(System.in)`.
+![InputTypes](ScannerInputTypes.PNG)
 
 Use scanner also to read from file input in the following way:
 `Scanner in = new Scanner(Paths.get("myFile.txt")`
@@ -76,6 +80,10 @@ information like passwords to be hidden when input given:
 methods. 
 
 `System.out.printf("%8.2f", x)` <-- field width 8 characters and precision 2 characters.
+
+
+## Regex
+
 
 ## Control flow
 
@@ -100,9 +108,34 @@ To copy an array use the following statement: `Arrays.copyOf(oldArray, lengthOfN
 To sort an array use: `Arrays.sort(a)`. This uses quicksort algorithm.
 
 
-## Lambdas and comparing 
+## Comparator and comparable
+
 Can compare data using class that implements either comparable or compartor interface. Preferable use comparable when 
 dealing with most cases, and comparator when dealing with 
+
+```java
+public class BigDecimalComparator implements Comparable<BigDecimal> {
+    @Override
+    public int compareTo(BigDecimal otherBigDecimal) {
+        return BigDecimal.compareTo(otherBigDecimal);
+    }
+}
+
+public class Solutions {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> inputString = new ArrayList();
+        while (in.hasNextLine) {
+            inputString.add(in.nextLine())
+        }
+        
+        Collections.sort(inputString, BigDecimalComparator);
+        
+        
+    }
+}
+
+```
 
 ## Data sets
 
@@ -132,7 +165,7 @@ time. The tasks are usually created on one thread. More than one task on a threa
 Processes are different to threads because processes run on a complete set of their own variables, threads share the 
 same data.
 
-### Thread
+### Threads
 
 ####States
 To get the current state used the `Thread.getState`.
