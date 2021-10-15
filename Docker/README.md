@@ -94,6 +94,13 @@ between the containers
 - To interact with tests, execute container in interactive mode and change default start up command
 - can execute command in current container or create second service for testing only
 
+
+
+## Docker for Machine Learning
+- Tensorflow estimator
+- AWS GLUE
+- AWS Safe maker
+
 ## Tips
 - Only copy files that are needed 
 - Delete node_modules folder locally before building Dockerfile as it is done when image is built and do not need to waste time

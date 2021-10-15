@@ -170,3 +170,7 @@ ON!
 - If default handler not installed for individual thread then it's null.
 - If handler not installed for thread, then default `ThreadGroup` object used.
 - Recommended not to use thread groups, where thread groups are ....
+
+
+### Misc
+- Java has two main package management systems: Maven (mainly used), Gradle (new and upcoming)

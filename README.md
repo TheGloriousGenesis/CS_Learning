@@ -21,7 +21,6 @@ Repository where fundamental and exploratory computer science and machine learni
 | Python basics | Python cookbook | [Book](https://learning.oreilly.com/library/view/python-cookbook-3rd/9781449357337/)| - |
 | Python basics | Introduction to Python | [Video](https://learning.oreilly.com/videos/introduction-to-python/9781491904794/)| - |
 
-
 ## Design Patterns
 
 | Type | Course | Source | Notes/Solutions |
@@ -48,6 +47,17 @@ Repository where fundamental and exploratory computer science and machine learni
 | Java concurrency | Java concurrency in Practice | [Book](https://learning.oreilly.com/library/view/java-concurrency-in/0321349601/) | - |
 | Scalability in distributed systems | Concurrency and Scalability for Distributed Systems | [Book](https://learning.oreilly.com/library/view/concurrency-and-scalability/9781098106058/) | - |
 | Designing distributed systems | Designing Distributed Systems | [Book](https://learning.oreilly.com/library/view/designing-distributed-systems/9781491983638/) | - |
+
+
+## AWS Machine Learning Specialty Exam
+| Type | Course | Source | Notes/Solutions |
+|:----:|:------:|--------|-----------------|
+| Preparation to take the AWS ML Exam | AWS Machine Learning Specialty Certification Preparation | [Video](https://cloudacademy.com/learning-paths/aws-machine-learning-specialty-certification-preparation-453/) | - |
+
+## AWS Solution Architect Associate Exam
+| Type | Course | Source | Notes/Solutions |
+|:----:|:------:|--------|-----------------|
+| Preparation to take the AWS Solution Architect Exam | AWS Solutions Architect – Associate (SAA-C02) Certification Preparation for AWS | [Video](https://cloudacademy.com/learning-paths/aws-solutions-architect-associate-certification-preparation-for-aws-2021-1-2977/) | - |
 
 ## Helpful Miscellaneous links to aid repository
 
