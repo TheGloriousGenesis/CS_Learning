@@ -90,13 +90,16 @@ methods.
 statements/loops can be broken by using loop labels that are defined by:
 
 ```java
-read_data:
-while(. . .)
-{
-    for(. . .)
-    {
-        . . .
-        break read_data;
+public class ReadData() {
+    public void ReadData(int[] data) {
+        read_data:
+        while(true)
+        {
+            for(int i : data)
+            {
+                break read_data;
+            }
+        }      
     }
 }
 ```
@@ -126,7 +129,7 @@ public class Solutions {
         Scanner in = new Scanner(System.in);
         ArrayList<String> inputString = new ArrayList();
         while (in.hasNextLine) {
-            inputString.add(in.nextLine())
+            inputString.add(in.nextLine());
         }
         
         Collections.sort(inputString, BigDecimalComparator);
@@ -134,7 +137,6 @@ public class Solutions {
         
     }
 }
-
 ```
 
 ## Data sets

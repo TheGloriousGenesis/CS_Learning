@@ -89,6 +89,7 @@ Most commonly used dockerfile instructions:
 between the containers
 - Can also get containers to restart if they crash
   - Restart policies are: "no", always, on-failure, unless-stopped. Containers defaulted to "no". (Put no in quotes in yml)
+- `context` 
 
 ### Running tests in a container
 - To interact with tests, execute container in interactive mode and change default start up command
@@ -105,6 +106,18 @@ between the containers
 - Only copy files that are needed 
 - Delete node_modules folder locally before building Dockerfile as it is done when image is built and do not need to waste time
 copying it over from local
+
+## Workflow
+
+- Set working directory first
+- Two paths you can take:
+  - Copy over configuration files and folders for project
+  - Install dependancies with these files
+- 
+- Create
+
+
+
 
 ## Useful Docker Commands/Tags
 
