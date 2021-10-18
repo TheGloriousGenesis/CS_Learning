@@ -77,12 +77,14 @@ Most commonly used dockerfile instructions:
 - There should be different Dockerfiles for different environments (as there are different app versions for dev vs prod)
 
 ### Docker volume
+
 - This is used to see the changes to the local file system, propagated to container.
 - Map all folders in container to folder local (ensure that there are the same folders in local and container!)
 - If there are no mirror of a file or folder in container to local, one must use the `-v` command *without* colon to tell docker
 <strong>not</strong> to map this file/folder e.g. `-v app/node_modules`.
 
 ### Docker compose file
+
 - Used to start up multiple containers
 - services used instead of containers
 - creates containers that can freely access each other and exchange information with each other without port declaration
@@ -92,20 +94,21 @@ between the containers
 - `context` 
 
 ### Running tests in a container
+
 - To interact with tests, execute container in interactive mode and change default start up command
 - can execute command in current container or create second service for testing only
 
-
-
 ## Docker for Machine Learning
+
 - Tensorflow estimator
 - AWS GLUE
 - AWS Safe maker
 
 ## Tips
+
 - Only copy files that are needed 
-- Delete node_modules folder locally before building Dockerfile as it is done when image is built and do not need to waste time
-copying it over from local
+- Delete node_modules folder (or build folders for any language) locally before building Dockerfile as it is done when 
+image is built and do not need to waste time copying it over from local
 
 ## Workflow
 
@@ -113,10 +116,7 @@ copying it over from local
 - Two paths you can take:
   - Copy over configuration files and folders for project
   - Install dependancies with these files
-- 
 - Create
-
-
 
 
 ## Useful Docker Commands/Tags

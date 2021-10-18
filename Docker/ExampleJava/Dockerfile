@@ -1,28 +1,17 @@
 # syntax=docker/dockerfile:1
 
-FROM openjdk:16-alpine
-
-RUN MKDIR /project
-COPY . /project
-WORKDIR /project
-RUN mvn clean package -DskipTests
-
-RUN apk add dumb-init
-RUN mkdir /app
-RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
-COPY --from=build /project/target/ExampleJava-1.0-SNAPSHOT.jar /app/ExampleJava.jar
-WORKDIR /app
-
+# Works for prebuilt jar : SIZE = 326MB
+#FROM openjdk:17-alpine
 #COPY target/ExampleJava-1.0-SNAPSHOT.jar /ExampleJava.jar
-
 #COPY pom.xml ./
+#CMD ["java", "-jar", "/ExampleJava.jar"]
 
-#RUN ./mvnw dependency:go-offline
+# Works for building jar using dockerfile : SIZE = 326MB
+FROM maven:3.8.3-openjdk-17-slim AS build
+COPY src ./src
+COPY pom.xml .
+RUN mvn -f pom.xml clean package
 
-#COPY src ./src
-
-#CMD ["./mvnw", "spring-boot:run"]
-RUN chown -R javauser:javauser /app
-USER javauser
-CMD "dumb-init" "java" "-jar" "java-application.jar"
-
+FROM openjdk:17-alpine
+COPY --from=build target/ExampleJava-1.0-SNAPSHOT.jar /ExampleJava.jar
+CMD ["java", "-jar", "/ExampleJava.jar"]
