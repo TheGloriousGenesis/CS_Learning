@@ -1,5 +1,6 @@
 # Machine Learning
 
+
 ## Glossary
 
 | Word | Definition|
@@ -135,6 +136,15 @@ To fix over-fitting:
 ### Experimentation
 How could we improve/what can we try next?
 
+
+## Common algorithms used for different problems
+
+|Problem| Algorithm| Evaluation | Pros | Cons |
+|:-----:|:--------:|:---------:|:----:|:----:|
+|Classification| Random Forest | Score (Accuracy),  | Fast | |
+
+## Overview - Scikit Learn
+Scikit Learn is the most popularly used standard in data science and machine learning professionally and worldwide.
 
 
 ## Overview - Regression

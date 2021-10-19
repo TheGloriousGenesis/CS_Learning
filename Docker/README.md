@@ -18,6 +18,7 @@ Docker runs on Linux environment.
 |Kernel | A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)|
 |DockerFile| Configuration file for docker image|
 |Docker Compose| Seperate CLI to start multiple containers, automates commands|
+|Service| Another name given for container|
 
 ## What is Docker?
 
@@ -75,6 +76,7 @@ Most commonly used dockerfile instructions:
 |`WORKDIR`| Move execution relative to folder defined (will be automatically generated if non-existence)|
 
 - There should be different Dockerfiles for different environments (as there are different app versions for dev vs prod)
+- To optimise the image being built, use Multi-step Docker builds. Build folder will be created in the current directory
 
 ### Docker volume
 
@@ -97,6 +99,15 @@ between the containers
 
 - To interact with tests, execute container in interactive mode and change default start up command
 - can execute command in current container or create second service for testing only
+
+## Continuous Integration and Deployment
+- Applications run differently in development and production using Docker
+- In Dev Environment:
+  - Web container contains: Dev Server, application files to send data to client
+- In Prod Environment:
+  - Web container contains: Prod Server, application files to send data to client. (Dev server drops as there is no need
+for large processing power since changes to source file will not be needed).
+- (For javascript only) Nginx is a lightweight server (good for production)
 
 ## Docker for Machine Learning
 
