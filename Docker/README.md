@@ -3,7 +3,7 @@
 ## Why Docker?
 
 Docker was created to solve installation problems on any computer. This means one does not have to worry about setup or program dependencies when install programs
-Docker runs on Linux environment. 
+Docker runs on Linux environment.
 
 ## Glossary
 
