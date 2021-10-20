@@ -2,7 +2,7 @@ FROM node:alpine AS build
 WORKDIR '/app'
 COPY Docker/ExampleNode/package.json .
 RUN npm install
-COPY . .
+COPY Docker/ExampleNode/ .
 RUN npm run build
 
 
