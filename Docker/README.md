@@ -101,6 +101,7 @@ between the containers
 - can execute command in current container or create second service for testing only
 
 ## Continuous Integration and Deployment
+- CI and CD used to build and test software before deploying on server
 - Applications run differently in development and production using Docker
 - In Dev Environment:
   - Web container contains: Dev Server, application files to send data to client
@@ -108,7 +109,9 @@ between the containers
   - Web container contains: Prod Server, application files to send data to client. (Dev server drops as there is no need
 for large processing power since changes to source file will not be needed).
 - (For javascript only) Nginx is a lightweight server (good for production)
-
+- Travis CI:
+  - one of many continuous integration services. Free and open source to use
+- 
 ## Docker for Machine Learning
 
 - Tensorflow estimator
