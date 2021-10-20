@@ -74,7 +74,7 @@ Most commonly used dockerfile instructions:
 |`CMD`| Defining starting command|
 |`COPY`| Move files from local FS (first arg) to container FS (second arg)|
 |`WORKDIR`| Move execution relative to folder defined (will be automatically generated if non-existence)|
-
+|`EXPOSE`| does nothing. But with AWS Elastic Beanstalk, maps expose value to server so traffic can enter container|
 - There should be different Dockerfiles for different environments (as there are different app versions for dev vs prod)
 - To optimise the image being built, use Multi-step Docker builds. Build folder will be created in the current directory
 
