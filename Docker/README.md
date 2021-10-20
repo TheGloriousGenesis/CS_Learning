@@ -109,9 +109,17 @@ between the containers
   - Web container contains: Prod Server, application files to send data to client. (Dev server drops as there is no need
 for large processing power since changes to source file will not be needed).
 - (For javascript only) Nginx is a lightweight server (good for production)
+
+### Demo specific configuration
 - Travis CI:
   - one of many continuous integration services. Free and open source to use
-- 
+- AWS Elastic beanstalk
+  - Server with load balancer for serving web applications
+  - Client --> Load Balancer server --> VM running docker
+  - Pros: Manages traffic by dynamically spawning/removing VMs depending on incoming traffic
+- S3 (AWS):
+  - Scalable storage in the Cloud
+
 ## Docker for Machine Learning
 
 - Tensorflow estimator
