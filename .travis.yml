@@ -6,7 +6,7 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker-compose -f Docker/ExampleNode/docker-compose-dev.yml up --build
+    - docker build -t thegloriousgenesis/cs_learning.web.dev -f Dockerfile.dev .
 
 # Scripts to run once docker is up and running
 script:

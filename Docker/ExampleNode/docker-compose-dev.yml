@@ -4,7 +4,7 @@ services:
     image: thegloriousgenesis/cs_learning.web.dev
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: ../../Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
@@ -12,13 +12,13 @@ services:
       - .:/app
     stdin_open:
       true
-#  tests:
-#    image: thegloriousgenesis/cs_learning.test.dev
-#    build:
-#      context: .
-#      dockerfile: Dockerfile.dev
-#    volumes:
-#      - /app/node_modules
-#      - .:/app
-#    command: ["npm","run","test"]
+  tests:
+    image: thegloriousgenesis/cs_learning.test.dev
+    build:
+      context: .
+      dockerfile: ../../Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm","run","test"]
 
