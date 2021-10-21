@@ -93,7 +93,7 @@ Most commonly used dockerfile instructions:
 between the containers
 - Can also get containers to restart if they crash
   - Restart policies are: "no", always, on-failure, unless-stopped. Containers defaulted to "no". (Put no in quotes in yml)
-- `context` 
+- `context` : defines a directory where the docker build process takes place
 
 ### Running tests in a container
 
@@ -114,7 +114,8 @@ for large processing power since changes to source file will not be needed).
 
 #### Travis CI
   - one of many continuous integration services. Free and open source to use
-  - Tip: With continuous integration, they must be given instructions on how to c
+  - Tip: With continuous integration, they must be given instructions on how to run the build stage and if it needs to
+run tests before deploying onto a server. To deploy onto
 #### AWS
 - AWS Elastic beanstalk
   - Server with load balancer for serving web applications

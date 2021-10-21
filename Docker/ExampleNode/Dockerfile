@@ -1,8 +1,8 @@
 FROM node:alpine
 WORKDIR '/app'
-COPY Docker/ExampleNode/package.json .
+COPY package.json .
 RUN npm install
-COPY Docker/ExampleNode/ .
+COPY . .
 RUN npm run build
 
 
