@@ -1,6 +1,5 @@
 # Machine Learning
 
-
 ## Glossary
 
 | Word | Definition|
@@ -169,7 +168,6 @@ and set this to zero to find the minima. This is called <strong> Gradient Descen
 $$
 \frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
 $$
-
 
 ## Overview - Recommendation 
 

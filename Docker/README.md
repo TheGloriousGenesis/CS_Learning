@@ -113,12 +113,23 @@ for large processing power since changes to source file will not be needed).
 ### Demo specific configuration
 - Travis CI:
   - one of many continuous integration services. Free and open source to use
+
+#### AWS
 - AWS Elastic beanstalk
   - Server with load balancer for serving web applications
   - Client --> Load Balancer server --> VM running docker
   - Pros: Manages traffic by dynamically spawning/removing VMs depending on incoming traffic
+
+- IAM
+  - Manages permissions for external services connecting to app in AWS
+  - Tip: Ensure you note down somewhere the access key and secret key when you generate them
+
 - S3 (AWS):
   - Scalable storage in the Cloud
+- AWS EB CLI
+  - When you need to see logs on your local machine and can't be bothered to see them in GUI, use EB CLI
+  - Must initiate it within the directory in which you want logs of.
+
 
 ## Docker for Machine Learning
 
