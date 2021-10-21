@@ -6,11 +6,11 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker-compose -t thegloriousgenesis/cs_learning -f Docker/ExampleNode/docker-compose-dev.yml up --build
+  - docker-compose -f Docker/ExampleNode/docker-compose-dev.yml up --build
 
 # Scripts to run once docker is up and running
 script:
-  - docker run -e CI=true thegloriousgenesis/cs_learning npm run test
+  - docker run -e CI=true thegloriousgenesis/cs_learning.web.dev npm run test
 
 # Travis comes preconfigured to deploy to some known servers
 deploy:

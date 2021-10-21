@@ -93,7 +93,9 @@ Most commonly used dockerfile instructions:
 between the containers
 - Can also get containers to restart if they crash
   - Restart policies are: "no", always, on-failure, unless-stopped. Containers defaulted to "no". (Put no in quotes in yml)
-- `context` : defines a directory where the docker build process takes place
+- `context` : defines a directory where the docker build process takes place. For example, `context_dir/myFolder/Dockerfile` becomes 
+`myFolder/Dockerfile` in the Dockerfile when context_dir is used. 
+- Can define the name of an image to use when querying using the CLI using the `-image` tag.
 
 ### Running tests in a container
 

@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    image: thegloriousgenesis/cs_learning.web.dev
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -11,12 +12,13 @@ services:
       - .:/app
     stdin_open:
       true
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: ["npm","run","test"]
+#  tests:
+#    image: thegloriousgenesis/cs_learning.test.dev
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.dev
+#    volumes:
+#      - /app/node_modules
+#      - .:/app
+#    command: ["npm","run","test"]
 
