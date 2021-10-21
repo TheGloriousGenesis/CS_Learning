@@ -103,6 +103,7 @@ between the containers
 - can execute command in current container or create second service for testing only
 
 ## Continuous Integration and Deployment
+
 - CI and CD used to build and test software before deploying on server
 - Applications run differently in development and production using Docker
 - In Dev Environment:
@@ -115,25 +116,27 @@ for large processing power since changes to source file will not be needed).
 ### Demo specific configuration
 
 #### Travis CI
+
   - one of many continuous integration services. Free and open source to use
   - Tip: With continuous integration, they must be given instructions on how to run the build stage and if it needs to
-run tests before deploying onto a server. To deploy onto
+run tests before deploying onto a server. Have a dev dockerfile to build and run tests, then deploy prod dockerfile.
+
 #### AWS
+
 - AWS Elastic beanstalk
   - Server with load balancer for serving web applications
   - Client --> Load Balancer server --> VM running docker
   - Pros: Manages traffic by dynamically spawning/removing VMs depending on incoming traffic
-
+  - Tip: Ensure you delete applications you are no longer using or else they can incur cost! can do this from the main 
+  dashboard-> applications-> select current application -> actions -> delete
 - IAM
   - Manages permissions for external services connecting to app in AWS
   - Tip: Ensure you note down somewhere the access key and secret key when you generate them
-
 - S3 (AWS):
   - Scalable storage in the Cloud
 - AWS EB CLI
   - When you need to see logs on your local machine and can't be bothered to see them in GUI, use EB CLI
   - Must initiate it within the directory in which you want logs of.
-
 
 ## Docker for Machine Learning
 
@@ -150,11 +153,10 @@ image is built and do not need to waste time copying it over from local
 ## Workflow
 
 - Set working directory first
-- Two paths you can take:
-  - Copy over configuration files and folders for project
-  - Install dependancies with these files
-- Create
-
+- Copy over configuration files and folders for project
+- Install dependencies with these files
+- Copy the source files 
+- Run program
 
 ## Useful Docker Commands/Tags
 
@@ -176,3 +178,11 @@ image is built and do not need to waste time copying it over from local
 |`docker-compose up --build`| To build images within docker compose file if source code changes|
 |`docker-compose down`| Stops all images created in the docker compose file|
 |`-v /app/node_modules -v $(pwd):/app` (bash/gitbash only)| Map current direct to /app folder (similar to what is done in the port) |
+
+## Useful AWS EB CLI Commands
+
+|Command/Tag|Description|
+|:---------:|:---------:|
+|`eb logs`| Download and view logs |
+|`eb health`| View health of your web service|
+|`eb status --verbose`| See status of current deployment and health of EC2 hosts|
