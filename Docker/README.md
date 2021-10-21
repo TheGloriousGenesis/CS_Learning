@@ -111,9 +111,10 @@ for large processing power since changes to source file will not be needed).
 - (For javascript only) Nginx is a lightweight server (good for production)
 
 ### Demo specific configuration
-- Travis CI:
-  - one of many continuous integration services. Free and open source to use
 
+#### Travis CI
+  - one of many continuous integration services. Free and open source to use
+  - Tip: With continuous integration, they must be given instructions on how to c
 #### AWS
 - AWS Elastic beanstalk
   - Server with load balancer for serving web applications
