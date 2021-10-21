@@ -4,7 +4,7 @@ services:
     image: thegloriousgenesis/cs_learning.web.dev
     build:
       context: .
-      dockerfile: ../../Dockerfile.dev
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
@@ -16,7 +16,7 @@ services:
     image: thegloriousgenesis/cs_learning.test.dev
     build:
       context: .
-      dockerfile: ../../Dockerfile.dev
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - .:/app
