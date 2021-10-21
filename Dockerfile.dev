@@ -5,6 +5,6 @@ WORKDIR '/app'
 COPY Docker/ExampleNode/package.json .
 RUN npm install
 
-COPY Docker/ExampleNode/ .
+COPY Docker/ExampleNode .
 
 CMD ["npm","run","start"]
