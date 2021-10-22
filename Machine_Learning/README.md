@@ -11,6 +11,11 @@
 | Confidence (Affinity Analysis) | The strength of an association rule relating to the likelihood of customer buying item A, given item B |
 | Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items | 
 
+## TLDR: Top tips for whole ML process
+- Obtain Data: State what you need and why. Get the data from the source
+- Explore Data: Looking at your comp
+- Prepare data: Clean data, Transform Data, Reduce Data
+
 ## Environment set up
 Hints:
 - Use miniconda not anaconda (anaconda has a lot of overhead)
@@ -64,7 +69,7 @@ Later on think about how Data Engineers will need to clean and visual data to un
 ### Evaluation 
 - Define what a successful end will be: 95% accuracy? 99.9% accuracy?
 
-| Type | Exampeles | - | - |
+| Type | Examples | - | - |
 |:--------------:|:----------:|:--------------:|:-------|
 | Classification | Accuracy | Precision | Recall |
 | Regression |Mean absolute error (MAE) | Mean squared error (MSE) | Root mean squared error (RMSE) |
