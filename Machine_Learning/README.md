@@ -11,46 +11,28 @@
 | Confidence (Affinity Analysis) | The strength of an association rule relating to the likelihood of customer buying item A, given item B |
 | Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items | 
 
+## Type of Machine Learning Problems
+| Problem | Definition| Examples|
+|:-------:|:---------:|:--------|
+|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Regression - predict a number</li></ul>|
+|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>|
+||| |
+|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| |
+|Reinforcement Learning| Perform action in define space and reward/penalise on actions| |
+
 ## TLDR: Top tips for whole ML process
 - Obtain Data: State what you need and why. Get the data from the source
 - Explore Data: Looking at your comp
 - Prepare data: Clean data, Transform Data, Reduce Data
 
-## Environment set up
-Hints:
-- Use miniconda not anaconda (anaconda has a lot of overhead)
-- Create project folder and put everything in one place
-- use the following command to create the env folder in current folder 
- `conda create --prefix ./ml_course/envs pandas numpy scikit-learn jupyter matplotlib`
-- Unfortunately can not use `--name ml_course` to rename the env with the same
-
-### Jupyter Notebook
-Here are some general information surrounding objects that can be created in jupyter:
-
-| Type | Description |
-|:----:|:-----------:|
-| Series | Similar to a column of data (1D)|
-| Dataframe | A collection of series data (2D)|
-| Attribute (Jupyter) | gives information about the data at hand |
-| Function (Jupyter) | Executes code to manipulate or obtain insights from data |
-
-To avoid training a model to learn patterns based on the order in which data is recorded (exception time series etc), 
-it is best practice to randomise the indexes of the data given. This can be done in python:
-`dataframe.sample(frac=AMOUNT_YOU_WANT_TO_SHUFFLE_FRACTION)`. 
-
-## Data Modelling - Building ML Project 
+## Building ML Project 
+When you start a machine learning project, there should be specific steps that one should follow in order to ensure best 
+practices. The following defines the steps:
 
 ###  Project Definition
-- Check if simple coded solution works
-- Check if ML needed
-- If ML needed, what type of ML problem is it?:
-  - Supervised - Trends based on current data (labels provided)
-    - Classification - one thing or another 
-    - Regression - predict a number
-  - Unsupervised - Find patterns in data (labels not provided)
-    - Clustering - grouping similar problems together
-  - Transfer Learning - leverage machine learning models, use one model that knows A and tweak to know what B is
-  - Reinforcement Learning - perform action in define space and reward/penalise on actions
+1. Check if simple coded solution works 
+2. Check if ML needed 
+3. If ML needed, what type of ML problem is it?:
 
 ### Data
 - Does the data match the problem definition?
