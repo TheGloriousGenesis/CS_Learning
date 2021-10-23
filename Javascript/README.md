@@ -172,3 +172,10 @@ Const hey = () => {}
 
 
 Prototype is base class of class
+
+## How to save file in javascript
+### In Node.js
+- Use [fs](https://nodejs.org/docs/latest/api/fs.html).
+- 
+
+ 
