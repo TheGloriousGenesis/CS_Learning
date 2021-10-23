@@ -5,8 +5,11 @@
 | Word | Definition|
 |:----:|:---------:|
 | Shell | Software that provides an interface between the user and the underlying operating system | 
+| Behaviour ||
+|Functionality||
 
 ## Introduction
+
 Architecturing is decomposing system into coding blocks units and optimising communication between them
 Number one reason to do new architecture is because system is at end of life.
 
@@ -67,25 +70,45 @@ Number one reason to do new architecture is because system is at end of life.
 - Storage can be database, queue, hash table, file etc
 
 
-## Layers when VBD'in (Top to bottom)
+## How to break down system: DETAILED: Layers when VBD'in (Top to bottom)
 ![image info](./Template System decomposition.png)
+
 ### Client
 
+- Can be a user or another system
 - Advocates single point of entry
-- Encapulates different type of clients, the technologies they use and how the information is transported to them
+- Encapsulates different type of clients, the technologies they use and how the information is transported to them
 
 ### Business
 
-- capture use cases: series of required behaviours
+- Encapsulates the volatility in the changes of the required behaviour of the system
+- Required behaviours when define should be as immutable to change as possible
+- Capture use cases: series of required behaviours
+- Although the required behaviour of system is liable to change, there is only two ways the use case (a sequence of activities) can change:
+  - the activity changes (Engines encapsulate this volatility in business rule)
+  - the sequence changes (Managers are meant to capture this volatility)
 
 ### Resource access
 
-- Encapsulate resource access
-- Physical resources / Utilities common to all services
-- 
+- Encapsulate volatility to resource access
+- Make as high level when describing so that the underlying resource can be swapped if needed.
+- Use atomic business verbs (verbs used to describe action in certain field e.g credit, debit account).
 
+### Resource
 
+- Physical resources (File, queues, database)
 
+### Utilities
+
+- Utilities common to all services (e.g security, logging)
+
+## Architecture Validation
+
+- Architecture must satisfy all use cases
+  - Present and future
+  - Known and unknown
+- Volatility decreases top down on layer VBD
+- Mana
 
 # TODO
 - Think about all the design patterns and what type of volatility they are encapsulating e.g pub/sub pattern encapsulating
