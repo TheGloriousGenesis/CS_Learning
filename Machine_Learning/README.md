@@ -9,30 +9,36 @@
 | Association rule learning (Affinity Analysis) | Unsupervised learning technique that only works with categorical data |
 | Support (Affinity Analysis) | The frequency of the pattern given by the rule |
 | Confidence (Affinity Analysis) | The strength of an association rule relating to the likelihood of customer buying item A, given item B |
-| Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items | 
+| Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items |
 
-## Type of Machine Learning Problems
-| Problem | Definition| Examples|
-|:-------:|:---------:|:--------|
-|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Regression - predict a number</li></ul>|
-|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>|
-||| |
-|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| |
-|Reinforcement Learning| Perform action in define space and reward/penalise on actions| |
+[comment]: <> (## TLDR: Top tips for whole ML process)
 
-## TLDR: Top tips for whole ML process
-- Obtain Data: State what you need and why. Get the data from the source
-- Explore Data: Looking at your comp
-- Prepare data: Clean data, Transform Data, Reduce Data
+[comment]: <> (- Obtain Data: State what you need and why. Get the data from the source)
+
+[comment]: <> (- Explore Data: Looking at your comp)
+
+[comment]: <> (- Prepare data: Clean data, Transform Data, Reduce Data)
 
 ## Building ML Project 
 When you start a machine learning project, there should be specific steps that one should follow in order to ensure best 
 practices. The following defines the steps:
 
 ###  Project Definition
-1. Check if simple coded solution works 
-2. Check if ML needed 
-3. If ML needed, what type of ML problem is it?:
+1. Check if simple coded solution could work. If not, why? 
+2. Check if ML needed, if ML needed, what type of ML problem is it (suggestions below!):
+
+#### Type of Machine Learning Problems
+
+| Problem | Definition| Examples|
+|:-------:|:---------:|:--------|
+|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>|
+|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>|
+|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| |
+|Reinforcement Learning| Perform action in define space and reward/penalise on actions| |
+
+#### Tip
+- Neural networks are architectures that can be used in a type of machine learning problem, hence can fit into the supervised,
+  unsupervised, semi-supervised problems.
 
 ### Data
 - Does the data match the problem definition?
@@ -61,10 +67,12 @@ Later on think about how Data Engineers will need to clean and visual data to un
 
 This value and evaluation metric could change as the project progresses but always good to have a goal.
 
-### Features
+### Feature Engineering
+When a model and evaluation techniques have been decided 
 Deciding which features to use for your model. How can these features influence the model?
 
 - Pick features that most of the samples have!
+- 
 
 ### Modelling
 
