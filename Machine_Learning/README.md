@@ -29,12 +29,12 @@ practices. The following defines the steps:
 
 #### Type of Machine Learning Problems
 
-| Problem | Definition| Examples|
-|:-------:|:---------:|:--------|
-|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>|
-|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>|
-|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| |
-|Reinforcement Learning| Perform action in define space and reward/penalise on actions| |
+| Problem | Definition| Examples| Computational Time |
+|:-------:|:---------:|:--------|:------------------:|
+|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>||
+|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>||
+|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| | |
+|Reinforcement Learning| Perform action in define space and reward/penalise on actions| | |
 
 #### Tip
 - Neural networks are architectures that can be used in a type of machine learning problem, hence can fit into the supervised,
@@ -68,10 +68,16 @@ Later on think about how Data Engineers will need to clean and visual data to un
 This value and evaluation metric could change as the project progresses but always good to have a goal.
 
 ### Feature Engineering
-When a model and evaluation techniques have been decided 
-Deciding which features to use for your model. How can these features influence the model?
+When a model and evaluation techniques have been decided, what parts of the data will be used? How will it be used?
+One must decide which features to use for your model and how can these features influence the model.
 
+How to best choose features
 - Pick features that most of the samples have!
+- Pick features that have majority non null elements
+- Pick features that are not redundant
+- 
+#### Feature reduction
+- Very important to reduce features due to redundancy as well as improving computational time
 - 
 
 ### Modelling
