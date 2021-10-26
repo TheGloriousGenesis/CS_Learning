@@ -113,3 +113,5 @@ Number one reason to do new architecture is because system is at end of life.
 # TODO
 - Think about all the design patterns and what type of volatility they are encapsulating e.g pub/sub pattern encapsulating
 publisher, subscriber transport volatility
+
+

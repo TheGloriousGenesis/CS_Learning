@@ -217,7 +217,6 @@ $$
 The higher the support the more popular item bundle is and vice versa. Low support should not be used unless need to know 
 item frequency
 
-
 - Metrics used : Confidence
   - used to see the strength of relations between items in groups. Does not work for high frequency items as those items are not
     necessarily linked to each other (e.g buying sugar and phone credit at tesco doesn't mean sugar will be used for credit). Better
@@ -228,3 +227,9 @@ item frequency
   - A lift ~ 1 means items A and item B appear almost as often together as expected (no link)
 
 - Use Metrics with caution
+
+Common real-time analytics + machine learning u
+
+amazon sagemaker - built to make mL more accessible
+
+- 

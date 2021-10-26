@@ -27,3 +27,4 @@ To understand design patterns, we must first understand Object-Orientated basics
 *<strong> Publishers (<span style="color:green"> subject </span>) + Subscribers (<span style="color:green"> observers </span>)
 = Observer Pattern </strong>*
 
+## Sharding and data distribution
