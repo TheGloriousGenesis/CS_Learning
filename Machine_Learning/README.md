@@ -33,7 +33,7 @@ practices. The following defines the steps:
 |:-------:|:---------:|:--------|:------------------:|
 |Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>||
 |Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>||
-|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| | |
+|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| <ul><li> Natural Language processing - </li><li>Computer vision -  </li></ul> | |
 |Reinforcement Learning| Perform action in define space and reward/penalise on actions| | |
 
 #### Tip
