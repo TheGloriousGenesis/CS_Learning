@@ -1,6 +1,6 @@
 # AWS Cloud Practitioner
 
-Break time - 7h30am 
+Lunch time - 7h30am 
 
 Tea break - 10am
 
@@ -31,7 +31,7 @@ Over 200+ services to use!
 Some commonly used services:
 - S3 - data storage
 - Macie - Report on security issues on S3, helps check compliancy
-- Security - Each service has security specific features as well as there being security services as well
+- Security - Each service has security specific features as well as there being security services as well (must whitelist ports on app for these)
 - EC2 - Virtual servers
 - Lambda - Serverless compute
 
@@ -61,10 +61,39 @@ Allows deployment closer to user, hence lower latency, better output for custome
 ### [EC2 Instances](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc)
 EC2 instances are virtual machines running int AWS Datacenters. Self configured and self controlled.
 Over 400+ different instances types and sizes to spin up [Click here to see](https://aws.amazon.com/ec2/instance-types/)!
+Different EC2 instances have different use cases [stated here](https://aws.amazon.com/ec2/instance-types/). Example, NVMe - 
+ephermal storage (transient, good for temp files)
 
+Don't know what instance to choose? Or services? use [AWS Compute Optimizer](https://aws.amazon.com/compute-optimizer/). 
+Uses ML to analyse previous use of workload and recommends services.
 
-Elasticity
-Load balancer
+*Cost is **not** the same for all the regions* e.g Spot, most unreliably but cheapest (up for 6 hrs max)
+
+Helpful web app to view price differences for EC2 per region etc [here](https://ec2types.io/home)
+
+Optimised for different purposes
+General - Balance of compute memory and networking resources
+Memory - Ideal for high-performance databases
+Accelerated - Offers high-performances processors
+Storage - Suitable for data warehousing applications (data held for long time)
+
+### Pricing
+- On-Demand - Consistent
+- Spot - If available can use it, up to 6 hours. Any workload that can be spun up when abruptly stopped
+- Reserved - (discount on On-demand, require 1-3 year term commitment)
+- Compute Saving Plans - (discount on On-Demand for consistent compute usage, require 1-3 year term commitment)
+
+### Dedicated computing
+- Dedicated Instance : EC2 instance that runs in a VPC on hardware (taxi)
+- Dedicate Host: Physical server with EC2 instance (personal car)
+
+### Elasticity - Auto Scaling
+- Auto Scaling
+  - Launch/Tear down server when needed (auto-scaling/ workload increases)
+  - Automatically adjusts the number of amazon EC2 instances to match demand
+- Elastic Load balancer 
+  - Distribute traffic to other servers depending on demand
+  - Providing a single point of contact for traffic into the auto-scaling group
 
 ## Module 3: Global Infrastructure and Reliability
 
@@ -81,3 +110,17 @@ Load balancer
 ## Module 9: Migration and Innovation
 
 ## Module 10: AWS Certified Cloud Practitioner Basics
+
+
+## Misc
+IAM Role : Permissions, getting access key to allow code to speak to other AWS services.
+
+### EC2 configuration setup:
+Linux - bash script
+Windows - Powershell
+Can run script on first spin up of the server
+(put software needed to run on server in this script)
+
+Can not add ephemeral storage, given based on EC2 instance
+
+Can connect to EC2 using pem or SSH command
