@@ -1,26 +1,26 @@
-language: generic
-
-sudo: required
-
-# Services needed to start build
-services:
-  - docker
-before_install:
-    - docker build -t thegloriousgenesis/cs_learning.web.dev -f Docker/ExampleNode/Dockerfile.dev .
-
-# Scripts to run once docker is up and running
-script:
-  - docker run -e CI=true thegloriousgenesis/cs_learning.web.dev npm run test
-
-# Travis comes preconfigured to deploy to some known servers
-deploy:
-  provider: elasticbeanstalk
-  region: "us-east-2"
-  app: "examplenode"
-  env: "Examplenode-env"
-  bucket_name: "elasticbeanstalk-us-east-2-434061690758"
-  bucket_path: "examplenode"
-  on:
-    branch: main
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
+#language: generic
+#
+#sudo: required
+#
+## Services needed to start build
+#services:
+#  - docker
+#before_install:
+#    - docker build -t thegloriousgenesis/cs_learning.web.dev -f Docker/ExampleNode/Dockerfile.dev .
+#
+## Scripts to run once docker is up and running
+#script:
+#  - docker run -e CI=true thegloriousgenesis/cs_learning.web.dev npm run test
+#
+## Travis comes preconfigured to deploy to some known servers
+#deploy:
+#  provider: elasticbeanstalk
+#  region: "us-east-2"
+#  app: "examplenode"
+#  env: "Examplenode-env"
+#  bucket_name: "elasticbeanstalk-us-east-2-434061690758"
+#  bucket_path: "examplenode"
+#  on:
+#    branch: main
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY
