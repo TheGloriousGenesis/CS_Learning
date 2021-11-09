@@ -178,7 +178,8 @@ image is built and do not need to waste time copying it over from local
 |`docker-compose up --build`| To build images within docker compose file if source code changes|
 |`docker-compose down`| Stops all images created in the docker compose file|
 |`-v /app/node_modules -v $(pwd):/app` (bash/gitbash only)| Map current direct to /app folder (similar to what is done in the port) |
-
+|`docker network ls`| List current networks |
+|`docker logs --follow 236911d37112`| Follow logs|
 ## Useful AWS EB CLI Commands
 
 |Command/Tag|Description|
