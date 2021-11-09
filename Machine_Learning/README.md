@@ -234,3 +234,14 @@ item frequency
   - A lift ~ 1 means items A and item B appear almost as often together as expected (no link)
 
 - Use Metrics with caution
+
+## Interview prep
+
+- Get an interview coach in ML
+- Do Leetcode questions
+- write code in text editor and explain solution
+- READ UP ON SYSTEM DESIGN, especially for MLE:
+  - grokking system design : educative
+  - System design book: Alex Xu's
+  - Designing data intensive applications
+  - Spend a lot of time doing one type of topic then switch when you understand
