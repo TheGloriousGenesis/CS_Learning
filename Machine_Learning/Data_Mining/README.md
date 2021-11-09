@@ -8,7 +8,7 @@ Hints:
   `conda create --prefix ./ml_course/envs pandas numpy scikit-learn jupyter matplotlib`
 - Unfortunately can not use `--name ml_course` to rename the env with the same
 
-### Jupyter Notebook
+## Jupyter Notebook
 Here are some general information surrounding objects that can be created in jupyter:
 
 | Type | Description |
@@ -21,3 +21,8 @@ Here are some general information surrounding objects that can be created in jup
 To avoid training a model to learn patterns based on the order in which data is recorded (exception time series etc),
 it is best practice to randomise the indexes of the data given. This can be done in python:
 `dataframe.sample(frac=AMOUNT_YOU_WANT_TO_SHUFFLE_FRACTION)`. 
+
+
+## Basic cleaning functions
+df.isna().sum()
+df.isnull().sum()
