@@ -324,7 +324,7 @@ Cloud adoption framework: gives advice on migration. Based on 6 perspectives:
      1. Ensure org meets security objectives
   3. Operations
 
-### Migratin strategies
+### Migrating strategies
 6 strategies
 - Rehost: Move app from on premise to eC2
 - Replatform: Tinker then move (shift notification service to SNS)
@@ -346,8 +346,38 @@ For migration, AWS can ship storage to help with the data process
   - For crazy large amounts of data (a whole truck!)
   - 100 PB
 
+Serverless migration takes less time
+
+### AWS Well-Architected Framework Pillars
+- Cost optimization
+- Operational excellence
+- Performance efficiency
+- Reliability
 
 ## Module 10: AWS Certified Cloud Practitioner Basics
+[Exam prep](https://aws.amazon.com/certification/certification-prep/)
+[Free webinars and learning](https://pages.awscloud.com/traincert_alwayslearning_virtualevents.html)
+[Practice Labs](https://wellarchitectedlabs.com/)
+[Cloud practitioner AWS prep](https://aws.amazon.com/certification/certified-cloud-practitioner/)
+
+Domains covered
+- Cloud Concepts
+- Security and Compliance
+- Technology 
+- Billing and Pricing
+
+Logistics
+- 90 min exam
+- Multi choice 
+- No negative marking 
+- Flag question for review 
+- Unanswered questions are scored as incorrect
+
+Strategies
+- Read full question
+- Predict answer before looking at options
+- Don't skip questions
+- Max mark 1000, pass 700
 
 
 ## Misc
