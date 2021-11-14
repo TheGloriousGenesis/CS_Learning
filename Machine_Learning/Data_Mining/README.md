@@ -57,6 +57,28 @@ in the same way
 
 Other factors one has to take into account is if the data is reliable, accessible, accurate, useful and complete (where possible).
 
+To explore how the data is distributed, we can look at the central tendency of the data. These statistics can be used during *imputation* 
+in order to fill in data:
+- **Mean**: Sensitive to outliers (due to all values being added and divided by number of values). Can be fixed by excluding values.
+- **Median**: Better fit if outliers are present
+- **Mode**: Best used for data type that is not numerical.
+- **Variance**: Sensitive to outliers
+
+In order to get the most out of the data, we must ensure we are only using data that gives the most importance and reduces
+redundancy. We must look at how similar/dissimilar attributes are.
+
+### Similarity
+Often scored on a range from 0 to 1. For single attribute objects, similarity measured differently (refer to notebook).
+Commonly used similarity checks for multi attribute objects are:
+- **Supremum distance** (good for ????)
+- **Minkowski distance** (good for ????)
+- **Simple matching coefficent** (good for binary data)
+- **Jaccard coefficent** 
+- **Cosine similarity** (good for )
+- **Chi-squared**
+
+
+
 ## Preprocessing
 There are 4 steps commonly used in preprocessing:
 
