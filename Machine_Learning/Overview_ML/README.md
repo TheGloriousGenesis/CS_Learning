@@ -2,6 +2,8 @@
 
 
 ## Overview - Regression
+[KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
+
 Hypothesis function, which is used to estimate the real model is given by:
 
 $$
@@ -26,6 +28,32 @@ $$
 \frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
 $$
 
+## Overview - Feature Selection/ Dimension reduction
+[KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
+[KagglePractice](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
+
+## Overview - Classification
+[KagglePractice](https://www.kaggle.com/dansbecker/classification)
+
+## Overview - Density estimation
+[KagglePractice]()
+
+## Overview - Logistic Regression
+[KagglePractice](https://www.kaggle.com/mnassrib/titanic-logistic-regression-with-python)
+[KagglePractice](https://www.kaggle.com/parulpandey/deep-dive-into-logistic-regression-for-beginners)
+
+## Overview - Ensemble/Boosting
+[KagglePractice](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
+[KagglePractice](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)
+
+## Overview - Deep Learning
+[KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)
+[KagglePractice](https://www.kaggle.com/c/ann-and-dl-image-classification/overview)
+
+## Overview - Clustering
+[KagglePractice](https://www.kaggle.com/fazilbtopal/popular-unsupervised-clustering-algorithms)
+
+
 ## Overview - Recommendation
 
 - Driven by Industry need
@@ -38,7 +66,7 @@ $$
 - Social : Tracks blogs you've read and suggest threads,
 - Professional Social : Uses current job role to recommend roles
 
-## Types of Recommendation Systems
+### Types of Recommendation Systems
 
 A system that recommends for sales purposes is different to one that recommends for education purposes.
 System type can be driven by experts or by different users. Personalisation level of the algorithm
@@ -93,5 +121,3 @@ item frequency
 Common real-time analytics + machine learning u
 
 amazon sagemaker - built to make mL more accessible
-
-- 
