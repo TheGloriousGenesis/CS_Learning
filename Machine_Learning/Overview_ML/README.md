@@ -25,7 +25,7 @@ $$
 
 where *m* = dataset size.
 
-The problem is basically, **given X and Y, what is the value of the weight in the cost equation that can give the minimum value.**
+The problem is, **given X and Y, what is the value of the weight in the cost equation that can give the minimum value.**
 
 As the cost function learns weight, in this case, it is linear in respect to weight not variable.
 
@@ -52,14 +52,11 @@ $$
 \frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
 $$
 
-The update section of the equation (the $$ \delta\theta $$) holds the gradient and step value, when the gradient (derivative in regards
+The update comprises the gradient and step value, when the gradient (derivative in regards
 to the weight) is negative, we know we are heading in the right direction to the minima as the second term is added to the weight in the
 previous iteration because we need to increase the value of the weight to get closer to it (and vice versa)
 
-**Always ensure you choose the correct value for alpha!**
-
-
-
+**Always ensure you choose the correct value for alpha! :smile:**
 
 
 ## Overview - Feature Selection/ Dimension reduction
