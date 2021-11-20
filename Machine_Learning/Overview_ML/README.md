@@ -2,31 +2,65 @@
 
 
 ## Overview - Regression
+
+### Linear Regression
 [KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
-Hypothesis function, which is used to estimate the real model is given by:
+*Definition*: Used to predict continuous variables
+
+The hypothesis function for a regression model for a univariate linear regression is given by 
 
 $$
 H_{\theta}(x) = \theta_{i} + \theta_{j}x
 $$
 
-Cost function (also called the error function) used to see if regression model is viable!:
+This is used to estimate the real model.
+
+Cost function (also called the error function) used to see if regression model is viable! A common cost function tends to be
+least squared error, which is given by the following:
 
 $$
 J(\theta_{i}\theta_{j}) = \frac{1}{2}\sum_{i=1}^{m}\left ( \left ( \theta_{0} + \theta_{1} x^{(1)} \right ) - y \right ) ^2
 $$
 
-where <em>m</em> = dataset size.
+where *m* = dataset size.
+
+The problem is basically, **given X and Y, what is the value of the weight in the cost equation that can give the minimum value.**
+
+As the cost function learns weight, in this case, it is linear in respect to weight not variable.
 
 We are trying to minimise the amount of errors in our model, hence we need to reduce the cumulative error in the model.
-This is why we say we need to <em> minimise the error function </em>. To do so, we take the derivative of the error function
+This is why we say we need to *minimise the error function*. To do so, we take the derivative of the error function
 and set this to zero to find the minima. The least squares equation is convex which means there is always a minima. 
 
-This is called <strong> Gradient Descent</strong>. The derivative is shown below:
+**But what about if we have non-linear algorithms that we want to minimise? Can't use least squares!**
+Instead we must use numerical approximation to optimisation to give us a close solution to ordinary least squares solution.
+
+### Gradient Descent
+
+*Definition*: Used to numerically approximate minimising cost function.
+
+We start with an initial weight and use the following to update the weights:
+
+$$
+\theta_{j + 1} = \theta_{j} - \alpha\frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{j}}
+$$
+
+Where the gradient is shown below:
 
 $$
 \frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
 $$
+
+The update section of the equation (the $$ \delta\theta $$) holds the gradient and step value, when the gradient (derivative in regards
+to the weight) is negative, we know we are heading in the right direction to the minima as the second term is added to the weight in the
+previous iteration because we need to increase the value of the weight to get closer to it (and vice versa)
+
+**Always ensure you choose the correct value for alpha!**
+
+
+
+
 
 ## Overview - Feature Selection/ Dimension reduction
 [KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
