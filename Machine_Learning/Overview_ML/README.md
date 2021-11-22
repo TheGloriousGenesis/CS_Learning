@@ -1,5 +1,11 @@
 # General overview of types of ML problems
 
+| Word | Definition|
+|:----:|:---------:|
+|Hyper parameter| tunable variable that affects how well models fit to the data provided|
+|Class Imbalance| If one class has a lot of data, this affects the accuracy of the distributing data |
+|Overfitting| When performance on the training dataset is low but high on the test dataset |
+|Underfitting| When performance on the testing dataset is low but high on the train dataset |
 
 ## Overview - Regression
 
@@ -65,6 +71,74 @@ previous iteration because we need to increase the value of the weight to get cl
 
 ## Overview - Classification
 [KagglePractice](https://www.kaggle.com/dansbecker/classification)
+
+Classification can be split into two sub categories:
+
+*Classification task*:
+The process of predicting discrete, finite, categorical class labels in supervised manor for new data.
+
+*Learning Algorithm*:
+Created classifier by using datasets. Commonly used classifiers include: decision tree induction, k-nearest neighbours,
+support vector machine etc.
+
+### Nearest neighbour
+*Definition* Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
+Here **k** is the hyper-parameter. 
+
+**Usage**:
+Best used when you need to predict categorical class labels with discrete data.
+
+**Pros**:
+- Robust to outliers
+- Scalable
+- Speed
+- Size
+
+**Performance** : 
+To check the performance of this classifier, can use the following metrics:
+
+- Accuracy : Which describes which data points have been classified correctly. This is not always great to use due to class imbalance.
+
+$$
+\frac{N_{tp} + N_{tn}}{N}
+$$
+
+- Sensivity : True positive rate, Recall
+- Specilality : True negative rate 
+- ROC : A graph drawn to detect for which value of **k** there is a good trade off between true positive rate and false 
+positive rate. TPR = Sensitivity = TP/P. FPR = FP/N = 1 - specificity
+- Precision : Percentage labelled as positive that are actually positive 
+
+$$
+\frac{N_{tp}}{N_{tp} + N_{fp}}
+$$
+
+- Recall :  Percentage of actual positives labelled as actual positives (also known as completeness). *High recall* means
+confidence in detecting positive observations.
+
+$$
+\frac{N_{tp}}{N_{tp} + N_{fn}}
+$$
+
+- F1 score : Measure a models' accuracy. Having a high F1 value is a high accuracy model
+
+$$
+\frac{N_{tp}}{N_{tp} + \frac{(N_{fp} - N_{fn})}{2}}
+$$
+
+OR
+
+$$
+\frac{ 2 x precision x recall }{ precision + recall }
+$$
+
+- Error rate : miscalculation rate
+
+$$
+\frac{N_{fp} + N_{fn}}{N}
+$$
+
+
 
 ## Overview - Density estimation
 [KagglePractice]()

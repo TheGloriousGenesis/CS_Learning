@@ -67,4 +67,5 @@ Repository where fundamental and exploratory computer science and machine learni
 | Markdown tables generator | [Link](https://www.tablesgenerator.com/markdown_tables) |
 | Java kernel for Jupyter Notebook | [Link](https://github.com/SpencerPark/IJava#install-pre-built-binary)|
 | Microsoft Recommendation systems best practice | [Link](https://github.com/microsoft/recommenders)|
-| Writing Mathematics Formula in Markdown | [Link](https://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/)
+| Writing Mathematics Formula in Markdown | [Link](https://csrgxtu.github.io/2015/03/20/Writing-Mathematic-Fomulars-in-Markdown/) |
+| Emojis in markdown cheat sheet | [Link](https://github.com/ikatyang/emoji-cheat-sheet) |
