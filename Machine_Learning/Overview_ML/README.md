@@ -69,7 +69,7 @@ previous iteration because we need to increase the value of the weight to get cl
 [KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
 [KagglePractice](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
 
-## Overview - Classification
+## Overview - Classification - UNFINISHED
 [KagglePractice](https://www.kaggle.com/dansbecker/classification)
 
 Classification can be split into two sub categories:
@@ -137,7 +137,6 @@ $$
 $$
 \frac{N_{fp} + N_{fn}}{N}
 $$
-
 
 
 ## Overview - Density estimation

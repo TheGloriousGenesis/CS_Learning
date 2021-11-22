@@ -46,6 +46,7 @@ name as variable (like linting). These are called *magic methods*
 
 ## Testing in python
 
+### Fixtures
 - In pytest, it uses fixtures. Fixtures provide content to use for tests (like a database or predefined object). 
 - They are activated in a test by using the same name of the fixture, must have the same name in the method parameter if 
 a fixture would be used in another fixture (example below):
@@ -74,6 +75,12 @@ def test_my_fruit_in_basket(my_fruit, fruit_basket):
 
 To have a runnable test, prefix the method with `test_` in order to have runnable test. Ensure fixtures do not have prefixed
 'test' names
+
+### Parameterized
+
+`@pytest.mark.parametrize("input, output", [(val, out)])`
+Creates inputs and expected outputs, parametrized the methods it's attached to.
+Input and expected output define within one bracket.
 
 ## Logging
 
