@@ -1,14 +1,29 @@
 # AWS Cloud Practitioner
 
-Lunch time - 7h30am 
-
-Tea break - 10am
-
 Additional Learning:
 - [Skill builder](https://explore.skillbuilder.aws)
 
-Definition:
-On demand delivery of IT resources and applications through the internet 
+| Term|Definition|
+|:---:|:--------:|
+|AWS|On demand delivery of IT resources and applications through the internet|
+|Cloud computing|Collection of remote on-demand virtual resources offering compute, storage, database and network services that be can rapidly deployed at scale|
+|Virtualization | Having multiple independent virtual machines running separate systems/applications, sharing underlying resources (through hypervisor) under 1 physical server|
+|Public Cloud   | Consumer does not see hardware. Can specify geographical location of servers. Cloud vendor does maintenance|
+|Private Cloud  | Infrastructure owned by consumer (on premise). Consumer does maintenance|
+|Hybrid Cloud   | Mix between private and public cloud. Established when link occurs between private and public cloud. Usually short term (e.g for disaster recovery) |
+
+
+## Pre-requisites
+# Cloud Service Models - Core
+The most common service models are as follows:
+- Infrastructure as a Service
+  - Architect your own portion of the cloud via configuring virtual cloud
+  - Can determine OS installed and other config from operating system and upwards
+- Platform as a Service
+  - Have access to the framework and operating system upwards
+  - Vendor looks after network, resources etc 
+- Software as a Service
+  - Application accessed over the internet (e.g gmail)
 
 ## Module 1: Introduction to Amazon Web Services
 
@@ -57,6 +72,13 @@ Can spin up and break down servers at a given moment cheaply due to economy of s
 Allows deployment closer to user, hence lower latency, better output for customers.
 
 ## Module 2 Compute in the Cloud
+
+### Why Cloud?
+Cloud utilises virtualization. Virtualization allows:
+
+- Reduced capital expenditure (less hardware)
+- Reduced operating costs (less hardware, less space, cooling)
+- Smaller footprint (above means less carbon footprint)
 
 ### [EC2 Instances](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc)
 EC2 instances are virtual machines running int AWS Datacenters. Self configured and self controlled.
@@ -110,7 +132,7 @@ Microservices
 - Consumer looks to queue to pick up messages
 - Polling service (pull service)
 
-**AWS Lambda - serveless**
+**AWS Lambda - serverless**
 - Run code (functions) without provisioning or managing servers
 - Pay only for compute time while code is running, how many times code is trigger
 - Can have concurrent code running
@@ -361,9 +383,10 @@ Serverless migration takes less time
 [Cloud practitioner AWS prep](https://aws.amazon.com/certification/certified-cloud-practitioner/)
 
 Domains covered
+![](Screenshot 2021-11-23 at 17.19.19.png)
 - Cloud Concepts
 - Security and Compliance
-- Technology 
+- Technology
 - Billing and Pricing
 
 Logistics
