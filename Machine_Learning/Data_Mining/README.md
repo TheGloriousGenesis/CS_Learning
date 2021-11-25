@@ -77,15 +77,12 @@ Commonly used similarity checks for multi attribute objects are:
 - **Cosine similarity** (good for )
 - **Chi-squared**
 
-
-
 ## Preprocessing
 There are 4 steps commonly used in preprocessing:
 
 ### Imputation (filling in missing values)
 
-df.isna().sum()
-df.isnull().sum()
+`df.isna().sum()` and `df.isnull().sum()` will do the same thing! Can use any of it.
 
 ### Outlier Detection (identifying what the outliers)
 

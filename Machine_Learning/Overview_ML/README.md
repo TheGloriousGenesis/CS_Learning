@@ -69,6 +69,54 @@ previous iteration because we need to increase the value of the weight to get cl
 [KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
 [KagglePractice](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
 
+Feature engineering refers to both adding new features from constructing them from available data, and selecting features 
+from the data already given. 
+
+An easy way to see if features are correlated to each other is first to check correlation matrix. A heatmap (visualisation of
+correlation matrix) is the most powerful to use.
+
+### Feature construction
+
+Constructing new features allows these features to be checked against target to see if these combined features have a higer
+correlation to the target or nah.
+
+**Usage**
+Some examples of this listed below. 
+
+- **Polynomial Features** : Simply add powers to the features already given, or multiply variables together
+  - easy way of seeing how features interact with each other to influence the end goal.
+- **Domain Knowledge Features** : Using expert knowledge to create features that are likely to be useful.
+- **Backward Selection** : train classifier on all features, remove one, see the improvement to the model (Find better model,
+more expensive than forward).
+- **Forward Selection** : train classifier on one feature, add one, see the improvement to the model.
+
+**Pros**
+- Good to use when you need to reduce the dimensions of the data but still keep relevant information.
+- Use on any model
+
+**Cons**
+- Have to train validation data on subset of features to see which ones are the best to choose. This is costly.
+
+### Feature reduction
+
+**Usage**
+
+Each feature created is assigned a score and top *X* picked:
+
+- **Principal Component Analysis** :
+- **Chi squared Test** : Test can be used to select features which heavily dependent on the target/response (not independent)
+- **Domain Knowledge Features** : Using expert knowledge to select features that are likely to be useful.
+- **Decision Tree** : Best performing features kept as close to the root of the tree as possible
+- **L1,L2,L0 regularizer** : (In built feature selection)
+
+**Pros**
+- Good to use when you need to reduce the dimensions of the data but still keep relevant information.
+- Fast and simple enough to use for any algorithm
+- (With Decision Tree) Irrelevant attributes never chosen.
+
+**Cons**
+- Doesn't take feature dependency on other features.
+
 ## Overview - Classification - UNFINISHED
 [KagglePractice](https://www.kaggle.com/dansbecker/classification)
 
@@ -94,24 +142,24 @@ Best used when you need to predict categorical class labels with discrete data.
 - Speed
 - Size
 
-**Performance** : 
+**Cons**
+
+### Performance of classifiers 
 To check the performance of this classifier, can use the following metrics:
 
 - Accuracy : Which describes which data points have been classified correctly. This is not always great to use due to class imbalance.
+    
+    $$ 
+    \frac{N_{tp} + N_{tn}}{N} 
+    $$
 
-$$
-\frac{N_{tp} + N_{tn}}{N}
-$$
+- Sensitivity (Recall) : True positive rate. When it's positive, how often does it predict positive?
+- Specificity : True negative rate. When it's negative, how often does it predict negative?
+- Precision : Percentage labelled as positive that are actually positive
 
-- Sensivity : True positive rate, Recall
-- Specilality : True negative rate 
-- ROC : A graph drawn to detect for which value of **k** there is a good trade off between true positive rate and false 
-positive rate. TPR = Sensitivity = TP/P. FPR = FP/N = 1 - specificity
-- Precision : Percentage labelled as positive that are actually positive 
-
-$$
-\frac{N_{tp}}{N_{tp} + N_{fp}}
-$$
+  $$
+  \frac{N_{tp}}{N_{tp} + N_{fp}}
+  $$
 
 - Recall :  Percentage of actual positives labelled as actual positives (also known as completeness). *High recall* means
 confidence in detecting positive observations.
@@ -138,16 +186,49 @@ $$
 \frac{N_{fp} + N_{fn}}{N}
 $$
 
+To describe the performance the following can be used:
+- ROC : A graph drawn to detect the best threshold value that is a good trade off between true positive rate and false
+  positive rate. TPR = Sensitivity = TP/P. FPR = FP/N = 1 - specificity. Area under curve gives success rate of model.
+  - High threshold = low sensitivity (low true positive rate), High specificity (high true negative rate)
+  - Low threshold = high sensitivity, low specificity
+  
+- Confusion matrix
 
 ## Overview - Density estimation
 [KagglePractice]()
+
+Kernel density estimation is a method for visualizing the distribution of observations in a dataset.
 
 ## Overview - Logistic Regression
 [KagglePractice](https://www.kaggle.com/mnassrib/titanic-logistic-regression-with-python)
 [KagglePractice](https://www.kaggle.com/parulpandey/deep-dive-into-logistic-regression-for-beginners)
 
+TYPE: Classification
 
+Logistic regression is an extension of linear regression, where linear regression deals with continuous variable 
+prediction, Logistic regression deals with categorical (nomial/ordinal) variable prediction. It predicts the probability 
+of the outcome variable.
 
+It has a similar formula to linear regression but calculates the logistic of the result so that the output value is always
+between 0 and 1
+
+$$
+Put logistic equation in here
+
+Where
+\sigma (t) = \frac{1}{1 + \exp(-t)}
+$$
+
+Positive values lead to higher chance the class will be predicted 1
+
+Negative values lead to higher chances the class will be predicted 0
+
+Classes predicted on the p == 0.5 threshold (more than or equal == 1, less than == 0)
+**Usage**
+**Pros**
+**Cons**
+**Performance**
+Confusion matrix
 ## Overview - Ensemble/Boosting
 [KagglePractice](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
 [KagglePractice](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)

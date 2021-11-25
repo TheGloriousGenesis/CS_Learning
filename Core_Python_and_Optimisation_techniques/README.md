@@ -17,18 +17,25 @@ Mutable values can though.
 | Forking | Software that provides an interface between the user and the underlying operating system | 
 | Threads | Smallest scheduled unit in an operating system |
 
+## Helpful commands
+
+| Command | Definition|
+|:----:|:---------:|
+| Forking | Software that provides an interface between the user and the underlying operating system | 
+| Threads | Smallest scheduled unit in an operating system |
+
 ## Variables
 
 Variables in python should not be in camelcase like Java, but supposedly separated by `_`.
 - To put formatted string , place `f` before the string in question such as the following: `print(f"Hello {firstname}")`
 
-### <strong> Strings </strong>
+### Strings
 
   - To remove empty space from end of string use the `.rstrip()`.
   - To remove empty space from beginning of string use the `.lstrip()`.
   - To remove empty space from both sides of string use the `.strip()`.
 
-### <strong> Numbers </strong>
+### Numbers
 
   - Dividing numbers will give you a float regardless of number type.
   - Can use underscores to make large numbers readable like the following `universe_age = 14_000_000_000`.
@@ -59,13 +66,11 @@ Python also has inbuilt set type. This allows unique objects to be stored in a v
 or `{}`. Elements within a set can be of different types (as commonly seen with other python inbuilt types). A set is an immutable 
 object and can only hold immutable types (so )
 
+Must remember:
+- **Sets do NOT keep order! They are unordered data structures!** But maps/dicts *do*! BIG HINT ENERGY
+
 ## Data streams
 
-## Redirections
-
-## Variables and Modules
-
-## Shell
 
 ## Specific helpful commands
 `%timeit` function is very helpful to see how long a piece of code has taken to execute.
@@ -108,6 +113,10 @@ parent()
 
 ## Lambda
 
+## Sorting
+
+Commonly used sorting methods include the `.sort` and the `sorted` method in python. Both are used in similar way. 
+To provide custom function to sorting algo, best use `sorted` as it allows more variation in
 
 ## Tasks
 
@@ -119,8 +128,6 @@ parent()
 - Threads exist in the space of a process, where there can be many threads to a given process.
 
 - Threads are linked via tasks and can only be created when a program is forked in multiple parallel tasks **
-
-
 
 ## SDK
 To set up an installer, write a setup configuration file (`setup.cfg`) as well as a setup script (`setup.py`) file.
@@ -213,4 +220,7 @@ Input and expected output define within one bracket.
 Python has its own built-in logging function. This is called through `logging.getLogger(__name__)`. This calls the logger
 using the modules name (given by `__name__`).
 
+## Tips for interviews:
+- See the restraints of the variables and estimate what the complexity should be
+- Know your time and space complexity well!
 
