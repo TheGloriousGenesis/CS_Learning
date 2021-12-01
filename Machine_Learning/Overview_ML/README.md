@@ -2,10 +2,12 @@
 
 | Word | Definition|
 |:----:|:---------:|
-|Hyper parameter| tunable variable that affects how well models fit to the data provided|
+|Hyper parameter| Tunable variable that affects how well models fit to the data provided|
 |Class Imbalance| If one class has a lot of data, this affects the accuracy of the distributing data |
-|Overfitting| When performance on the training dataset is low but high on the test dataset |
-|Underfitting| When performance on the testing dataset is low but high on the train dataset |
+|Over-fitting| When performance on the training dataset is low but high on the test dataset |
+|Under-fitting| When performance on the testing dataset is low but high on the train dataset |
+|Bias (common amongst all models) | Related to accuracy somewhat, how much predicted differs from actual |
+|Variance (common amongst all models) | Spread of (predicted) data points when given similar input from same population|
 
 ## Overview - Regression
 
@@ -232,6 +234,76 @@ Confusion matrix
 ## Overview - Ensemble/Boosting
 [KagglePractice](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
 [KagglePractice](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)
+
+Ensemble methods involve predictive models to achieve a better accuracy and model stability.
+
+
+**Algorithm**
+- *Bagging*
+  - Combine results of classifiers trained on different sub-samples of same dataset (replacement allowed)
+  - New datasets created can have fraction of the columns and rows
+  - 
+- *Boosting*
+- *Stacking*
+
+**Usage**
+- Ideal for regression and classification
+**Pros**
+**Cons**
+**Performance**
+- Use Ensemble learning to execute bias/variance trade off analysis
+
+## Overview - Tree Based Methods
+- Can be used for regression and classification
+
+|Word|Definition|
+|:---:|:--------:|
+|Root node| Define the whole population|
+|Splitting| Process of dividing into subnodes|
+|Decision node| Actual subnode |
+|Pruning| Removing subnodes of decision nodes |
+|Entropy (category variable)| How homogenous the node is (zero entropy == pure node, one entropy == impure node) |
+|Information Gain|1 - Entropy|
+
+### Decision Tree:
+- The area of the predictive space is split/segmented into regions known as terminal nodes or leaves of the tree
+- Decision trees are drawn upside down
+- Supervised
+
+**Algorithm**
+- Determine how regions will be split: minimise Residual sum of squares (create high dimensional boxes)
+  - Gini
+  - Chi-Square (Higher is better)
+- Divide predictor space (all space occupied by each data point) into J distinct non-overlapping regions
+- Decision tree splits on all available variables
+#### *Regression*
+- For every data point observed, check if it falls into region. If it does then we make same prediction : mean of values of
+data points into region
+#### *Classification*
+- For every data point observed, check if it falls into region. If it does then we make same prediction : mode of values of
+  data points into region
+
+
+**Usage**
+
+**Pros**
+- Easier to interpret, nice graphical representation
+- Helpful in exploratory due to :
+  - Easier to identify significant variables and relations between features
+- Map non-linear relationship well
+- Works for categorical and continuous input/output variables
+- Creates the best similar sets (where in the set it is different)
+- Better than linear if data complexity relation high and need easily explain model
+
+**Cons**
+- Oversimplification of relationship between features
+- Over fitting
+- Not for continuous variables as data can be loss
+
+**Performance**
+Can avoid over-fitting in decision tress:
+- Setting constraint on tree size
+- Tree pruning
 
 ## Overview - Deep Learning
 [KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)

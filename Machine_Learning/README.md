@@ -151,6 +151,7 @@ How could we improve/what can we try next?
 
 ## Interview prep
 
+- **DO NOT LEARN** deep learning and neural networks (if it is not needed)
 - Get an interview coach in ML
 - Do Leetcode questions
 - write code in text editor and explain solution

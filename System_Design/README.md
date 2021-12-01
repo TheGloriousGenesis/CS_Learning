@@ -18,7 +18,7 @@
 
 ## Conversion
 | Measurement | Equivalent|
-|:----:|:---------:|
+|:-----------:|:---------:|
 |2.5 million seconds| 1 month|
 
 ## Introduction
@@ -48,7 +48,7 @@ are we showing the user these anayltics?
 Example of Functional requirements:
 - "As a user, I would like to access diagrams via apk"
 - "User is able to login in and see list of recommendation songs"
-- "User is not annoymous : storing basic information"
+- "User is not anonymous : storing basic information"
 
 Example of Non-Functional requirements:
 - "Service is highly available"
@@ -72,14 +72,16 @@ In order to plan for failure you must know the following:
 2. Traffic (what does scalability mean for traffic? Think about load balancers (sits between client and web server)
 What data is getting transferred (In terms of data types)? How many versions,
 Maybe use HTTP which depends TCP and UDP, maybe use websockets TCP)
-5. Storage (Database Normalisation (including redundant data in db), Binary storage, sql, no sql, Metadata(usually no sql),
+3. Storage (Database Normalisation (including redundant data in db), Binary storage, sql, no sql, Metadata(usually no sql),
 Database partitioning)
-6. Memory (Do we need to cache? when should it get invalidated between database and application layer) and CDN (frontend caching system content delivery network)
+4. Memory (Do we need to cache? when should it get invalidated between database and application layer, application writes to cache if info retrived from db)
+and CDN (frontend caching system content delivery network)
 7. Asynchronous Processing & Queues (for writes that tale a long time)
 8. Bandwidth: (to support/requirement —> related to latency: The maximum data that can be transferred in of time)
 9. Throughout: The actual amount of data transferred at a given time
 
 ### Step 5: Design core components! Start writing down the components
+- Minimum design cilent -> web server -> database
 - Ask if you should do high level design, or discuss API or focus on database design/ data model
 - Define high level design with important components
 - Tiers:
