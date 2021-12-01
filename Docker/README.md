@@ -84,6 +84,19 @@ Most commonly used dockerfile instructions:
 - Map all folders in container to folder local (ensure that there are the same folders in local and container!)
 - If there are no mirror of a file or folder in container to local, one must use the `-v` command *without* colon to tell docker
 <strong>not</strong> to map this file/folder e.g. `-v app/node_modules`.
+- Used to persist data when container deleted
+- Share data between containers
+- Speed up I/O
+
+#### Three types:
+- Named
+  - Custom, most portable
+- Host Mounted
+  - personal. can not map volumes to host directories
+- Anonymous
+  - fdf
+
+use `:ro` for read only access
 
 ### Docker compose file
 
@@ -167,7 +180,7 @@ image is built and do not need to waste time copying it over from local
 |`docker exec -it <container-id> <command>`|Run another process in container|
 |`docker exec -it <container-id> sh`|Run shell in container|
 |`CTRL + C/D`|Exit processes|
-|`docker build -t <docker-id/project:version>.` (from folder with Dockerfile) |Build docker image|
+|`docker build -t <docker-id/project:version>.` (from folder with Dockerfile) |Build docker image with tag|
 |`docker build -f <filename> .` (from folder with Dockerfile) |Build docker image using specific file|
 |`docker run -d <docker-id/project> <override default command OPTIONAL>` (from folder with Dockerfile) |Start docker image in the background|
 |`docker run -it -p <local port>:<container port> <image id>` (from folder with Dockerfile) |Start docker image on given port and interact with it|
@@ -179,7 +192,13 @@ image is built and do not need to waste time copying it over from local
 |`docker-compose down`| Stops all images created in the docker compose file|
 |`-v /app/node_modules -v $(pwd):/app` (bash/gitbash only)| Map current direct to /app folder (similar to what is done in the port) |
 |`docker network ls`| List current networks |
-|`docker logs --follow 236911d37112`| Follow logs|
+|`docker logs --follow <container id>`| Follow logs|
+|`docker inspect <container id>`| Retrieve config information about docker (good for debugging)|
+|`docker stats <container id>`| Retrieve stats about resources used by docker container|
+|`docker top <container id>`| See all processes running in given container |
+|`docker container ls -a`| See all containers, regardless of run status|
+
+
 ## Useful AWS EB CLI Commands
 
 |Command/Tag|Description|

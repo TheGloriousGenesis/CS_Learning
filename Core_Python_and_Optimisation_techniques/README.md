@@ -223,4 +223,22 @@ using the modules name (given by `__name__`).
 ## Tips for interviews:
 - See the restraints of the variables and estimate what the complexity should be
 - Know your time and space complexity well!
-
+- Use hash-tables where you can! The space complexity (O(n)) in trade for speed is helpful when you need to find something
+  (or find the opposite of that something) in a table! Remember they can be used in double/triple sum to see if a part of a solution 
+exist in map
+- Think about constraints to problem! Constraints to variables (smallest it can be, biggest is can be). Best way to do this is
+question the example given! why the numbers used, why the size, everything
+- Try and not think about redundancy. with lists that are of the same size do you need additional variables to store lengths or can you just use knowhow
+- Use bfs to search for questions that require you to search a search space and can trigger
+- Runtime complexity:
+  - If search space halves each iteration ~ O(LogN)
+  - If recursive ~ Time: O(branches ^ depth), Space: This depends how much memory exists at a time
+  - If outer loop starts 0 -> N and inter loop starts outer -> N: O(N^2)
+  - Double loop -> O(N^2)
+  - Sorting algorithm: O(NLogN)
+  - Depth of (balance) binary tree: LogN 
+  - Think of problems in smaller chunks!
+  - 10^4 > is too large for recursive issues (or anything that requires O(n^2) functionality!)
+  - Anytime you have to use data from previous solution, think recursive too! But remember space complexity! when you recurse
+without an accumulator that passes through in the method, you are requiring the system to call stack to save result from previous result
+Try and pass accumulators through to reduce space complexity

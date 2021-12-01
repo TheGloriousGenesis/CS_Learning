@@ -2,7 +2,7 @@ version: '3'
 services:
   web2:
     build:
-      context: Docker/ExampleNode
+      context: Docker/ExampleNodeJS
       dockerfile: Dockerfile
     ports:
       - '80:80'
