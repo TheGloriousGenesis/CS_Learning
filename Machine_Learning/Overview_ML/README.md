@@ -1,5 +1,7 @@
-# General overview of types of ML problems
+# <ins> General overview of types of ML problems </ins>
 
+---
+ 
 | Word | Definition|
 |:----:|:---------:|
 |Hyper parameter| Tunable variable that affects how well models fit to the data provided|
@@ -66,8 +68,10 @@ previous iteration because we need to increase the value of the weight to get cl
 
 **Always ensure you choose the correct value for alpha! :smile:**
 
+---
 
 ## Overview - Feature Selection/ Dimension reduction
+
 [KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
 [KagglePractice](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
 
@@ -118,6 +122,8 @@ Each feature created is assigned a score and top *X* picked:
 
 **Cons**
 - Doesn't take feature dependency on other features.
+
+---
 
 ## Overview - Classification - UNFINISHED
 [KagglePractice](https://www.kaggle.com/dansbecker/classification)
@@ -196,12 +202,18 @@ To describe the performance the following can be used:
   
 - Confusion matrix
 
+---
+
 ## Overview - Density estimation
+
 [KagglePractice]()
 
 Kernel density estimation is a method for visualizing the distribution of observations in a dataset.
 
+---
+
 ## Overview - Logistic Regression
+
 [KagglePractice](https://www.kaggle.com/mnassrib/titanic-logistic-regression-with-python)
 [KagglePractice](https://www.kaggle.com/parulpandey/deep-dive-into-logistic-regression-for-beginners)
 
@@ -226,32 +238,83 @@ Positive values lead to higher chance the class will be predicted 1
 Negative values lead to higher chances the class will be predicted 0
 
 Classes predicted on the p == 0.5 threshold (more than or equal == 1, less than == 0)
+**Algorithm**
 **Usage**
 **Pros**
 **Cons**
 **Performance**
 Confusion matrix
+
+---
+
 ## Overview - Ensemble/Boosting
+
 [KagglePractice](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
 [KagglePractice](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)
 
 Ensemble methods involve predictive models to achieve a better accuracy and model stability.
 
+*Can also combine **different** models!*
 
 **Algorithm**
 - *Bagging*
-  - Combine results of classifiers trained on different sub-samples of same dataset (replacement allowed)
-  - New datasets created can have fraction of the columns and rows
-  - 
+  - Take sub-samples of dataset (N samples) with replacement
+  - Train classifiers on sub-samples. 
+  - Combine classifiers 
 - *Boosting*
 - *Stacking*
 
 **Usage**
 - Ideal for regression and classification
+
 **Pros**
+- Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
+- (Bagging)
+
 **Cons**
+- (All) Similar bias to single model 
+- (Bagging) Small sample size give worse models but more diversity
+- (Bagging) Big sample size give better models but less diversity (how is diversity measured)
+  - increase diversity by:
+    - randomising subspace that model trained in
+    - randomising anything you can think of (local minima convergence methods start different locations)
+
 **Performance**
 - Use Ensemble learning to execute bias/variance trade off analysis
+
+### Random Forest
+Type of ensemble method where multiple trees are grown. Each tree classifies data point and provides a vote for that class.
+The classification of the data point is then chosen by gathering votes. 
+
+Can be supervised or unsupervised due to the ability to 
+
+**Algorithm**
+- Take sub-sample of dataset (N samples) with replacement
+- Out of M attributes, pick a number m < M at each node (constant for the whole tree while we grow it)
+- Pick m attributes at node at random every time. The best of these m (one that optimises split) is used to split the node (sub nodes etc)
+- Grow without pruning. Stop when user predefines it
+- Predict by aggregating votes:
+  - *Regression*
+    - Average output.
+  - *Classification*
+    - Most votes of the trees
+
+**Usage**
+- Can be used for dimensionality reduction 
+
+**Pros**
+- When you can't think of an algorithm, use Random Forest!
+- Can perform both classification and regression
+- Can handle large datasets with higher dimensionality
+- Model outputs importance of variable!
+- Can estimate missing data
+- Maintains accuracy when a large section of data missing
+
+**Cons**
+- 
+**Performance**
+
+---
 
 ## Overview - Tree Based Methods
 - Can be used for regression and classification
@@ -266,6 +329,7 @@ Ensemble methods involve predictive models to achieve a better accuracy and mode
 |Information Gain|1 - Entropy|
 
 ### Decision Tree:
+
 - The area of the predictive space is split/segmented into regions known as terminal nodes or leaves of the tree
 - Decision trees are drawn upside down
 - Supervised
@@ -276,13 +340,12 @@ Ensemble methods involve predictive models to achieve a better accuracy and mode
   - Chi-Square (Higher is better)
 - Divide predictor space (all space occupied by each data point) into J distinct non-overlapping regions
 - Decision tree splits on all available variables
-#### *Regression*
-- For every data point observed, check if it falls into region. If it does then we make same prediction : mean of values of
-data points into region
-#### *Classification*
-- For every data point observed, check if it falls into region. If it does then we make same prediction : mode of values of
-  data points into region
-
+  - *Regression*
+    - For every data point observed, check if it falls into region. If it does then we make same prediction : mean of values of
+    data points into region
+  - *Classification*
+    - For every data point observed, check if it falls into region. If it does then we make same prediction : mode of values of
+      data points into region
 
 **Usage**
 
@@ -299,19 +362,25 @@ data points into region
 - Oversimplification of relationship between features
 - Over fitting
 - Not for continuous variables as data can be loss
-
+- 
 **Performance**
 Can avoid over-fitting in decision tress:
 - Setting constraint on tree size
 - Tree pruning
 
+---
+
 ## Overview - Deep Learning
 [KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)
 [KagglePractice](https://www.kaggle.com/c/ann-and-dl-image-classification/overview)
 
+---
+
 ## Overview - Clustering
 [KagglePractice](https://www.kaggle.com/fazilbtopal/popular-unsupervised-clustering-algorithms)
 
+
+---
 
 ## Overview - Recommendation
 

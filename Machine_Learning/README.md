@@ -149,9 +149,74 @@ How could we improve/what can we try next?
 |:-----:|:--------:|:---------:|:----:|:----:|
 |Classification| Random Forest | Score (Accuracy),  | Fast | |
 
+## Predictive model
+Are black box usually
+- TODO:
+
+## Explanatory model
+Not usually black box, relationships between features and output should be easily explained
+- TODO:
+
+## Data Quality
+- Where it is stored
+- Time span of the data
+- Do we have documentation
+- Is data centralised
+- How to know if data has quality issues?
+  - Completeness: Missing data? like name in a customer record
+  - Consistency: With data types that are common (date shown as timestamp, date time stamp) compare to other datasets
+  - Accuracy: incorrect input values (birthday), really crazy outputs
+  - Timeseries: NOT SURE
+
+## Hypothesis Testing
+Do you basically state what you think might be indicator of target
+
+-TODO: Testing done for categorical, data types
+- Read (chi square, test for normality)
+
+Extra Calculate the:
+- Impact:
+  - How will hypothesis affect the performance metric the client wants? Will it give quantifiable value
+- Actionability
+  - How easy will it be to implement the changes need in this hypothesis
+- Testability
+  - Does the datasource exist to implement the hypothesis
+- TODO
+
 ## Interview prep
 
 - **DO NOT LEARN** deep learning and neural networks (if it is not needed)
+- Understand the question very well and ask questions
+- Do not make assumptions about anything (even if you think you understand the english ask about the english words!)
+- It's ok if you spend most of the time trying to solve the question
+- Most likely to be between a Predictive model and an Explanatory model (see above for difference)
+- Think about what are the steps whilst on a **client project**:
+  - Why are we doing the project (Pros/Cons)
+    - Benefits for all those involved (money saved, time saved, risks concerned, shift of control)
+  - Question (questionaires), sample data on current situation of recieving party
+  - 
+  - Datasources:
+    - Where I can get the datasources
+    - What datasets do i need? what is available for this problem? 
+      - What is the Schema
+      - Who owns the data (do we have the details of this contact)
+      - Data quality issues?
+      - How are we extracting this data (static? CSV, DB connection, streaming)
+      - Documentation (metadata or general)
+      - Restrictions with data
+  - Data ingestion: connecting all the data structures into one place and formatting it so that we can get to hypothesis testing
+    - Can we request a sample of the data to see
+    - Getting access
+  - View the data landscape (like diagrams, entities, connections between data)
+- State 'Unit of analysis':
+  - Once trained what circumstances will the model not work on?
+- Hypothesis testing (see above)
+- Feature Engineering
+- State model plus assumptions behind it
+
+- Model:
+  - 
+
 - Get an interview coach in ML
 - Do Leetcode questions
 - write code in text editor and explain solution
