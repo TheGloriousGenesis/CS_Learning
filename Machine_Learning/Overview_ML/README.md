@@ -309,9 +309,7 @@ Theses are black box methods!
 Type of ensemble method where multiple trees are grown. Each tree classifies data point and provides a vote for that class.
 The classification of the data point is then chosen by gathering votes.
 
-
 Theses are black box methods!
-
 
 Can be supervised or unsupervised due to the ability to 
 
@@ -340,6 +338,7 @@ Can be supervised or unsupervised due to the ability to
 
 **Cons**
 - Too many trees can be overly complex
+- 
 **Performance**
 
 ---
