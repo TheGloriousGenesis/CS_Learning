@@ -264,7 +264,7 @@ It has a similar formula to linear regression but calculates the logistic of the
 between 0 and 1 
 
 $$
-\sigma (t) = \frac{\exp^{b_{0} - \exp^{b_{1}x}}{1 + \exp^{b_{0} - \exp^{b_{1}x}}
+\sigma (t) = \frac{\exp^{b_{0} - b_{1}x}}{1 + \exp^{b_{0} - b_{1}x}}
 $$
 
 Positive values lead to higher chance the class will be predicted 1
@@ -275,11 +275,11 @@ Classes predicted on the p == 0.5 threshold (more than or equal == 1, less than 
 **Algorithm**:
 - Assumptions : Does not require linear relationship 
 - If binary logistic regression, input must be binary data, likewise for ordinal
-- Assume linearity of independant variables and log odds
+- Assume linearity of independent variables and log odds
 - Must have large sample size > 10
 
 $$
-Odds = \frac{Prob of event}{Prob of not event}
+Odds = \frac{P(Event)}{P(!Event)}
 $$
 
 **Usage**
