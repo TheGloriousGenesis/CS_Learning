@@ -150,12 +150,33 @@ How could we improve/what can we try next?
 |Classification| Random Forest | Score (Accuracy),  | Fast | |
 
 ## Predictive model
-Are black box usually
-- TODO:
+Are black box usually. This encompasses neural network methods. 
+**Pros**
+- Better at prediction accuracy
+
+**Cons**
+- No expandability of the features used in prediction
+
+**Optimisation**
+
+When optimisation techniques are needed for this model the following are really helpful:
+- Bayesian Optimization: perfect for global optimization of noisy black box functions
 
 ## Explanatory model
 Not usually black box, relationships between features and output should be easily explained
-- TODO:
+
+**Pros**
+- Understandable relations between features and the desired output
+
+**Cons**
+- TODO
+
+**Optimisation**
+
+Usually hyper-parameters are optimised for this model. The following can be used:
+- Bayesian optimisation: This can be used for this case as it can build a probabilistic model of the mapping between 
+hyper-parameter and objective evaluated on a validation set
+- Cross Validation:  
 
 ## Data Quality
 - Where it is stored
@@ -167,6 +188,11 @@ Not usually black box, relationships between features and output should be easil
   - Consistency: With data types that are common (date shown as timestamp, date time stamp) compare to other datasets
   - Accuracy: incorrect input values (birthday), really crazy outputs
   - Timeseries: NOT SURE
+- How to deal with **class imbalance**
+  - Measuring performance of imbalance classes?
+  - ROC curve, confusion matrix?
+
+
 
 ## Hypothesis Testing
 Do you basically state what you think might be indicator of target
@@ -215,7 +241,19 @@ Extra Calculate the:
 - State model plus assumptions behind it
 
 - Model:
-  - 
+  - Testing Accuracy
+  - Hyperparameter optimisation
+  - Bayesian optimisation
+- How i would deal with classifier with 100% accuracy
+  - Class could be of accuracy 100% due to a class imbalance issue. If classifier has been trained on data where the occurence of a class
+is small, it will always predict any new data point as the predominate class. 
+  - Fix class imbalance in the following way
+    - Resampling:
+      - Undersample majority class, Over sample (add samples) from minority class
+        - Oversamploing minority class can be as easy as duplicating records randomly (**CON** if you do this too much overfishing, overfitting issues)
+        - **CON** Undersampling can lead to loss of information, could pick bias data
+      - Use `imblean` module to do sophisticated under/over sampling (cluster then pick from cluster to reduce information loss for oversampling, add randomness to undersampling)
+
 
 - Get an interview coach in ML
 - Do Leetcode questions

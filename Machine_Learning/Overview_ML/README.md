@@ -24,6 +24,8 @@ $$
 H_{\theta}(x) = \theta_{i} + \theta_{j}x
 $$
 
+Where the theta values are chosen based on values that minimise the squared distance between the dataset and line of best fit
+
 This is used to estimate the real model.
 
 Cost function (also called the error function) used to see if regression model is viable! A common cost function tends to be
@@ -254,6 +256,8 @@ Confusion matrix
 
 Ensemble methods involve predictive models to achieve a better accuracy and model stability.
 
+Theses are black box methods!
+
 *Can also combine **different** models!*
 
 **Algorithm**
@@ -262,6 +266,7 @@ Ensemble methods involve predictive models to achieve a better accuracy and mode
   - Train classifiers on sub-samples. 
   - Combine classifiers 
 - *Boosting*
+  - 
 - *Stacking*
 
 **Usage**
@@ -284,7 +289,11 @@ Ensemble methods involve predictive models to achieve a better accuracy and mode
 
 ### Random Forest
 Type of ensemble method where multiple trees are grown. Each tree classifies data point and provides a vote for that class.
-The classification of the data point is then chosen by gathering votes. 
+The classification of the data point is then chosen by gathering votes.
+
+
+Theses are black box methods!
+
 
 Can be supervised or unsupervised due to the ability to 
 
@@ -292,6 +301,7 @@ Can be supervised or unsupervised due to the ability to
 - Take sub-sample of dataset (N samples) with replacement
 - Out of M attributes, pick a number m < M at each node (constant for the whole tree while we grow it)
 - Pick m attributes at node at random every time. The best of these m (one that optimises split) is used to split the node (sub nodes etc)
+  - *N.B* the picking of subsets of features decreases the correlation between trees grown and increases the randomisation, leading to a drop in the test set error. **Also stops the strongest feature always appearing**
 - Grow without pruning. Stop when user predefines it
 - Predict by aggregating votes:
   - *Regression*
