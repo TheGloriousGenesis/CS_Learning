@@ -216,6 +216,8 @@ Extra Calculate the:
 - Do not make assumptions about anything (even if you think you understand the english ask about the english words!)
 - It's ok if you spend most of the time trying to solve the question
 - Most likely to be between a Predictive model and an Explanatory model (see above for difference)
+
+
 - Think about what are the steps whilst on a **client project**:
   - Why are we doing the project (Pros/Cons)
     - Benefits for all those involved (money saved, time saved, risks concerned, shift of control)

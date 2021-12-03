@@ -61,7 +61,7 @@ To explore how the data is distributed, we can look at the central tendency of t
 in order to fill in data:
 - **Mean**: Sensitive to outliers (due to all values being added and divided by number of values). Can be fixed by excluding values.
 - **Median**: Better fit if outliers are present
-- **Mode**: Best used for data type that is not numerical.
+- **Mode**: Best used for data type that is not numerical (Categorical).
 - **Variance**: Sensitive to outliers
 
 In order to get the most out of the data, we must ensure we are only using data that gives the most importance and reduces

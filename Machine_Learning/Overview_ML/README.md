@@ -8,12 +8,13 @@
 |Class Imbalance| If one class has a lot of data, this affects the accuracy of the distributing data |
 |Over-fitting| When performance on the training dataset is low but high on the test dataset |
 |Under-fitting| When performance on the testing dataset is low but high on the train dataset |
-|Bias (common amongst all models) | Related to accuracy somewhat, how much predicted differs from actual |
-|Variance (common amongst all models) | Spread of (predicted) data points when given similar input from same population|
+|Bias (common amongst all models) | Tendancy to learn the wrong thing (underfitting) |
+|Variance (common amongst all models) | changes in model when using different portions of the training data set|
 
 ## Overview - Regression
 
 ### Linear Regression
+
 [KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
 *Definition*: Used to predict continuous variables
@@ -69,6 +70,22 @@ to the weight) is negative, we know we are heading in the right direction to the
 previous iteration because we need to increase the value of the weight to get closer to it (and vice versa)
 
 **Always ensure you choose the correct value for alpha! :smile:**
+
+## Overview - Regularisation
+
+- Used when you want to keep features but reduce complexity by reducing the magnitude of weighting
+- Commonly used is **L1** and **L2** norm.
+
+L1
+**Pros**
+- Keeps information (compared to removing features)
+- Introduces sparsity (due to heavy penalisation on small weights)
+**Cons**
+- Does not work well with multi-collinearity 
+
+
+**Elastic**
+
 
 ---
 
@@ -275,6 +292,7 @@ Theses are black box methods!
 **Pros**
 - Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
 - (Bagging)
+- (Boosting) reduces BIAS
 
 **Cons**
 - (All) Similar bias to single model 
@@ -300,7 +318,7 @@ Can be supervised or unsupervised due to the ability to
 **Algorithm**
 - Take sub-sample of dataset (N samples) with replacement
 - Out of M attributes, pick a number m < M at each node (constant for the whole tree while we grow it)
-- Pick m attributes at node at random every time. The best of these m (one that optimises split) is used to split the node (sub nodes etc)
+- Pick m attributes at node at random every time. The best of these m (one that optimises split - makes resultant as different from each other as possible) is used to split the node (sub nodes etc)
   - *N.B* the picking of subsets of features decreases the correlation between trees grown and increases the randomisation, leading to a drop in the test set error. **Also stops the strongest feature always appearing**
 - Grow without pruning. Stop when user predefines it
 - Predict by aggregating votes:
@@ -321,7 +339,7 @@ Can be supervised or unsupervised due to the ability to
 - Maintains accuracy when a large section of data missing
 
 **Cons**
-- 
+- Too many trees can be overly complex
 **Performance**
 
 ---
