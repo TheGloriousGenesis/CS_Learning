@@ -17,7 +17,16 @@
 
 [KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
-*Definition*: Used to predict continuous variables
+> *Definition*: Used to predict continuous variables
+
+*Assumptions* : 
+  
+- Errors of the residuals follow normal distribution
+- Relationship between X and Y is linear, (observations are independence of each other).
+- For any value X, Y is normally distributed
+
+*Algorithm*
+- Hyperparameter : $\sigma_{j}$, $\sigma_{i}$
 
 The hypothesis function for a regression model for a univariate linear regression is given by 
 
@@ -65,11 +74,11 @@ $$
 \frac{\partial J (\theta_{i}\theta_{j})}{\partial \theta_{i}} = -\frac{x}{M}\sum_{i=1}^{m}\left ( \left ( \theta_{i} + \theta_{j} x^{(1)} \right ) - y \right )
 $$
 
-The update comprises the gradient and step value, when the gradient (derivative in regards
-to the weight) is negative, we know we are heading in the right direction to the minima as the second term is added to the weight in the
+The update comprises the gradient and step value, when the gradient (derivative in regard to the weight) is negative, we know we are heading in the right direction to the minima as the second term is added to the weight in the
 previous iteration because we need to increase the value of the weight to get closer to it (and vice versa)
 
 **Always ensure you choose the correct value for alpha! :smile:**
+
 
 ## Overview - Regularisation
 
@@ -83,9 +92,7 @@ L1
 **Cons**
 - Does not work well with multi-collinearity 
 
-
 **Elastic**
-
 
 ---
 
@@ -157,11 +164,14 @@ Created classifier by using datasets. Commonly used classifiers include: decisio
 support vector machine etc.
 
 ### Nearest neighbour
-*Definition* Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
+>*Definition* : Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
 Here **k** is the hyper-parameter. 
 
+**Algorithm**:
+- K means
+
 **Usage**:
-Best used when you need to predict categorical class labels with discrete data.
+- Best used when you need to predict categorical class labels with discrete data.
 
 **Pros**:
 - Robust to outliers
@@ -172,54 +182,62 @@ Best used when you need to predict categorical class labels with discrete data.
 **Cons**
 
 ### Performance of classifiers 
+
+N.B: In any problem, not possible to create perfect model. This is due to bayes error rate, minimal error that model can have.
+Latent variables factors we can't measure, noise in physical process
+
 To check the performance of this classifier, can use the following metrics:
 
-- Accuracy : Which describes which data points have been classified correctly. This is not always great to use due to class imbalance.
+- Accuracy : Which describes which data points have been classified correctly. This is not always great to use due to 
+class imbalance.
     
-    $$ 
-    \frac{N_{tp} + N_{tn}}{N} 
-    $$
+  $$ 
+  \frac{N_{tp} + N_{tn}}{N} 
+  $$
 
 - Sensitivity (Recall) : True positive rate. When it's positive, how often does it predict positive?
+
+  $$
+  \frac{N_{tp}}{N_{tp} + N_{fn}}
+  $$
+
 - Specificity : True negative rate. When it's negative, how often does it predict negative?
-- Precision : Percentage labelled as positive that are actually positive
+- Precision : (Out of all positive in model which is positive) Percentage labelled as positive in the model that are actually positive
 
   $$
   \frac{N_{tp}}{N_{tp} + N_{fp}}
   $$
 
-- Recall :  Percentage of actual positives labelled as actual positives (also known as completeness). *High recall* means
+- Recall :  (Out of all positive in dataset which positive) Percentage of actual positives labelled as actual positives (also known as completeness). *High recall* means
 confidence in detecting positive observations.
 
-$$
-\frac{N_{tp}}{N_{tp} + N_{fn}}
-$$
+  $$
+  \frac{N_{tp}}{N_{tp} + N_{fn}}
+  $$
 
 - F1 score : Measure a models' accuracy. Having a high F1 value is a high accuracy model
 
-$$
-\frac{N_{tp}}{N_{tp} + \frac{(N_{fp} - N_{fn})}{2}}
-$$
-
-OR
-
-$$
-\frac{ 2 x precision x recall }{ precision + recall }
-$$
+  $$
+  F1 = \frac{2 * Precision * Recall}{Precision + Recall}
+  $$
 
 - Error rate : miscalculation rate
 
-$$
-\frac{N_{fp} + N_{fn}}{N}
-$$
+  $$
+  \frac{N_{fp} + N_{fn}}{N}
+  $$
 
 To describe the performance the following can be used:
-- ROC : A graph drawn to detect the best threshold value that is a good trade off between true positive rate and false
-  positive rate. TPR = Sensitivity = TP/P. FPR = FP/N = 1 - specificity. Area under curve gives success rate of model.
+- ROC :
+  - Likelihood of model to distinguish observations between two classes
+  - A graph drawn to detect the best threshold value that is a good trade off between true positive rate and false
+    positive rate. TPR = Sensitivity = TP/P. FPR = FP/N = 1 - specificity. Area under curve gives success rate of model.
   - High threshold = low sensitivity (low true positive rate), High specificity (high true negative rate)
   - Low threshold = high sensitivity, low specificity
   
 - Confusion matrix
+  - Elements on the diagonal should be high valued and correctly identified
+  - Good to find other metrics: Precision, Recall, F1 Score
 
 ---
 
@@ -243,13 +261,10 @@ prediction, Logistic regression deals with categorical (nomial/ordinal) variable
 of the outcome variable.
 
 It has a similar formula to linear regression but calculates the logistic of the result so that the output value is always
-between 0 and 1
+between 0 and 1 
 
 $$
-Put logistic equation in here
-
-Where
-\sigma (t) = \frac{1}{1 + \exp(-t)}
+\sigma (t) = \frac{\exp^{b_{0} - \exp^{b_{1}x}}{1 + \exp^{b_{0} - \exp^{b_{1}x}}
 $$
 
 Positive values lead to higher chance the class will be predicted 1
@@ -257,7 +272,16 @@ Positive values lead to higher chance the class will be predicted 1
 Negative values lead to higher chances the class will be predicted 0
 
 Classes predicted on the p == 0.5 threshold (more than or equal == 1, less than == 0)
-**Algorithm**
+**Algorithm**:
+- Assumptions : Does not require linear relationship 
+- If binary logistic regression, input must be binary data, likewise for ordinal
+- Assume linearity of independant variables and log odds
+- Must have large sample size > 10
+
+$$
+Odds = \frac{Prob of event}{Prob of not event}
+$$
+
 **Usage**
 **Pros**
 **Cons**
@@ -283,7 +307,9 @@ Theses are black box methods!
   - Train classifiers on sub-samples. 
   - Combine classifiers 
 - *Boosting*
-  - 
+  - Hyper-parameter : Number of tres, weights of trees, learning rate
+  - Start with weak learners
+  - Classify all classes with learners. Increase focus on misclassifed classes
 - *Stacking*
 
 **Usage**
@@ -292,7 +318,7 @@ Theses are black box methods!
 **Pros**
 - Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
 - (Bagging)
-- (Boosting) reduces BIAS
+- (Boosting) reduces BIAS as the model trains to fix classification errors so reduce this.
 
 **Cons**
 - (All) Similar bias to single model 
@@ -314,6 +340,7 @@ Theses are black box methods!
 Can be supervised or unsupervised due to the ability to 
 
 **Algorithm**
+- Hyper-parameters : No. of trees
 - Take sub-sample of dataset (N samples) with replacement
 - Out of M attributes, pick a number m < M at each node (constant for the whole tree while we grow it)
 - Pick m attributes at node at random every time. The best of these m (one that optimises split - makes resultant as different from each other as possible) is used to split the node (sub nodes etc)
@@ -335,10 +362,10 @@ Can be supervised or unsupervised due to the ability to
 - Model outputs importance of variable!
 - Can estimate missing data
 - Maintains accuracy when a large section of data missing
+- Reduce variation because the trees are trained by a subset
 
 **Cons**
 - Too many trees can be overly complex
-- 
 **Performance**
 
 ---
@@ -354,6 +381,7 @@ Can be supervised or unsupervised due to the ability to
 |Pruning| Removing subnodes of decision nodes |
 |Entropy (category variable)| How homogenous the node is (zero entropy == pure node, one entropy == impure node) |
 |Information Gain|1 - Entropy|
+|Cross Entropy|High if predicted probability diverges form actual label vice versa|
 
 ### Decision Tree:
 

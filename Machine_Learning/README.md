@@ -54,7 +54,7 @@ Later on think about how Data Engineers will need to clean and visual data to un
 
 >Take some insights from Studio app to how data is prepared
 
->Think about what questions to ask about Data when it is recieved
+>Think about what questions to ask about Data when it is received
 
 ### Evaluation 
 - Define what a successful end will be: 95% accuracy? 99.9% accuracy?
@@ -75,11 +75,27 @@ One must decide which features to use for your model and how can these features 
 
 How to best choose features
 - Pick features that most of the samples have!
-- Pick features that have majority non null elements
+- Pick features that have majority non-null elements
 - Pick features that are not redundant
-- 
+
+### Feature Selection
+
+Decision Trees
+- internal feature selection
+- Only selects important ones
+- L1 norm (removal of unimportant features)
+
+Filtering
+- Use given feature score does not take into account relationship between pick those that are correlated with output. 
+Dependance label
+
 #### Feature reduction
 - Very important to reduce features due to redundancy as well as improving computational time
+
+
+### Outlier detection
+- SVM -> Classical, K means
+- Statistical modes -> check if data point within distribution
 
 ### Modelling
 
@@ -114,14 +130,26 @@ The biggest goal is to minimise the time spent training the model. We can do thi
 - Use a simpler model first then build 
 
 
-It is important during training that we try to avoid overfitting.
+It is important during training that we try to avoid over-fitting.
 
 >Find out the best ways to minimise training time in a model as well as prediction time in a model (production)
 
 #### Tune model
-Adjust hyperparameters for models on training and validation sets. Not on test set!
+
+Adjust hyper-parameters for models on training and validation sets. Not on test set!
+
+- Cross Validation 
+  - Split train into K subsets. Train data on K-1 folds K times. Average performance. Do this for different model settings
+  - **Good** : If you know vague place on where to start searching for best parameters
+
+- Random Search
+  - Using the hyper-parameter, get a range in which you would need to search over and search (in grid like)
+- Bayesian optimisation
+  - Build probabilistic model of the object function and use it to smartly select hyper-parameters to evaluate
+  - **Good** : If your function is complex, non-linear or expensive to evaluate
 
 #### Test Data
+
 Evaluate model on this data! In general model should perform well for train, validate and test models.
 
 Ensure no over-fitting or under-fitting! To fix under-fititng the following things can be used:
