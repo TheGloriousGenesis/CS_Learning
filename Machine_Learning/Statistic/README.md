@@ -2,7 +2,8 @@
 
 
 $$
-Permutations:
-H_{\theta}(x) = \frac{n!}{(n - r) !}
+Permutations = \frac{n!}{(n - r) !}
+
+Combinations = \frac{n!}{r! x (n - r) !}
 $$
 
