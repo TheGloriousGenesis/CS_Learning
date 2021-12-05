@@ -20,6 +20,7 @@ Additional Learning:
 ## Pre-requisites
 
 ### Cloud Service Models - Core
+
 The most common service models are as follows:
 - Infrastructure as a Service
   - Architect your own portion of the cloud via configuring virtual cloud
@@ -50,6 +51,7 @@ The most common service models are as follows:
 
 [comment]: <> (### [Deployment models]&#40;https://docs.aws.amazon.com/en_us/sdk-for-net/v3/ndg/gs-cloud-deployment.html&#41;)
 ### Deployment models
+
 - Full Cloud (all cloud)
 - On premises (private cloud compromised of)
   - Compromised of location (at least 2 datacenter),
@@ -81,12 +83,14 @@ Over 200+ services to use!
 - Management and governance
 
 ### Scale 
+
 Can spin up and break down servers at a given moment cheaply due to economy of scale (DCs everywhere), in a PAYG model.
 Allows deployment closer to user, hence lower latency, better output for customers.
 
 ## Module 2 Compute in the Cloud
 
 ### Why Cloud?
+
 Cloud utilises virtualization. Virtualization allows:
 
 - Reduced capital expenditure (less hardware)
@@ -101,12 +105,14 @@ The volumes physically reside on the same host that provides your EC2 instance i
 EC2 provides ephemeral storage (transient instead of persistent, good for temp file storage, cache, buffer, can but 
 software on the instance based on this too, but not increase ephermal range, cam connect through pem or SSH)
 
-Data within this instance will be removed if the instance is stopped or terminated. Not it if it rebooted.
 
 **Pros**
 - Read write speed better than average compared to alternative block storage
 - Storage included in the price of the VM/server
 - Self configured and self controlled (Linux, Windows script can run on first spin up of the server)
+
+**Cons**
+- Data within this instance will be removed if the instance is stopped or terminated. Not it if it rebooted.
 
 Over 400+ different instances types and sizes to spin up [Click here to see](https://aws.amazon.com/ec2/instance-types/)!
 Different EC2 instances have different use cases [stated here](https://aws.amazon.com/ec2/instance-types/).
@@ -118,11 +124,11 @@ Uses ML to analyse previous use of workload and recommends services.
 
 Helpful web app to view price differences for EC2 per region etc [here](https://ec2types.io/home)
 
-Optimised for different purposes
-General - Balance of compute memory and networking resources
-Memory - Ideal for high-performance databases
-Accelerated - Offers high-performances processors
-Storage - Suitable for data warehousing applications (data held for long time)
+Different types of E2C instances are optimised for different purposes:
+- General - Balance of compute memory and networking resources
+- Memory - Ideal for high-performance databases
+- Accelerated - Offers high-performances processors
+- Storage - Suitable for data warehousing applications (data held for long time)
 
 cj_at1
 
@@ -143,16 +149,20 @@ Client side data encryption, data integrity authentication, server side encrypti
   - Regions, Availability Zones, Edge Locations
 
 ### Pricing
-- On-Demand - Consistent 
-- Spot - If available can use it, up to 6 hours. Any workload that can be spun up when abruptly stopped
-- Reserved - (discount on On-demand, require 1-3 year term commitment)
-- Compute Saving Plans - (discount on On-Demand for consistent compute usage, require 1-3 year term commitment)
+
+There are 4 different type of pricing commands:
+- **On-Demand** - Consistent 
+- **Spot** - If available can use it, up to 6 hours. Any workload that can be spun up when abruptly stopped
+- **Reserved** - (discount on On-demand, require 1-3 year term commitment)
+- **Compute Saving Plans** - (discount on On-Demand for consistent compute usage, require 1-3 year term commitment)
 
 ### Dedicated computing
+
 - Dedicated Instance : EC2 instance that runs in a VPC on hardware (taxi)
 - Dedicate Host: Physical server with EC2 instance (personal car)
 
 ### Elasticity - Auto Scaling
+
 - Auto Scaling
   - Launch/Tear down server when needed (auto-scaling/ workload increases)
   - Automatically adjusts the number of amazon EC2 instances to match demand
@@ -406,6 +416,7 @@ There are 4 main components:
 - Grants
 
 ### Amazon GuardDuty
+
 - Intelligent threat detection for AWS products and services
 
 ## Module 7: Monitoring and Analytics
@@ -457,7 +468,7 @@ Cloud adoption framework: gives advice on migration. Based on 6 perspectives:
 6 strategies
 - Rehost: Move app from on premise to eC2
 - Replatform: Tinker then move (shift notification service to SNS)
-- Refactor/Rearchitect: As name suggests
+- Refactor/Re-architect: As name suggests
 - Repurchase: Change licensing/pricing to move to cloud
 - Retain: Do not migrate
 - Retire: Tear down application (not used)
@@ -479,12 +490,14 @@ For migration, AWS can ship storage to help with the data process
 Serverless migration takes less time
 
 ### AWS Well-Architected Framework Pillars
+
 - Cost optimization
 - Operational excellence
 - Performance efficiency
 - Reliability
 
 ## Module 10: AWS Certified Cloud Practitioner Basics
+
 [Exam prep](https://aws.amazon.com/certification/certification-prep/)
 [Free webinars and learning](https://pages.awscloud.com/traincert_alwayslearning_virtualevents.html)
 [Practice Labs](https://wellarchitectedlabs.com/)
@@ -511,5 +524,5 @@ Strategies
 - Max mark 1000, pass 700
 
 ### Misc
-[Protect sensitive data](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
-[Data lakes](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
+- [Protect sensitive data](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
+-  [Data lakes](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
