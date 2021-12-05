@@ -5,16 +5,21 @@ Additional Learning:
 
 | Term|Definition|
 |:---:|:--------:|
-|AWS|On demand delivery of IT resources and applications through the internet|
+|AWS            |On demand delivery of IT resources and applications through the internet|
 |Cloud computing|Collection of remote on-demand virtual resources offering compute, storage, database and network services that be can rapidly deployed at scale|
 |Virtualization | Having multiple independent virtual machines running separate systems/applications, sharing underlying resources (through hypervisor) under 1 physical server|
 |Public Cloud   | Consumer does not see hardware. Can specify geographical location of servers. Cloud vendor does maintenance|
 |Private Cloud  | Infrastructure owned by consumer (on premise). Consumer does maintenance|
 |Hybrid Cloud   | Mix between private and public cloud. Established when link occurs between private and public cloud. Usually short term (e.g for disaster recovery) |
-
+|Lambda (Amazon)| Serverless compute |
+|Monolithic     | Single component application|
+|Microservices  | Decoupled component, allows scaling and development independent of other components|
+|Policy (AWS IAM) | Is a collection of permissions |
+|Subnet         | A collection of EC2 instances|
 
 ## Pre-requisites
-# Cloud Service Models - Core
+
+### Cloud Service Models - Core
 The most common service models are as follows:
 - Infrastructure as a Service
   - Architect your own portion of the cloud via configuring virtual cloud
@@ -25,6 +30,36 @@ The most common service models are as follows:
 - Software as a Service
   - Application accessed over the internet (e.g gmail)
 
+### Cloud Computing concepts:
+1. On-demand resourcing
+2. Scalability (Allows you to increase/decrease power or quantity with installation or physical processes provisioned)
+3. Economy of Scale
+4. Flexibility & Elasticity
+5. Growth
+6. Utility Based Metering
+7. Shared Infrastructure
+8. Highly Available
+9. Security
+
+### Cloud Compute core services:
+- Compute
+- Network
+- Storage
+- Database - Stores structured data in storage 
+
+
+[comment]: <> (### [Deployment models]&#40;https://docs.aws.amazon.com/en_us/sdk-for-net/v3/ndg/gs-cloud-deployment.html&#41;)
+### Deployment models
+- Full Cloud (all cloud)
+- On premises (private cloud compromised of)
+  - Compromised of location (at least 2 datacenter),
+  - Physical security (external/internal)
+  - Mechanical & electrical infrastructure
+  - Network infrastructure (Architecture left to user)
+  - Servers (dependant of user purpose of the server (some for processing power etc))
+  - Storage
+- Hybrid (part cloud, part local dc) : For GDPR reasons or learning curve reasons
+
 ## Module 1: Introduction to Amazon Web Services
 
 Previously required people to maintain and setup data centers and architecture for different environments 
@@ -33,39 +68,17 @@ Previously required people to maintain and setup data centers and architecture f
 AWS (started in 2006), solution to offload the maintenance of datacenters, whilst maintaining control over pricing and
 only using what you need.
 
-### Services
+### Amazon Services
+
 Over 200+ services to use!
+
 *Core Services*
-- Compute
+- Compute 
 - Networking and content delivery
-- Storage
-- Database
-- Security and Identity and compliance
+- Storage - S3 typically 
+- Database - 
+- Security and Identity and compliance - Macie (Compliance checks), KMS, but each application/service has their own implementation as well as specific services for security (must whitelist the ports if external application is providing security)
 - Management and governance
-
-Some commonly used services:
-- S3 - data storage
-- Macie - Report on security issues on S3, helps check compliancy
-- Security - Each service has security specific features as well as there being security services as well (must whitelist ports on app for these)
-- EC2 - Virtual servers
-- Lambda - Serverless compute
-
-### [Availablity Region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
-To see what the availablity of services and number of datacenteres Amazon has
-Not all services are launched in all the regions at the same time
-Check if it is available in region before deploying there!
-
-Each region has AWS Edge network locations, usually heavily used. These are Content Distribution Network (CDN) for the 
-whole world. This is done to deliver low latency, high throughput content to end users. Done through 
-[AWS CloudFront](https://aws.amazon.com/cloudfront/features/?p=ugi&l=na&whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc).
-- Has more 'Points of Presence'
-- Caches content closer to the user
-- Some Edge locations have a secondary cache
-
-### [Deployment models](https://docs.aws.amazon.com/en_us/sdk-for-net/v3/ndg/gs-cloud-deployment.html)
-- Full Cloud (all cloud)
-- On premises (private cloud)
-- Hybrid (part cloud, part local dc) : For GDPR reasons or learning curve reasons
 
 ### Scale 
 Can spin up and break down servers at a given moment cheaply due to economy of scale (DCs everywhere), in a PAYG model.
@@ -81,10 +94,22 @@ Cloud utilises virtualization. Virtualization allows:
 - Smaller footprint (above means less carbon footprint)
 
 ### [EC2 Instances](https://aws.amazon.com/ec2/?ec2-whats-new.sort-by=item.additionalFields.postDateTime&ec2-whats-new.sort-order=desc)
-EC2 instances are virtual machines running int AWS Datacenters. Self configured and self controlled.
+
+EC2 instances are virtual machines running in AWS Datacenters.
+The volumes physically reside on the same host that provides your EC2 instance itself. It acts as local disc storage.
+
+EC2 provides ephemeral storage (transient instead of persistent, good for temp file storage, cache, buffer, can but 
+software on the instance based on this too, but not increase ephermal range, cam connect through pem or SSH)
+
+Data within this instance will be removed if the instance is stopped or terminated. Not it if it rebooted.
+
+**Pros**
+- Read write speed better than average compared to alternative block storage
+- Storage included in the price of the VM/server
+- Self configured and self controlled (Linux, Windows script can run on first spin up of the server)
+
 Over 400+ different instances types and sizes to spin up [Click here to see](https://aws.amazon.com/ec2/instance-types/)!
-Different EC2 instances have different use cases [stated here](https://aws.amazon.com/ec2/instance-types/). Example, NVMe - 
-ephermal storage (transient, good for temp files)
+Different EC2 instances have different use cases [stated here](https://aws.amazon.com/ec2/instance-types/).
 
 Don't know what instance to choose? Or services? use [AWS Compute Optimizer](https://aws.amazon.com/compute-optimizer/). 
 Uses ML to analyse previous use of workload and recommends services.
@@ -99,8 +124,26 @@ Memory - Ideal for high-performance databases
 Accelerated - Offers high-performances processors
 Storage - Suitable for data warehousing applications (data held for long time)
 
+cj_at1
+
+### AWS Shared Responsibility
+
+- Security is a shared responsibility
+
+**Customer Responsibility**
+
+- Customer data, Platform, applications, Identity & Access Management, Operating System, Network & Firewall Configuration,
+Client side data encryption, data integrity authentication, server side encryption, network traffic protection.
+
+**AWS Responsibility**
+
+- AWS Foundation Services
+  - Compute, Storage, Database, Network
+- AWS Global Infrastructure
+  - Regions, Availability Zones, Edge Locations
+
 ### Pricing
-- On-Demand - Consistent
+- On-Demand - Consistent 
 - Spot - If available can use it, up to 6 hours. Any workload that can be spun up when abruptly stopped
 - Reserved - (discount on On-demand, require 1-3 year term commitment)
 - Compute Saving Plans - (discount on On-Demand for consistent compute usage, require 1-3 year term commitment)
@@ -118,10 +161,6 @@ Storage - Suitable for data warehousing applications (data held for long time)
   - Providing a single point of contact for traffic into the auto-scaling group
 
 ### AWS Messaging Service
-Monolithic
-- Single component application
-Microservices
-- Decoupled component, allows scaling and development independent of other components
 
 **Simple Notification Service - NOTIFICATIONs**
 - Create topic. Have publishers and subscribers to topic
@@ -141,6 +180,7 @@ Microservices
   - Can use AWS Step function to create state machine (to create workflow) to orchestrate lambda functions
 
 ### Containers
+
 One host with multiple containers
 Isolated processes running on a server
 
@@ -153,47 +193,54 @@ AWS Fargate
 - Serverless compute engine for serverless container orchestration
 
 ## Module 3: Global Infrastructure and Reliability
+Global infrastructure is composed of the following:
 
-### Region
-Important for latency reason
-- Check compliance with data governance and legal requirements
+### Availability Zones (AZs)
+  - Physical data centers of AWS : Contains cloud compute main services
+  - Multiple datacenters can form a availability zone
+
+### [Availablity Region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+
+It is best practice to launch multiple EC2 instances across different regions due to failure reasons (High availablity).
+The main region picked should be done based on the following:
 - Proximity to your customers
 - Available services within a Region
+- Compliance laws and legal regulations
 - Pricing
-Every region has availability zones (1 OR MORE). Launch EC2 instances across multiple regions just in case zone goes down! 1 availability 
-zone belongs to 1 region **only**
 
-### Amazon CloudFront 
-EC2 instance --> Edge location (cache) --> customer
+Each region has many availablity zone (at least 1) **BUT** each availablity zone can only belong to one region
 
-Edge location **not** equal to availability zones. Availability zones have 200+ services whereas edge locations have few services
+The key features of a region is given below:
+- Edge Locations (Some Edge locations have a secondary cache)
+- Regional Edge Caches (caches content closer to the user)
+- Has more 'Points of Presence'
+
+Each region has AWS Edge network locations, usually heavily used. These are Content Distribution Network **(CDN)** for the
+whole world. This is done to deliver low latency, high throughput content to end users. This is done through
+[AWS CloudFront](https://aws.amazon.com/cloudfront/features/?p=ugi&l=na&whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc).
+The data flow from customer to client service is as follows:
+- EC2 instance --> Edge location (cache) --> customer
+
+> Edge locations are **not** equal to availability zones. Availability zones have 200+ services whereas edge locations have few services
 mainly for caching CloudFront data
 
 ### AWS Outposts
 
-Extend AWS infrastructure and services to your on-premises data center (like having a starbucks on site!)
-- runs instead your datacenter (allows high level of control over data)
-
-Can access role
-- Dynamic role generation - AssumeRole
+Extends AWS infrastructure and services to your on-premises data center (like having a starbucks on site!)
+as it runs instead your datacenter, allowing a high level of control over data.
 
 Can access amazon services through CLI, sdk, or through management console UI.
-
-Who can assume roles can be decided by policy to that role
-
 
 ## Module 4: Networking
 
 ### Amazon Virtual private Cloud
 Private network inside software account.
 
-Inside VPC, launch servers inside it. Some have internet access others do not. There should be subnets which deal with 
-that: Public subnet, Private subnet. 
-
-In subnet, there are EC2 instances. 
-
-The VPC--> public subnet: needs internet gateway to connect to internet and receive requests. 
-The VPC --> private subnet: needs private internet gateway to connect over VPN to own data
+One can launch servers inside VPC. There are two types of server groups (subnets) that can be created inside a VPC:
+- Public subnet (Internet access)
+  -  needs internet gateway to connect to internet and receive requests.
+- Private subnet (No intranet example)
+  - needs private internet gateway to connect over VPN to own data
 
 AWS Direct connect : Establish a dedicated connection between on-premises data center and the VPC
 
@@ -201,13 +248,17 @@ AWS Direct connect : Establish a dedicated connection between on-premises data c
 Have to set up firewalls! Set up firewalls on subnet level via network access control list (network ACL) and on a 
 EC2 level via security group.
 
-**Subnet**
+**Subnet**:
+
 By default, allows all traffic, stateless firewall. Put rules for inbound and outbound traffic.
-**EC2**
+
+**EC2**:
+
 By default, outbound open, inbound blocked, all traffic, stateful firewall.
 Rules for incoming reflect outbound traffics too and EC2 level (security group)
 
 ### Route 53
+
 Maintains domain name systems (DNS) records and translates domain name to IP address (domain resolution).
 
 Routes user to internet applications (return IP address of EC2 instance the application running on)
@@ -215,30 +266,75 @@ Routes user to internet applications (return IP address of EC2 instance the appl
 Client --> Route 53 --> Application load balancer
 
 ## Module 5: Storage and Databases
-Supports 15 databases.
 
-**Block storage**: EBS, single block read/write. Example, laptop memory? block
-  - EBS volume - persistent
-  - EBS ephemeral - transient
-  - EBS snapshots - incremental backup
-  - Store data in 1 availablility zone
+There are three types of storage in AWS:
+- Block storage
+- Object storage
+- File storage
 
-**Object storage: S3**, each object consists of data, metadata and a key. S3 not publicly accessibly (can expose). 
+### Amazon Elastic Block Store - EBS
+
+**Block storage**: EBS, single block read/write. Example, laptop memory
+- EBS volume - persistent
+- EBS ephemeral - transient
+- EBS snapshots - incremental backup
+- Store data in 1 availablility zone
+
+Provides persistent independent storage for the EC2 instance. They can also be used to provide back up
+
+Can provide backups (snapshots) of the EC2 volume. Snapshots are incremental.
+
+CAP = High Reliability
+
+Types:
+- SSD :
+  - Better for databases using transactional workloads, boot volumes for ec2 instances
+- HDD :
+  - Better for logging information, processing large data (dealing with data)
+
+Security:
+- Provides encryption, using AWS KMS.
+
+**Cons**
+- For very high durability and availability use S3, EFS
+- Shouldn't be used for multi-instance storage
+
+
+### Amazon S3
+
+**Object storage: S3**, each object consists of data, metadata and a key. S3 not publicly accessibly (can expose).
 No size limit for bucket (per file - 5T)
-  - S3 Standard - frequently accessed, minim stored in 3 availability zones
-  - S3 Standard-IA - infrequently accessed data, minim 3 zones, retrieval more expensive than normal
-  - S3 One Zone-IA - stores data in single availability zone (best keep easily regenerate data here)
-  - S3 Intelligent Tiering - Monitor how often data accessed. Dynamically move data depending on access
-  - S3 Glacier (Archive data, retrieval 3-5 hrs)
-  - S3 Glacier Deep Archive (Archive data, retrieval up to 12 hrs)
-  
-Can run select query on S3
+- S3 Standard - frequently accessed, minim stored in 3 availability zones
+- S3 Standard-IA - infrequently accessed data, minim 3 zones, retrieval more expensive than normal
+- S3 One Zone-IA - stores data in single availability zone (best keep easily regenerate data here)
+- S3 Intelligent Tiering - Monitor how often data accessed. Dynamically move data depending on access
+- S3 Glacier (Archive data, retrieval 3-5 hrs)
+- S3 Glacier Deep Archive (Archive data, retrieval up to 12 hrs)
+
+Object based storage system that is:
+- Highly available
+- Durable
+- Cost-effective
+- Widely accessible
+- (Scalable)
+
+Each object is referenced by unique url when stored (like nosql?)
+
+Automatically stores and duplicates data across multiple avaialblity zones
+
+**Cons**
+- Smallest file size 0 bytes, largest 5 terabytes
+
+### Amazon EFS - Elastic File Storage
+
 **File storage**: EFS
 - Stores data across multiple availability zones
 
+- Supports multiple instance access
+- files accessible to network resources
 
 ### Databases
-Types: Relational (access through SQL, joins etc), non relational
+Types: Relational (access through SQL, joins etc), non-relational
 
 Amazon Relational Database Service (In private subnet)
 Engines supported (6):
@@ -266,9 +362,12 @@ Customer responsible for:
 - Permissions for Amazon S3 
 
 ### IAM
-User permissions created. Can also be created on DB side or SSO.
 
-Policy is a collection of permissions
+IAM Role : Permissions, getting access key to allow code to speak to other AWS services.
+
+Controls user permissions (and granular entitlements) with AWS services 
+
+User permissions created. Can also be created on DB side or SSO.
 
 IAM role is an identity that you can assume to gain temp access
 
@@ -296,8 +395,15 @@ Information you need to know to check AWS compliance
 ### AWS Inspector
 - Allows you to perform security assessment checks
 
-### AWS KMS
-- Used for encrypting data at rest (create cryptographic keys)
+### Amazon KMS
+
+Used to store and generate encryption keys that can be used by other AWS services/applications
+
+There are 4 main components:
+- Customer master keys
+- Data Encryption keys
+- Key Policies
+- Grants
 
 ### Amazon GuardDuty
 - Intelligent threat detection for AWS products and services
@@ -347,6 +453,7 @@ Cloud adoption framework: gives advice on migration. Based on 6 perspectives:
   3. Operations
 
 ### Migrating strategies
+
 6 strategies
 - Rehost: Move app from on premise to eC2
 - Replatform: Tinker then move (shift notification service to SNS)
@@ -358,6 +465,7 @@ Cloud adoption framework: gives advice on migration. Based on 6 perspectives:
 For migration, AWS can ship storage to help with the data process
 
 **AWS Snow Family**
+
 - AWS Snowcone:
   - small rugged, secure edge computing and data transfer
   - 8TB
@@ -402,20 +510,6 @@ Strategies
 - Don't skip questions
 - Max mark 1000, pass 700
 
-
-## Misc
-IAM Role : Permissions, getting access key to allow code to speak to other AWS services.
-
-### EC2 configuration setup:
-Linux - bash script
-Windows - Powershell
-Can run script on first spin up of the server
-(put software needed to run on server in this script)
-
-Can not add ephemeral storage, given based on EC2 instance
-
-Can connect to EC2 using pem or SSH command
-
-
+### Misc
 [Protect sensitive data](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
 [Data lakes](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
