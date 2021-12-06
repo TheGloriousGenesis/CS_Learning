@@ -3,7 +3,7 @@
 Additional Learning:
 - [Skill builder](https://explore.skillbuilder.aws)
 
-| Term|Definition|
+|Term |Definition|
 |:---:|:--------:|
 |AWS            |On demand delivery of IT resources and applications through the internet|
 |Cloud computing|Collection of remote on-demand virtual resources offering compute, storage, database and network services that be can rapidly deployed at scale|
@@ -16,6 +16,27 @@ Additional Learning:
 |Microservices  | Decoupled component, allows scaling and development independent of other components|
 |Policy (AWS IAM) | Is a collection of permissions |
 |Subnet         | A collection of EC2 instances|
+|NACLs| stateless|
+|Recovery time objective (RTO)||
+|Recovery Point Objective (RPO)| It is the acceptable amount of data loss measured in time|
+|Elastic | The ability to scale computing resources up and down easily, with minimal friction|
+
+
+## Amazon Kinesis Overview
+
+Makes it easier to connect analyze and process data streams in real-time/near real-time.
+
+It processes streams from both binary encoded data (audio and video) and base64 text-encoded data.
+
+Auto-scaling is not automatic
+
+Kinesis data stream is a set of shards which contains a sequence of data records.
+
+The stream processing layer is managed by consumers, but once the data records are streamed, they can not be modified.
+
+Data is stored for 24 hours by default.
+
+Kinesis data stream is a stream storage layer.
 
 ## Pre-requisites
 
@@ -32,6 +53,7 @@ The most common service models are as follows:
   - Application accessed over the internet (e.g gmail)
 
 ### Cloud Computing concepts:
+
 1. On-demand resourcing
 2. Scalability (Allows you to increase/decrease power or quantity with installation or physical processes provisioned)
 3. Economy of Scale
@@ -43,11 +65,11 @@ The most common service models are as follows:
 9. Security
 
 ### Cloud Compute core services:
+
 - Compute
 - Network
 - Storage
-- Database - Stores structured data in storage 
-
+- Database - Stores structured data in storage
 
 [comment]: <> (### [Deployment models]&#40;https://docs.aws.amazon.com/en_us/sdk-for-net/v3/ndg/gs-cloud-deployment.html&#41;)
 ### Deployment models
@@ -105,7 +127,6 @@ The volumes physically reside on the same host that provides your EC2 instance i
 EC2 provides ephemeral storage (transient instead of persistent, good for temp file storage, cache, buffer, can but 
 software on the instance based on this too, but not increase ephermal range, cam connect through pem or SSH)
 
-
 **Pros**
 - Read write speed better than average compared to alternative block storage
 - Storage included in the price of the VM/server
@@ -130,6 +151,8 @@ Different types of E2C instances are optimised for different purposes:
 - Accelerated - Offers high-performances processors
 - Storage - Suitable for data warehousing applications (data held for long time)
 
+>>> When does the ec2 instance start charging?
+
 cj_at1
 
 ### AWS Shared Responsibility
@@ -139,7 +162,7 @@ cj_at1
 **Customer Responsibility**
 
 - Customer data, Platform, applications, Identity & Access Management, Operating System, Network & Firewall Configuration,
-Client side data encryption, data integrity authentication, server side encryption, network traffic protection.
+Client side data encryption, data integrity authentication, server side encryption, network traffic protection, origin server
 
 **AWS Responsibility**
 
@@ -155,6 +178,8 @@ There are 4 different type of pricing commands:
 - **Spot** - If available can use it, up to 6 hours. Any workload that can be spun up when abruptly stopped
 - **Reserved** - (discount on On-demand, require 1-3 year term commitment)
 - **Compute Saving Plans** - (discount on On-Demand for consistent compute usage, require 1-3 year term commitment)
+
+for ecample EC2 billing begin when the AMI boot sequence is initiated, ends with instance is terminated
 
 ### Dedicated computing
 
@@ -175,6 +200,7 @@ There are 4 different type of pricing commands:
 **Simple Notification Service - NOTIFICATIONs**
 - Create topic. Have publishers and subscribers to topic
 - Push service - Messages automatically pushed to publishers. Limited retries. If publisher don't recieve it, message lost
+- Use SNS with CloudWatch to send messages (Alarm) when threshold has been reached
 
 **Simple Queue Service - QUEUING**
 - Send, store and recieve messages (message stored for max 14 days)
@@ -188,6 +214,8 @@ There are 4 different type of pricing commands:
 - Use other AWS service to auto trigger code
 - CON - timeout : 15 mins. If more than this, break function to smaller bits or use EC2
   - Can use AWS Step function to create state machine (to create workflow) to orchestrate lambda functions
+
+> reports metrics to where?
 
 ### Containers
 
@@ -229,7 +257,7 @@ Each region has AWS Edge network locations, usually heavily used. These are Cont
 whole world. This is done to deliver low latency, high throughput content to end users. This is done through
 [AWS CloudFront](https://aws.amazon.com/cloudfront/features/?p=ugi&l=na&whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc).
 The data flow from customer to client service is as follows:
-- EC2 instance --> Edge location (cache) --> customer
+- EC2 instance(origin) --> Edge location (cache) --> customer
 
 > Edge locations are **not** equal to availability zones. Availability zones have 200+ services whereas edge locations have few services
 mainly for caching CloudFront data
@@ -321,6 +349,9 @@ No size limit for bucket (per file - 5T)
 - S3 Glacier (Archive data, retrieval 3-5 hrs)
 - S3 Glacier Deep Archive (Archive data, retrieval up to 12 hrs)
 
+> Glacier retrieval limts and costs
+- Glacier users can restore 10 GB of data for free every month
+
 Object based storage system that is:
 - Highly available
 - Durable
@@ -334,6 +365,8 @@ Automatically stores and duplicates data across multiple avaialblity zones
 
 **Cons**
 - Smallest file size 0 bytes, largest 5 terabytes
+
+
 
 ### Amazon EFS - Elastic File Storage
 
@@ -371,6 +404,14 @@ Customer responsible for:
 - Patching software on amazon EC2 instances
 - Permissions for Amazon S3 
 
+
+### AWS disaster recovery
+
+- Pilot light recovery
+  - A very small replica of only your business-critical systems is made and is always running in another region,
+  in case of diversion to that region in case of a disaster
+- Warm stand by
+
 ### IAM
 
 IAM Role : Permissions, getting access key to allow code to speak to other AWS services.
@@ -382,6 +423,9 @@ User permissions created. Can also be created on DB side or SSO.
 IAM role is an identity that you can assume to gain temp access
 
 Multi-factor authentication: provides extra layer of protection for AWS accounts
+
+
+>>> When can you change the instance security on a server
 
 ### AWS Organizations
 - create hierarchy of roles and service control policies to control number of roles that can be granted. Main accounr called 
@@ -405,15 +449,49 @@ Information you need to know to check AWS compliance
 ### AWS Inspector
 - Allows you to perform security assessment checks
 
-### Amazon KMS
+### AWS CloudWatch
+> What does it do?
 
-Used to store and generate encryption keys that can be used by other AWS services/applications
+Monitors AWS infrastructure
+
+### AWS Cognito
+> What does it do?
+
+They support both authenticated and unauthenticated identities
+
+### AWS CloudTrail
+
+Stores logs 
+
+### AWS RDS
+
+Provides high availablity and failover support for DB instances using multi-AZ deployments.
+Amazon technology:
+- Oracle
+- ALL SQL forms
+- MariaDB instances
+
+SQL Server Mirroring
+- SQL Server DB instances
+
+### AWS
+>>> Penetration testing is possible without AWS approval depending on service used
+
+### AWS KMS
+
+Used to store and generate encryption keys that can be used by other AWS services/applications such as CloudTrail (rather than
+default S3 managed keys)
 
 There are 4 main components:
 - Customer master keys
 - Data Encryption keys
 - Key Policies
 - Grants
+
+
+> Pricing?
+
+> Audit changes?
 
 ### Amazon GuardDuty
 
@@ -422,6 +500,9 @@ There are 4 main components:
 ## Module 7: Monitoring and Analytics
 
 ### AWS CloudTrail event
+
+- Used to record AWS API calls and other activities from AWS account
+- Used to save recorded information to log files in S3 bucket (default encrption SSE-S3 applied)
 - Keeps metrics of application in single dashboard
 - Monitor your resource usages
 
@@ -445,6 +526,33 @@ Cost explorer - Visualise graphs of expenditure
 AWS Budget - receive alerts when there service usage exceeds user defined limits
 
 AWS TAM - only for enterprise, offers point of contact support
+
+### Cost Management Services
+
+1. Planning to migrate to AWS  (TCO Calculator):
+   1. Can compare AWS Cloud with on-premises costs
+      2. Report will include:
+         1. On-premise estimates (server, network hardware. Power/cooling costs. Data center space. Cost of IT personnel)
+   2. Good for those considering migrating to AWS
+2. Check recent costs (The Billing Dashboard):
+   1. Visualise graphs of expenditure (Spend by service and service by spend, spend summary graph)
+3. Analyze long-term spending trends (Cost Explorer):
+   1. Historic and forecast data 12 months in past/future
+   2. Insightful recommendation on replacing On-demand resources with Reserve ones
+4. Limit spending (AWS Budgets):
+   1. 
+5. Simplify your bills (Consolidated billing):
+
+### Customer Support Plans
+
+Support Options:
+1. Access online resources (Basic)
+2. General guidance from AWS (Developer) (time: Monday-Friday 8am-6pm)
+3. 24-hour technical support (Business)
+4. Dedicated account managers and personalized consultation (Enterprise)
+
+During support there are certain levels that can be stated when an issue occur (Guidance, System impaired, Production system down,
+Business-critical system down).
 
 ## Module 9: Migration and Innovation
 
@@ -482,7 +590,7 @@ For migration, AWS can ship storage to help with the data process
   - 8TB
 - AWS Snowball devices:
   - Edge storage optimized, Edge Compute optimized
-  - 80 TB
+  - ~Petabyte data transport (80 TB hard drive capacity)
 - AWS Snowmobile:
   - For crazy large amounts of data (a whole truck!)
   - 100 PB
