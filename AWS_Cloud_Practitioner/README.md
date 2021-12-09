@@ -11,13 +11,13 @@ Additional Learning:
 |Public Cloud   | Consumer does not see hardware. Can specify geographical location of servers. Cloud vendor does maintenance|
 |Private Cloud  | Infrastructure owned by consumer (on premise). Consumer does maintenance|
 |Hybrid Cloud   | Mix between private and public cloud. Established when link occurs between private and public cloud. Usually short term (e.g for disaster recovery) |
-|Lambda (Amazon)| Serverless compute |
+|Lambda (Amazon)| Serverless compute, no need to provision hardware, or auto-scaling, ec2 instances |
 |Monolithic     | Single component application|
 |Microservices  | Decoupled component, allows scaling and development independent of other components|
 |Policy (AWS IAM) | Is a collection of permissions |
 |Subnet         | A collection of EC2 instances|
 |NACLs| stateless|
-|Recovery time objective (RTO)||
+|Recovery time objective (RTO)| The maximum acceptable amount of time it takes to get the system back online |
 |Recovery Point Objective (RPO)| It is the acceptable amount of data loss measured in time|
 |Elastic | The ability to scale computing resources up and down easily, with minimal friction|
 
@@ -127,6 +127,10 @@ The volumes physically reside on the same host that provides your EC2 instance i
 EC2 provides ephemeral storage (transient instead of persistent, good for temp file storage, cache, buffer, can but 
 software on the instance based on this too, but not increase ephermal range, cam connect through pem or SSH)
 
+EC2 has auto-scaling which uses a number of metrics to automatically add or remove servers from clusters
+
+Horizontal scaling > Vertical scaling
+
 **Pros**
 - Read write speed better than average compared to alternative block storage
 - Storage included in the price of the VM/server
@@ -151,7 +155,7 @@ Different types of E2C instances are optimised for different purposes:
 - Accelerated - Offers high-performances processors
 - Storage - Suitable for data warehousing applications (data held for long time)
 
->>> When does the ec2 instance start charging?
+> When does the ec2 instance start charging? AMI Host script run
 
 cj_at1
 
@@ -195,6 +199,8 @@ for ecample EC2 billing begin when the AMI boot sequence is initiated, ends with
   - Distribute traffic to other servers depending on demand
   - Providing a single point of contact for traffic into the auto-scaling group
 
+- core components: launch configuration, auto scale group, scaling plan
+
 ### AWS Messaging Service
 
 **Simple Notification Service - NOTIFICATIONs**
@@ -203,9 +209,11 @@ for ecample EC2 billing begin when the AMI boot sequence is initiated, ends with
 - Use SNS with CloudWatch to send messages (Alarm) when threshold has been reached
 
 **Simple Queue Service - QUEUING**
-- Send, store and recieve messages (message stored for max 14 days)
+- Send, store and recieve messages (message stored for max 14 days) - default retention time 4 days
 - Consumer looks to queue to pick up messages
 - Polling service (pull service)
+- Duplicated queues (distributed system) so messages can be extracted more than once
+- Use in microservice structure for them to talk to each other
 
 **AWS Lambda - serverless**
 - Run code (functions) without provisioning or managing servers
@@ -214,8 +222,18 @@ for ecample EC2 billing begin when the AMI boot sequence is initiated, ends with
 - Use other AWS service to auto trigger code
 - CON - timeout : 15 mins. If more than this, break function to smaller bits or use EC2
   - Can use AWS Step function to create state machine (to create workflow) to orchestrate lambda functions
+- One API to one lambda function
+- Do not keep environment variables inside a lambda function
+- Lambda functions and event sources part of lambda applications
+
+**AWS Simple Workflow Service**
+- fully managed state tracker and task coordinator
+
+**AWS Simple Email services**
+- Ensure high delivery rates of emails
 
 > reports metrics to where?
+> Cloud trail
 
 ### Containers
 
@@ -236,8 +254,14 @@ Global infrastructure is composed of the following:
 ### Availability Zones (AZs)
   - Physical data centers of AWS : Contains cloud compute main services
   - Multiple datacenters can form a availability zone
+  - Each AZ will have at least one other AZ
+  - They are all connected through low latency links
+  - Each AZ is isolated from each other
+  - High available and resillency
 
 ### [Availablity Region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+
+- Every region act independently
 
 It is best practice to launch multiple EC2 instances across different regions due to failure reasons (High availablity).
 The main region picked should be done based on the following:
@@ -249,9 +273,12 @@ The main region picked should be done based on the following:
 Each region has many availablity zone (at least 1) **BUT** each availablity zone can only belong to one region
 
 The key features of a region is given below:
-- Edge Locations (Some Edge locations have a secondary cache)
-- Regional Edge Caches (caches content closer to the user)
+- Edge Locations (Some Edge locations have a secondary cache, retrieve cache data from regional edge cachce)
+  - Form CDN (used by Cloudfront and lambda edge to cache data)
+- Regional Edge Caches (caches content closer to the user, retains data longer in regional edge cache than edge location)
 - Has more 'Points of Presence'
+
+>Cloudfront (origin) -> regional cache -> edge location -> customer
 
 Each region has AWS Edge network locations, usually heavily used. These are Content Distribution Network **(CDN)** for the
 whole world. This is done to deliver low latency, high throughput content to end users. This is done through
@@ -269,6 +296,30 @@ as it runs instead your datacenter, allowing a high level of control over data.
 
 Can access amazon services through CLI, sdk, or through management console UI.
 
+### AWS CloudSearch
+
+managed search solution
+
+### AWS Elastic Transcoder
+
+- manages transcoding process for any device
+- frequency accessed media is cache at the edge
+
+### AWS Appstream
+
+- Used to provide windows application through the cloud to end user without code modifications
+
+### AWS Data pipeline
+
+- reliable service to move data from compute to storage services
+- on premise data source - on cloud data source
+- can move db data using this (or any data)
+
+### AWS CloudFormation
+
+- Create a collection of related AWS resources and provision them in an orderly and predictable way. through json
+- can manage any AWS application through json format (Customisable work)
+
 ## Module 4: Networking
 
 ### Amazon Virtual private Cloud
@@ -282,8 +333,11 @@ One can launch servers inside VPC. There are two types of server groups (subnets
 
 AWS Direct connect : Establish a dedicated connection between on-premises data center and the VPC
 
+Can use Lambda with VPC to restrict data from being public
+
 ### Firewall
-Have to set up firewalls! Set up firewalls on subnet level via network access control list (network ACL) and on a 
+Have to set up firewalls! 
+Set up firewalls on subnet level via network access control list (network ACL) and on a 
 EC2 level via security group.
 
 **Subnet**:
@@ -304,6 +358,8 @@ Routes user to internet applications (return IP address of EC2 instance the appl
 Client --> Route 53 --> Application load balancer
 
 ## Module 5: Storage and Databases
+
+
 
 There are three types of storage in AWS:
 - Block storage
@@ -389,9 +445,23 @@ Engines supported (6):
 - MySQL
 - Microsoft
 
-Amazon DynamoDB (for non-relational db)
+### Amazon DynamoDB (for non-relational db)
+- nosql db (key-value store)
+- Used for ultra-high performances
 - Serverless 
 - Amazon prime day runs on this!
+- Charged for the total amount of through put and the storage of your data (allocation read and write units)
+
+**Pros**
+- Fully managed
+- Schemeless
+- High available
+- Fast
+
+**Cons**
+- Queries are less flexible than SQL
+- Eventual consistency
+- Throughput provisional (not automatically adjusted. preset)
 
 Analyse and query data from across data warehouses? use Amazon Redshift
 
@@ -407,10 +477,28 @@ Customer responsible for:
 
 ### AWS disaster recovery
 
-- Pilot light recovery
+- Back up and restore (RTO long, Cost Low)
+    - Backups are made, put on AWS storage service.
+    - Uses the following to actually import into AWS:
+      - Storage gateway
+      - aws snowball
+      - direct connect
+      - VPN
+      - Internet
+    - 
+- Pilot light recovery (RTO low, Cost Low)
   - A very small replica of only your business-critical systems is made and is always running in another region,
   in case of diversion to that region in case of a disaster
-- Warm stand by
+  - Mirroring data, template environment created
+  - Use AMI to start instances
+- Warm stand by (RTO Medium, Cost Medium)
+  - All key services running. small version of production environment running.
+  - Scale up when disaster happens in reroute. everything like what it was before
+  - DNS records changed to redirect
+- Multi-site (RTO fast, Cost High)
+  - Duplicate everything (full scale)
+  - DNS records changed to redirect
+
 
 ### IAM
 
@@ -424,8 +512,13 @@ IAM role is an identity that you can assume to gain temp access
 
 Multi-factor authentication: provides extra layer of protection for AWS accounts
 
+Defines what services can communicate with others
 
->>> When can you change the instance security on a server
+> When can you change the instance security on a server
+Even after it has be spun up
+
+### Identity fedretaion
+Allows one to access and manage AWS resources even if i dont have user account in IAM
 
 ### AWS Organizations
 - create hierarchy of roles and service control policies to control number of roles that can be granted. Main accounr called 
@@ -442,6 +535,7 @@ Information you need to know to check AWS compliance
 
 ### AWS waf
 - Create rules for firewall
+- Relies on cloud front
 
 ### AWS shield 
 - Protection against DDoS attacks in real time
@@ -453,26 +547,45 @@ Information you need to know to check AWS compliance
 > What does it do?
 
 Monitors AWS infrastructure
+- Basic EC2 monitoring by default 
+- 7 metrics 5 minutes freq
+- 3 metrics 1 min freq
+- States: OK, Alarm, insufficent data
+
+Sends notification alarmas or automatically make changes to the resources im monitoring based on rules that i have defined
+
+### AWS storage gateway
+
+Connects on premises storage with aws storage
 
 ### AWS Cognito
 > What does it do?
 
-They support both authenticated and unauthenticated identities
+They support both authenticated and unauthenticated identities for application use (can use SSO, or facebook authentication alondside AWS for
+authentication).
+- Mobile device specific!
 
 ### AWS CloudTrail
 
-Stores logs 
+Web service that records API calls made on your account and delivers log files to your amazon S3 bucket
+every 5 minutes
 
 ### AWS RDS
 
 Provides high availablity and failover support for DB instances using multi-AZ deployments.
+
+Provides duplicate db instance in another AZ in the same region (high availability and high resiliency)
+Here 
+
 Amazon technology:
 - Oracle
-- ALL SQL forms
+- ALL SQL forms (except below)
 - MariaDB instances
 
 SQL Server Mirroring
 - SQL Server DB instances
+
+AWS responsible for patching of RDS
 
 ### AWS
 >>> Penetration testing is possible without AWS approval depending on service used
@@ -540,7 +653,9 @@ AWS TAM - only for enterprise, offers point of contact support
    1. Historic and forecast data 12 months in past/future
    2. Insightful recommendation on replacing On-demand resources with Reserve ones
 4. Limit spending (AWS Budgets):
-   1. 
+   1. Cost
+   2. Usage
+   3. Reseraved instance utlization
 5. Simplify your bills (Consolidated billing):
 
 ### Customer Support Plans
@@ -588,21 +703,44 @@ For migration, AWS can ship storage to help with the data process
 - AWS Snowcone:
   - small rugged, secure edge computing and data transfer
   - 8TB
+  - Works with IoT sensors
 - AWS Snowball devices:
   - Edge storage optimized, Edge Compute optimized
   - ~Petabyte data transport (80 TB hard drive capacity)
 - AWS Snowmobile:
   - For crazy large amounts of data (a whole truck!)
-  - 100 PB
+  - 100 PB (Exabyte scale)
+  - Whilst on site AWS will connect network from local netwrok to mobile
+  - Data then gets sent to AWS where it is imported into amazon s3
+  - Data encrypted with 256 bit encryption keys (KMS)
 
 Serverless migration takes less time
 
 ### AWS Well-Architected Framework Pillars
 
 - Cost optimization
+  - Measure ROI
 - Operational excellence
+  - Prepare, operate, evolve
+  - Annotate documentation
+  - Make frequent small changes
+  - Anticipate failure
+  - Knowledge exchange
 - Performance efficiency
+  - Use Serverless architecture (cheaper)
 - Reliability
+  - Test
+  - Monitoring
+  - Scale horizontal to reduce failure
+  - Auto-scaling for requirements
+  - Automation used where possible
+- Security
+  - IAM
+  - Data Protection
+  - Enable traceability
+  - Apply security at every level
+  - Automation
+  - Protect data in transit
 
 ## Module 10: AWS Certified Cloud Practitioner Basics
 
@@ -632,5 +770,8 @@ Strategies
 - Max mark 1000, pass 700
 
 ### Misc
+
+Placement Groups must be in the same AZ zone
+
 - [Protect sensitive data](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
 -  [Data lakes](https://aws.amazon.com/blogs/big-data/create-a-secure-data-lake-by-masking-encrypting-data-and-enabling-fine-grained-access-with-aws-lake-formation/)
