@@ -69,6 +69,12 @@ object and can only hold immutable types (so )
 Must remember:
 - **Sets do NOT keep order! They are unordered data structures!** But maps/dicts *do*! BIG HINT ENERGY
 
+
+## Python in-built functions
+|Function|Definition|
+|:------:|:--------:|
+|`locals`| Defines the local variables, methods, classes within a function in a map format (what the compiler knows)|
+
 ## Data streams
 
 
