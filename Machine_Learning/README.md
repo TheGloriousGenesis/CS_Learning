@@ -67,6 +67,19 @@ Later on think about how Data Engineers will need to clean and visual data to un
 
 >Look at the most popular evaluation metrics for machine learning problems
 
+
+
+
+
+
+Step #1: Collect the Data
+Step #2: Clean and Explore the Data
+Step #3: Research Methodologies
+Step #4: Build and Evaluate the Model
+Step #5: Present the Results
+
+
+
 This value and evaluation metric could change as the project progresses but always good to have a goal.
 
 ### Feature Engineering
@@ -250,7 +263,7 @@ Extra Calculate the:
   - Why are we doing the project (Pros/Cons)
     - Benefits for all those involved (money saved, time saved, risks concerned, shift of control)
   - Question (questionaires), sample data on current situation of recieving party
-  - 
+
   - Datasources:
     - Where I can get the datasources
     - What datasets do i need? what is available for this problem? 
@@ -293,3 +306,13 @@ is small, it will always predict any new data point as the predominate class.
   - System design book: Alex Xu's
   - Designing data intensive applications
   - Spend a lot of time doing one type of topic then switch when you understand
+
+- Responsible for client transcation data (optimising data warehouse)
+- Third party data? How will that be shared?
+
+- Client senior analyst - working for the bank 
+- Explain Number of customized dashboards
+  - Marketing insights
+  - operations planning
+  - activity heat map
+- Understand 
