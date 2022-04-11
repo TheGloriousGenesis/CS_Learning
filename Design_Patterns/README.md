@@ -24,6 +24,8 @@ To understand design patterns, we must first understand Object-Orientated basics
 | <em> ' Program to interface, not implementation ' </em> | To ensure flexibility and extension of code base if needed |
 
 
+# ==Software design patterns (prevalent in python)==
+
 
 ## SOLID principles
 
