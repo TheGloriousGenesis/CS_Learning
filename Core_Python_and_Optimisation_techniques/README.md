@@ -150,6 +150,9 @@ Order in which the system executes files:
 Although python is not strictly typed, having strictly typed conventions helps make the code cleaner to read and minimises
 bugs. This means defining the type of the output of the methods (e.g `def my_method(): -> str`)
 
+- It is common to create a config module to share configuration in you current module and other modules. 
+Just import the module into whatever module you need config on.
+
 ## Class method and variation annotation
 
 |Decorator|Definition|
@@ -157,6 +160,44 @@ bugs. This means defining the type of the output of the methods (e.g `def my_met
 |`@dataclass`| Useful for a class that has many attributes, has own define hash, equals method|
 |`@abc.abstractmethod`| Must extend `abc.ABC`. Attached to methods so that class that extends from this can not be instantiated unless abstract methods implemented|
 |`@property`| Has three methods, getter, setter and deleter. Define these methods by using the name of the method the decorator is attached too then adding `.setter` etc to it e.g `@exampleMethod.setter`|
+
+# ==Decorators in Python==
+[PEP 318 definition](https://peps.python.org/pep-0318/)
+
+Defined by `@` followed by a function name, decorators. Decorators can be class, function, method based.
+What the difference is I do know?
+
+```python
+def decorator(func):
+   return func
+
+@decorator
+def some_func():
+    pass
+```
+
+same as
+
+```python
+def decorator(func):
+    return func
+
+def some_func():
+    pass
+
+some_func = decorator(some_func)
+```
+
+Be careful when using decorators as there is a chance that the docstrings written for `some_func`, or the method that is
+getting decorated, will not be available. So how do you preserve docstrings whilst using decorators?
+
+# ==Partial==
+# ==Class (Module) Methods vs StaticMethod==
+# ==Functional programming in Python==
+# ==Context Managers==
+# ==Generators==
+# ==Difference between function and a Method in Python?==
+
 
 ## Types
 
@@ -225,6 +266,24 @@ Input and expected output define within one bracket.
 
 Python has its own built-in logging function. This is called through `logging.getLogger(__name__)`. This calls the logger
 using the modules name (given by `__name__`).
+
+## Packaging
+When creating a python package there project structure is as follows:
+```txt
+~/my_pacakage/
+    pyproject.toml
+    setup.cfg
+    my_package/
+        __init__.py
+```
+A brief description on theses files and how to use it can be found [here](https://setuptools.pypa.io/en/latest/build_meta.html).
+
+The `pyproject.toml` file describes the python object used for the build using the `[build-system]`
+command. 
+
+In order to use just a `setup.cfg` **ONLY** file ([PEP517](https://www.python.org/dev/peps/pep-0517/) /PEP718) to create packages you must also have a `pyproject.toml` file 
+so that the build backend can be stated, and use a compatible build front end such as `pip >= 19` or build.
+To read more, see [here](https://setuptools.pypa.io/en/latest/setuptools.html#configuring-setup-using-setup-cfg-files)
 
 ## Tips for interviews:
 - See the restraints of the variables and estimate what the complexity should be
