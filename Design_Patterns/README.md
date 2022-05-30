@@ -57,15 +57,16 @@ All classes must derive base class without changing behaviour of base class
 Have a class implement new interfaces over adding methods to existing interfaces.
 
 
-
 ### Dependency Inversion Principle
 
 - *Code to interface not to concrete implementations*
 
 ==Look at dependancy inversion pattern?==
 
+
 ## Observer Pattern
 *<strong> Publishers (<span style="color:green"> subject </span>) + Subscribers (<span style="color:green"> observers </span>)
 = Observer Pattern </strong>*
+
 
 ## Sharding and data distribution

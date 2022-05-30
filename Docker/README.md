@@ -94,7 +94,7 @@ Most commonly used dockerfile instructions:
 - Host Mounted
   - personal. can not map volumes to host directories
 - Anonymous
-  - fdf
+  - 
 
 use `:ro` for read only access
 

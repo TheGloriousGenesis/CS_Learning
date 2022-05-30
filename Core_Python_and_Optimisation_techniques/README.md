@@ -69,7 +69,6 @@ object and can only hold immutable types (so )
 Must remember:
 - **Sets do NOT keep order! They are unordered data structures!** But maps/dicts *do*! BIG HINT ENERGY
 
-
 ## Python in-built functions
 |Function|Definition|
 |:------:|:--------:|
@@ -191,13 +190,28 @@ some_func = decorator(some_func)
 Be careful when using decorators as there is a chance that the docstrings written for `some_func`, or the method that is
 getting decorated, will not be available. So how do you preserve docstrings whilst using decorators?
 
-# ==Partial==
-# ==Class (Module) Methods vs StaticMethod==
-# ==Functional programming in Python==
-# ==Context Managers==
-# ==Generators==
-# ==Difference between function and a Method in Python?==
 
+# ==Partial==
+
+
+# ==Class (Module) Methods vs StaticMethod==
+
+# ==Functional programming in Python==
+
+# ==Context Managers==
+
+Allows allocation of resources only when needed. Basic example is the `with` example. 
+Replaces the need to add `try/finally` blocks. Can be implemented as a class where 
+`__init__`, `__enter__`, `__exit__` methods are written, or as a generator/decorators.
+
+Define factory function
+
+# ==Generators==
+The use of keyword `yield` instead of `return` in a function creates a generator instead
+of normal function.
+# ==Difference between function and a Method in Python?==
+# == lambdas, operations, map, reduces ==
+# == lists, methods of lists (extend vs append)
 
 ## Types
 
@@ -212,7 +226,8 @@ With abstract type, the abstract class holds the constructor (`__init__`). So cl
 |Union| define type as one type or the other. Defined as `Union[int, str]`|
 |||
 
-## Naming function
+# Functions
+## Naming functions
 [The importance of underscore in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
 
 - A single underscore prefixing method name signifies that the method is intended for internal use (not enforced by python
@@ -220,6 +235,25 @@ With abstract type, the abstract class holds the constructor (`__init__`). So cl
 - Although not strictly enforced, if methods are **ALL** imported from modules (with `*`), methods with prefixing `_` do not get imported
 - Double line before and after the method name (`__exampleMethod__`) used so that python knows that user does not want to use
   name as variable (like linting). These are called *magic methods*
+
+## Arguments
+- **Default** arguments are assigned via the `=` operator. Once we state default arguments, 
+all arguments to the right must also be default arguments:
+```python
+def hello(name, msg="Hello"):
+    print(msg, name)
+```
+
+- **Keyword** arguments used to specify inputs in any order. Keyword arguments must follow
+positional arguments:
+```python
+def hello(msg="Hello", name="Brenda"):
+    print(msg, name)
+```
+
+- Multiple **Non Keyword** arguments can be passed through via `*args` argument
+- Multiple **Keyword** arguments can be passed through via `*kwargs` argument
+
 
 ## Testing in python
 
@@ -268,6 +302,11 @@ Python has its own built-in logging function. This is called through `logging.ge
 using the modules name (given by `__name__`).
 
 ## Packaging
+>Python package is just a folder containng modules and maybe other folders. It usually 
+>contains one file named `__init__.py` that tells python that 'Hey this directory is a package'
+
+> **N.B**: Can't use minus in python package name but pip uses hypens (minus sign!)
+
 When creating a python package there project structure is as follows:
 ```txt
 ~/my_pacakage/
