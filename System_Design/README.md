@@ -24,7 +24,7 @@
 ## Introduction
 
 System design is about decomposing a system into coding blocks and optimising the communication between them.
-The number one reason to do it is usually because the system is at the end of it's life.
+The number one reason to do it is usually because the system is at the end of it's life, or you are designing a new system.
 
 ## Steps to answering System Design Interview
 

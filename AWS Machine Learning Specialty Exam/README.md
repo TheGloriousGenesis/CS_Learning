@@ -1,9 +1,0 @@
-- AWS Kinesis 
-- AWS Sagemaker
-- Computer vision is not common due to training data that is required for the task. Need diverse data set of different poses
-- Use virtual worlds to train real world AI Models
-  - Creating synthetic data (images)
-- Synthetic data is going to become tha majority data used in AI (by 2030)
-- 3DEXCITE RECOGNITION BENEFITS
-  - Photorealistic synthetic datasets
-- 
