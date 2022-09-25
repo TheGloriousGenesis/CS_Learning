@@ -36,7 +36,7 @@
 When you start a machine learning project, there should be specific steps that one should follow in order to ensure best 
 practices:
 
-### 1: Project definition {#project-definition}
+### 1: Project definition
 1. Check if simple coded solution could work. If not, why?
 
 > For example, a business comes to you to try and determine the likelihood of customers 
@@ -59,7 +59,7 @@ practices:
 4. Checks for consistency, completeness, accuracy
 
 ### 3: Define what success looks like via evaluation metrics
-1. Define what a successful end will be: 95% accuracy? 99.9% accuracy? This will depend on the [ML problem decided](#project-definition)
+1. Define what a successful end will be: 95% accuracy? 99.9% accuracy? This will depend on the [ML problem decided](#1-project-definition)
 
 > For different use cases different levels of successes could also apply. For example, when workingin pharma for a client who deals with new drugs for patients, you will want near 100% accuracy as possible
 
