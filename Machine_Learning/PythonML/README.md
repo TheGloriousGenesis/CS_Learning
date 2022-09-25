@@ -15,9 +15,12 @@ it is best practice to randomise the indexes of the data given. This can be done
 `dataframe.sample(frac=AMOUNT_YOU_WANT_TO_SHUFFLE_FRACTION)`. 
 
 # Pandas
-
 ## Questions:
 - How to replace the nans/zeros in a column with the average of another row based on conditional grouping of values in that row?
 
 `df.groupby('GROUP_COLUMN')['NAN_COLUMN'].transform(lambda x: x.fillna(x.mean()))`
+
+# Numpy
+
+
 

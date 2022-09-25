@@ -43,7 +43,16 @@ Variables in python should not be in camelcase like Java, but supposedly separat
   - Use capital letters to represent constant type of variables in python (although there are no built-in constant types
 in python)
 
+### Tuples
+
+**PRESERVES ELEMENT ORDER**
+**IMMUTABLE**
+
+
 ## Lists
+
+**PRESERVES ELEMENT ORDER**
+**MUTABLE**
 
 Python lists do not need to be declared as they are a part of Python (unlike arrays, that need to be imported from a seperate module,
 either `array` or `numpy`)
@@ -56,11 +65,17 @@ Arrays also great for numerical operations as lists can not handle math operatio
 
 ## Dictionaries (HashMaps)
 
+**DOES NOT PRESERVE ELEMENT ORDER**
+**MUTABLE**
+
 Dictionaries are like hashmaps in other languages. Under the hood, dictionaries uses a hash function to generate the addresses
 of the locations of the item. They work in the same way as normal hashmap, they do not allow duplicate key entries, keys can be of
 immutable types (boolean, tuple etc)
 
 ## Sets
+
+**DOES NOT PRESERVE ELEMENT ORDER**
+**MUTABLE**
 
 Python also has inbuilt set type. This allows unique objects to be stored in a variable. Can be declared via `set()`
 or `{}`. Elements within a set can be of different types (as commonly seen with other python inbuilt types). A set is an immutable 
@@ -160,6 +175,8 @@ Just import the module into whatever module you need config on.
 |`@abc.abstractmethod`| Must extend `abc.ABC`. Attached to methods so that class that extends from this can not be instantiated unless abstract methods implemented|
 |`@property`| Has three methods, getter, setter and deleter. Define these methods by using the name of the method the decorator is attached too then adding `.setter` etc to it e.g `@exampleMethod.setter`|
 
+`default_factory`
+
 # ==Decorators in Python==
 [PEP 318 definition](https://peps.python.org/pep-0318/)
 
@@ -198,6 +215,8 @@ getting decorated, will not be available. So how do you preserve docstrings whil
 
 # ==Functional programming in Python==
 
+Passing functions as parameter to another function is one of the core aspects of functional programming
+
 # ==Context Managers==
 
 Allows allocation of resources only when needed. Basic example is the `with` example. 
@@ -227,7 +246,14 @@ With abstract type, the abstract class holds the constructor (`__init__`). So cl
 |||
 
 # Functions
-## Naming functions
+
+|   Description   |                                                 Definition                                                 |
+|:---------------:|:----------------------------------------------------------------------------------------------------------:|
+|  Pure Function  |   For the same args, gives same outputs. It is not effected by any variable outer scope of the function.   |
+| Impure Function | For the same args, gives different outputs. This is due to outer scope variables influencing return values |
+|||
+df
+### Naming functions
 [The importance of underscore in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
 
 - A single underscore prefixing method name signifies that the method is intended for internal use (not enforced by python
@@ -236,7 +262,7 @@ With abstract type, the abstract class holds the constructor (`__init__`). So cl
 - Double line before and after the method name (`__exampleMethod__`) used so that python knows that user does not want to use
   name as variable (like linting). These are called *magic methods*
 
-## Arguments
+### Arguments
 - **Default** arguments are assigned via the `=` operator. Once we state default arguments, 
 all arguments to the right must also be default arguments:
 ```python
@@ -253,6 +279,7 @@ def hello(msg="Hello", name="Brenda"):
 
 - Multiple **Non Keyword** arguments can be passed through via `*args` argument
 - Multiple **Keyword** arguments can be passed through via `*kwargs` argument
+
 
 
 ## Testing in python
@@ -346,3 +373,12 @@ question the example given! why the numbers used, why the size, everything
   - Anytime you have to use data from previous solution, think recursive too! But remember space complexity! when you recurse
 without an accumulator that passes through in the method, you are requiring the system to call stack to save result from previous result
 Try and pass accumulators through to reduce space complexity
+
+
+
+
+# Python 3.10 for windows
+
+- **Only** support Windows 8.1 and newer
+- MAX_PATH Limitation gawwn, longer paths (len > 260 chars) allowed
+

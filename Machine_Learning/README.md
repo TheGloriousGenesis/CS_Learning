@@ -2,16 +2,27 @@
 
 ## Glossary
 
-| Word | Definition|
-|:----:|:---------:|
-| Generalisation | The ability for the model to adapt itself to new unseen data |
-| Recommendation Systems | Predict what the user might enjoy watching or buying |
-| Association rule learning (Affinity Analysis) | Unsupervised learning technique that only works with categorical data |
-| Support (Affinity Analysis) | The frequency of the pattern given by the rule |
-| Confidence (Affinity Analysis) | The strength of an association rule relating to the likelihood of customer buying item A, given item B |
-| Lift (Affinity Analysis) | The interestingness of a rule by checking the strength of rule over random co-occurrence if two items |
-| Cost function | How best to best fit function to data |
-| Overfitting | When the model fits to the training data better than the testing data. When the cost funciton ~ 0 but can't fit new data well |
+|                               Word                                |                                                                                                                                Definition                                                                                                                                |
+|:-----------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                          Generalisation                           |                                                                                                       The ability for the model to adapt itself to new unseen data                                                                                                       |
+|                      Recommendation Systems                       |                                                                                                           Predict what the user might enjoy watching or buying                                                                                                           |
+|           Association rule learning (Affinity Analysis)           |                                                                                                  Unsupervised learning technique that only works with categorical data                                                                                                   |
+|                    Support (Affinity Analysis)                    |                                                                                                              The frequency of the pattern given by the rule                                                                                                              |
+|                  Confidence (Affinity Analysis)                   |                                                                                  The strength of an association rule relating to the likelihood of customer buying item A, given item B                                                                                  |
+|                     Lift (Affinity Analysis)                      |                                                                                  The interestingness of a rule by checking the strength of rule over random co-occurrence if two items                                                                                   |
+|                           Cost function                           |                                                                                                                  How best to best fit function to data                                                                                                                   |
+|                            Overfitting                            |                                                                      When the model fits to the training data better than the testing data. When the cost funciton ~ 0 but can't fit new data well                                                                       |
+|                                 -                                 |                                                                                                                                    -                                                                                                                                     |
+|                            Supervised                             |                                                           Trends based on current data (labels provided)  <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>                                                           |
+|                           Unsupervised                            | Trends based on current in data (labels not provided)    <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul> | 
+|                         Transfer Learning                         |                                                 Leverage machine learning models, use one model that knows A and tweak to know what B is   <ul><li> Natural Language processing - </li><li>Computer vision -  </li></ul>                                                 |
+|                      Reinforcement Learning                       |                                                                                                      Perform action in define space and reward/penalise on actions                                                                                                       | 
+|                          Neural network                           |                                                            Architectures that can be used in any type of machine learning problem, hence can fit into the supervised, unsupervised, semi-supervised problems.                                                            |
+|                                 -                                 |                                                                                                                                    -                                                                                                                                     |
+|                            Static data                            |                                                                                                                                 csv etc                                                                                                                                  |                                                                                                                                 
+|            Streaming data constantly changed over time            |                                                                                                                           trends in market etc                                                                                                                           |
+|                          Structured data                          |                                                                                                                   columns, like excel spreadsheet etc                                                                                                                    |
+|                         Unstructured data                         |                                                                                                                         Like audio, pictures etc                                                                                                                         |
 
 [comment]: <> (## TLDR: Top tips for whole ML process)
 
@@ -23,41 +34,34 @@
 
 ## Building ML Project 
 When you start a machine learning project, there should be specific steps that one should follow in order to ensure best 
-practices. The following defines the steps:
+practices:
 
-###  Project Definition
-1. Check if simple coded solution could work. If not, why? 
-2. Check if ML needed, if ML needed, what type of ML problem is it (suggestions below!):
+### 1: Project definition {#project-definition}
+1. Check if simple coded solution could work. If not, why?
 
-#### Type of Machine Learning Problems
+> For example, a business comes to you to try and determine the likelihood of customers 
+> leaving their company within the next 6 months. This data isn't readily available, 
+> it must be generated by mathematically looking at how the data the business has currently
+> can help predict that likelihood. So must use ML here.
 
-| Problem | Definition| Examples| Computational Time |
-|:-------:|:---------:|:--------|:------------------:|
-|Supervised|Trends based on current data (labels provided) | <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>||
-|Unsupervised|Find patterns in data (labels not provided)| <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul>||
-|Transfer Learning| Leverage machine learning models, use one model that knows A and tweak to know what B is| <ul><li> Natural Language processing - </li><li>Computer vision -  </li></ul> | |
-|Reinforcement Learning| Perform action in define space and reward/penalise on actions| | |
+2. Check if ML needed, if ML needed, what type of ML problem is it: Supervised, Unsupervised, Transfer learning, Reinforcement Learning, Semi-supervised etc
 
-#### Tip
-- Neural networks are architectures that can be used in any type of machine learning problem, hence can fit into the supervised,
-  unsupervised, semi-supervised problems.
+<span style="color:green">todo: Find out the computational time (relative) for each of these problem types and what factors into that </span>
 
-### Data
-- Does the data match the problem definition?
-- Check type of data
-  - Static (csv etc)
-  - Streaming - constantly changed over time (trends in market etc)
-  - Structured (columns, like excel spreadsheet)
-  - Unstructured (like audio, pictures).
+<span style="color:green">todo: Find out examples of transfer learning and reinforcement learning techniques</span>
 
-Later on think about how Data Engineers will need to clean and visual data to understand their model
+<span style="color:green">todo: Find better description for neural network </span>
 
->Take some insights from Studio app to how data is prepared
+### 2: Check data
+1. Does the data match the problem definition? Check type of data you have available and what you can get. 4 main types are **Structured, Unstructed, Streaming, Static**.
+2. How is the data updated? The frequency of this update?
+3. How can we extract data from the system? E.g db connection, xml etc
+4. Checks for consistency, completeness, accuracy
 
->Think about what questions to ask about Data when it is received
+### 3: Define what success looks like via evaluation metrics
+1. Define what a successful end will be: 95% accuracy? 99.9% accuracy? This will depend on the [ML problem decided](#project-definition)
 
-### Evaluation 
-- Define what a successful end will be: 95% accuracy? 99.9% accuracy?
+> For different use cases different levels of successes could also apply. For example, when workingin pharma for a client who deals with new drugs for patients, you will want near 100% accuracy as possible
 
 | Type | Examples | - | - |
 |:--------------:|:----------:|:--------------:|:-------|
@@ -65,33 +69,28 @@ Later on think about how Data Engineers will need to clean and visual data to un
 | Regression |Mean absolute error (MAE) | Mean squared error (MSE) | Root mean squared error (RMSE) |
 | Recommendation |Precision at K | - | - |
 
->Look at the most popular evaluation metrics for machine learning problems
+<span style="color:green">todo: Look at the most popular evaluation metrics for machine learning problems. 
+Create separate table to note them down and remove from here</span>
+
+> N.B: Evaluation metric could change as the project progresses but always good to have a goal.
+
+### 4: Choose model
 
 
+### 5: Feature Engineering
 
+1. What parts of the data will be used? How will it be used? How will feature influence the model?
 
+> How to best choose features
+> - Pick features that most of the samples have!
+> - Pick features that have majority non-null elements
+> - Pick features that are not redundant
 
+<span style="color:green">todo: Find out how hypothesis are tested (like the ones stated in studio) </span>
 
-Step #1: Collect the Data
-Step #2: Clean and Explore the Data
-Step #3: Research Methodologies
-Step #4: Build and Evaluate the Model
-Step #5: Present the Results
+<span style="color:green">todo: What comes first? Feature selection or feature engineering? </span>
 
-
-
-This value and evaluation metric could change as the project progresses but always good to have a goal.
-
-### Feature Engineering
-When a model and evaluation techniques have been decided, what parts of the data will be used? How will it be used?
-One must decide which features to use for your model and how can these features influence the model.
-
-How to best choose features
-- Pick features that most of the samples have!
-- Pick features that have majority non-null elements
-- Pick features that are not redundant
-
-### Feature Selection
+### 6: Feature Selection
 
 Decision Trees
 - internal feature selection
