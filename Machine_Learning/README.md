@@ -205,6 +205,7 @@ When optimisation techniques are needed for this model the following are really 
 ## Explanatory model
 Not usually black box, relationships between features and output should be easily explained
 
+**Decision Trees**
 **Pros**
 - Understandable relations between features and the desired output
 
@@ -256,7 +257,6 @@ Extra Calculate the:
 - Do not make assumptions about anything (even if you think you understand the english ask about the english words!)
 - It's ok if you spend most of the time trying to solve the question
 - Most likely to be between a Predictive model and an Explanatory model (see above for difference)
-
 
 - Think about what are the steps whilst on a **client project**:
   - Why are we doing the project (Pros/Cons)

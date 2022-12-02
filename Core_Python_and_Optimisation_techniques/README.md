@@ -12,10 +12,13 @@ Mutable values can though.
 
 ## Glossary
 
-| Word | Definition|
-|:----:|:---------:|
-| Forking | Software that provides an interface between the user and the underlying operating system | 
-| Threads | Smallest scheduled unit in an operating system |
+|    Word     |                                        Definition                                        |
+|:-----------:|:----------------------------------------------------------------------------------------:|
+|   Forking   | Software that provides an interface between the user and the underlying operating system | 
+|   Threads   |                      Smallest scheduled unit in an operating system                      |
+| Binary File |  A file whose content is in binary format consisting of a series of bytes length 8 bits  |
+|  Checksum   ||
+
 
 ## Helpful commands
 
