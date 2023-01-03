@@ -2,15 +2,15 @@
 
 ---
  
-| Word | Definition|
-|:----:|:---------:|
-|Hyper parameter| Tunable variable that affects how well models fit to the data provided|
-|Class Imbalance| If one class has a lot of data, this affects the accuracy of the distributing data |
-|Over-fitting| When performance on the training dataset is low but high on the test dataset |
-|Under-fitting| When performance on the testing dataset is low but high on the train dataset |
-|Bias (common amongst all models) | Tendancy to learn the wrong thing (underfitting) |
-|Variance (common amongst all models) | changes in model when using different portions of the training data set|
-
+|                 Word                 |                                     Definition                                     |
+|:------------------------------------:|:----------------------------------------------------------------------------------:|
+|           Hyper parameter            |       Tunable variable that affects how well models fit to the data provided       |
+|           Class Imbalance            | If one class has a lot of data, this affects the accuracy of the distributing data |
+|             Over-fitting             |    When performance on the training dataset is low but high on the test dataset    |
+|            Under-fitting             |    When performance on the testing dataset is low but high on the train dataset    |
+|   Bias (common amongst all models)   |                  Tendancy to learn the wrong thing (underfitting)                  |
+| Variance (common amongst all models) |      changes in model when using different portions of the training data set       |
+|               Support                |        The number of actual occurences of the class in a specified dataset         |
 ## Overview - Regression
 
 ### Linear Regression
@@ -195,14 +195,14 @@ class imbalance.
   \frac{N_{tp} + N_{tn}}{N} 
   $$
 
-- Sensitivity (Recall) : True positive rate. When it's positive, how often does it predict positive?
+- Sensitivity (Recall) : (Out of all actually positives - whether labelled correctly or not), which are labelled positive). True positive rate. When it's positive, how often does it predict positive?
 
   $$
   \frac{N_{tp}}{N_{tp} + N_{fn}}
   $$
 
 - Specificity : True negative rate. When it's negative, how often does it predict negative?
-- Precision : (Out of all positive in model which is positive) Percentage labelled as positive in the model that are actually positive
+- Precision : (Out of all positives (false or true) in model which is actually true positive) Percentage labelled as positive in the model that are actually positive
 
   $$
   \frac{N_{tp}}{N_{tp} + N_{fp}}
@@ -215,7 +215,7 @@ confidence in detecting positive observations.
   \frac{N_{tp}}{N_{tp} + N_{fn}}
   $$
 
-- F1 score : Measure a models' accuracy. Having a high F1 value is a high accuracy model
+- F1 score : Measure a models' accuracy. Having a high F1 value is a high accuracy model. This is often used when data is unbalanced as it looks at balancing precision and recall on the positive class instead of correct classifications of both negative and positive observations
 
   $$
   F1 = \frac{2 * Precision * Recall}{Precision + Recall}
