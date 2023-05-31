@@ -16,7 +16,7 @@
 | Web Client | Web browser is an example of this. Communicates with web server via HTTP to render HTTP files |
 | Web Server | Machine that holds HTTP files ready for when people request the file. In system design, also known as **Managers** or **Services**|
 
-## Conversion
+## Common Conversions
 | Measurement | Equivalent|
 |:-----------:|:---------:|
 |2.5 million seconds| 1 month|
@@ -25,74 +25,6 @@
 
 System design is about decomposing a system into coding blocks and optimising the communication between them.
 The number one reason to do it is usually because the system is at the end of it's life, or you are designing a new system.
-
-## Steps to answering System Design Interview
-
-The most basic structure is Client, Server, Database. Each of these levels require different requirements of the application.
-
-### Step 1: Outline use cases, constraints and assumptions (5-10 mins):
-
-- How many times this application will be used
-- Who going to use it? (user or system!)
-- How they gonna use it (technologies)?
-- How many users are we talking about?
-- How much data is the application/service using?
-- What is the expected read to write ratio?
-- How can the data be found?
-- What are the main features?
-- How can they solve the problem in small case (MAYBE)?
-- Are we tracking analytics/personal information somehow?
-are we showing the user these anayltics?
-
-### Step 2: Define user stories (Like jira) (5 mins):
-Example of Functional requirements:
-- "As a user, I would like to access diagrams via apk"
-- "User is able to login in and see list of recommendation songs"
-- "User is not anonymous : storing basic information"
-
-Example of Non-Functional requirements:
-- "Service is highly available"
-
-- Reliability
-- Availability (when should application be available (consistent))
-- CAP Theorem
-- Latency (time dependant applications, how much time can be utilised before interaction in the app),
-- Scalability (how many people, how much interaction with the application)
-
-**Reinstate** functional and non-functional requirements.
-
-### Step 3: Define additional requirements
-- Security, Cost, Human Resources available, Deadline, other business requirements
-
-### Step 4: Estimating capacity and defining constraint
-
-In order to plan for failure you must know the following:
-
-1. What is the Read to write ratio?
-2. Traffic (what does scalability mean for traffic? Think about load balancers (sits between client and web server)
-What data is getting transferred (In terms of data types)? How many versions,
-Maybe use HTTP which depends TCP and UDP, maybe use websockets TCP)
-3. Storage (Database Normalisation (including redundant data in db), Binary storage, sql, no sql, Metadata(usually no sql),
-Database partitioning)
-4. Memory (Do we need to cache? when should it get invalidated between database and application layer, application writes to cache if info retrived from db)
-and CDN (frontend caching system content delivery network)
-7. Asynchronous Processing & Queues (for writes that tale a long time)
-8. Bandwidth: (to support/requirement —> related to latency: The maximum data that can be transferred in of time)
-9. Throughout: The actual amount of data transferred at a given time
-
-### Step 5: Design core components! Start writing down the components
-- Minimum design cilent -> web server -> database
-- Ask if you should do high level design, or discuss API or focus on database design/ data model
-- Define high level design with important components
-- Tiers:
-  - Presentation tier 
-  - Web tier 
-  - Business tier 
-  - Data tier
-- Draw Arrows on the diagram and describe what is happening (API request pull html file to machine)
-
-- the activity changes (Engines encapsulate this volatility in business rule)
-- the sequence changes (Managers are meant to capture this volatility)
 
 ## How to break down system: DETAILED: Layers when VBD'in (Top to bottom)
 ![image info](./SystemDesignPrimer.png)

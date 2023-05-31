@@ -1,7 +1,9 @@
-Machine_Learning/Data_Mining/
+Machine_Learning/.data
+Machine_Learning/.images
 *.csv
 .obsidian/
 *.pkl
+*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -2,27 +2,29 @@
 
 ## Glossary
 
-|                               Word                                |                                                                                                                                Definition                                                                                                                                |
-|:-----------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|                          Generalisation                           |                                                                                                       The ability for the model to adapt itself to new unseen data                                                                                                       |
-|                      Recommendation Systems                       |                                                                                                           Predict what the user might enjoy watching or buying                                                                                                           |
-|           Association rule learning (Affinity Analysis)           |                                                                                                  Unsupervised learning technique that only works with categorical data                                                                                                   |
-|                    Support (Affinity Analysis)                    |                                                                                                              The frequency of the pattern given by the rule                                                                                                              |
-|                  Confidence (Affinity Analysis)                   |                                                                                  The strength of an association rule relating to the likelihood of customer buying item A, given item B                                                                                  |
-|                     Lift (Affinity Analysis)                      |                                                                                  The interestingness of a rule by checking the strength of rule over random co-occurrence if two items                                                                                   |
-|                           Cost function                           |                                                                                                                  How best to best fit function to data                                                                                                                   |
-|                            Overfitting                            |                                                                      When the model fits to the training data better than the testing data. When the cost funciton ~ 0 but can't fit new data well                                                                       |
-|                                 -                                 |                                                                                                                                    -                                                                                                                                     |
-|                            Supervised                             |                                                           Trends based on current data (labels provided)  <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>                                                           |
-|                           Unsupervised                            | Trends based on current in data (labels not provided)    <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul> | 
-|                         Transfer Learning                         |                                                 Leverage machine learning models, use one model that knows A and tweak to know what B is   <ul><li> Natural Language processing - </li><li>Computer vision -  </li></ul>                                                 |
-|                      Reinforcement Learning                       |                                                                                                      Perform action in define space and reward/penalise on actions                                                                                                       | 
-|                          Neural network                           |                                                            Architectures that can be used in any type of machine learning problem, hence can fit into the supervised, unsupervised, semi-supervised problems.                                                            |
-|                                 -                                 |                                                                                                                                    -                                                                                                                                     |
-|                            Static data                            |                                                                                                                                 csv etc                                                                                                                                  |                                                                                                                                 
-|            Streaming data constantly changed over time            |                                                                                                                           trends in market etc                                                                                                                           |
-|                          Structured data                          |                                                                                                                   columns, like excel spreadsheet etc                                                                                                                    |
-|                         Unstructured data                         |                                                                                                                         Like audio, pictures etc                                                                                                                         |
+|                     Word                      |                                                                                                                                Definition                                                                                                                                |
+|:---------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                Generalisation                 |                                                                                                       The ability for the model to adapt itself to new unseen data                                                                                                       |
+|            Recommendation Systems             |                                                                                                           Predict what the user might enjoy watching or buying                                                                                                           |
+| Association rule learning (Affinity Analysis) |                                                                                                  Unsupervised learning technique that only works with categorical data                                                                                                   |
+|          Support (Affinity Analysis)          |                                                                                                              The frequency of the pattern given by the rule                                                                                                              |
+|        Confidence (Affinity Analysis)         |                                                                                  The strength of an association rule relating to the likelihood of customer buying item A, given item B                                                                                  |
+|           Lift (Affinity Analysis)            |                                                                                  The interestingness of a rule by checking the strength of rule over random co-occurrence if two items                                                                                   |
+|                 Cost function                 |                                                                                                                  How best to best fit function to data                                                                                                                   |
+|                  Overfitting                  |                                                                      When the model fits to the training data better than the testing data. When the cost funciton ~ 0 but can't fit new data well                                                                       |
+|                       -                       |                                                                                                                                    -                                                                                                                                     |
+|                  Supervised                   |                                                           Trends based on current data (labels provided)  <ul><li>Classification - one thing or another</li><li>Linear Regression - predict a number</li></ul>                                                           |
+|                 Unsupervised                  | Trends based on current in data (labels not provided)    <ul><li>Clustering - Grouping similar problems together </li><li> Expectation Maximisation - Soft cluster assignment </li><li>Association Analysis - pattern mining </li><li>PageRank - link analysis</li></ul> | 
+|               Transfer Learning               |                                                 Leverage machine learning models, use one model that knows A and tweak to know what B is   <ul><li> Natural Language processing - </li><li>Computer vision -  </li></ul>                                                 |
+|            Reinforcement Learning             |                                                                                                      Perform action in define space and reward/penalise on actions                                                                                                       | 
+|                Neural network                 |                                                            Architectures that can be used in any type of machine learning problem, hence can fit into the supervised, unsupervised, semi-supervised problems.                                                            |
+|                       -                       |                                                                                                                                    -                                                                                                                                     |
+|                  Static data                  |                                                                                                                                 csv etc                                                                                                                                  |                                                                                                                                 
+|  Streaming data constantly changed over time  |                                                                                                                           trends in market etc                                                                                                                           |
+|                Structured data                |                                                                                                                   columns, like excel spreadsheet etc                                                                                                                    |
+|               Unstructured data               |                                                                                                                         Like audio, pictures etc                                                                                                                         |
+|                 Feature store                 |                                                                                                      Localises commonly used features for reuse in future ml models                                                                                                      |
+|                    Feature                    |                                                                                                                          Measurable phenomenon                                                                                                                           |
 
 [comment]: <> (## TLDR: Top tips for whole ML process)
 
@@ -79,6 +81,8 @@ Create separate table to note them down and remove from here</span>
 
 ### 5: Feature Engineering
 
+> N.B: You can view profile of data to see what you are working on and create a report for it!
+
 1. What parts of the data will be used? How will it be used? How will feature influence the model?
 
 > How to best choose features
@@ -118,6 +122,8 @@ Most important is to decide how to split the data between train, validation and 
 - Test - to test and compare model (10-15%)
 
 The split in dataset is done to improve generalisation.
+
+
 
 #### Choose model
 Based on problem and <span style="color:green">**data**</span>, what model should we use?
@@ -189,6 +195,7 @@ How could we improve/what can we try next?
 |:-----:|:--------:|:---------:|:----:|:----:|
 |Classification| Random Forest | Score (Accuracy),  | Fast | |
 
+
 ## Predictive model
 Are black box usually. This encompasses neural network methods. 
 **Pros**
@@ -219,7 +226,11 @@ Usually hyper-parameters are optimised for this model. The following can be used
 hyper-parameter and objective evaluated on a validation set
 - Cross Validation:  
 
+
+
+
 ## Data Quality
+
 - Where it is stored
 - Time span of the data
 - Do we have documentation
@@ -315,3 +326,5 @@ is small, it will always predict any new data point as the predominate class.
   - operations planning
   - activity heat map
 - Understand 
+
+

@@ -184,7 +184,6 @@ Just import the module into whatever module you need config on.
 [PEP 318 definition](https://peps.python.org/pep-0318/)
 
 Defined by `@` followed by a function name, decorators. Decorators can be class, function, method based.
-What the difference is I do know?
 
 ```python
 def decorator(func):
@@ -208,7 +207,10 @@ some_func = decorator(some_func)
 ```
 
 Be careful when using decorators as there is a chance that the docstrings written for `some_func`, or the method that is
-getting decorated, will not be available. So how do you preserve docstrings whilst using decorators?
+getting decorated, will not be available. Using `functools.wraps` when creating a decorator can remove this issue!
+
+There are some inbuilt decorators that python provides. The most common ones are `@property`, `method_name.@setter`.
+`@property` is used in a similar function to a class attribute, but executes some logic before returning the attribute
 
 
 # ==Partial==
@@ -236,6 +238,12 @@ of normal function.
 # == lists, methods of lists (extend vs append)
 
 ## Types
+
+With all types (including types that are created as `class` objects), you can infer type with hints on a method. If you want to infer type
+of the enclosing class, use the following import at the top of the class:
+```
+from __future__ import annotations
+```
 
 ### Abstract Types
 
@@ -286,6 +294,7 @@ def hello(msg="Hello", name="Brenda"):
 
 
 ## Testing in python
+- If using both 
 
 ### Fixtures
 - In pytest, it uses fixtures. Fixtures provide content to use for tests (like a database or predefined object).

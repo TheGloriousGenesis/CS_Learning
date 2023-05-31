@@ -19,6 +19,15 @@ it is best practice to randomise the indexes of the data given. This can be done
 - How to replace the nans/zeros in a column with the average of another row based on conditional grouping of values in that row?
 
 `df.groupby('GROUP_COLUMN')['NAN_COLUMN'].transform(lambda x: x.fillna(x.mean()))`
+### What does `.groupby` actually do? [MORE DETAILS HERE](https://jakevdp.github.io/PythonDataScienceHandbook/03.08-aggregation-and-grouping.html)
+
+It splits, applies, then combines some data based on conditions specified. 
+  - The split step breaks up and groups sections of the dataframe
+  - The apply step involves computing some function, 
+  - Then combine merges the results
+
+When you execute `df.groupby` the object returned executes the 'split' step. You **must** then apply an aggregate (sum, mean, median, std, var etc) OR dataframe function to get the desired result
+
 
 # Numpy
 

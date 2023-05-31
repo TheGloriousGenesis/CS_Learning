@@ -375,3 +375,16 @@ Data fabrication
 
 Publicly DS Coffee
 Must state where I want to work on
+
+
+
+___
+todo:
+1. Look into ways to test best with machine learning!
+   1. Pandas testing 
+   2. Function testing
+   3. [Here](https://tech.comtravo.com/testing/Testing_Machine_Learning_Models_with_Unittest/)
+   4. [Here](https://www.softwaretestinghelp.com/guide-to-functional-testing/)
+   5. Best testing with Kedro
+2. Look into ways to best validate and evaluate model
+   1. Shap Values
