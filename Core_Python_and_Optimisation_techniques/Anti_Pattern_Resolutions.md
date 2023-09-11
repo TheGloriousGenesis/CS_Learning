@@ -36,3 +36,14 @@ def add(x: int, y: List[int]=[]) -> int:
     return y
 ```
 
+## 5. Use defaultdict to create dictionary with default values 
+- For example:
+```python
+def count_occurences(sentence: str, letter: str) -> int:
+    letter_map = defaultdict(lambda: 0)
+    for character in sentence:
+        if character.isalpha() and not in letter_map:
+            letter_map[character]+=1
+```    
+
+
