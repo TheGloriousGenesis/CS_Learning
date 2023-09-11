@@ -36,7 +36,7 @@ def add(x: int, y: List[int]=[]) -> int:
     return y
 ```
 
-## 5. Use defaultdict to create dictionary with default values 
+## 5. Use defaultdict to create dictionary with default values for all elements
 - For example:
 ```python
 def count_occurences(sentence: str, letter: str) -> int:
@@ -44,6 +44,46 @@ def count_occurences(sentence: str, letter: str) -> int:
     for character in sentence:
         if character.isalpha() and charcater not in letter_map:
             letter_map[character]+=1
-```    
+```
 
+## 6. Use setdefault to set specific element of dictionary to given value
+```python
+def store_value(number: int):
+    value_map = dict()
+    value_map.setdefault("a", 6)
+```
+
+## 7. Use unpacking of a list instead of invidual assignment of elements in list
+- For example:
+```python
+def print_second_item(numbers: List[int]) -> None:
+    _, number, _ = numbers
+    print(number)
+```
+
+## 8. Be weary of the `setattr` method when dynamically creating functions/methods/variables
+- It is bad practices to set class variables, functions etc (example below) at instantiation. Think about either doing something with that data within the method, or not storing those values within a class
+```python
+class helepr:
+
+    def __init__(self, list_of_values: List[str]):
+        counter=0
+        for i in list_of_values:
+            setattr(self, counter + i, i)
+            counter++
+```
+
+```python
+class helepr:
+
+    def __init__(self, list_of_values: List[str]):
+        counter=0
+        for i in list_of_values:
+            process_value(i, counter)
+            counter++
+```
+
+## 9. Ask for forgiveness not permission! Assume necessary things exist and use `try / except`  instead of `if` .
+
+## 10. 
 
