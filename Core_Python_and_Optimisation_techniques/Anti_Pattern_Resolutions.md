@@ -72,7 +72,7 @@ class helepr:
             setattr(self, counter + i, i)
             counter++
 ```
-
+Do something like this instead:
 ```python
 class helepr:
 
