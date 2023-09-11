@@ -28,4 +28,11 @@ contains_even_number([1,2,4,5])
 ## 3. Place `__future__` import at the very top of the file
 - `__future__` import allows you to use future functionality available in later python versions within the file it's imported into. It's important to put it before any code/import as random behaviour could happen if this is not the case!  
 
-## 4.
+## 4. Do not use mutable object as a default value to function 
+- In the below code, Python will only create the first instance of the list the first time the method is called. Use `None` instead.
+```python
+def add(x: int, y: List[int]=[]) -> int:
+    y.append(x)
+    return y
+```
+
