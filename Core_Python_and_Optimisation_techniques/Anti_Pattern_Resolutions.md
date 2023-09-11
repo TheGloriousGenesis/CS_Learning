@@ -42,7 +42,7 @@ def add(x: int, y: List[int]=[]) -> int:
 def count_occurences(sentence: str, letter: str) -> int:
     letter_map = defaultdict(lambda: 0)
     for character in sentence:
-        if character.isalpha() and not in letter_map:
+        if character.isalpha() and charcater not in letter_map:
             letter_map[character]+=1
 ```    
 
