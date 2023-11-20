@@ -180,7 +180,61 @@ Just import the module into whatever module you need config on.
 
 `default_factory`
 
-# ==Decorators in Python==
+
+## ==Class (Module) Methods vs StaticMethod==
+
+## ==Functional programming in Python==
+
+Passing functions as parameter to another function is one of the core aspects of functional programming
+
+## ==Context Managers==
+
+Allows allocation of resources only when needed. Basic example is the `with` example. 
+Replaces the need to add `try/finally` blocks. Can be implemented as a class where 
+`__init__`, `__enter__`, `__exit__` methods are written, or as a generator/decorators.
+
+Define factory function
+
+## ==Generators==
+The use of keyword `yield` instead of `return` in a function creates a generator instead
+of normal function.
+# ==Difference between function and a Method in Python?==
+# == lambdas, operations, map, reduces ==
+# == lists, methods of lists (extend vs append)
+
+## Types
+
+With all types (including types that are created as `class` objects), you can infer type with hints on a method. If you want to infer type
+of the enclosing class, use the following import at the top of the class:
+```
+from __future__ import annotations
+```
+
+### Abstract Types
+
+With abstract type, the abstract class holds the constructor (`__init__`). So classes that extend do not need to define this method
+
+### Type primitives
+
+|Type|Definition|
+|:--------:|:--------:|
+|Union| define type as one type or the other. Defined as `Union[int, str]`|
+|||
+
+## Functions
+
+|   Description   |                                                 Definition                                                 |
+|:---------------:|:----------------------------------------------------------------------------------------------------------:|
+|  Pure Function  |   For the same args, gives same outputs. It is not effected by any variable outer scope of the function.   |
+| Impure Function | For the same args, gives different outputs. This is due to outer scope variables influencing return values |
+
+Functions have the following unique dunder methods/attributes:
+
+`__code__` = holds the code object
+
+### ==Partial==
+
+### ==Decorators in Python==
 [PEP 318 definition](https://peps.python.org/pep-0318/)
 
 Defined by `@` followed by a function name, decorators. Decorators can be class, function, method based.
@@ -213,57 +267,8 @@ There are some inbuilt decorators that python provides. The most common ones are
 `@property` is used in a similar function to a class attribute, but executes some logic before returning the attribute
 
 
-# ==Partial==
 
 
-# ==Class (Module) Methods vs StaticMethod==
-
-# ==Functional programming in Python==
-
-Passing functions as parameter to another function is one of the core aspects of functional programming
-
-# ==Context Managers==
-
-Allows allocation of resources only when needed. Basic example is the `with` example. 
-Replaces the need to add `try/finally` blocks. Can be implemented as a class where 
-`__init__`, `__enter__`, `__exit__` methods are written, or as a generator/decorators.
-
-Define factory function
-
-# ==Generators==
-The use of keyword `yield` instead of `return` in a function creates a generator instead
-of normal function.
-# ==Difference between function and a Method in Python?==
-# == lambdas, operations, map, reduces ==
-# == lists, methods of lists (extend vs append)
-
-## Types
-
-With all types (including types that are created as `class` objects), you can infer type with hints on a method. If you want to infer type
-of the enclosing class, use the following import at the top of the class:
-```
-from __future__ import annotations
-```
-
-### Abstract Types
-
-With abstract type, the abstract class holds the constructor (`__init__`). So classes that extend do not need to define this method
-
-### Type primitives
-
-|Type|Definition|
-|:--------:|:--------:|
-|Union| define type as one type or the other. Defined as `Union[int, str]`|
-|||
-
-# Functions
-
-|   Description   |                                                 Definition                                                 |
-|:---------------:|:----------------------------------------------------------------------------------------------------------:|
-|  Pure Function  |   For the same args, gives same outputs. It is not effected by any variable outer scope of the function.   |
-| Impure Function | For the same args, gives different outputs. This is due to outer scope variables influencing return values |
-|||
-df
 ### Naming functions
 [The importance of underscore in Python](https://www.datacamp.com/community/tutorials/role-underscore-python)
 

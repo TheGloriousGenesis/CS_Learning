@@ -85,5 +85,24 @@ class helepr:
 
 ## 9. Ask for forgiveness not permission! Assume necessary things exist and use `try / except`  instead of `if` .
 
-## 10. 
+## 10. If trying to compare types do no use `type()` use `isinstance(thing, types.ListType)
 
+## 11. You can use dict keys when formatting strings
+
+Instead of 
+```python
+person = {
+    "first_name" : "Ana",
+    "surname" : "Clover",
+    "age" : 18
+}
+print("{} {} is {} years old".format(person["first_name"], person["surname"], person["age"]))
+
+# OR
+
+```
+
+Do this
+```python
+print("{first_name} {surname} is {age} years old".format(**person))
+```

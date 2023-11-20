@@ -13,7 +13,7 @@ Container
 - Easily maintainable due to update in creating new container versus creating new VM
 
 Kubernates
-- Can run necessary containers toe networking and management
+- Can run necessary containers for networking and management
 
 Linux kernel namespaces:
 Default things given:
@@ -38,7 +38,8 @@ Capabilities.
 
 Used `exec` command to explore container
 
-an image is an instruction on how to create a container (similar to class objects being blueprint to create instance of class)
+## Definition
+an image is an instruction on how to create a container (similar to classes are the blueprint to create instance of class)
 
 Each layer uses separate intermediate container, runs command, commit to image, then removes intermediate container
 Each layer uses previous layer output
@@ -94,3 +95,8 @@ Have to add file system to image (it's that bare!)
 - Change config of where logs are saved as well as their max size!
 in daemon.json
 - Can be overriden per container basis
+
+## Networking
+Containers networking e describe the ability for containers to communicate with each other.
+
+`docker network` - 
