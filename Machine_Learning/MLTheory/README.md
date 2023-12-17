@@ -18,7 +18,7 @@
 [KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
 > *Definition*: Used to predict continuous variables
-
+ƒ
 *Assumptions* : 
   
 - Errors of the residuals follow normal distribution
@@ -504,3 +504,30 @@ item frequency
 Common real-time analytics + machine learning u
 
 amazon sagemaker - built to make mL more accessible
+
+
+## Text embeddings
+
+When working with text you must convert text to numerical representations so that the models can understand relations between words.
+This is called vectorisation, and the most common form is called bag of words OR CountVectorizer. It will populate one tally for each word in a sentence.
+
+Bag of words
+Pros:
+- Easy analysis, simple to implement
+
+Cons:
+- Doesn't work well with sparse matrix
+- Words can show up in every document
+  - Issue with over populous words in the english language e.g 'the' 'is' 'a'
+
+A slightly better approach is to use Term Frequency Inverse Document Frequency. It determines the importance of the word to the document
+and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
+
+
+
+
+
+
+Test assumptions regarding analysing text data with GloVe first then move onto more sophisticated models like FastText, BERT 
+or any transformer (as they require a little more work)
+

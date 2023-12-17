@@ -1,7 +1,8 @@
 AWS_MachineLearningCertification/important_links.txt
 
-Machine_Learning/.data
-Machine_Learning/.images
+*/.data/
+.images
+*/.models
 *.csv
 .obsidian/
 *.pkl

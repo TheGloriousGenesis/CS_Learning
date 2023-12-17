@@ -9,10 +9,10 @@ Ideal software should:
 - Run cheap (business)
 
 Container
-- containers different to virtualisation. VMs have own kernel, system. Containers share resources.
+- Containers different to virtualization. VMs have own kernel, system. Containers share resources.
 - Easily maintainable due to update in creating new container versus creating new VM
 
-Kubernates
+Kubernetes
 - Can run necessary containers for networking and management
 
 Linux kernel namespaces:

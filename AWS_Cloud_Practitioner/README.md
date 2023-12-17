@@ -396,6 +396,8 @@ Security:
 
 ### Amazon S3
 
+reference: https://aws.amazon.com/s3/pricing/
+
 **Object storage: S3**, each object consists of data, metadata and a key. S3 not publicly accessibly (can expose).
 No size limit for bucket (per file - 5T)
 - S3 Standard - frequently accessed, minim stored in 3 availability zones
