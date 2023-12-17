@@ -1,11 +1,11 @@
 Exam
-- Unanswered questions are scored as incorrect; there is no penalty for guessing. 
+- Unanswered questions are scored as incorrect; there is n- penalty for guessing. 
 - 50 questions in exam that affect score
-- You need 750/1000 to pass
-- Includes 15 unscored questions that do not affect your score
+- You need 750/1000 t- pass
+- Includes 15 unscored questions that d- not affect your score
 
 
-Exam is split into 4 domains
+Exam is split int- 4 domains
   - Data engineering - 20%
   - Exploratory Data Analysis - 24%
   - Modelling - 36%
@@ -81,36 +81,168 @@ such as text, speech, image, public datasets.
 tokenization, outliers, synthetic features, one-hot encoding, reducing
 dimensionality of data). 
 
-> ADD list of feature engineering concepts and links to places within the repo
+> ADD list of feature engineering concepts and links t- places within the repo
 
 #### Analyze and visualize data for ML
 
+- Create graphs (for example, scatter plots, time series, histograms, box
+plots).
+- Interpret descriptive statistics (for example, correlation, summary statistics,
+p-value).
+- Perform cluster analysis (for example, hierarchical, diagnosis, elbow plot,
+cluster size).
 
-Build
-- Data analysis/visualization
-- Model training
-- Model deployment/inference
+> ADD list of analysis techniques and the best time t- use them for
 
-Deploy
+### Domain 3: Modeling 
 
-Optimize
-- Perform basic hyperparameter optimization 
-  - Understand the correct type of hyperparameter optimization technique for the right ML problem
+#### Frame business problems as ML problems - Problem formulation
 
-Train
+- Identify when t- use and when not t- use ML.
+- Know the difference between ml types supervised and unsupervised learning, deep learning.
+- Select from among classification, regression, forecasting, clustering, and
+recommendation models
+- Justify model selection 
 
-Tune
+#### Select the appropriate model(s) for a given ML problem 
 
-Maintain ML using Cloud
+- XGBoost, logistic regression, k-means, linear regression, decision trees,
+random forests, RNN, CNN, ensemble, transfer learning
+- Express the intuition/understanding behind basic ML algorithms.
+
+> ADD list of other types of ml models
+
+#### Train ML models
+
+- Split data between training and validation (for example, cross validation).
+- Understand optimization techniques for ML training (for example, gradient
+decent, loss functions, convergence).
+- Choose appropriate compute resources (for example GPU or CPU,
+distributed or non-distributed).
+  - Choose appropriate compute platforms (Spark or non-Spark).
+- Update and retrain models. 
+  - Batch or real-time/online 
+
+> ADD different types of splitting dataset methods
+> ADD different optimization techniques
+> ADD Different types of compute resources/platform for problem
+> ADD inf- on how t- update and retrain models and aws services that can be used t- d- so
+> ADD Model training best practices
+
+#### Perform hyperparameter optimization
+
+- Understand the correct type of hyperparameter optimization technique for the right ML problem
+- Perform regularization.
+  - Drop out
+  - L1/L2
+- Perform cross validation.
+- Initialize models.
+- Understand neural network architecture (layers and nodes), learning rate,
+and activation functions.
+- Understand tree-based models (number of trees, number of levels).
+- Understand linear models (learning rate). 
+
+> ADD more understand
+
+#### Evaluate ML models
+- Avoid overfitting or underfitting.
+  - Detect and handle bias and variance.
+- Evaluate metrics (area under curve [AUC]-receiver operating characteristics
+[ROC], accuracy, precision, recall, Root Mean Square Error [RMSE], F1 score).
+- Interpret confusion matrices.
+- Perform offline and online model evaluation (A/B testing).
+- Compare models by using metrics (for example, time t- train a model,
+quality of model, engineering costs).
+- Perform cross validation. 
+
+> ADD more understand
+
+### Domain 4: Machine Learning Implementation and Operations 
+
+#### Build ML solutions for performance, availability, scalability, resiliency, and fault tolerance. 
+
+- Log and monitor AWS environments.
+  - Build error monitoring solutions.
+- Deploy t- multiple AWS Regions and multiple Availability Zones.
+- Create AMIs and golden images.
+- Create Docker containers.
+- Deploy Aut- Scaling groups.
+- Rightsize resources (for example, instances, Provisioned IOPS, volumes).
+- Perform load balancing.
+- Follow AWS best practices. 
+
+Management and Governance:
+- AWS CloudTrail
+- Amazon CloudWatch
+
+Storage:
+- Amazon Elastic Block Store (Amazon EBS)
+
+Containers:
+- Amazon Elastic Container Registry (Amazon ECR)
+- Amazon Elastic Container Service (Amazon ECS)
+- Amazon Elastic Kubernetes Service (Amazon EKS)
+
+Compute:
+- AWS Batch
+- Amazon EC2
+- AWS Lambda
+
+Networking and Content Delivery:
+- Amazon VPC
+
+> ADD aws best practices
+> ADD what is a golden image
+
+#### Recommend and implement the appropriate ML services and features for a given problem.
+
+- ML on AWS (application services)
+  - Amazon Polly
+  - Amazon Lex
+  - Amazon Transcribe
+- Understand AWS service quotas.
+- Determine when to build custom models and when to use Amazon
+SageMaker built-in algorithms.
+- Understand AWS infrastructure (for example, instance types) and cost
+considerations.
+  - Use Spot Instances to train deep learning models by using AWS
+  Batch.
+
+
+#### Apply basic AWS security practices to ML solutions
+
+- AWS Identity and Access Management (IAM)
+- S3 bucket policies
+- Security groups
+- VPCs
+- Encryption and anonymization 
+
+Storage
+- Amazon s3
+
+Networking and Content Delivery:
+- Amazon VPC
+
+Security, Identity, and Compliance:
+- AWS Identity and Access Management (IAM)
+
+
+#### Deploy and operationalize ML solutions
 - Scalable
 - Cost-optimized 
 - Reliable
-- (Security) Secure ML
-- Operationalizing ML
 
-Problem formulation (Identification and justification)
-- ML types (including deep learning)
-  - Understanding the intuition behind basic ML algorithms
+- Expose endpoints and interact with them.
+- Understand ML models.
+- Perform A/B testing.
+- Retrain pipelines.
+- Debug and troubleshoot ML models.
+  - Detect and mitigate drops in performance.
+  - Monitor performance of the model. 
+
+> ADD Deployment best practices
+> ADD Operational best practices
+> Add how to identify and fix drops in performance
 
 AWS services matching to ML solutions
 Analytics:
@@ -131,8 +263,6 @@ Containers:
 - Amazon Elastic Container Service (Amazon ECS)
 - Amazon Elastic Kubernetes Service (Amazon EKS)
 - AWS Fargate
-
-
 Internet of Things:
 - AWS IoT Greengrass 
 Machine Learning:
@@ -158,15 +288,9 @@ Security, Identity, and Compliance:
 - AWS Identity and Access Management (IAM)
 
 
-ML and deep learning frameworks
+__________________
 
-Model training best practices
 
-Deployment best practices
-
-Operational best practices
-
-____
 Out of scope:
 
 Extensive or complex algorithm development
