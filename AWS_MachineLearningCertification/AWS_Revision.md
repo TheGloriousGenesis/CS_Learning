@@ -1,11 +1,11 @@
 Exam
 - Unanswered questions are scored as incorrect; there is n- penalty for guessing. 
 - 50 questions in exam that affect score
-- You need 750/1000 t- pass
+- You need 750/1000 to pass
 - Includes 15 unscored questions that d- not affect your score
 
 
-Exam is split int- 4 domains
+Exam is split into 4 domains
   - Data engineering - 20%
   - Exploratory Data Analysis - 24%
   - Modelling - 36%
@@ -81,7 +81,7 @@ such as text, speech, image, public datasets.
 tokenization, outliers, synthetic features, one-hot encoding, reducing
 dimensionality of data). 
 
-> ADD list of feature engineering concepts and links t- places within the repo
+> ADD list of feature engineering concepts and links to places within the repo
 
 #### Analyze and visualize data for ML
 
@@ -92,14 +92,23 @@ p-value).
 - Perform cluster analysis (for example, hierarchical, diagnosis, elbow plot,
 cluster size).
 
-> ADD list of analysis techniques and the best time t- use them for
+> ADD list of analysis techniques and the best time to use them for
 
 ### Domain 3: Modeling 
 
 #### Frame business problems as ML problems - Problem formulation
 
-- Identify when t- use and when not t- use ML.
-- Know the difference between ml types supervised and unsupervised learning, deep learning.
+- Identify when to use and when not to use ML.
+  - ML has the power to:
+    - Leverage large amount of data 
+    - Analyzed data for patterns that are too complicated to decipher individually
+    - Scale predictions
+    - Be utilised in a non-deterministic way
+- Know the difference between ml types [definition of machine learning types](../Machine_Learning/README.md#Glossary)
+  - supervised
+  - unsupervised learning
+  - deep learning
+  - reinforcement
 - Select from among classification, regression, forecasting, clustering, and
 recommendation models
 - Justify model selection 
@@ -115,19 +124,38 @@ random forests, RNN, CNN, ensemble, transfer learning
 #### Train ML models
 
 - Split data between training and validation (for example, cross validation).
+  - Splitting data only applicable to supervised learning 
+  - Purpose of each part of data slice is mentioned [here](../Machine_Learning/README.md#Glossary)
+  - 70-80% Training 
+  - 10-15% Evaluation (Pass to algo at time at training)
+  - 10-15% Testing (Accuracy, precision, Recall, performance metrics) (Not passed to algorithm)
+  - dataset should be greater than 1000 
 - Understand optimization techniques for ML training (for example, gradient
 decent, loss functions, convergence).
 - Choose appropriate compute resources (for example GPU or CPU,
 distributed or non-distributed).
   - Choose appropriate compute platforms (Spark or non-Spark).
 - Update and retrain models. 
-  - Batch or real-time/online 
+  - Batch or real-time/online
+- Creating a job training in AWS Sagemaker:
+  - Must specify:
+    - S3 bucket for input data
+    - S3 bucket for output data
+    - Compute resources for training
+    - Code in Amazon Elastic Container Registry path
 
 > ADD different types of splitting dataset methods
 > ADD different optimization techniques
 > ADD Different types of compute resources/platform for problem
-> ADD inf- on how t- update and retrain models and aws services that can be used t- d- so
+> ADD inf- on how to update and retrain models and aws services that can be used to d- so
 > ADD Model training best practices
+
+> Amazon SageMaker workflow for training jobs 
+> Running a training job using containers 
+> Build your own containers 
+> P3 instances 
+> Components of an ML training job for deep learning
+
 
 #### Perform hyperparameter optimization
 
@@ -136,6 +164,15 @@ distributed or non-distributed).
   - Drop out
   - L1/L2
 - Perform cross validation.
+  - Increases computational load
+  - Validation:
+    - K-fold 
+      - K usually between 2 < K < 10
+      - for datasets between 10,000 - 100, 000, use K < 8
+      - K value inversely proportional to dataset
+    - Stratified K-fold
+      - For imbalanced datasets
+    - Leave on out (small datasets)
 - Initialize models.
 - Understand neural network architecture (layers and nodes), learning rate,
 and activation functions.
@@ -151,7 +188,7 @@ and activation functions.
 [ROC], accuracy, precision, recall, Root Mean Square Error [RMSE], F1 score).
 - Interpret confusion matrices.
 - Perform offline and online model evaluation (A/B testing).
-- Compare models by using metrics (for example, time t- train a model,
+- Compare models by using metrics (for example, time to train a model,
 quality of model, engineering costs).
 - Perform cross validation. 
 
@@ -163,10 +200,10 @@ quality of model, engineering costs).
 
 - Log and monitor AWS environments.
   - Build error monitoring solutions.
-- Deploy t- multiple AWS Regions and multiple Availability Zones.
+- Deploy to multiple AWS Regions and multiple Availability Zones.
 - Create AMIs and golden images.
 - Create Docker containers.
-- Deploy Aut- Scaling groups.
+- Deploy Auto Scaling groups.
 - Rightsize resources (for example, instances, Provisioned IOPS, volumes).
 - Perform load balancing.
 - Follow AWS best practices. 
@@ -202,7 +239,24 @@ Networking and Content Delivery:
   - Amazon Transcribe
 - Understand AWS service quotas.
 - Determine when to build custom models and when to use Amazon
-SageMaker built-in algorithms.
+  - SageMaker built in algorithms.
+    - Linear Learner
+    - XGBoost
+    - K-Nearest Neighbour 
+    - Decision trees
+    - Random forest
+    - Image classification
+    - Object detection
+    - Semantic segmentation
+    - (NLP) Blazing Text
+    - (NLP) Sequence2Sequence
+    - (NLP) Object2Vec
+  - When to choose training algorithm
+    1. Built in sagemaker
+    2. Apache spark with Amazon Sagemaker
+    3. Submit code to train model via deep learning framework (Tensorflow/ApacheMXNet)
+    4. Use custom code and put code together in Docker image
+    5. Subscribe to algorithm in Marketplace
 - Understand AWS infrastructure (for example, instance types) and cost
 considerations.
   - Use Spot Instances to train deep learning models by using AWS
@@ -229,7 +283,7 @@ Security, Identity, and Compliance:
 
 #### Deploy and operationalize ML solutions
 - Scalable
-- Cost-optimized 
+- Costooptimized 
 - Reliable
 
 - Expose endpoints and interact with them.

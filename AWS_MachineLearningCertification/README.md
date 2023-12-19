@@ -57,19 +57,6 @@ Slide 10
 Silde 14
 - Set threshold for recommendation problem (if more than x, recommend).
 
-
-Slide 21
-- Supervised falls into: Binary, multi-class, regression
-
-Slide 24
-- Unsupervised falls into :
-- Spot outliers or indicator anomalies
-
-
-Slide 32
-- Deep learning is also divided into supervised and unsupervised
-- CNN/ANN
-
 Slide 36
 - Difference between ml and dl is features are created the machine (not manually or statistically)
 
@@ -167,8 +154,6 @@ Slide 8
 - Specify goal
 - Specify success metric (**quantify** the goal, have thresholds) <-- Defined by project/business managers product owners
 
-Slide 9
-- Regression problems linked to numeric outputs
 
 Slide 12
 - You can have multiple and different types of machine learning solutions in the same business problem
@@ -419,38 +404,7 @@ Always convert csv --> rec as sagemaker has inbuilt helper functions to aid this
 > Passing 48-50/65 correct to clear 
 > Skillbuilder sample exams
 
-
-## Splitting data and cross-validation
-
-Slide 15
-Splitting data only applicable to supervised learning
-70-80% Training
-10-15% Evaluation (Pass to algo at time at training)
-10-15% Testing (Accuracy, precision, Recall, performance metrics) (Not passed to algorithm)
-
-Epoch : Single pass through all dataset
-Iterate : Single pass over subset of epoch (batch)
-Batch size: number of dataset
-Weights : Updated after epoch/ batch 
-Evaluation : After each iteration, pass evaluation to training (good to keep model on track to stop divergence) is the model doing what i expect after each epoch
-
-
 ## Testing and validation
-Slide 20
-Training, validation and Testing data uses
-
-Simple hold-out : Technique uses to train model (one way to reduce overfitting)
-
-dataset should be greater than 1000
-
-Slide 21
-K-Fold Cross validation : Algo from models REMAINS THE SAME, you change the validation dataset
-
-2 < K < 10
-
-10,000 - 100, 000 : K < 8
-
-K value inversely proportional to dataset
 
 Slide 24
 Data in specific order can lead to bias
@@ -459,11 +413,10 @@ Slide 26
 K size and bias relationship equation
 
 Slide 27
-K fold with shuffling -  randomize order of the data
+K fold with shuffling - randomize order of the data
 
 Slide 29
 Stratified K-fold
-Leave one out (small datasets)
 
 Slide 30
 Scikit learn randomizes data before training in `train_test_split`
@@ -973,14 +926,6 @@ Things to know in this subdomain
 
 
 ## Module 4 - Modelling
-
-Slide 156
-
-Things to know in this subdomain
- 
-Slide 156 - 165
-
-In build algorithms, sagemaker provided algorithms
 
 Slide 166
 
