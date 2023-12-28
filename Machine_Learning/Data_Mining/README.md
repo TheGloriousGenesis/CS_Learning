@@ -14,11 +14,16 @@
 | Buffer data (data streaming) |            Temporarily hold data in memory until its time to be processed             |
 
 ## Data types
+Below image shows the different types of data:
+
+![img.png](img.png)
+*reference Jagadish Bolla [medium post](https://medium.com/@jbolla368/data-types-in-statistics-used-for-machine-learning-5b4c24ae6036)*
+
 There are two types of data:
 - **Categorical**
 - **Numerical**
 
-In these categories they further break down into the follow sub types:
+In these categories they further break down into the follow sub-types:
 - **Categorical**
   - Nomial (Having no intrinsic order)
     - Binary (having only two possible values)
@@ -67,24 +72,19 @@ Commonly used similarity checks for multi attribute objects are:
 ## Preprocessing
 There are 4 steps commonly used in preprocessing:
 
-### Imputation (filling in missing values)
+1. Imputation (filling in missing values)
 
 `df.isna().sum()` and `df.isnull().sum()` will do the same thing! Can use any of it.
 
-### Outlier Detection (identifying what the outliers)
+2. Outlier Detection (identifying what the outliers)
 
-### Imputation (fill missing data)
+3. Normalisation
 
-
-### Normalisation
-
-
-
-### Visualisation
+4. Visualisation
 
 ## Data warehouse
 
-### Overview - Data Streaming
+## Overview - Data Streaming
 
 Data streaming has the following architecture:
 
@@ -111,4 +111,4 @@ Common usecases include:
 - Media and gaming - analyse player-game interactions
 
 > [!CAUTION]
-- Availability (must have low latency, high availablity, high reliability), Scalability (have peak/low loads) and Durability (have fault tolerant) are top concerns when working with streaming data
+> - Availability (must have low latency, high availablity, high reliability), Scalability (have peak/low loads) and Durability (have fault tolerant) are top concerns when working with streaming data
