@@ -1,17 +1,17 @@
 # Data mining
 
 ## Glossary
-| Term|Definition|
-|:----:|:-----------:|
-| Series (Pandas) | Similar to a column of data (1D)|
-| Dataframe (Pandas) | A collection of series data (2D)|
-| Attribute (Jupyter) | gives information about the data at hand |
-| Function (Jupyter) | Executes code to manipulate or obtain insights from data |
-| Dataset | Collection of data objects |
-| Data object | A record, data point, event, observation, sample |
-| Attribute | A characteristic of a data object that can vary, also called variable, field, feature |
-| Observations | Observed values of an attribute |
-
+|             Term             |                                      Definition                                       |
+|:----------------------------:|:-------------------------------------------------------------------------------------:|
+|       Series (Pandas)        |                           Similar to a column of data (1D)                            |
+|      Dataframe (Pandas)      |                           A collection of series data (2D)                            |
+|     Attribute (Jupyter)      |                       gives information about the data at hand                        |
+|      Function (Jupyter)      |               Executes code to manipulate or obtain insights from data                |
+|           Dataset            |                              Collection of data objects                               |
+|         Data object          |                   A record, data point, event, observation, sample                    |
+|          Attribute           | A characteristic of a data object that can vary, also called variable, field, feature |
+|         Observations         |                            Observed values of an attribute                            |
+| Buffer data (data streaming) |            Temporarily hold data in memory until its time to be processed             |
 
 ## Data types
 There are two types of data:
@@ -84,5 +84,31 @@ There are 4 steps commonly used in preprocessing:
 
 ## Data warehouse
 
+### Overview - Data Streaming
 
+Data streaming has the following architecture:
 
+- Stream producers: Software component that creates the data (stream name, data value, sequence id) for streaming and sends it to processor to buffer/group
+- Stream consumers: Software component that consumes data and processes the data in the processor. Consumers offer analytic capabilities
+
+> [!IMPORTANT]
+> - There is a many-to-many relation between streams and consumers.
+> - There must also be a storage layer and processing layers. The stream producers create the data that sits in the buffer/storage, and the stream consumers sit in the processing layers consuming data from storage, processing data, then notifying storage layer to delete data if no longer needed.
+> - Data streaming is different to batch processing as batch processing is focused on complex analytics and queries over most of the dataset, whereas streaming queries over data withing a rolling time window. or just the most recent one
+
+Data streams have the following characteristics:
+1. Chronologically significant (all elements include timestamps). 
+2. Continously flowing (no Alpha or Omega XD)
+3. Unique 
+4. Imperfect (hard for data to be consistent across stream as their might be intermitent errors at source resulting in damaged or missing elements)
+5. Non-homogenous (could be coming from multiple source formats)
+6. Usually very large amounts of data (needs storing in a record ordering and consistent storage where you can read/write fast and reliably for the cheap cheap)
+
+Common usecases include:
+- Data analytics - reporting, monitoring, analysis
+- IoT - monitor performance, sensors on items
+- Real time recommendations - e.g geolocation
+- Media and gaming - analyse player-game interactions
+
+> [!CAUTION]
+- Availability (must have low latency, high availablity, high reliability), Scalability (have peak/low loads) and Durability (have fault tolerant) are top concerns when working with streaming data

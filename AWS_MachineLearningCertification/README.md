@@ -601,32 +601,13 @@ One-hot encoding if there are too many columns that will be made
 
 Group columns (logical) (thinking binning and then)
 
-Slide 42
-Hyperparameter tuning to increase prediction power
 
 Slide 45
 
-Hyperparameter set outside training jobs
 
-Parameters set in training job (weight and bias)
+---
 
-Types of hyperparameters
-- Model
-- Optimizer
-- Data
 
-Slides 46-49
-Methods for tuning hyperparameters
-
-- Manual
-- Grid search (Slide 27) - Not available on Sagemaker
-  - Inefficient but thorough
-- Random search
-- Bayesian search (Slide 49)
-
-scikit learn API optimization Not available on Sagemaker
-
-Random search and bayesian methods leave smaller unexplored regions than grid searches
 
 Slide 51
 Sagemaker has hyperparameter tuning job

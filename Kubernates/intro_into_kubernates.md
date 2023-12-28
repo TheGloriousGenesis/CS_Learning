@@ -3,6 +3,14 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
 - Need Docker experience
 - Need Yaml experience
 
+|      Word       |                                             Definition                                              |
+|:---------------:|:---------------------------------------------------------------------------------------------------:|
+|    Resources    |               Instances of Kubernetes objects (e.g Deployment, services, namespaces)                |
+|   Controller    |    Observe the state of the cluster and look for changes to desired state of resources or system    |
+|    Workloads    |        Resources that run containers (Deployments, StatefulSets, Jobs, Cronjobs, DaemonSets)        |
+| Resource config | Declarative files applied to cluster (with kubectl) and then picked up and actuated by a controller |
+
+
 ## Definition
 
 - container orchestration tool designed to automate deploying and scaling applications
@@ -31,6 +39,7 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
 ## Kubernetes Architecture
 > [!INFO]
 > CREATE INFOGRAPHIC : Cluster > Nodes > Pods > Container, Resources
+- Kubernetes API has 2 parts - Resource Type and controller
 
 - Cluster : all of the machiens collectively
 - Nodes: machines in cluster (vm/ machine) [kubernetes ref](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
@@ -68,9 +77,15 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
     - 
   - metadata: how to identify pod with additional data
     - labels to retrieve data
-  - 
-  
+- Pods are scheduled to run on Nodes in a cluster
 
+## Resources
+- Uniquely identified by the following declarative tags:
+  - apiVersion
+  - Kind
+  - metadata.namespcae
+  - metadata.name
+- Spec specifies the state of the resource
 
 ## Nodes
 - Q: Do all nodes share container network too?

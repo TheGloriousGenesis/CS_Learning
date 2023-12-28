@@ -58,9 +58,9 @@ and set this to zero to find the minima. The least squares equation is convex wh
 **But what about if we have non-linear algorithms that we want to minimise? Can't use least squares!**
 Instead we must use numerical approximation to optimisation to give us a close solution to ordinary least squares solution.
 
-### Gradient Descent
+### Gradient Descent - Optimization algorithm
 
-*Definition*: Used to numerically approximate minimising cost function.
+*Definition*: Used to numerically approximate minimising cost function by following the negative gradient of a cost function.
 
 We start with an initial weight and use the following to update the weights:
 
@@ -77,8 +77,10 @@ $$
 The update comprises the gradient and step value, when the gradient (derivative in regard to the weight) is negative, we know we are heading in the right direction to the minima as the second term is added to the weight in the
 previous iteration because we need to increase the value of the weight to get closer to it (and vice versa)
 
-**Always ensure you choose the correct value for alpha! :smile:**
+> [!IMPORTANT]
+> Always ensure you choose the correct value for alpha! :smile:
 
+**Momentum** builds inertia in a direction of search space, speeding up convergence, minimizing noisy gradients and avoiding local minima.
 
 ## Overview - Regularisation
 
@@ -106,6 +108,18 @@ from the data already given.
 
 An easy way to see if features are correlated to each other is first to check correlation matrix. A heatmap (visualisation of
 correlation matrix) is the most powerful to use.
+
+### Feature processing
+
+The first part of generating new features include cleaning the data for processing. This can include transformations such as:
+- Replace missing or invalid data with meaningful values (Imputation)
+- Forming **combinations of data** (Cartesian product - combinations of the product of two features, Domain specific - combine features formulaic make a complet) e.g if you have two variables, such as population density (urban, 
+suburban, rural) and state (Washington, Oregon, California), there might be useful information in the features formed by 
+a Cartesian product of these two variables resulting in features (urban_Washington, suburban_Washington, rural_Washington, urban_Oregon, suburban_Oregon, rural_Oregon, urban_California, suburban_California, rural_California).
+- Non-Linear transformations such as binning numeric variables into categories which can then relate linearly to target variable.
+binning is done to numerical values when there is not a linear relationship between the feature and binning could expose it e.g age vs book buying. age group is better indicator.
+- Create domain specific features.
+- 
 
 ### Feature construction
 
@@ -240,6 +254,9 @@ To describe the performance the following can be used:
   - Good to find other metrics: Precision, Recall, F1 Score
 
 ---
+## Overview - Naive Bayes
+
+
 
 ## Overview - Density estimation
 
@@ -409,6 +426,7 @@ Can be supervised or unsupervised due to the ability to
 - Helpful in exploratory due to :
   - Easier to identify significant variables and relations between features
 - Map non-linear relationship well
+- Works on very large datasets
 - Works for categorical and continuous input/output variables
 - Creates the best similar sets (where in the set it is different)
 - Better than linear if data complexity relation high and need easily explain model
@@ -428,6 +446,7 @@ Can avoid over-fitting in decision tress:
 ## Overview - Deep Learning
 [KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)
 [KagglePractice](https://www.kaggle.com/c/ann-and-dl-image-classification/overview)
+
 
 ---
 
@@ -506,6 +525,12 @@ Common real-time analytics + machine learning u
 amazon sagemaker - built to make mL more accessible
 
 
+### Overview - Natural Language processing
+
+## n - grams
+An n-gram is a collection of n successive items in a text document that may include
+words, numbers, symbols, and punctuation.
+
 ## Text embeddings
 
 When working with text you must convert text to numerical representations so that the models can understand relations between words.
@@ -522,8 +547,6 @@ Cons:
 
 A slightly better approach is to use Term Frequency Inverse Document Frequency. It determines the importance of the word to the document
 and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
-
-
 
 
 

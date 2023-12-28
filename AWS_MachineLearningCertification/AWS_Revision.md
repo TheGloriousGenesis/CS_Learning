@@ -1,9 +1,13 @@
+Clean up is always important [here](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-ex-cleanup.html)
+
 Exam
 - Unanswered questions are scored as incorrect; there is n- penalty for guessing. 
 - 50 questions in exam that affect score
 - You need 750/1000 to pass
 - Includes 15 unscored questions that d- not affect your score
 
+> [!CRITICAL]
+> Practice feature engineering
 
 Exam is split into 4 domains
   - Data engineering - 20%
@@ -122,6 +126,7 @@ random forests, RNN, CNN, ensemble, transfer learning
 > ADD list of other types of ml models
 
 #### Train ML models
+- Parameters for model set in training job (weight and bias). Hyperparameter set before and outside of job
 
 - Split data between training and validation (for example, cross validation).
   - Splitting data only applicable to supervised learning 
@@ -130,8 +135,10 @@ random forests, RNN, CNN, ensemble, transfer learning
   - 10-15% Evaluation (Pass to algo at time at training)
   - 10-15% Testing (Accuracy, precision, Recall, performance metrics) (Not passed to algorithm)
   - dataset should be greater than 1000 
+
 - Understand optimization techniques for ML training (for example, gradient
-decent, loss functions, convergence).
+descent, loss functions, convergence).
+  - [gradient descent](../Machine_Learning/MLTheory/README.md#gradient-descent)
 - Choose appropriate compute resources (for example GPU or CPU,
 distributed or non-distributed).
   - Choose appropriate compute platforms (Spark or non-Spark).
@@ -153,13 +160,27 @@ distributed or non-distributed).
 > Amazon SageMaker workflow for training jobs 
 > Running a training job using containers 
 > Build your own containers 
-> P3 instances 
+> P3 instances (GPU instance)
 > Components of an ML training job for deep learning
 
-
 #### Perform hyperparameter optimization
+Hyperparameter tuning is done to increase prediction power via influencing the learning 
+process.
 
+- Three types of hyperparameters:
+  - Model parameters (to do with model)
+  - Optimizer parameters (gradient, stochastic, ADAM)
+  - Data parameters (to do with data, usually if there isn't enough)
 - Understand the correct type of hyperparameter optimization technique for the right ML problem
+  - Manually (with domain knowledge)
+  - Grid search  - Not available on Sagemaker (it is [now](https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-automatic-model-tuning-now-supports-grid-search/#:~:text=With%20Amazon%20SageMaker%20automatic%20model,%2C%20Grid%20search%2C%20and%20Hyperband.))
+    - Inefficient but thorough
+  - Random search
+  - Bayesian search
+  - Hyperband (bandit based approach)
+
+Random search and bayesian methods leave smaller unexplored regions than grid searches
+
 - Perform regularization.
   - Drop out
   - L1/L2
@@ -179,7 +200,15 @@ and activation functions.
 - Understand tree-based models (number of trees, number of levels).
 - Understand linear models (learning rate). 
 
-> ADD more understand
+
+> [!IMPORTANT]
+> - Scikit learn API optimization is NOT available on Sagemaker
+> - Hyperparameters are set OUTSIDE of training jobs
+> - Hyperparameter tuning jobs can be stopped and the underlying resources deleted, but the jobs themselves cannot be deleted.
+
+
+> [!TIP]
+> - Perform hyperparameter tuning for XGBoost (supervised machine learning)
 
 #### Evaluate ML models
 - Avoid overfitting or underfitting.
@@ -298,27 +327,41 @@ Security, Identity, and Compliance:
 > ADD Operational best practices
 > Add how to identify and fix drops in performance
 
-AWS services matching to ML solutions
+### AWS services matching to ML solutions
+
 Analytics:
 - Amazon Athena
 - Amazon EMR
 - AWS Glue
-- Amazon Kinesis
+
+#### Amazon Kinesis
+
+Amazon Kinesis is a platform for [streaming data](../Machine_Learning/Data_Mining/README.md#overview_-_data_streaming) in AWS.
+
 - Amazon Kinesis Data Firehose
+
+
+  - Deals with streaming data to http endpoints and storage solutions.
+  - Config based (do not need to set up an application, just state where the data is and where you want it to go)
+
 - Amazon Kinesis Data Streams
 - Amazon Managed Service for Apache Flink
 - Amazon QuickSight
+
 Compute:
 - AWS Batch
 - Amazon EC2
 - AWS Lambda
+
 Containers:
 - Amazon Elastic Container Registry (Amazon ECR)
 - Amazon Elastic Container Service (Amazon ECS)
 - Amazon Elastic Kubernetes Service (Amazon EKS)
 - AWS Fargate
+
 Internet of Things:
 - AWS IoT Greengrass 
+
 Machine Learning:
 - Amazon Comprehend
 - AWS Deep Learning AMIs (DLAMI)
@@ -333,11 +376,14 @@ Machine Learning:
 - Amazon Textract
 - Amazon Transcribe
 - Amazon Translate
+
 Management and Governance:
 - AWS CloudTrail
 - Amazon CloudWatch
+
 Networking and Content Delivery:
 - Amazon VPC
+
 Security, Identity, and Compliance:
 - AWS Identity and Access Management (IAM)
 
