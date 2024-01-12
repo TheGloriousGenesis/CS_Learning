@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-service
+  labels:
+    component_type: kedroservice
+  namespace: dev
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 82
+      targetPort: 9376
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-service
+  labels:
+    component_type: kedroservice
+  namespace: prod
+spec:
+  selector:
+    app: python
+  ports:
+    - protocol: TCP
+      port: 8000 # any port that the service should expose for interactions external to cluster
+      targetPort: 8000 # port that the service should route traffic too (should align with the port exposed on pod's container)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-service-diff
+  namespace: prod
+spec:
+  selector:
+    app: python
+  ports:
+    - protocol: TCP
+      port: 8000 # any port that the service should expose for interactions external to cluster
+      targetPort: 8000 # port that the service should route traffic too (should align with the port exposed on pod's container)

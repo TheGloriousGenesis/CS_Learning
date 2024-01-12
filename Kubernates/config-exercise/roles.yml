@@ -1,0 +1,62 @@
+# This role can now access kubernetes builtin in resources
+# /api/v1/namespaces/{namespace}/deployments
+# /api/v1/namespaces/{namespace}/pods
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev # specify role for specific namespace
+  name: dev-reader
+rules:
+- apiGroups: [""] # "" indicates the core API group and references all built-in objects
+  resources: ["pods", "deployments"] # This lists resources/subresources that the role is allowed to access
+  verbs: ["get", "watch", "list", "create", "update", "patch", "delete"] # execute verbs used in cli to retrieve information
+---
+# This role can now access kubernetes builtin in resources
+# /api/v1/namespaces/{namespace}/services
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata: # Authorization rules for this role
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: prod-reader # like an admin will be able to access all pods in any namespace
+rules:
+- apiGroups: [""] #myinfo: what does this do? designates the core API group
+  # at the HTTP level, the name of the resource for accessing Secret
+  # objects is "secrets"
+  resources: ["services", "serviceaccounts"] # This lists resources/subresources that the role is allowed to access
+  verbs: ["list"] # execute verbs used in cli to retrieve information
+---
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "dave" to read secrets in the "development" namespace.
+# You need to already have a ClusterRole named "admin-reader".
+kind: RoleBinding
+metadata:
+  name: dev-reader-binding
+  # The namespace of the RoleBinding determines where the permissions are granted.
+  # This only grants permissions within the "development" namespace.
+  namespace: dev
+subjects:
+- kind: ServiceAccount
+  name: dev-test-account # Name is case sensitive. myinfo what does this reference?
+  namespace: dev
+roleRef:   # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role
+  name: dev-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "dave" to read secrets in the "development" namespace.
+# You need to already have a ClusterRole named "admin-reader".
+kind: RoleBinding
+metadata:
+  name: prod-reader-binding
+  namespace: prod
+  # The namespace of the RoleBinding determines where the permissions are granted.
+  # This only grants permissions within the "development" namespace.
+subjects:
+- kind: ServiceAccount
+  name: prod-test-account # Name is case sensitive. references the name of the subject (must reference existing resource)
+  namespace: prod
+roleRef:   # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: ClusterRole
+  name: prod-reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io

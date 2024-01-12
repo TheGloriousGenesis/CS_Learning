@@ -1,12 +1,14 @@
-Clean up is always important [here](https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-ex-cleanup.html)
+[//]: # (Clean up is always important [here]&#40;https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-ex-cleanup.html&#41;)
 
-Exam
-- Unanswered questions are scored as incorrect; there is n- penalty for guessing. 
+# AWS Revision
+
+## What does the exam entail?
+- Unanswered questions are scored as incorrect; there is no penalty for guessing. 
 - 50 questions in exam that affect score
 - You need 750/1000 to pass
-- Includes 15 unscored questions that d- not affect your score
+- Includes 15 unscored questions that do not affect your score
 
-> [!CRITICAL]
+> [!CAUTION]
 > Practice feature engineering
 
 Exam is split into 4 domains
@@ -15,9 +17,9 @@ Exam is split into 4 domains
   - Modelling - 36%
   - Machine Learning Implementation and Operations - 20%
 
-### Domain 1: Data Engineering - Architecting
+## Domain 1: Data Engineering - Architecting
 
-#### Create data repositories for ML
+### Create data repositories for ML
 
 - Identify data sources (for example, content and location, primary sources
 such as user data).
@@ -34,8 +36,13 @@ Database:
 
 > MAYBE: General database stuff
 
-#### Identify and implement a data ingestion solution - Ingestion/Collection.
-- Identify data job styles and job types (for example, batch load, streaming).
+### Identify and implement a data ingestion solution - Ingestion/Collection.
+- Identify data job styles and job types 
+  - batch load
+  - streaming
+  - hyperparameter
+  - training
+  - etc
 - Orchestrate data ingestion pipelines (batch-based ML workloads and
 streaming-based ML workloads).
 - Schedule jobs. 
@@ -50,8 +57,7 @@ Analytics:
 - Amazon Managed Service for Apache Flink
 - Amazon QuickSight
 
-
-#### Identify and implement a data transformation solution - ETL, processing
+### Identify and implement a data transformation solution - ETL, processing
 
 - Handle ML-specific data by using MapReduce.
 - Transform data in transit
@@ -63,11 +69,12 @@ Analytics:
 Compute:
 - AWS Batch
 
-### Domain 2: Exploratory Data Analysis
+## Domain 2: Exploratory Data Analysis
 
-#### Sanitize and prepare data for modeling
+### Sanitize and prepare data for modeling
 
 - Identify and handle missing data, corrupt data, and stop words.
+  - Can be handled by common [preprocessing steps](../Machine_Learning/Data_Mining/README.md#preprocessing)
 - Format, normalize, augment, and scale data.
 - Determine whether there is sufficient labeled data. 
   - Identify mitigation strategies. 
@@ -327,25 +334,23 @@ Security, Identity, and Compliance:
 > ADD Operational best practices
 > Add how to identify and fix drops in performance
 
-### AWS services matching to ML solutions
+### Overview - AWS services matching to ML solutions
 
-Analytics:
+#### Analytics:
 - Amazon Athena
 - Amazon EMR
 - AWS Glue
 
-#### Amazon Kinesis
+- Amazon Kinesis
 
-Amazon Kinesis is a platform for [streaming data](../Machine_Learning/Data_Mining/README.md#overview_-_data_streaming) in AWS.
+Amazon Kinesis is a platform for [streaming data](../Machine_Learning/Data_Mining/README.md#overview---data-streaming) in AWS.
 
 - Amazon Kinesis Data Firehose
-
-
-  - Deals with streaming data to http endpoints and storage solutions.
+  - Deals with streaming data to http endpoints and storage solutions (S3/Redshift).
   - Config based (do not need to set up an application, just state where the data is and where you want it to go)
 
 - Amazon Kinesis Data Streams
-- Amazon Managed Service for Apache Flink
+- Amazon Managed Service for Apache Flink (Amazon MSK)
 - Amazon QuickSight
 
 Compute:
@@ -358,6 +363,19 @@ Containers:
 - Amazon Elastic Container Service (Amazon ECS)
 - Amazon Elastic Kubernetes Service (Amazon EKS)
 - AWS Fargate
+
+Database:
+- Amazon Redshift - [Data warehouse](../Machine_Learning/Data_Mining/README.md#data-warehouse)
+
+Analyses data using SQL in real time for AI/ML applications. Allows ingesting of data across different storage solutions in an easy way.
+  - Parallel processing architecture
+  - Using no ETL (users use their own ETL tools)
+  - Serverless
+  - High [concurrency](../Core_Java_and_Optimisation_techniques/README.md#concurrency)
+  
+As it uses SQL to analyse data, data must be structured or semi-structured
+> [!CAUTION]
+> I still do not know what concurrency is. I need a visual. MAKE ONE.
 
 Internet of Things:
 - AWS IoT Greengrass 
@@ -387,7 +405,11 @@ Networking and Content Delivery:
 Security, Identity, and Compliance:
 - AWS Identity and Access Management (IAM)
 
-
+Storage:
+- Amazon Elastic Block Store (Amazon EBS)
+- Amazon Elastic File System (Amazon EFS)
+- Amazon FSx
+- Amazon S3 
 __________________
 
 

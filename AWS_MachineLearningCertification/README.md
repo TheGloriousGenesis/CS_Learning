@@ -267,8 +267,6 @@ Examples of dirty data
 Descriptive statistics - used to create data quality report
 - in pandas using `df.describe(include='all')`
 
-Outliers in data
-- See if outliers. See if the data is making sense for the column it is in. Really think outloud! Even include bias in your thinking to see if you can spot an outlier!
 
 Slide 7 
 mean == median : symmetrical distribution
@@ -276,16 +274,6 @@ mean =/= median : skewed distribution
 
 features should be normally distributed as much as possible
 
-Slide 12
-To deal with outliers try thinking if the outlier is artifical (dont make no sense and wont be helpful)
-
-Natual outlier (keep them) - take natural log or use mean
-
-artifical outlier (delete)
-
-Use standard imputer
-
-MICE
 
 
 Slide 15

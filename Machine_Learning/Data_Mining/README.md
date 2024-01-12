@@ -1,17 +1,18 @@
 # Data mining
 
 ## Glossary
-|             Term             |                                      Definition                                       |
-|:----------------------------:|:-------------------------------------------------------------------------------------:|
-|       Series (Pandas)        |                           Similar to a column of data (1D)                            |
-|      Dataframe (Pandas)      |                           A collection of series data (2D)                            |
-|     Attribute (Jupyter)      |                       gives information about the data at hand                        |
-|      Function (Jupyter)      |               Executes code to manipulate or obtain insights from data                |
-|           Dataset            |                              Collection of data objects                               |
-|         Data object          |                   A record, data point, event, observation, sample                    |
-|          Attribute           | A characteristic of a data object that can vary, also called variable, field, feature |
-|         Observations         |                            Observed values of an attribute                            |
-| Buffer data (data streaming) |            Temporarily hold data in memory until its time to be processed             |
+|                      Term                       |                                      Definition                                       |
+|:-----------------------------------------------:|:-------------------------------------------------------------------------------------:|
+|                 Series (Pandas)                 |                           Similar to a column of data (1D)                            |
+|               Dataframe (Pandas)                |                           A collection of series data (2D)                            |
+|               Attribute (Jupyter)               |                       gives information about the data at hand                        |
+|               Function (Jupyter)                |               Executes code to manipulate or obtain insights from data                |
+|                     Dataset                     |                              Collection of data objects                               |
+|                   Data object                   |                   A record, data point, event, observation, sample                    |
+|                    Attribute                    | A characteristic of a data object that can vary, also called variable, field, feature |
+|                  Observations                   |                            Observed values of an attribute                            |
+|          Buffer data (data streaming)           |            Temporarily hold data in memory until its time to be processed             |
+| MICE (Multiple Imputation by Chained Equations) |                 Predict missing values using machine learning models                  |
 
 ## Data types
 Below image shows the different types of data:
@@ -78,11 +79,24 @@ There are 4 steps commonly used in preprocessing:
 
 2. Outlier Detection (identifying what the outliers)
 
+Outliers can be determined with domain knowledge or statistically. With domain knowledge,
+really think outloud! Does that data make sense for that column type? Even include bias in your thinking to see if you can spot an outlier!
+
+There are two types of outliers
+
+- Natual outlier (should keep and resolve via taking natural log or use mean)
+- Artificial outlier (delete)
+
+To resolve outliers you can either use a standard imputer or MICE
+
+
 3. Normalisation
 
 4. Visualisation
 
 ## Data warehouse
+
+
 
 ## Overview - Data Streaming
 

@@ -160,8 +160,8 @@ one can use `Collections.checkedList(..)`, which will throw error at runtime whe
 
 ## Concurrency
 
-Multi-tasking is describes operating system ability to have more than one program running seemingly at the same time. 
-Multi-threading is similar but takes it at a program level, where a program will seemingly do multiple tasks at the same
+Multi-tasking describes an operating system's ability to have more than one program running seemingly at the same time. 
+Multi-threading is similar but at a program level, where a program will seemingly do multiple tasks at the same
 time. The tasks are usually created on one thread. More than one task on a thread is called multi-threaded.
 
 Processes are different to threads because processes run on a complete set of their own variables, threads share the 

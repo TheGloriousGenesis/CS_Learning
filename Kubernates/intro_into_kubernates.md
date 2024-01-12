@@ -1,15 +1,21 @@
 Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernetes/interacting-with-kubernetes/
 
+Setting up own CA for local https development - https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/
 - Need Docker experience
 - Need Yaml experience
 
-|      Word       |                                             Definition                                              |
-|:---------------:|:---------------------------------------------------------------------------------------------------:|
-|    Resources    |               Instances of Kubernetes objects (e.g Deployment, services, namespaces)                |
-|   Controller    |    Observe the state of the cluster and look for changes to desired state of resources or system    |
-|    Workloads    |        Resources that run containers (Deployments, StatefulSets, Jobs, Cronjobs, DaemonSets)        |
-| Resource config | Declarative files applied to cluster (with kubectl) and then picked up and actuated by a controller |
+[glossary of Kubernetes](https://kubernetes.io/docs/reference/glossary/?all=true#term-control-plane)
 
+|      Word       |                                                                     Definition                                                                      |
+|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|
+|    Resources    |                                       Instances of Kubernetes objects (e.g Deployment, services, namespaces)                                        |
+|   Controller    |                            Observe the state of the cluster and look for changes to desired state of resources or system                            |
+|    Workloads    |                                Resources that run containers (Deployments, StatefulSets, Jobs, Cronjobs, DaemonSets)                                |
+| Resource config |                         Declarative files applied to cluster (with kubectl) and then picked up and actuated by a controller                         |
+|     Context     |                     Specifies which namespace and cluster and user the kubectl command will use   (1 context to one namespace)                      |
+|   API Server    |                                                 Control plane component that serves kubernetes API                                                  |
+|     Kubelet     | A node agent that runs on every node in the cluster and performs functions such as running containers and managing workloads and executing pod spec |
+| ServiceAccont   |                                           Provides identity to pods to authenticate pod to the API server                                           |
 
 ## Definition
 
@@ -39,6 +45,9 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
 ## Kubernetes Architecture
 > [!INFO]
 > CREATE INFOGRAPHIC : Cluster > Nodes > Pods > Container, Resources
+
+A control plane is the most important part of a cluster and is responsible for managing the cluster 
+
 - Kubernetes API has 2 parts - Resource Type and controller
 
 - Cluster : all of the machiens collectively
@@ -79,6 +88,13 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
     - labels to retrieve data
 - Pods are scheduled to run on Nodes in a cluster
 
+## Kubelet
+
+Runs on every node in the cluster and performs functions such as running containers and managing workloads.
+Its a node agent that ensures containers are run in pods as specified in pod spec.
+
+It communicates with the control plane. It receives pod spec from API server and spins up what is required. also reports back regarding status and what is required
+
 ## Resources
 - Uniquely identified by the following declarative tags:
   - apiVersion
@@ -87,11 +103,70 @@ Intro into kubernates - https://cloudacademy.com/course/introduction-to-kubernet
   - metadata.name
 - Spec specifies the state of the resource
 
+> [!CRITICAL]
+> Not all resources are in namespaces
+
 ## Nodes
 - Q: Do all nodes share container network too?
 
+## Service
+
+When a service is created it creates a DNS entry which is in the form `<service-name>.<namespace-name>.svc.cluster.local`
+which is callable by a container by just the `<service-name>` (as it will resolve to the service which is local to the namespace used by container).
+
 ## Ingress
 Acts as entrypoint to cluster
+
+## Service Account
+
+Service account exist as objects in the API server and have the following properties:
+1. Has one SA to Namespace (1 to 1) (there can be many SA's in a single namespace)
+2. Exist in cluster 
+3. Can be quickly created for specific tasks
+
+An SA is similar to user account but one a bigger scale. 
+
+|                          User Account                          |              Server Account              |
+|:--------------------------------------------------------------:|:----------------------------------------:|
+|                      Human authenticated                       |          Computer authenticated          |
+| Do not exist in API server (opaque data - external to cluster) | Exist in API server(internal to cluster) |
+|                         Used by people                         |       Used by workloads/automation       |
+
+When a pod is created, a default SA is created with all permissions allowed. 
+An application running inside a Pod can access kubernetes API using the default mounted SA credentials. 
+
+> [!IMPORTANT]
+> Although API credentials are automatically mounting to the pod during creation, you can opt out of this behaviour via the 
+> `automountServiceAccountToken: false` setting on a service object and on pod object.
+
+### Why use service account?
+- When pods need to communicate with K8 API server
+- When pods need to communicate with external services
+- When external service needs to communicate with K8 API server
+
+To access kubernetes directly via a REST API with a http client like `curl` or a browser you can use a configured SA.
+To access K8 via API you need a token. This token can either be term-lived (mounted onto the pod), or you can generate a token 
+using `kubectl create token <name-of-token>` (this is not recommended, mounted tokens are recommended instead).
+
+You can also use an SA to state imagepullsecrets instead of stating imagepullsecrets for each pod that uses a private registry. 
+
+## Role based access control
+
+Good learning resources here -> https://learnk8s.io/rbac-kubernetes 
+
+Kubernetes does not have objects which represent regular user accounts. Any actor that presents a valid certificate signed by the clusters
+certificate authority is considered authenticated.
+
+RBAC regulates access to computer or network resources. This is done by the use of API objects **Role** and **ClusterRole**.
+These roles contain the permissions an actor in k8 can have.
+- A Role always sets permissions within a particular namespace
+- A ClusterRole is non-namespace specific, so can grant permissions to cluster scoped resources or multiple namespace access
+
+If you want to define a namespace specific role, use Role, else use ClusterRole for cluster wide roles
+
+All roles must be bound by Rolebinding/ClusterRoleBinding object.
+
+Rolebinding grants the permissions defined in a role to a user, service account or Group.
 
 ## FAQ
 Q: I get a connection error when executing a simple command such as `kubectl get pods`, how do i resolve this?
@@ -101,4 +176,37 @@ A: This error comes from issues connecting to the API server (master components)
 kubectl config get-contexts
 
 kubectl config use-context docker-desktop
+```
+
+Q: What exists in the API server?
+
+Q: What is an API server?
+
+
+
+## Trouble-shooting:
+
+### Check if SA works
+
+1. Get token: 
+   1. `TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)` OR
+   2. `TOKEN=$(cat /var/run/secrets/tokens/sa-dev-token)` OR
+   2. `TOKEN=$(cat <path-to-token>)`
+2. Execute command: `curl --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt --header "Authorization: Bearer $TOKEN" https://kubernetes.default.svc/api/v1/namespaces/dev/pods/`
+
+### Check if token has expired in pod
+1. Enter pod: `kubectl exec -n <namespace> -it <pod_name> -- bash`
+2. Get token: `TOKEN=$(cat /var/run/secrets/tokens/sa-dev-token)`
+3. Get payload: `PAYLOAD=$(echo $TOKEN | cut -d '.' -f2 | base64 -d)`
+4. Pad payload if necessary: `PADDED_PAYLOAD=$(echo $PAYLOAD | sed -e 's/[^=]\{1\}$/&==/;s/[^=]\{2\}$/&=/')`
+5. Decode payload: `DECODED_PAYLOAD=$(echo $PADDED_PAYLOAD | base64 -d)`
+6. Download jq for json parsing and get `exp` field (can skip and just look at value from DECODED_PAYLOAD): `apt-get update && apt-get install -y jq`
+7. Get current time: `CURRENT_TIME=$(date +%s)`
+8. Check if token is still valid:
+```bash
+if [ $CURRENT_TIME -gt $EXP ]; then
+    echo "Token has expired."
+else
+    echo "Token is still valid."
+fi
 ```
