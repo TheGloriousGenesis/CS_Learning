@@ -8,21 +8,22 @@ metadata:
   name: dev-reader
 rules:
 - apiGroups: [""] # "" indicates the core API group and references all built-in objects
-  resources: ["pods", "deployments"] # This lists resources/subresources that the role is allowed to access
+  resources: ["pods", "deployments", "serviceaccounts"] # This lists resources/subresources that the role is allowed to access
   verbs: ["get", "watch", "list", "create", "update", "patch", "delete"] # execute verbs used in cli to retrieve information
 ---
 # This role can now access kubernetes builtin in resources
 # /api/v1/namespaces/{namespace}/services
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata: # Authorization rules for this role
   # "namespace" omitted since ClusterRoles are not namespaced
   name: prod-reader # like an admin will be able to access all pods in any namespace
+  namespace: prod
 rules:
 - apiGroups: [""] #myinfo: what does this do? designates the core API group
   # at the HTTP level, the name of the resource for accessing Secret
   # objects is "secrets"
-  resources: ["services", "serviceaccounts"] # This lists resources/subresources that the role is allowed to access
+  resources: ["services"] # This lists resources/subresources that the role is allowed to access
   verbs: ["list"] # execute verbs used in cli to retrieve information
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -57,6 +58,6 @@ subjects:
   name: prod-test-account # Name is case sensitive. references the name of the subject (must reference existing resource)
   namespace: prod
 roleRef:   # "roleRef" specifies the binding to a Role / ClusterRole
-  kind: ClusterRole
+  kind: Role
   name: prod-reader # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io

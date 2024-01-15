@@ -14,8 +14,6 @@ spec:
         app: nginx
     spec:
       serviceAccountName: dev-test-account
-      imagePullSecrets:
-        - name: c1eng-docker-local-cred
       containers:
         - name: my-container
           image: nginx:latest
@@ -30,7 +28,9 @@ spec:
             sources:
               - serviceAccountToken: # allows us to config mounted token for sa
                   path: sa-dev-token
-                  expirationSeconds: 7200
+                  expirationSeconds: 600
+#                  audience: curlsvc # recipient of token must identify themself with and identifier in the list of audience to be validated otherwise reject token
+#                  audience: https://kubernetes.default.svc # recipient of token must identify themself with and identifier in the list of audience to be validated otherwise reject token
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -57,12 +57,15 @@ spec:
           volumeMounts:
             - mountPath: /var/run/secrets/tokens
               name: sa-prod-token
-      imagePullSecrets:
-        - name: c1eng-docker-local-cred
+            - mountPath: /etc/get_components
+              name: get-component-code
       volumes:
         - name: sa-prod-token
           projected:
             sources:
               - serviceAccountToken:
                   path: sa-prod-token
-                  expirationSeconds: 7200
+                  expirationSeconds: 600
+        - name: get-component-code
+          configMap:
+            name: get-components

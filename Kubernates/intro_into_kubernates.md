@@ -15,8 +15,8 @@ Setting up own CA for local https development - https://deliciousbrains.com/ssl-
 |     Context     |                     Specifies which namespace and cluster and user the kubectl command will use   (1 context to one namespace)                      |
 |   API Server    |                                                 Control plane component that serves kubernetes API                                                  |
 |     Kubelet     | A node agent that runs on every node in the cluster and performs functions such as running containers and managing workloads and executing pod spec |
-| ServiceAccont   |                                           Provides identity to pods to authenticate pod to the API server                                           |
-
+|  ServiceAccont  |                                           Provides identity to pods to authenticate pod to the API server                                           |
+|     Subject     |                                                        Any actor that is an object in k8 API                                                        |
 ## Definition
 
 - container orchestration tool designed to automate deploying and scaling applications
@@ -117,6 +117,10 @@ which is callable by a container by just the `<service-name>` (as it will resolv
 ## Ingress
 Acts as entrypoint to cluster
 
+## Security
+
+Security concepts in kubernetes - https://kubernetes.io/docs/concepts/security/
+
 ## Service Account
 
 Service account exist as objects in the API server and have the following properties:
@@ -154,19 +158,45 @@ You can also use an SA to state imagepullsecrets instead of stating imagepullsec
 
 Good learning resources here -> https://learnk8s.io/rbac-kubernetes 
 
-Kubernetes does not have objects which represent regular user accounts. Any actor that presents a valid certificate signed by the clusters
+Kubernetes does not have objects which represent regular user accounts. Any subject that presents a valid certificate signed by the clusters
 certificate authority is considered authenticated.
 
 RBAC regulates access to computer or network resources. This is done by the use of API objects **Role** and **ClusterRole**.
-These roles contain the permissions an actor in k8 can have.
+These roles contain the permissions an subject in k8 can have.
 - A Role always sets permissions within a particular namespace
 - A ClusterRole is non-namespace specific, so can grant permissions to cluster scoped resources or multiple namespace access
+- Aggregated ClusterRole allows role management to be more dynamic and centralized. Allows grouping of other ClusterRoles to one central place. (instead of giving someone 5 different clusterroles, group them into one clusterrole)
 
 If you want to define a namespace specific role, use Role, else use ClusterRole for cluster wide roles
 
 All roles must be bound by Rolebinding/ClusterRoleBinding object.
 
 Rolebinding grants the permissions defined in a role to a user, service account or Group.
+
+The name of the subject during role binding has no requirements apart from the fact that `system:` prefix is reserved (can be used but has special meaning).
+
+### Token Generation
+why you would volumemount token - > https://stackoverflow.com/questions/75292056/how-to-add-mountable-secrets-to-a-service-account
+
+Service Account token is used for API authentication and not for consumption within the Pod itself.
+
+If you want to use the secret within a Pod, you will have to reference it in the Pod's specification. 
+
+
+Service accounts have tokens that an subject can use for authentication. These tokens are not configurable on the default account. This token from the projected volume is a JSON Web Token.
+Tokens for service accounts usually use projected volumes. This allow for specific control over SA token configuration, enhancing security. Project volumes also enable automatic rotation of tokens by the kubelet,
+which means tokens aren't static and less issues if compromised.
+
+This token can have an expiration time, which can be specified. The kubelet will manage the generation, storage and refreshing of the token. The refreshing is managed by the K8 cluster configuration (unable to manage this administratively). The application is then responsible for load token on a schedule without tracking expiration.
+
+You don't need to call this to obtain an API token for use within a container, since the kubelet sets this up for you using a projected volume
+
+default audience for tokenrequest is kube-apiserver
+
+project volume contains and exposes the following to application code running within the pod:
+1. `serviceaccountToken`
+2. `configMap` - stores the certificate authority data information to certify kube-apiserver.
+3. `downwardAPI` - makes sure the name of the namespace the pod is in is available to application code running in pod.
 
 ## FAQ
 Q: I get a connection error when executing a simple command such as `kubectl get pods`, how do i resolve this?
@@ -182,6 +212,9 @@ Q: What exists in the API server?
 
 Q: What is an API server?
 
+Q: How do you access kubernetes API from within a pod?
+
+A: https://kubernetes.io/docs/tasks/run-application/access-api-from-pod
 
 
 ## Trouble-shooting:

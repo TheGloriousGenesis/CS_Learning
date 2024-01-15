@@ -4,6 +4,8 @@ Core_Java_and_Optimisation_techniques/revision_timetable_generator.py
 
 Kubernates/config-exercise/certs
 Kubernates/config-exercise/config-demo
+Kubernates/config-exercise/secrets.yaml
+Kubernates/config-exercise/tokenreview.yaml
 
 */.data/
 .images
