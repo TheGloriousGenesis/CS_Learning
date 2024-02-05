@@ -1,8 +1,30 @@
 # Intro into ML Ops practitioners
 
+
+
 ## Understanding ML Process
-1. Data Preparation (Data engineering)
+1. Data Preparation (Data engineering) ETL
    1. Preparing the data to use from raw data to production ready data
+
+### ETL in data retrieval/storage
+
+Extract: Think about data formats, large data, performance
+
+Transforms:  joining data from different sources, converting data types, calculating new fields, normalization, deduplication, and handling missing or invalid data.
+
+Load: Efficiency during loading process (batch or streaming), managing data consistency (need validation here)
+
+--> managing data consistency:
+- data validation before data enters the systems
+- in RDBS, use foreign keys and contraints
+- implements ACID properties
+- Concurrency control
+- Data synchronization
+- Version Control
+
+
+
+
 2. EDA (Exploratory Data Analysis)
    1. Explore for any statistical patterns in the data, talk to stakeholders whilst you do this
    2. Best way to do this:

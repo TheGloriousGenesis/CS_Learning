@@ -6,17 +6,18 @@ Setting up own CA for local https development - https://deliciousbrains.com/ssl-
 
 [glossary of Kubernetes](https://kubernetes.io/docs/reference/glossary/?all=true#term-control-plane)
 
-|      Word       |                                                                     Definition                                                                      |
-|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|
-|    Resources    |                                       Instances of Kubernetes objects (e.g Deployment, services, namespaces)                                        |
-|   Controller    |                            Observe the state of the cluster and look for changes to desired state of resources or system                            |
-|    Workloads    |                                Resources that run containers (Deployments, StatefulSets, Jobs, Cronjobs, DaemonSets)                                |
-| Resource config |                         Declarative files applied to cluster (with kubectl) and then picked up and actuated by a controller                         |
-|     Context     |                     Specifies which namespace and cluster and user the kubectl command will use   (1 context to one namespace)                      |
-|   API Server    |                                                 Control plane component that serves kubernetes API                                                  |
-|     Kubelet     | A node agent that runs on every node in the cluster and performs functions such as running containers and managing workloads and executing pod spec |
-|  ServiceAccont  |                                           Provides identity to pods to authenticate pod to the API server                                           |
-|     Subject     |                                                        Any actor that is an object in k8 API                                                        |
+|      Word       |                                                                                          Definition                                                                                           |
+|:---------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|    Resources    |                                                            Instances of Kubernetes objects (e.g Deployment, services, namespaces)                                                             |
+|   Controller    |                                                 Observe the state of the cluster and look for changes to desired state of resources or system                                                 |
+|    Workloads    |                                                     Resources that run containers (Deployments, StatefulSets, Jobs, Cronjobs, DaemonSets)                                                     |
+| Resource config |                                              Declarative files applied to cluster (with kubectl) and then picked up and actuated by a controller                                              |
+|     Context     |                                          Specifies which namespace and cluster and user the kubectl command will use   (1 context to one namespace)                                           |
+|   API Server    |                                                                      Control plane component that serves kubernetes API                                                                       |
+|     Kubelet     |                      A node agent that runs on every node in the cluster and performs functions such as running containers and managing workloads and executing pod spec                      |
+|  ServiceAccont  | Provides identity to pods to authenticate pod to the API server. Not necessarily only pods that use service accounts external application CI/CD if it needs to access cluster or k8 processes |
+|     Subject     |                                                                             Any actor that is an object in k8 API                                                                             |
+|      RBAC       |                                      Role Based Access Control. Assign policies to service account to define what action they can perform in the cluster                                      |
 ## Definition
 
 - container orchestration tool designed to automate deploying and scaling applications
@@ -162,7 +163,7 @@ Kubernetes does not have objects which represent regular user accounts. Any subj
 certificate authority is considered authenticated.
 
 RBAC regulates access to computer or network resources. This is done by the use of API objects **Role** and **ClusterRole**.
-These roles contain the permissions an subject in k8 can have.
+These roles contain the permissions on subject in k8 can have.
 - A Role always sets permissions within a particular namespace
 - A ClusterRole is non-namespace specific, so can grant permissions to cluster scoped resources or multiple namespace access
 - Aggregated ClusterRole allows role management to be more dynamic and centralized. Allows grouping of other ClusterRoles to one central place. (instead of giving someone 5 different clusterroles, group them into one clusterrole)
@@ -181,7 +182,6 @@ why you would volumemount token - > https://stackoverflow.com/questions/75292056
 Service Account token is used for API authentication and not for consumption within the Pod itself.
 
 If you want to use the secret within a Pod, you will have to reference it in the Pod's specification. 
-
 
 Service accounts have tokens that an subject can use for authentication. These tokens are not configurable on the default account. This token from the projected volume is a JSON Web Token.
 Tokens for service accounts usually use projected volumes. This allow for specific control over SA token configuration, enhancing security. Project volumes also enable automatic rotation of tokens by the kubelet,
@@ -243,3 +243,17 @@ else
     echo "Token is still valid."
 fi
 ```
+
+### Validate token using TokenRequest API
+1. Ensure you are in the right context `kubectl config current-context`
+2. Ensure the token has permissions to create a tokenreview object
+3. Check if Kubernetes API server has been configured to authenticate tokens
+   1. check the `/etc/kubernetes/manifests/kube-apiserver.yaml` in self managed clusters, EKS service if its aws
+   2. look for flags that associated with authentication that start with `--` e.g `--service-account-key-file`: Points to the file containing the key for verifying service account tokens.
+   3. Access master cluster logs via `journalctl` 
+4. If EKS check:
+   1. IAM roles `aws-auth` configmap
+   2. IAM roles for kubernetes service accounts can be added to manage AWS service access.
+
+Kubernetes are properly set up and that the tokens they generate are compatible with the API server's configuration.
+

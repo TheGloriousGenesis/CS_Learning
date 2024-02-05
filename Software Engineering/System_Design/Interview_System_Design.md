@@ -53,8 +53,12 @@ In order to plan for failure the following must known:
 2. Traffic (what does scalability mean for traffic? Think about load balancers (sits between client and web server)
 3. What data is getting transferred (In terms of data types)? How many versions,
 4. Network Protocol Type: e.g HTTP which depends TCP and UDP, websockets TCP
-5. Storage Type: (Database Normalisation (including redundant data in db), Binary storage, sql, no sql, Metadata(usually no sql),
-Database partitioning)
+5. Storage Type: 
+   1. Database Normalisation (including redundant data in db),
+   2. Binary storage, sql, no sql, 
+   3. Metadata(usually no sql), 
+   4. Database partitioning (Used to perform query performance - selective loading of only relevant partitions)
+      1. Also think about indexing
 6. Memory (Is a cache needed?) when should it get invalidated between database and application layer, application writes to cache if info retrieved from db)
 and CDN (frontend caching system content delivery network)
 7. Asynchronous Processing & Queues (for writes that tale a long time)
