@@ -1,39 +1,55 @@
 # Go Language
 
-Memory management is managed
-
-Data Oriented Design (not object orientated)
+- Memory management is managed
+- Data Oriented Design (not object orientated)
 
 ## Glossary
 
-|    Word    |                                              Definition                                              |
-|:----------:|:----------------------------------------------------------------------------------------------------:|
-| Semantics  |                                          How things behave                                           |
-| Mechanics  |                                        How things are created                                        |
-|  Routines  |                                                  -                                                   |
-|  Pointer   |                                           Address for data                                           |
-| Data races |                     * When multiple threads try to mutate data at the same time                      |
-|     *      |                                                  -                                                   |
-|     &      | Used when you want to share data through the stack (to different functions) instead of making copies |
+|      Word       |                                              Definition                                              |
+|:---------------:|:----------------------------------------------------------------------------------------------------:|
+|    Semantics    |                                          How things behave                                           |
+|    Mechanics    |                                        How things are created                                        |
+|    Routines     |                                                  -                                                   |
+|     Pointer     |                                           Address for data                                           |
+|   Data races    |                     * When multiple threads try to mutate data at the same time                      |
+|        *        |                                       Access value of Pointer                                        |
+|        &        |                               Creating a Pointer for variable or value                               |
+| Point semantics | Used when you want to share data through the stack (to different functions) instead of making copies |
+| Value semantics |                            When you used copies of data through the stack                            |
+|      Heap       |                     Shared storage location where all functions can access data                      |
 
 ## Helpful commands
 
-|         Command          |                             Use                             |
-|:------------------------:|:-----------------------------------------------------------:|
-|         `go run`         |                              -                              |
-|        `go build`        |          Creates binary file to compile for later           |
-|   `goimports -l -w .`    | Print files with incorrect formatting and fix them in place |
-| `go mod init <DIR_PATH>` |                 Make directory a go module                  |
+### Go
+|           Command           |                             Use                             |
+|:---------------------------:|:-----------------------------------------------------------:|
+|          `go run`           |                              -                              |
+|         `go build`          |          Creates binary file to compile for later           |
+|     `goimports -l -w .`     | Print files with incorrect formatting and fix them in place |
+|  `go mod init <DIR_PATH>`   |                 Make directory a go module                  |
+| `go build -gcflags '-m -l'` |              Show how variables are allocated               |
+
+### Linting (Static check)
+More documentation [here](https://staticcheck.dev/docs/running-staticcheck/cli/) regarding uses
+
+|            Command             |                 Use                 |
+|:------------------------------:|:-----------------------------------:|
+|         `staticcheck`          |            lint go files            |
+| `staticcheck -explain <check>` | Explain what given check code means |
 
 ## Variables
 
 >[!IMPORTANT]
-> Do not use pointer semantics during construction
-> Use value semantics when assigning for high levels of readability
+> - Do not use `var` with pointer semantics or `:=` when assigning (can not assign pointers to variables durin variable declaration)
+> - Variable declaration is either via `:=` or `var` NOT both
+
 
 <details><summary> Declaring </summary>
 
 `var b string`
+
+`var x[3]int`
+
 - Good for zero value initialising. 
 - Can also use empty literal construction too: `b := exampleStruct{}`, but that is usually used on return function
 
@@ -44,15 +60,24 @@ var c struct {
 }
 ```
 - Good for creating structs on the fly if they are only going to be used in one place (no need to name the struct as that would be pollution)
-</details>
+
 
 ```go
+const(
+    dd int
+    ee string
+    )
 ```
+- Good for declaring or initialising multiple variables/values at once
+</details>
+
 
 <details><summary> Initialise </summary>
 
 `aa := 10`
+
 `var aa int := 10`
+
 `var aa := 10`
 - Good for non-zero value initialising
 
@@ -75,9 +100,24 @@ type example struct {
     id int
     name string
 }
-e := example{ id: 1, name: "Hello"}
+e := example{ id: 1, name: "John"}
+
+// OR
+
+var e example = example{
+    id: 1
+    name: "John"
+}
 ```
-- Good for creating concrete structs 
+- Good to use for initialising concrete structs
+
+```go
+// Array literals
+var x = [3]int{10, 20 ,30}
+var x = [...]int{10, 20 ,30} // unspecified number
+var x = []int{}
+```
+- Good for initialising arrays 
 </details>
 
 <details><summary> Conversion </summary>
@@ -145,16 +185,15 @@ This means that transformations/mutations are done in isolation (sandbox).
 <details><summary> Pass by Value</summary>
 
 ```go
-func createCount() {
+func createCount() int{
     var count int
     addCountValue(count, 2)
     return count // this will be 0
 }
 
 // The count in this method is a copy of createCount method version. The mutation will not change the above count obj
-func addCountValue(count int, value int){
-    count := count + value
-    return count // this will be 2
+func addCountValue(count int, value int) int{
+    return count + value// this will be 2
 }
 ```
 - Good if you want transformations/mutations to be isolated from function to function
@@ -165,16 +204,121 @@ func addCountValue(count int, value int){
 To share information across routines so that mutations and transformations carry through, use pointer address
 
 ```go
-func createCount() {
+func createCount() int{
     var count int
     addCountValue(&count, 2)
     return count // this will be 2
 }
 
 // The count in this method is the exact same as createCount version. The mutation will propagate.
-func addCountValue(count *int, value int){ //* allows us to store address
-    *inc++
-    return count // this will be 2
+func addCountValue(count *int, value int){ //* allows us to undress the pointer and work with value
+    *count = *count + value // this will be 2
 }
 ```
+
+## Arrays
+
+> [!IMPORTANT]
+> - You must always specify the size of the array if you are going to use it.
+> - size of array is considered as PART of the array. This means `var a [3]int` != `var b [4]int`
+
+> [!TIP]
+> Use slices instead!
+
+
+## Slices
+
+ - Use builtin function `make` to create **EMPTY** slice with **NON-ZERO** length e.g `make([]slice, length, capacity)`
+ - Slices are defined by their type not by the size of the array
+ - You can expand slices! 
+
+> [!IMPORTANT]
+> - When expand slices remember they have a return value that should be reassigned to original variable of slice
+> - The slice given to append function creates a copy of the slice so remember this 
+
+> [!WARNING]
+> There is a difference between declaration of arrays and declaration of slice:
+> - `var a []int` == slice
+> - `var b [...]int` OR `var b [<number>]int` == array
+
+## Maps
+
+- To create an empty map, use the builtin make: make(map[key-type]val-type).
+
+
+
+## For/If-Else loops
+
+There are two ways to define for loop, value semantics and pointers:
+
+```go
+var exampleList [2]string{"hey", "ho"}
+
+// pointer loop (mutate exampleList)
+for i := range exampleList {
+    ...
+}
+
+OR
+
+// value loop (list is copied)
+for i, v := range exampleList {
+    ...
+}
+```
+
+If conditions do not need to have elses.
+
+```go
+if 8%2 == 0 {
+   fmt.Println("Divisible by 2") 
+}
+
+OR
+
+if 8%2 ==0 {
+    fmt.Println("Divisible by 2")
+} else if {
+    fmt.Println("Not divisible by 2")
+}
+```
+
+There are also `switch` cases too (similar to Java)
+
+## Packages
+
+Specify the name of current package (script) at the top of the file (before any imports) e.g
+
+```go
+package hello
+
+import "fmt"
+
+func SayHello(message string) string {
+  fmt.Printf("Hello %s", message)
+}
+```
+
+## [Naming conventions](http://tinyurl.com/golang-naming-conventions)
+
+- Exported Functions/variables start with uppercase, unexported/private start with lowercase
+  - Use camelCase
+- Do not use `_` in naming unless using constants and need to seperate the words e.g `INT_MAX`
+
+## Pointer semantics vs Value semantics
+
+- Represent primitive types as values
+- Represent slices as value
+- Do not use pointer semantics during construction (*)
+- With mutations use pointer
+- With operations use copies
+
+## Documentation
+
+Write comments on top of the function and it converts to documentation for function (as described [here](https://go.dev/blog/godoc))
+
+## Testing
+
+- `reflect` package contains a function called `DeepEqual` that can compare anything including slices. Good for testing
+
 
