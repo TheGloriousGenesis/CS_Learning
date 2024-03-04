@@ -1,4 +1,4 @@
-module ch1
+module pkg1
 
 go 1.21.6
 

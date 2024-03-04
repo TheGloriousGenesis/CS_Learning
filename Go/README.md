@@ -2,6 +2,9 @@
 
 - Memory management is managed
 - Data Oriented Design (not object orientated)
+- [Go playground](https://go.dev/play/)
+- Separate state from behaviour
+- No inheritance!
 
 ## Glossary
 
@@ -17,10 +20,14 @@
 | Point semantics | Used when you want to share data through the stack (to different functions) instead of making copies |
 | Value semantics |                            When you used copies of data through the stack                            |
 |      Heap       |                     Shared storage location where all functions can access data                      |
+|      Rune       |                     Similar to other languages concept of character (in string)                      |
+| Reference types |                          Maps, Array, Slice, Interface, Functions, Channels                          |
 
 ## Helpful commands
 
-### Go
+### Go code
+
+### Go CLI
 |           Command           |                             Use                             |
 |:---------------------------:|:-----------------------------------------------------------:|
 |          `go run`           |                              -                              |
@@ -28,6 +35,7 @@
 |     `goimports -l -w .`     | Print files with incorrect formatting and fix them in place |
 |  `go mod init <DIR_PATH>`   |                 Make directory a go module                  |
 | `go build -gcflags '-m -l'` |              Show how variables are allocated               |
+|   `go get -u all`           |                                                             |
 
 ### Linting (Static check)
 More documentation [here](https://staticcheck.dev/docs/running-staticcheck/cli/) regarding uses
@@ -43,6 +51,13 @@ More documentation [here](https://staticcheck.dev/docs/running-staticcheck/cli/)
 > - Do not use `var` with pointer semantics or `:=` when assigning (can not assign pointers to variables durin variable declaration)
 > - Variable declaration is either via `:=` or `var` NOT both
 
+When using structs, you can also validate using the ```` tags:
+
+``go
+type Person struct {
+  	Name string  `json:"name" validate:"required"`
+}
+``
 
 <details><summary> Declaring </summary>
 
@@ -163,13 +178,19 @@ b = e2 // this will work
 
 > [!TIP]
 > When optimising for performance, label attributes in struct in order of size from largest 
-> to smallest (to optimise memory allocation due to alignment and padding)
+> to smallest type (to optimise memory allocation due to alignment and padding)
 > If this is not important, label by readability
 
 - Values are like objects
 
 
 ## Functions
+
+>[!WARNING]
+- Can't use default parameter values
+- Can't use optional parameters
+- Can't have nullable strings
+- 
 
 Go routines operate within sandboxed frames on the stack. This means for a given application, 
 there will be a slice of the stack and memory  that is sectioned off to implement the application as a whole,
@@ -216,6 +237,27 @@ func addCountValue(count *int, value int){ //* allows us to undress the pointer 
 }
 ```
 
+### Method
+- Function that has a receiver (parameter) e.g `func (c catlog) GetCatalog(id int) {...}` where the receiver in this case will be the `(c catalog)` bit.
+
+
+> [!WARNING]
+> STICK WITH THE SEMANTICS THAT IS USED ACROSS THE CODE! DO NOT MIX SEMANTICS
+
+> [!IMPORTANT]
+> - Receiver should never be more than 3 letters!
+> - Receiver is written before the function name!
+
+### Generics
+
+As of Go 1.18, users can use generics. They stated as an additional type parameter list given before the parameter list of a function as shown:
+
+```go
+func randomiseValue[T int|float](value T) T { ... }
+```
+
+You can also have approximate types that will allow similar types to be used as input (good example given [here](https://sendilkumarn.com/blog/generics-in-go#:~:text=the%20type%20arguments.-,Approximate%20types,-What%20if%20we))
+
 ## Arrays
 
 > [!IMPORTANT]
@@ -225,7 +267,6 @@ func addCountValue(count *int, value int){ //* allows us to undress the pointer 
 > [!TIP]
 > Use slices instead!
 
-
 ## Slices
 
  - Use builtin function `make` to create **EMPTY** slice with **NON-ZERO** length e.g `make([]slice, length, capacity)`
@@ -233,19 +274,26 @@ func addCountValue(count *int, value int){ //* allows us to undress the pointer 
  - You can expand slices! 
 
 > [!IMPORTANT]
-> - When expand slices remember they have a return value that should be reassigned to original variable of slice
-> - The slice given to append function creates a copy of the slice so remember this 
+> - When expand slices remember they have a return value that should be reassigned to original variable of slice. If not this could cause memory leak as original item no longer directly referenced to
+> - The slice given to append function creates a copy of the slice so remember this  (doesn't mutate original slice)
 
 > [!WARNING]
 > There is a difference between declaration of arrays and declaration of slice:
 > - `var a []int` == slice
 > - `var b [...]int` OR `var b [<number>]int` == array
+> - Changes to slices of slice will change original slice because underlying backing array is shared among slices (for efficiency)
+
+- Three index slice helps remove side effects when manipulating slices of a slice
+
+- To overcome side effects in general create your own copy using the `copy(a,b)` where `a` is new slice and `b` is old slice.
+
 
 ## Maps
 
-- To create an empty map, use the builtin make: make(map[key-type]val-type).
+- To create an empty map, use the builtin make: make(map[key-type]val-type). e.g `m := make(map[string]int)`
 
-
+> [!WARNING]
+> A map returns zero value even if the value DOES NOT exist in the map! use comma ok idiom to find if key exists `value, ok := m["key"]`, where `ok` will be false if key doesn't exist in map.
 
 ## For/If-Else loops
 
@@ -276,12 +324,20 @@ if 8%2 == 0 {
 
 OR
 
-if 8%2 ==0 {
+if 8%2 == 0 {
     fmt.Println("Divisible by 2")
 } else if {
     fmt.Println("Not divisible by 2")
 }
+
+OR
+
+if val := 9; num <0 { //Here i have 
+  fmt.Println(num)
+}
 ```
+
+In the last example I have assigned a variable that can be used in the subsequent branches of the if/else clause (`val := 9`)
 
 There are also `switch` cases too (similar to Java)
 
@@ -299,26 +355,75 @@ func SayHello(message string) string {
 }
 ```
 
+### Build and local use of packages
+
+Helpful info on offical website [here](https://go.dev/doc/code#ImportingLocal)
+
+> [!IMPORTANT]
+> Build packages to use locally executing `go build` from within package directory root and then use `go list` to list
+> available packages as their import paths!
+
 ## [Naming conventions](http://tinyurl.com/golang-naming-conventions)
 
 - Exported Functions/variables start with uppercase, unexported/private start with lowercase
   - Use camelCase
-- Do not use `_` in naming unless using constants and need to seperate the words e.g `INT_MAX`
+- Do not use `_` in naming unless using in a constant string and need to separate the words e.g `INT_MAX`, or make large numbers legible
+
+> [!IMPORTANT]
+> Go uses the case of the first letter of the name of a variable/function etc to determine if the item is accessible outside the package!
 
 ## Pointer semantics vs Value semantics
 
-- Represent primitive types as values
-- Represent slices as value
-- Do not use pointer semantics during construction (*)
+- Represent primitive/built-in types USE value semantics (copies of the data)
+- Fields in struct? Value semantics (unless struct is being used in relational db)
+- Reference type? Value semantics 
+  - (can use pointer semantics when decoding/marshaling/encoding)
+- Represent slices? as value semantics
+- Do not use pointer semantics during construction (&) e.g `b := &person{name: "hello"}` is not good!
 - With mutations use pointer
 - With operations use copies
+- If you want to mutate a reference type, do not use pointer semantics, use value semantics and return new copy of reference from the method
+- Does mutation create new object or change original object? think about this if you choose pointer or value semantics (respectively)
 
 ## Documentation
 
-Write comments on top of the function and it converts to documentation for function (as described [here](https://go.dev/blog/godoc))
+Write comments on top of the function, and it converts to documentation for function (as described [here](https://go.dev/blog/godoc))
 
 ## Testing
 
+A common way to write tests is using table-driven tests. These are similar to parametrizing your test (like `@pytest.mark.parametrize`).
+
+```go
+import (
+    "testing"
+    "gotest.tools/v3/assert"
+)
+
+func TestAddFunction(t *Testing) {
+    testCases := []struct{
+        number1 int
+        number2 int
+        result int
+    }{
+        {1, 2, 3},
+        {4, 5, 9},
+        {10, 11, 21}  
+    }
+    for _, tc := range testCases {
+        assert.equal(tc.result, AddFunction(tc.number1, tc.number2))
+    }
+```
+
 - `reflect` package contains a function called `DeepEqual` that can compare anything including slices. Good for testing
 
+## Error handling
 
+- Avoid `else` in error handling! Use switch instead and use negative path (state negative path)
+- `nil` will always take on the type it needs
+
+## Interface 
+
+- Describes behaviour (think verb, instead of noun)
+
+> [!IMPORTANT]
+> Can group by behaviour but not by noun!

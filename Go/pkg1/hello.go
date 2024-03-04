@@ -99,4 +99,8 @@ func main() {
         fmt.Errorf("Error changing name")
     }
     fmt.Println(p)
+
+//     if p.age == 0 || p.age == 1 {
+//         fmt.Println("yay it works")
+//     }
 }
