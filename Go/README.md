@@ -45,6 +45,12 @@ More documentation [here](https://staticcheck.dev/docs/running-staticcheck/cli/)
 |         `staticcheck`          |            lint go files            |
 | `staticcheck -explain <check>` | Explain what given check code means |
 
+## Starting a go project - Easy style
+
+1. cd in directory you want to use to store packages e.g in our case `Go`
+2. execute `go mod init CS_Learning/Go` (to initiate dependancy management)
+3. execute `go mod tidy` (to install dependancies in project)
+
 ## Variables
 
 >[!IMPORTANT]
