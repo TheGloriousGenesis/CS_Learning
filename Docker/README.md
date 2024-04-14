@@ -7,18 +7,19 @@ Docker runs on Linux environment.
 
 ## Glossary
 
-| Term|Definition|
-|:---:|:--------:|
-|Namescaping (Linux)|Portioning a section of the hard drive for certain process/es|
-|Control Group (Linux) | Determining how much resources is used for a given process|
-|Docker image| A file system snapshot|
-|Docker CLI| A client that communicates commands to Docker server|
-|Docker Server| A server that is in charge of creating images and containers|
-|Container| Specific grouping of resources. ![image info](./Container.png) |
-|Kernel | A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)|
-|DockerFile| Configuration file for docker image|
-|Docker Compose| Seperate CLI to start multiple containers, automates commands|
-|Service| Another name given for container|
+|         Term          |                                                    Definition                                                    |
+|:---------------------:|:----------------------------------------------------------------------------------------------------------------:|
+|  Namescaping (Linux)  |                          Portioning a section of the hard drive for certain process/es                           |
+| Control Group (Linux) |                            Determining how much resources is used for a given process                            |
+|     Docker image      |                                              A file system snapshot                                              |
+|      Docker CLI       |                               A client that communicates commands to Docker server                               |
+|     Docker Server     |                           A server that is in charge of creating images and containers                           |
+|       Container       |                          Specific grouping of resources. ![image info](./Container.png)                          |
+|        Kernel         |             A kernel is communicator level between processes (like programs) and hardware (CPU/DISK)             |
+|      DockerFile       |                                       Configuration file for docker image                                        |
+|    Docker Compose     |                          Seperate CLI to start multiple containers, automates commands                           |
+|        Service        |                                         Another name given for container                                         |
+|     Docker Layers     | Each run command executes in a new layer and environment variables set in one do not persist to subsequent runs! |
 
 ## What is Docker?
 

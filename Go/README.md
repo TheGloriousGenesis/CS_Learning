@@ -23,6 +23,7 @@
 |      Rune       |                     Similar to other languages concept of character (in string)                      |
 | Reference types |                          Maps, Array, Slice, Interface, Functions, Channels                          |
 
+
 ## Helpful commands
 
 ### Go code
@@ -368,6 +369,9 @@ Helpful info on offical website [here](https://go.dev/doc/code#ImportingLocal)
 > [!IMPORTANT]
 > Build packages to use locally executing `go build` from within package directory root and then use `go list` to list
 > available packages as their import paths!
+
+#### Files important for packages
+- `go.mod` file is 
 
 ## [Naming conventions](http://tinyurl.com/golang-naming-conventions)
 

@@ -2,6 +2,8 @@
 
 from kubernetes import config, dynamic
 from kubernetes.client import api_client
+from kubernetes import client, config
+
 from kubernetes.dynamic.exceptions import DynamicApiError
 
 import base64
@@ -73,24 +75,15 @@ def get_bearer_token(cluster_id, region):
 #     except DynamicApiError as e:
 #         print(f"An error occurred: {e}")
 
+config.load_kube_config()
 
-def local_list_services_in_namespace(namespace: str, label_selector: str) -> None:
-    config.load_kube_config()
 
-    # Creating a dynamic client
-    clt = dynamic.DynamicClient(
-        api_client.ApiClient(
-        )
-    )
-
-    # fetching the service api
-    api = clt.resources.get(api_version="v1", kind="Service")
-
-    # Listing service given namespace and label_selector
+def local_list_services_in_all_namespaces(label_selector: str) -> None:
+    clt = client.CoreV1Api()
     try:
-        services = api.get(namespace=namespace, label_selector=label_selector)
-        for service in services.items:
-            print(f"Service Name: {service.metadata.name}")
+        services = clt.list_service_for_all_namespaces(label_selector=label_selector)
+        for svc in services.items:
+            print(f"Service Name: {svc.metadata.name}, Namespace: {svc.metadata.namespace}")
     except DynamicApiError as e:
         print(f"An error occurred: {e}")
 
@@ -125,6 +118,7 @@ def local_list_services_in_namespace(namespace: str, label_selector: str) -> Non
 #     list_services_in_namespace(ns, ls)
 
 if __name__ == "__main__":
-    ns = "dev"
+    ns = "cortex-dev"
     ls = "component_type=kedroservice"
     local_list_services_in_namespace(ns, ls)
+    local_list_services_in_all_namespaces(ls)
