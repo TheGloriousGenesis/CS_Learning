@@ -366,6 +366,10 @@ func SayHello(message string) string {
 
 Helpful info on offical website [here](https://go.dev/doc/code#ImportingLocal)
 
+>[!IMPORTANT]
+> When starting a new project, you go to the root of your project and execute `go mod init`. This create `go.mod` file to manage your dependancies.
+> Check the name of the module and change it to the repository path name of the project if there are issues resolving dependancies within the code!
+
 > [!IMPORTANT]
 > Build packages to use locally executing `go build` from within package directory root and then use `go list` to list
 > available packages as their import paths!

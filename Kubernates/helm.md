@@ -5,7 +5,7 @@ Used to manage packages in my kubernetes cluster
 ## Glossary
 
 Chart - Helm package - contains all the resources necessary to run an application/service in a cluster
-(similar to yum rpm file)
+(similar to yum npm file)
 
 Repository is the place where charts can be collected and shared
 
@@ -105,3 +105,4 @@ Single argo cd mapping
 path mapping
 
 
+## Secret management

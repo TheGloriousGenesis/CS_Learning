@@ -554,3 +554,51 @@ and takes into account extremely frequent words that may have no meaning to the 
 Test assumptions regarding analysing text data with GloVe first then move onto more sophisticated models like FastText, BERT 
 or any transformer (as they require a little more work)
 
+____
+## Large language model
+Made of two parts:
+
+Encoders: Maps inputs to smaller vector space by grouping similar words (hence similar outputs) and changing them into vectors (hidden state)
+
+Decoders: Tells you which word should come next. takes input of encoder and output word that activates the highest.
+
+> [!TIP]
+> Very similar to zipping and unzipping a file! Just zipping and unzipping a word
+
+The reason why decoders know the right word to choose is because when the difference between expected output and actual output (loss) is calculated,
+it uses back propagation to make changes to the decoder and the encoder so that different encodings is made next time that word is seen.
+
+The encoder usually compromises, as its converts large input to smaller vector space, so some words will have similar if not the same vector representation
+
+There are some LLM that have to predicted masked words (miss a word in a sentence). Generative models are auto-regressive masked models. They have the mask 
+at the end of the sentence (so it's predicting the last word and using that to predict the next word).
+
+These models tend to be self-supervised (you dont need a seperate training/test data, you can use the output of the model and compare to input)
+
+### GPT
+GPT stands for Generative Pre-trained Transformer.
+
+Generative - can continue predicting words based on input
+
+Pre-trained - Model is trained on a very large corpus
+
+Transformer - Deep learning model (encoder/decoder) that is tailored for language modelling. Basically: normal encoder encoding -> dot.product -> self attention encoding (relation between words)
+
+### Architecture
+
+Ingest multiple documents
+have two db's: 
+- vector db to store vectors
+
+### LLM Issues
+- They can hallucinate: create fake information that can sound formal
+- Data poisoning: by prompts, docs, api responses etc. It can target corrupting training data and/or labels OR even during deployment stage, by
+analysing api responses and combine info to learn LLM specific inputs
+
+### LLM Solutions to Issues
+- Validate data quality
+- Quality filtering 
+  - (using classifier-base filtering/ heuristic) to distinguish between high and low quality content
+- Remove duplication (sentence, document, dataset) - this aids training the model, reduces skewness of metrics
+- Remove PII
+- Convert raw text to tokens (string into individual elements e.g character, word, sentence) to then into vector (convert to string/sequence to vector)
