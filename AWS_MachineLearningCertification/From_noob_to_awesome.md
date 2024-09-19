@@ -24,3 +24,8 @@ Fixes to cli tutorial:
 5. Credentials are not automatically created. You have to go to your new user, select `Security crednetials > Access keys > create keys`
 6. Tutorial doesn't tell you how to delete bucket (only data in bucket). Follow the tutorial: https://docs.aws.amazon.com/AmazonS3/latest/userguide/delete-bucket.html or execute `aws s3 rb s3://bucket-name`
 
+## Amazon S3 Overview 
+
+- Users can store files (which are referenced as **objects**) in buckets (ubiquitous to **directories**)
+- All objects have keys. The key is the full path to the object.
+- Max object size is 5B
