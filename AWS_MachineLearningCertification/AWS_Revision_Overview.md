@@ -7,6 +7,9 @@
 - 50 questions in exam that affect score
 - You need 750/1000 to pass
 - Includes 15 unscored questions that do not affect your score
+- 3 hour to complete
+- Mark questions for later review
+- No partial credit for multiple response questions
 
 > [!CAUTION]
 > Practice feature engineering
@@ -74,7 +77,7 @@ Compute:
 ### Sanitize and prepare data for modeling
 
 - Identify and handle missing data, corrupt data, and stop words.
-  - Can be handled by common [preprocessing steps](../Machine_Learning/Data_Mining/README.md#preprocessing)
+  - Can be handled by common [preprocessing steps](../Machine_Learning/Data_Mining/data_mining#preprocessing)
 - Format, normalize, augment, and scale data.
 - Determine whether there is sufficient labeled data. 
   - Identify mitigation strategies. 
@@ -105,9 +108,9 @@ cluster size).
 
 > ADD list of analysis techniques and the best time to use them for
 
-### Domain 3: Modeling 
+## Domain 3: Modeling 
 
-#### Frame business problems as ML problems - Problem formulation
+### Frame business problems as ML problems - Problem formulation
 
 - Identify when to use and when not to use ML.
   - ML has the power to:
@@ -124,7 +127,7 @@ cluster size).
 recommendation models
 - Justify model selection 
 
-#### Select the appropriate model(s) for a given ML problem 
+### Select the appropriate model(s) for a given ML problem 
 
 - XGBoost, logistic regression, k-means, linear regression, decision trees,
 random forests, RNN, CNN, ensemble, transfer learning
@@ -132,7 +135,7 @@ random forests, RNN, CNN, ensemble, transfer learning
 
 > ADD list of other types of ml models
 
-#### Train ML models
+### Train ML models
 - Parameters for model set in training job (weight and bias). Hyperparameter set before and outside of job
 
 - Split data between training and validation (for example, cross validation).
@@ -170,7 +173,7 @@ distributed or non-distributed).
 > P3 instances (GPU instance)
 > Components of an ML training job for deep learning
 
-#### Perform hyperparameter optimization
+### Perform hyperparameter optimization
 Hyperparameter tuning is done to increase prediction power via influencing the learning 
 process.
 
@@ -217,7 +220,7 @@ and activation functions.
 > [!TIP]
 > - Perform hyperparameter tuning for XGBoost (supervised machine learning)
 
-#### Evaluate ML models
+### Evaluate ML models
 - Avoid overfitting or underfitting.
   - Detect and handle bias and variance.
 - Evaluate metrics (area under curve [AUC]-receiver operating characteristics
@@ -230,9 +233,9 @@ quality of model, engineering costs).
 
 > ADD more understand
 
-### Domain 4: Machine Learning Implementation and Operations 
+## Domain 4: Machine Learning Implementation and Operations 
 
-#### Build ML solutions for performance, availability, scalability, resiliency, and fault tolerance. 
+### Build ML solutions for performance, availability, scalability, resiliency, and fault tolerance. 
 
 - Log and monitor AWS environments.
   - Build error monitoring solutions.
@@ -267,7 +270,7 @@ Networking and Content Delivery:
 > ADD aws best practices
 > ADD what is a golden image
 
-#### Recommend and implement the appropriate ML services and features for a given problem.
+### Recommend and implement the appropriate ML services and features for a given problem.
 
 - ML on AWS (application services)
   - Amazon Polly
@@ -299,7 +302,7 @@ considerations.
   Batch.
 
 
-#### Apply basic AWS security practices to ML solutions
+### Apply basic AWS security practices to ML solutions
 
 - AWS Identity and Access Management (IAM)
 - S3 bucket policies
@@ -317,7 +320,7 @@ Security, Identity, and Compliance:
 - AWS Identity and Access Management (IAM)
 
 
-#### Deploy and operationalize ML solutions
+### Deploy and operationalize ML solutions
 - Scalable
 - Costooptimized 
 - Reliable
@@ -334,16 +337,16 @@ Security, Identity, and Compliance:
 > ADD Operational best practices
 > Add how to identify and fix drops in performance
 
-### Overview - AWS services matching to ML solutions
+## Overview - AWS services matching to ML solutions
 
-#### Analytics:
+### Analytics:
 - Amazon Athena
 - Amazon EMR
 - AWS Glue
 
 - Amazon Kinesis
 
-Amazon Kinesis is a platform for [streaming data](../Machine_Learning/Data_Mining/README.md#overview---data-streaming) in AWS.
+Amazon Kinesis is a platform for [streaming data](../Machine_Learning/Data_Mining/data_mining#overview---data-streaming) in AWS.
 
 - Amazon Kinesis Data Firehose
   - Deals with streaming data to http endpoints and storage solutions (S3/Redshift).
@@ -365,7 +368,7 @@ Containers:
 - AWS Fargate
 
 Database:
-- Amazon Redshift - [Data warehouse](../Machine_Learning/Data_Mining/README.md#data-warehouse)
+- Amazon Redshift - [Data warehouse](../Machine_Learning/Data_Mining/data_mining#data-warehouse)
 
 Analyses data using SQL in real time for AI/ML applications. Allows ingesting of data across different storage solutions in an easy way.
   - Parallel processing architecture

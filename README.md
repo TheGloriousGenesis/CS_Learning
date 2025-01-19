@@ -5,6 +5,9 @@ Repository where fundamental and exploratory computer science and machine learni
 **Note:** For best experience consider installing
 [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima?hl=en) which allows for rendering MathJax in the browser
 
+## How to set up conda environment in jupyter
+https://medium.com/@nrk25693/how-to-add-your-conda-environment-to-your-jupyter-notebook-in-just-4-steps-abeab8b8d084
+
 ## Core Java + Optimisation techniques
 
 | Type | Course | Source | Notes/Solutions |

@@ -117,7 +117,13 @@ To scale a model, the following is important to track:
 - Data/model quality
 - Model risk
 
+______
 
+GPU
+Conda 
+Pip
+
+which is best for machine project?
 
 
 

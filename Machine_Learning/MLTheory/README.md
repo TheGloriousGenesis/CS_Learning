@@ -407,9 +407,10 @@ Can be supervised or unsupervised due to the ability to
 - Supervised
 
 **Algorithm**
-- Determine how regions will be split: minimise Residual sum of squares (create high dimensional boxes)
-  - Gini
+- Determine how regions will be split (at a given node, how will we 'decide' how the data should be split): minimise Residual sum of squares (create high dimensional boxes). This in turn minimises the intra difference between nodes.
+  - Gini impurity: The probability of an element in a set (node) being labeled incorrectly if label was picked out randomly from the distribution of the labels in that given set. This will tend to zero when set becomes more unified.
   - Chi-Square (Higher is better)
+  - Entropy: 
 - Divide predictor space (all space occupied by each data point) into J distinct non-overlapping regions
 - Decision tree splits on all available variables
   - *Regression*
@@ -440,6 +441,31 @@ Can be supervised or unsupervised due to the ability to
 Can avoid over-fitting in decision tress:
 - Setting constraint on tree size
 - Tree pruning
+
+
+#### Segmentation Tree
+Description: Splits data into specific segments based on some sort of criteria
+
+ML type: Unsupervised/semi-supervised 
+
+Nodes represents subset of data, with the root node containing the whole dataset
+
+Algorithm:
+- Similar to decision tress, but if it's a clustering tree segmentation, could use clustering metrics like distance or variance between data in set/node
+- Output instead of predicting a variable (in regression the mean, in classification the mode), the leaf nodes represents the actual subset that has been created with the highest similarity (Homogeneity) for a given criterion.
+
+Usage:
+- Marketing: Customers grouped based on behaviours
+- Medical diagnostics: Patients with similar symptoms grouped to make diagnosis and treatment easier.
+
+Pros:
+- Interpretability: Easy to know where the output has come from as set rules in place for each node and decisions can be traced
+- Scalability: Decision tress can handle large datasets easily
+- Do not need specific dataset distribution to work 
+
+Cons:
+- Can overfit if data is not pruned
+- Sensitive to type of decision splitting algorithm chosen
 
 ---
 
