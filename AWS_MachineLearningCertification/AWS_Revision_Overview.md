@@ -20,6 +20,11 @@ Exam is split into 4 domains
   - Modelling - 36%
   - Machine Learning Implementation and Operations - 20%
 
+
+### Latest documentation:
+
+https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html
+
 ## Domain 1: Data Engineering - Architecting
 
 ### Create data repositories for ML
