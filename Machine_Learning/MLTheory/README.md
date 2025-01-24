@@ -28,11 +28,6 @@ correlating to target (features decided by correlation matrix first)
 
 #### Cons:
 
-#### Assumptions:
-- Errors of the residuals follow normal distribution
-- Relationship between X and Y is linear, (observations are independence of each other).
-- For any value X, Y is normally distributed
-
 #### Algorithm
 
 > [!NOTE]
