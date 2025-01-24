@@ -17,8 +17,8 @@
 
 > Used to predict continuous variables
 
-#### Practice
-[KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
+#### Kaggle Practice
+- [House price prediction](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
 #### Usage:
 - Can be used as imputation method, where values for missing data can be predicted by training a model on best features 
