@@ -21,10 +21,17 @@ There are many methods that can be used to handle missing data:
 
 1. Do nothing: Allow the algorithm to fill or ignore the null values in your algorithm ([XGBoost](../Machine_Learning/MLTheory/README.md#overview---ensembleboosting) good at this)
 2. Remove records: See if the record even makes sense and remove if not pivotal
+   3. Can risk losing data points with values
 3. Replace the record:
    4. Categorically : Either the mode, or using algorithm (below)
+      5. Most frequent can introduce bias
    5. Numerical : Mean, median, other statistical methods
+      1. Fails to consider relation of feature to other features when calculating average
+      2. Configure, fit, transform and ravel. Ensure column or columns are pd.DataFrames and not series/arrays
 4. Model based imputation:
-   5. Use models/algorithms to replace values:  [K nearest neighbours](../Machine_Learning/MLTheory/README.md#nearest-neighbour), [Regression](../Machine_Learning/MLTheory/README.md#linear-regression), [Deep Learning](../Machine_Learning/MLTheory/README.md#overview---deep-learning)
+   5. Use models/algorithms to replace values: 
+      1. [K nearest neighbours](../Machine_Learning/MLTheory/README.md#nearest-neighbour),
+      2. [Regression](../Machine_Learning/MLTheory/README.md#linear-regression),
+      3. [Deep Learning](../Machine_Learning/MLTheory/README.md#overview---deep-learning)
 6. Interpolation/extrapolation
 7. Forward filling/ Backward filling

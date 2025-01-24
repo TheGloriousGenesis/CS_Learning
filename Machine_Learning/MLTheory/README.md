@@ -19,13 +19,27 @@
 
 > *Definition*: Used to predict continuous variables
 ƒ
-*Assumptions* : 
-  
+
+#### Usage:
+- Can
+
+#### Pros:
+
+#### Cons:
+
+#### Assumptions:
 - Errors of the residuals follow normal distribution
 - Relationship between X and Y is linear, (observations are independence of each other).
 - For any value X, Y is normally distributed
 
-*Algorithm*
+#### Algorithm
+
+> [!NOTE]
+> Assumptions:
+> - Errors of the residuals follow normal distribution
+> - Relationship between X and Y is linear, (observations are independence of each other).
+> - For any value X, Y is normally distributed
+
 - Hyperparameter : $\sigma_{j}$, $\sigma_{i}$
 
 The hypothesis function for a regression model for a univariate linear regression is given by 
@@ -47,7 +61,7 @@ $$
 
 where *m* = dataset size.
 
-The problem is, **given X and Y, what is the value of the weight in the cost equation that can give the minimum value.**
+The problem is, *given X and Y, what is the value of the weight in the cost equation that can give the minimum value.*
 
 As the cost function learns weight, in this case, it is linear in respect to weight not variable.
 
@@ -55,8 +69,9 @@ We are trying to minimise the amount of errors in our model, hence we need to re
 This is why we say we need to *minimise the error function*. To do so, we take the derivative of the error function
 and set this to zero to find the minima. The least squares equation is convex which means there is always a minima. 
 
-**But what about if we have non-linear algorithms that we want to minimise? Can't use least squares!**
-Instead we must use numerical approximation to optimisation to give us a close solution to ordinary least squares solution.
+> [!TIP]
+> But what about if we have non-linear algorithms that we want to minimise? Can't use least squares! Instead we must use
+> numerical approximation to optimisation to give us a close solution to ordinary least squares solution.
 
 ### Gradient Descent - Optimization algorithm
 
@@ -179,13 +194,12 @@ support vector machine etc.
 
 ### Nearest neighbour
 >*Definition* : Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
-Here **k** is the hyper-parameter. 
-
-**Algorithm**:
-- K means
+Here **k** is the hyper-parameter.
 
 **Usage**:
 - Best used when you need to predict categorical class labels with discrete data.
+- Can also be used as a form of imputation, to replace missing values using feature similarity e.g if the feature missing value
+is close to other features, can imput with the average of those values
 
 **Pros**:
 - Robust to outliers
@@ -194,6 +208,9 @@ Here **k** is the hyper-parameter.
 - Size
 
 **Cons**
+
+**Algorithm**:
+- K means
 
 ### Performance of classifiers 
 
