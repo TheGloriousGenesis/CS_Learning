@@ -66,8 +66,8 @@ This is why we say we need to *minimise the error function*. To do so, we take t
 and set this to zero to find the minima. The least squares equation is convex which means there is always a minima. 
 
 > [!TIP]
-> But what about if we have non-linear algorithms that we want to minimise? Can't use least squares! Instead we must use
-> numerical approximation to optimisation to give us a close solution to ordinary least squares solution.
+> You can not use least squares if you want to minimise Non-linear algorithms. Instead, use numerical approximation for 
+> optimisation to obtain a close solution to ordinary least squares solution.
 
 ### Gradient Descent - Optimization algorithm
 
