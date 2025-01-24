@@ -15,13 +15,14 @@
 
 ### Linear Regression
 
+> Used to predict continuous variables
+
+#### Practice
 [KagglePractice](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
 
-> *Definition*: Used to predict continuous variables
-ƒ
-
 #### Usage:
-- Can
+- Can be used as imputation method, where values for missing data can be predicted by training a model on best features 
+correlating to target (features decided by correlation matrix first)
 
 #### Pros:
 
@@ -40,7 +41,7 @@
 > - Relationship between X and Y is linear, (observations are independence of each other).
 > - For any value X, Y is normally distributed
 
-- Hyperparameter : $\sigma_{j}$, $\sigma_{i}$
+[//]: # (Hyperparameter : $\sigma_{j}$, $\sigma_{i}$)
 
 The hypothesis function for a regression model for a univariate linear regression is given by 
 
