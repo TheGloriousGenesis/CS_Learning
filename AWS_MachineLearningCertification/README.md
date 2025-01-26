@@ -512,7 +512,7 @@ Slide 7:
 Components of feature engineering
 
 Slide 8:
-Curse of dimensionality
+[Curse of dimensionality](../Machine_Learning/MLTheory/README.md#overview---feature-engineering)
 
 Slide 9:
 Feature selection a part of feature engineering - decrease features

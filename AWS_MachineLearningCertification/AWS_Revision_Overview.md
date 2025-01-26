@@ -196,9 +196,9 @@ process.
 
 Random search and bayesian methods leave smaller unexplored regions than grid searches
 
-- Perform regularization.
+- Perform [regularization](../Machine_Learning/MLTheory/README.md#overview---regularisation).
   - Drop out
-  - L1/L2
+  - [L1/L2](../Machine_Learning/MLTheory/README.md#l1)
 - Perform cross validation.
   - Increases computational load
   - Validation:

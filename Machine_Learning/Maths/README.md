@@ -75,3 +75,12 @@ $$
 $$
 z-score = \frac{x - \mu}{\sigma}
 $$
+
+
+## Overview - Naive Bayes
+
+## Overview - Density estimation
+
+> Definition : Kernel density estimation is a method for visualizing the distribution of observations in a dataset.
+
+#### Kaggle Practice

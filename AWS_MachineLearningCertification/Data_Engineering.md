@@ -15,7 +15,6 @@ Seven steps to prepare your data:
 ## Types of data:
 - Ground truth data - labelled by human labelers or machine learning algorithms
 
-
 ### Handle missing data
 There are many methods that can be used to handle missing data:
 

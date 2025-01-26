@@ -11,11 +11,17 @@
 |   Bias (common amongst all models)   |                  Tendancy to learn the wrong thing (underfitting)                  |
 | Variance (common amongst all models) |      changes in model when using different portions of the training data set       |
 |               Support                |        The number of actual occurences of the class in a specified dataset         |
+
+> [!NOTE]
+> Regarding Model performance: In any problem, it is not possible to create perfect model. This is due to bayes error rate,
+> minimal error that the model can have, latent variables factors we can't measure, noise in physical process of obtaining data etc.
+____
+
 ## Overview - Regression
 
 ### Linear Regression
 
-> Used to predict continuous variables
+> Definition: Used to predict continuous variables
 
 #### Kaggle Practice
 - [House price prediction](https://www.kaggle.com/faressayah/linear-regression-house-price-prediction)
@@ -27,6 +33,7 @@ correlating to target (features decided by correlation matrix first)
 #### Pros:
 
 #### Cons:
+- Sensitive to outliers 
 
 #### Algorithm
 
@@ -68,10 +75,20 @@ and set this to zero to find the minima. The least squares equation is convex wh
 > [!TIP]
 > You can not use least squares if you want to minimise Non-linear algorithms. Instead, use numerical approximation for 
 > optimisation to obtain a close solution to ordinary least squares solution.
+____
+## Overview - Optimisation
 
-### Gradient Descent - Optimization algorithm
+### Gradient Descent
 
-*Definition*: Used to numerically approximate minimising cost function by following the negative gradient of a cost function.
+> Definition : Used to numerically approximate minimising cost function by following the negative gradient of a cost function.
+
+#### Usage
+
+#### Pros
+
+#### Cons
+
+#### Algorithm
 
 We start with an initial weight and use the following to update the weights:
 
@@ -93,91 +110,140 @@ previous iteration because we need to increase the value of the weight to get cl
 
 **Momentum** builds inertia in a direction of search space, speeding up convergence, minimizing noisy gradients and avoiding local minima.
 
+____
+
 ## Overview - Regularisation
 
-- Used when you want to keep features but reduce complexity by reducing the magnitude of weighting
-- Commonly used is **L1** and **L2** norm.
+> Definition : Used during the training of a model, when you want to keep features but reduce complexity of model by 
+> reducing the magnitude of weighting. Commonly used is **L1** and **L2** norm.
 
-L1
-**Pros**
+The amount of reduction attained in the model is determined by the *regularisation rate*. During training, the model is trying to
+minimise the following:
+
+$$
+loss = minimize(loss + \lambda complexity)
+$$
+
+where $\lambda$ is regularisation rate. A high regularisation rate reduces chances of overfitting. Model weights will follow
+a normal distribution with mean weight 0. A low regularisation rate increasing changes of overfitting. Model weights will follow
+flat distribution.
+
+>[!IMPORTANT]
+> Learning rate and regularisation rate pull the weights in the opposite direction! Make sure
+> you balance it! High learning rate often pulls weights away from zero.
+
+### L1
+
+> Definition : Lasso regression. Sum of absolute value. Pushes weights to 0 (can be 0, which removes feature - feature selection).
+
+#### Usage
+- Low multi-collinearity.
+- If the possibility of removing features is an ok.
+
+#### Pros
 - Keeps information (compared to removing features)
 - Introduces sparsity (due to heavy penalisation on small weights)
-**Cons**
-- Does not work well with multi-collinearity 
 
-**Elastic**
+#### Cons
+- Does not work well with multi-collinearity (if there are many features related to one another, this method will remove one of the features in the model.
+- High lambda will remove features and underfit model
 
----
+### L2
 
-## Overview - Feature Selection/ Dimension reduction
+> Definition : Sum of squares. Encourages weights toward 0 (never actually reaches).
 
-[KagglePractice](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
-[KagglePractice](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
+#### Usage
+- Reduce complexity of model during training when you know there aren't outliers
 
-Feature engineering refers to both adding new features from constructing them from available data, and selecting features 
-from the data already given. 
+#### Pros
+- Can handle features that are high correlated with each other.
 
-An easy way to see if features are correlated to each other is first to check correlation matrix. A heatmap (visualisation of
-correlation matrix) is the most powerful to use.
+#### Cons
+- Large lambda can have big effect, adding too much weight and lead to underfitting.
 
-### Feature processing
+#### Algorithm
+$$
+L_{2} regularization = w_{1}^2 + w_{2}^2 + ... w_{n}^2 
+$$
 
-The first part of generating new features include cleaning the data for processing. This can include transformations such as:
-- Replace missing or invalid data with meaningful values (Imputation)
-- Forming **combinations of data** (Cartesian product - combinations of the product of two features, Domain specific - combine features formulaic make a complet) e.g if you have two variables, such as population density (urban, 
-suburban, rural) and state (Washington, Oregon, California), there might be useful information in the features formed by 
-a Cartesian product of these two variables resulting in features (urban_Washington, suburban_Washington, rural_Washington, urban_Oregon, suburban_Oregon, rural_Oregon, urban_California, suburban_California, rural_California).
+----
+
+## Overview - Feature engineering
+
+> Definition: Feature engineering refers to both adding new features from constructing them from available data, and selecting features 
+from the data already given.
+
+*Curse of Dimensionality*
+
+The importance of below is related to ensuring your model can execute inference to the best of its ability. One problem 
+that can occur in a dataset is having too many features (or dimensions, as that refers to the number of features in dataset)
+in comparison to the number of observations. This can cause **some** (not all) algorithms to train effectively. It is also very hard
+to visualise higher dimension datasets (over 4D you can imagine it is hard!).
+
+To resolve this curse of dimensionality you can use the following two options: [feature selection](#feature-selection) or 
+[feature extraction](#feature-extraction--creation)
+
+### Feature Extraction / Creation
+
+> Definition: Create new features out of raw data. Smaller set of features. e.g From a photo: Detecting edges, corners, or colors.
+
+#### Usage
+- PCA (Principal Component Analysis)
+- Polynomial Features : Simply add powers to the features already given, or multiply variables together
+  - easy way of seeing how features interact with each other to influence the end goal.
+
+#### Pros
+- Good to use when you need to reduce the dimensions of the data but still keep relevant information.
+
+#### Cons
+- Requires data to be standardised (mean 0, std 1)
+- Doesn't take feature dependency on other features.
+
+### Feature Selection
+
+> Definition: Select which raw features should and shouldn't be used. Removes features. Example: From a photo: edge feature, pixel count.
+
+#### Kaggle Practice
+- [Intro into feature selection](https://www.kaggle.com/willkoehrsen/introduction-to-feature-selection)
+- [Feature selection and visualisation](https://www.kaggle.com/kanncaa1/feature-selection-and-data-visualization)
+
+#### Usage
+- Chi squared Test : Test can be used to select features which heavily dependent on the target/response (not independent)
+- Decision Tree : Best performing features kept as close to the root of the tree as possible
+- L1,L2,L0 regularizer : (In built feature selection)
+- Backward Selection : train classifier on all features, remove one, see the improvement to the model (Find better model,
+more expensive than forward).
+- Forward Selection : train classifier on one feature, add one, see the improvement to the model.
+- A correlation matrix can be used to determine features are that are correlated to each other and then remove ones that are.
+
+#### Pros
+- (With Decision Tree) Irrelevant attributes never chosen.
+- Most are Fast and simple enough to use for any algorithm
+
+#### Cons
+- Requires data to be normalised
+- (Backward selection / Forward selection) Have to train validation data on subset of features to see which ones are the best to choose. This is costly.
+
+### Feature abstraction
+
+> Definition: Feature abstraction creates higher concept features/ patterns from extracted features. 
+> Does not deal with raw features/data. Example: - From a photo: Combining edges and corners to detect shapes like "circle" or "triangle."
+
+#### Usage
+- Domain Knowledge Features : Using expert knowledge to create features that are likely to be useful.
 - Non-Linear transformations such as binning numeric variables into categories which can then relate linearly to target variable.
 binning is done to numerical values when there is not a linear relationship between the feature and binning could expose it e.g age vs book buying. age group is better indicator.
-- Create domain specific features.
-- 
 
-### Feature construction
 
-Constructing new features allows these features to be checked against target to see if these combined features have a higer
-correlation to the target or nah.
+#### Pros
 
-**Usage**
-Some examples of this listed below. 
-
-- **Polynomial Features** : Simply add powers to the features already given, or multiply variables together
-  - easy way of seeing how features interact with each other to influence the end goal.
-- **Domain Knowledge Features** : Using expert knowledge to create features that are likely to be useful.
-- **Backward Selection** : train classifier on all features, remove one, see the improvement to the model (Find better model,
-more expensive than forward).
-- **Forward Selection** : train classifier on one feature, add one, see the improvement to the model.
-
-**Pros**
-- Good to use when you need to reduce the dimensions of the data but still keep relevant information.
-- Use on any model
-
-**Cons**
-- Have to train validation data on subset of features to see which ones are the best to choose. This is costly.
-
-### Feature reduction
-
-**Usage**
-
-Each feature created is assigned a score and top *X* picked:
-
-- **Principal Component Analysis** :
-- **Chi squared Test** : Test can be used to select features which heavily dependent on the target/response (not independent)
-- **Domain Knowledge Features** : Using expert knowledge to select features that are likely to be useful.
-- **Decision Tree** : Best performing features kept as close to the root of the tree as possible
-- **L1,L2,L0 regularizer** : (In built feature selection)
-
-**Pros**
-- Good to use when you need to reduce the dimensions of the data but still keep relevant information.
-- Fast and simple enough to use for any algorithm
-- (With Decision Tree) Irrelevant attributes never chosen.
-
-**Cons**
-- Doesn't take feature dependency on other features.
+#### Cons
 
 ---
 
 ## Overview - Classification - UNFINISHED
-[KagglePractice](https://www.kaggle.com/dansbecker/classification)
+
+> Definition : Supervised machine learning model that tries to predict data label.
 
 Classification can be split into two sub categories:
 
@@ -188,30 +254,30 @@ The process of predicting discrete, finite, categorical class labels in supervis
 Created classifier by using datasets. Commonly used classifiers include: decision tree induction, k-nearest neighbours,
 support vector machine etc.
 
+#### Kaggle Practice
+- [Classification](https://www.kaggle.com/dansbecker/classification)
+
 ### Nearest neighbour
->*Definition* : Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
+> Definition: Check **k** nearest neighbours (usually done through euclidean distance but can use other similarity/distance measures)
 Here **k** is the hyper-parameter.
 
-**Usage**:
-- Best used when you need to predict categorical class labels with discrete data.
-- Can also be used as a form of imputation, to replace missing values using feature similarity e.g if the feature missing value
-is close to other features, can imput with the average of those values
+#### Usage:
+- Predict categorical class labels with discrete data.
+- In imputation, to replace missing values using feature similarity e.g if the feature missing value
+is close to other features, can impute with the average of those values
 
-**Pros**:
+#### Pros:
 - Robust to outliers
 - Scalable
 - Speed
 - Size
 
-**Cons**
+#### Cons
+- Need to manually choose number k (can use methods to find this or hyper parameter tune)
 
-**Algorithm**:
-- K means
+#### Algorithm
 
-### Performance of classifiers 
-
-N.B: In any problem, not possible to create perfect model. This is due to bayes error rate, minimal error that model can have.
-Latent variables factors we can't measure, noise in physical process
+#### Performance
 
 To check the performance of this classifier, can use the following metrics:
 
@@ -266,29 +332,31 @@ To describe the performance the following can be used:
   - Elements on the diagonal should be high valued and correctly identified
   - Good to find other metrics: Precision, Recall, F1 Score
 
----
-## Overview - Naive Bayes
-
-
-
-## Overview - Density estimation
-
-[KagglePractice]()
-
-Kernel density estimation is a method for visualizing the distribution of observations in a dataset.
-
----
+----
 
 ## Overview - Logistic Regression
 
-[KagglePractice](https://www.kaggle.com/mnassrib/titanic-logistic-regression-with-python)
-[KagglePractice](https://www.kaggle.com/parulpandey/deep-dive-into-logistic-regression-for-beginners)
+> Definition : Supervised algorithm for classification. Logistic regression is an extension of linear regression, where 
+> linear regression deals with continuous variable prediction, Logistic regression deals with categorical 
+> (nomial/ordinal) variable prediction. It predicts the probability of the outcome variable.
 
-TYPE: Classification
+#### Kaggle Practice
+- [Titantic prediction](https://www.kaggle.com/mnassrib/titanic-logistic-regression-with-python)
+- [Logisitic regression for beginners](https://www.kaggle.com/parulpandey/deep-dive-into-logistic-regression-for-beginners)
 
-Logistic regression is an extension of linear regression, where linear regression deals with continuous variable 
-prediction, Logistic regression deals with categorical (nomial/ordinal) variable prediction. It predicts the probability 
-of the outcome variable.
+#### Usage
+
+#### Pros
+
+#### Cons
+
+#### Algorithm
+
+> [!NOTE]
+> Assumptions:
+> - Features not have to have a linear relationship 
+> - If binary logistic regression, input must be binary data, likewise for ordinal
+> - Must have large sample size (> 10)
 
 It has a similar formula to linear regression but calculates the logistic of the result so that the output value is always
 between 0 and 1 
@@ -302,36 +370,36 @@ Positive values lead to higher chance the class will be predicted 1
 Negative values lead to higher chances the class will be predicted 0
 
 Classes predicted on the p == 0.5 threshold (more than or equal == 1, less than == 0)
-**Algorithm**:
-- Assumptions : Does not require linear relationship 
-- If binary logistic regression, input must be binary data, likewise for ordinal
-- Assume linearity of independent variables and log odds
-- Must have large sample size > 10
 
 $$
 Odds = \frac{P(Event)}{P(!Event)}
 $$
 
-**Usage**
-**Pros**
-**Cons**
-**Performance**
-Confusion matrix
+#### Performance
+- Confusion matrix
 
----
-
+----
 ## Overview - Ensemble/Boosting
 
-[KagglePractice](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
-[KagglePractice](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)
+> Definition: Ensemble methods involve using multiple weak predictive models combined to achieve a better accuracy and
+> model stability. Theses are black box methods!
 
-Ensemble methods involve predictive models to achieve a better accuracy and model stability.
 
-Theses are black box methods!
+#### Kaggle Practice
+- [Titanic Ensemble](https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling)
+- [Ensemble stacking in python](https://www.kaggle.com/arthurtok/introduction-to-ensembling-stacking-in-python)
 
-*Can also combine **different** models!*
+#### Usage
+- Ideal for regression and classification
 
-**Algorithm**
+#### Pros
+- Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
+- (Bagging)
+- (Boosting) reduces BIAS as the model trains to fix classification errors so reduce this.
+
+#### Cons
+
+#### Algorithm
 - *Bagging*
   - Take sub-samples of dataset (N samples) with replacement
   - Train classifiers on sub-samples. 
@@ -342,13 +410,7 @@ Theses are black box methods!
   - Classify all classes with learners. Increase focus on misclassifed classes
 - *Stacking*
 
-**Usage**
-- Ideal for regression and classification
-
 **Pros**
-- Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
-- (Bagging)
-- (Boosting) reduces BIAS as the model trains to fix classification errors so reduce this.
 
 **Cons**
 - (All) Similar bias to single model 
@@ -483,10 +545,19 @@ Cons:
 ---
 
 ## Overview - Deep Learning
-[KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)
-[KagglePractice](https://www.kaggle.com/c/ann-and-dl-image-classification/overview)
 
+> Definition : 
 
+#### Kaggle Practice
+- [KagglePractice](https://www.kaggle.com/kanncaa1/deep-learning-tutorial-for-beginners)
+- [KagglePractice](https://www.kaggle.com/c/ann-and-dl-image-classification/overview)
+
+#### Usage
+- Can be use for imputation, both on categorical and numerical features
+
+#### Pros
+
+#### Cons
 ---
 
 ## Overview - Clustering
