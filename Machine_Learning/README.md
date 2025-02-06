@@ -342,3 +342,7 @@ is small, it will always predict any new data point as the predominate class.
 - Understand 
 
 
+## Why python for machine learning?
+
+- Python great as interface, use libraries! Pure python for machine learning isn't advised
+- Java, C, C++, Rust, Go anything that is statically type/compiled languages will perform much faster than python for machine learning!

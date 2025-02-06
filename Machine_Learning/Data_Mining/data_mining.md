@@ -114,5 +114,5 @@ Common usecases include:
 > [!CAUTION]
 > - Availability (must have low latency, high availablity, high reliability), Scalability (have peak/low loads) and Durability (have fault tolerant) are top concerns when working with streaming data
 
-## Glossary
+
 

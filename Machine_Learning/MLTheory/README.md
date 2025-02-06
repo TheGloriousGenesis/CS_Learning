@@ -75,8 +75,19 @@ and set this to zero to find the minima. The least squares equation is convex wh
 > [!TIP]
 > You can not use least squares if you want to minimise Non-linear algorithms. Instead, use numerical approximation for 
 > optimisation to obtain a close solution to ordinary least squares solution.
+
+**residual** = difference between the y value and the y predicted value
+
+To minimise the loss function above (sum of squared residuals), we want to minimise *m* and *b*.
+We choose values for *m* and *b* randomly by increasing/decreasing *m* and *b* from normal distribution (or T 
+distribution which has fatter tails, more smaller/larger values more diverse moves)
+
 ____
 ## Overview - Optimisation
+
+Used to find ways estimate values for variables in the cost function to  minimise cost function in supervised learning problems.
+
+### Hill Climbing 
 
 ### Gradient Descent
 
@@ -89,6 +100,8 @@ ____
 #### Cons
 
 #### Algorithm
+
+*Gradient descent*:
 
 We start with an initial weight and use the following to update the weights:
 
@@ -108,7 +121,21 @@ previous iteration because we need to increase the value of the weight to get cl
 > [!IMPORTANT]
 > Always ensure you choose the correct value for alpha! :smile:
 
-**Momentum** builds inertia in a direction of search space, speeding up convergence, minimizing noisy gradients and avoiding local minima.
+*Momentum*:
+
+builds inertia in a direction of search space, speeding up convergence, minimizing noisy gradients and avoiding local minima.
+
+*Maximum Likelihood*:
+
+The probablity of observsing multiple points is the multiplication of them all. Multiplying many small numbers tends to zero
+The way to negate this is to convert probability to logarithm and sum, then convert it back (adding in logarithm is the same as multiplying normally!)
+
+Good for avoiding floating point underflow!
+
+$$
+y = log(\frac{1}{1.0 + e^{-(-3.17 + 0.69x)}})
+$$
+
 
 ____
 
@@ -194,10 +221,20 @@ To resolve this curse of dimensionality you can use the following two options: [
 
 #### Pros
 - Good to use when you need to reduce the dimensions of the data but still keep relevant information.
+- Good for visualising high dimension dataset
+- Assists in speeding up machine learning
 
 #### Cons
-- Requires data to be standardised (mean 0, std 1)
+- (PCA) Requires data to be standardised (mean 0, std 1)
 - Doesn't take feature dependency on other features.
+- (PCA) loses some variance
+
+#### Algorithm
+
+*PCA*:
+
+Unsupervised Algorithm that creates new features by linearly combining features. They are explained in order of 
+"explained variance" (how much info this feature explains your whole dataset), e.g PC1 explains most variance, PC2 second most etc.
 
 ### Feature Selection
 
@@ -234,12 +271,77 @@ more expensive than forward).
 - Non-Linear transformations such as binning numeric variables into categories which can then relate linearly to target variable.
 binning is done to numerical values when there is not a linear relationship between the feature and binning could expose it e.g age vs book buying. age group is better indicator.
 
-
 #### Pros
+- Aligns features more with business user
 
 #### Cons
+- Requires domain knowledge user to interact during this stage
+
+### Encoding
+
+> Definition : A data transforming technique used to create machine-readable features in a dataset
+
+#### Usage
+- Categorical and numerical features that can not be understood by models
+
+#### Pros
+- Can improve accuracy of model 
+
+#### Cons
+- If you use a label encoder sometimes depending on the algorithm it can assume ordinal importance to value transformed
+    - This can be fixed by using one hot encoding (a new column for every unique value in original column) 
+
+#### Algorithm
+*Label Encoder*
+
+
+*Binning*
+- Numerical 
+  - normalization  
+  - standardisation (mean of zero, standard deviation of 1)
+  - binning (quartile - equal bins, numerical - no. of bins)
+
+- Categorical
+  - Group categories to get more insight (e.g. group cities into countries, region)
 
 ---
+
+### Text Feature Engineering
+
+> Description : Converting text to numerical representations so that models can understand relations between words. This
+> is called vectorisation.
+
+#### Kaggle
+
+#### Usage
+- Vectorising text to train a model.
+
+#### Pros
+- (Bag of words) Easy analysis, simple to implement
+
+#### Cons
+- (Bag of words) Doesn't work well with sparse matrix
+- (Bag of words) Words can show up in every document : Issue with over populous words in the english language e.g 'the' 'is' 'a'
+
+#### Algorithm
+*Bag of words*
+- Tokenize raw text and create statistical representation of the text
+- Breaks up text by whitespace into single words
+- It will populate one tally for each word in a sentence.
+
+*N grams*
+- Extension of Bag of words
+- Produces groups of words (collection of n successive items in a text document) that may include
+words, numbers, symbols, and punctuation (e.g `'the silly puppy was running'` --> `['the', 'the silly', 'puppy', 'puppy was', 'puppy was running']`)
+- Breaks up text by whitespace into groups of words
+
+A slightly better approach is to use Term Frequency Inverse Document Frequency. It determines the importance of the word to the document
+and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
+
+Test assumptions regarding analysing text data with GloVe first then move onto more sophisticated models like FastText, BERT 
+or any transformer (as they require a little more work)
+
+____
 
 ## Overview - Classification - UNFINISHED
 
@@ -394,25 +496,9 @@ $$
 
 #### Pros
 - Higher number of models will always give better performance (reduce original variance by 1/n, where n: number of classifiers)
-- (Bagging)
 - (Boosting) reduces BIAS as the model trains to fix classification errors so reduce this.
 
 #### Cons
-
-#### Algorithm
-- *Bagging*
-  - Take sub-samples of dataset (N samples) with replacement
-  - Train classifiers on sub-samples. 
-  - Combine classifiers 
-- *Boosting*
-  - Hyper-parameter : Number of tres, weights of trees, learning rate
-  - Start with weak learners
-  - Classify all classes with learners. Increase focus on misclassifed classes
-- *Stacking*
-
-**Pros**
-
-**Cons**
 - (All) Similar bias to single model 
 - (Bagging) Small sample size give worse models but more diversity
 - (Bagging) Big sample size give better models but less diversity (how is diversity measured)
@@ -420,23 +506,45 @@ $$
     - randomising subspace that model trained in
     - randomising anything you can think of (local minima convergence methods start different locations)
 
-**Performance**
+#### Algorithm
+- *Bagging*
+  - Take sub-samples of dataset (N samples) with replacement
+  - Train classifiers on sub-samples. 
+  - Combine classifiers 
+- *Boosting*
+  - Hyper-parameter : Number of trees, weights of trees, learning rate
+  - Start with weak learners
+  - Classify all classes with learners. Increase focus on misclassified classes
+- *Stacking*
+
+#### Performance
 - Use Ensemble learning to execute bias/variance trade off analysis
 
 ### Random Forest
-Type of ensemble method where multiple trees are grown. Each tree classifies data point and provides a vote for that class.
-The classification of the data point is then chosen by gathering votes.
+> Definition: Type of ensemble method where multiple trees are grown. 
 
-Theses are black box methods!
+Each tree classifies data point and provides a vote for that class. The classification of the data point is then chosen 
+by gathering votes. Theses are black box methods!
 
-Can be supervised or unsupervised due to the ability to 
+#### Usage
+- Can be used for dimensionality reduction 
+- As it can handle both classification and regression, when you can't think of an algorithm, use Random Forest!
 
-**Algorithm**
+#### Pros
+- Can handle large datasets with higher dimensionality
+- Model outputs importance of variable!
+- Can estimate missing data
+- Maintains accuracy when a large section of data missing
+- Reduce variation because the trees are trained by a subset
+
+#### Cons
+- Too many trees can be overly complex
+
+#### Algorithm
 - Hyper-parameters : No. of trees
 - Take sub-sample of dataset (N samples) with replacement
 - Out of M attributes, pick a number m < M at each node (constant for the whole tree while we grow it)
 - Pick m attributes at node at random every time. The best of these m (one that optimises split - makes resultant as different from each other as possible) is used to split the node (sub nodes etc)
-  - *N.B* the picking of subsets of features decreases the correlation between trees grown and increases the randomisation, leading to a drop in the test set error. **Also stops the strongest feature always appearing**
 - Grow without pruning. Stop when user predefines it
 - Predict by aggregating votes:
   - *Regression*
@@ -444,26 +552,18 @@ Can be supervised or unsupervised due to the ability to
   - *Classification*
     - Most votes of the trees
 
-**Usage**
-- Can be used for dimensionality reduction 
+> [!NOTE]
+> The picking of subsets of features decreases the correlation between trees grown and increases the randomisation,
+> leading to a drop in the test set error. **Also stops the strongest feature always appearing
 
-**Pros**
-- When you can't think of an algorithm, use Random Forest!
-- Can perform both classification and regression
-- Can handle large datasets with higher dimensionality
-- Model outputs importance of variable!
-- Can estimate missing data
-- Maintains accuracy when a large section of data missing
-- Reduce variation because the trees are trained by a subset
+#### Performance
 
-**Cons**
-- Too many trees can be overly complex
-**Performance**
-
----
+----
 
 ## Overview - Tree Based Methods
-- Can be used for regression and classification
+> Definition : Trees that can be used for regression and classification
+
+#### Glossary
 
 |Word|Definition|
 |:---:|:--------:|
@@ -477,11 +577,27 @@ Can be supervised or unsupervised due to the ability to
 
 ### Decision Tree:
 
-- The area of the predictive space is split/segmented into regions known as terminal nodes or leaves of the tree
-- Decision trees are drawn upside down
-- Supervised
+> Definition : Supervised model that describes A flowchart that helps people make decisions
 
-**Algorithm**
+#### Usage
+
+#### Pros
+- Easier to interpret, nice graphical representation
+- Helpful in exploratory due to :
+  - Easier to identify significant variables and relations between features
+- Map non-linear relationship well
+- Works on very large datasets
+- Works for categorical and continuous input/output variables
+- Creates the best similar sets (where in the set it is different)
+- Better than linear if data complexity relation high and need easily explain model
+
+#### Cons
+- Oversimplification of relationship between features
+- Over fitting
+- Not for continuous variables as data can be loss
+
+#### Algorithm
+- The area of the predictive space is split/segmented into regions known as terminal nodes or leaves of the tree
 - Determine how regions will be split (at a given node, how will we 'decide' how the data should be split): minimise Residual sum of squares (create high dimensional boxes). This in turn minimises the intra difference between nodes.
   - Gini impurity: The probability of an element in a set (node) being labeled incorrectly if label was picked out randomly from the distribution of the labels in that given set. This will tend to zero when set becomes more unified.
   - Chi-Square (Higher is better)
@@ -495,31 +611,18 @@ Can be supervised or unsupervised due to the ability to
     - For every data point observed, check if it falls into region. If it does then we make same prediction : mode of values of
       data points into region
 
-**Usage**
-
-**Pros**
-- Easier to interpret, nice graphical representation
-- Helpful in exploratory due to :
-  - Easier to identify significant variables and relations between features
-- Map non-linear relationship well
-- Works on very large datasets
-- Works for categorical and continuous input/output variables
-- Creates the best similar sets (where in the set it is different)
-- Better than linear if data complexity relation high and need easily explain model
-
-**Cons**
-- Oversimplification of relationship between features
-- Over fitting
-- Not for continuous variables as data can be loss
-- 
-**Performance**
+#### Performance
 Can avoid over-fitting in decision tress:
 - Setting constraint on tree size
 - Tree pruning
 
 
-#### Segmentation Tree
-Description: Splits data into specific segments based on some sort of criteria
+### Segmentation Tree
+> Description: Splits data into specific segments based on some sort of criteria
+
+#### Usage
+- Marketing: Customers grouped based on behaviours
+- Medical diagnostics: Patients with similar symptoms grouped to make diagnosis and treatment easier.
 
 ML type: Unsupervised/semi-supervised 
 
@@ -529,9 +632,6 @@ Algorithm:
 - Similar to decision tress, but if it's a clustering tree segmentation, could use clustering metrics like distance or variance between data in set/node
 - Output instead of predicting a variable (in regression the mean, in classification the mode), the leaf nodes represents the actual subset that has been created with the highest similarity (Homogeneity) for a given criterion.
 
-Usage:
-- Marketing: Customers grouped based on behaviours
-- Medical diagnostics: Patients with similar symptoms grouped to make diagnosis and treatment easier.
 
 Pros:
 - Interpretability: Easy to know where the output has come from as set rules in place for each node and decisions can be traced
@@ -635,36 +735,9 @@ Common real-time analytics + machine learning u
 amazon sagemaker - built to make mL more accessible
 
 
-### Overview - Natural Language processing
-
-## n - grams
-An n-gram is a collection of n successive items in a text document that may include
-words, numbers, symbols, and punctuation.
-
-## Text embeddings
-
-When working with text you must convert text to numerical representations so that the models can understand relations between words.
-This is called vectorisation, and the most common form is called bag of words OR CountVectorizer. It will populate one tally for each word in a sentence.
-
-Bag of words
-Pros:
-- Easy analysis, simple to implement
-
-Cons:
-- Doesn't work well with sparse matrix
-- Words can show up in every document
-  - Issue with over populous words in the english language e.g 'the' 'is' 'a'
-
-A slightly better approach is to use Term Frequency Inverse Document Frequency. It determines the importance of the word to the document
-and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
+## Overview - Natural Language processing
 
 
-
-
-Test assumptions regarding analysing text data with GloVe first then move onto more sophisticated models like FastText, BERT 
-or any transformer (as they require a little more work)
-
-____
 ## Large language model
 Made of two parts:
 

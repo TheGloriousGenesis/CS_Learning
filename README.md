@@ -129,3 +129,8 @@ todo:
    5. Best testing with Kedro
 2. Look into ways to best validate and evaluate model
    1. Shap Values
+
+
+____
+## Oreilly learning materials
+https://github.com/thomasnield/oreilly_machine_learning_from_scratch/tree/master

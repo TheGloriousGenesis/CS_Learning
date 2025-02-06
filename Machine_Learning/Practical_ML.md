@@ -1,3 +1,10 @@
+## Common DS stack
+
+3 stacks for DS, 
+- predictive (sklearn, pandas), 
+- LLM (openai, langchain), and OR (cvxpy, pyomo). 
+- Maybe comp vis another one but we have never done those v often (opencv stack)
+
 ## Common issues Machine Learning engineers face
 
 - Data quality issues
