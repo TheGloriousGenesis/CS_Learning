@@ -315,6 +315,8 @@ binning is done to numerical values when there is not a linear relationship betw
 
 #### Usage
 - Vectorising text to train a model.
+- (N-gram) Find phrases in spam email
+- (td-idg / orthogonal sparse bigram) Find the subject in several PDFs
 
 #### Pros
 - (Bag of words) Easy analysis, simple to implement
@@ -329,18 +331,23 @@ binning is done to numerical values when there is not a linear relationship betw
 - Breaks up text by whitespace into single words
 - It will populate one tally for each word in a sentence.
 
-*N grams*
+*N-gram*
 - Extension of Bag of words
 - Produces groups of words (collection of n successive items in a text document) that may include
 words, numbers, symbols, and punctuation (e.g `'the silly puppy was running'` --> `['the', 'the silly', 'puppy', 'puppy was', 'puppy was running']`)
 - Breaks up text by whitespace into groups of words
 
-A slightly better approach is to use Term Frequency Inverse Document Frequency. It determines the importance of the word to the document
-and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
+* Orthogonal Sparse Bigram *
+- Creates groups of words that will always include the first word 
+- Find common word combinations repeated in the document
+
+* Term Frequency-Inverse Document Frequency (tf-idf)
+- Slightly better approach to bag of words/n-gram
+- It determines the importance of the word to the document and takes into account extremely frequent words that may have no meaning to the actual document/corpus (such as 'the' 'is' etc)
+- Weights important words, filters less important words in document
 
 Test assumptions regarding analysing text data with GloVe first then move onto more sophisticated models like FastText, BERT 
 or any transformer (as they require a little more work)
-
 ____
 
 ## Overview - Classification - UNFINISHED

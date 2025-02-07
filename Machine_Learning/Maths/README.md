@@ -6,6 +6,8 @@ Higher variance = wider range of numbers
 Lower variance = lower range of numbers
 
 
+# Math notation
+- https://en.wikipedia.org/wiki/Glossary_of_mathematical_symbols
 
 # Statistics
 
