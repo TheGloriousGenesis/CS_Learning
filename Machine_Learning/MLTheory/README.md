@@ -210,6 +210,33 @@ to visualise higher dimension datasets (over 4D you can imagine it is hard!).
 To resolve this curse of dimensionality you can use the following two options: [feature selection](#feature-selection) or 
 [feature extraction](#feature-extraction--creation)
 
+### Feature selection
+
+> Description: When there are multiple features on varying scales and you need to apply a metric/model/analysis that is
+> distance/vector based
+
+#### Usage
+- Normalization
+- Standardisation
+- Z-score
+- Min-Max
+
+#### Algorithm
+
+*Z-score*
+
+- Transforms data to have a mean of 0 and standard deviation of 1
+$$
+Z = \frac{x - \mu}{\sigma}
+$$
+
+*Min-Max*
+
+- Transforms feature to fixed range
+$$
+X' = \frac{X - X{min}}{X{max} - X_{min}} 
+$$
+
 ### Feature Extraction / Creation
 
 > Definition: Create new features out of raw data. Smaller set of features. e.g From a photo: Detecting edges, corners, or colors.
@@ -235,6 +262,8 @@ To resolve this curse of dimensionality you can use the following two options: [
 
 Unsupervised Algorithm that creates new features by linearly combining features. They are explained in order of 
 "explained variance" (how much info this feature explains your whole dataset), e.g PC1 explains most variance, PC2 second most etc.
+By standardising, you ensure each feature contributes equally to the analysis. This allows PCA to accurately determine the direction 
+(components), that maximise variance in the data.
 
 ### Feature Selection
 
