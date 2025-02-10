@@ -722,7 +722,7 @@ Slide 14
       4. AWS Data Pipeline, 
       5. Glue, 
       6. Data Lake
-      7. Mechanic turk, Groundtruth
+      7. Mechanical turk, Groundtruth
       8. DeepAR
       9. Amazon Textract
       10. Amazon Comprehend
@@ -974,3 +974,19 @@ Things to know in this subdomain
 
 How to debug a ML problem
 
+
+
+## Amazon Mechanical Turk
+
+> Description: On demand human workforce service when human >> computer. 
+
+### Usage
+- When you need human in the loop
+  - Identifying objects in photos
+  - Crafting reviews for restaurants, movies, businesses.
+  - Translating text into foreign languages
+  - obtaining business center hours within in a hotel, etc
+
+### Pros
+- Manages the retrieval and compilation of work performed for the Requester
+- Requester can add tests to ensure correct worker is chosen

@@ -15,8 +15,23 @@ Seven steps to prepare your data:
 ## Types of data:
 - Ground truth data - labelled by human labelers or machine learning algorithms
 
-### Handle missing data
+## Gather your data
+
+> [!IMPORTANT] Understand when to use the following AWS services to gather data:
+> - Amazon Data pipeline
+> - AWS Glue
+> - AWS Database Migration Service (DMS)
+> - Amazon SageMaker
+> - Amazon Athena
+
+## Missing Data
+
+
+## Handle missing data
 There are many methods that can be used to handle missing data:
+
+>[!TIP]
+> Ensure you understand when to use these and when not too
 
 1. Do nothing: Allow the algorithm to fill or ignore the null values in your algorithm ([XGBoost](../Machine_Learning/MLTheory/README.md#overview---ensembleboosting) good at this)
 2. Remove records: See if the record even makes sense and remove if not pivotal

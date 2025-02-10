@@ -311,9 +311,42 @@ managed search solution
 
 ### AWS Data pipeline
 
-- reliable service to move data from compute to storage services
+> [!IMPORTANT]
+> AWS Data pipeline has been deprecreted for alternatives:
+> - AWS Glue
+> - AWS Step Functions
+> - AWS Managed Workflows for Apache Airflow
+
+> Description : A reliable service to move data from compute to storage services
+
+#### Pros
 - on premise data source - on cloud data source
 - can move db data using this (or any data)
+
+### AWS Glue
+
+> Description : serverless data integration service
+
+#### Usage
+- Workload includes apache Spark applications
+- Create pipelines to move data from multiple sources into data lake
+- When you want a service to do the data ingestion (ETL) section of ml pipeline
+
+### AWS Step Function
+
+> Description : serverless orchestration service
+
+#### Usage
+- Generic orchestration service
+- Building workflows across different aws services to get a full pipeline (etl to modelling to human interaction post processing etc)
+
+### AWS Managed Workflows for Apache airflow
+
+> Description : serverless orchestration service
+
+#### Usage
+- Orchestrating python workflows
+- Full aspect of pipeline management/creation
 
 ### AWS CloudFormation
 
