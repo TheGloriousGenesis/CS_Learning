@@ -252,6 +252,7 @@ Unsupervised Algorithm that creates new features by linearly combining features.
 more expensive than forward).
 - Forward Selection : train classifier on one feature, add one, see the improvement to the model.
 - A correlation matrix can be used to determine features are that are correlated to each other and then remove ones that are.
+- Variance Thresholds??
 
 #### Pros
 - (With Decision Tree) Irrelevant attributes never chosen.

@@ -1,12 +1,12 @@
 
 ## Prepare data
 Seven steps to prepare your data:
-1. gather your data (what data do you need for your problem? where are your sources of data from? are we pulling from a database etc, scrapping?)
-2. handle missing data (how should missing data be handled? should columns be deleted, values inputted etc)
-3. feature extraction (what features can you extract from your data? This is regarding ensuring dimensions make sense for the model (too many, too little, need new ones) or the columns make sense)
-4. decide which features are important (which features do you need to prove your hypothesis? validate through methods like PCA, rank, confusion matrix)
-5. encode categorical values (models can't deal with human language, they deal with numerics. Converting and transforming features into computer useful values)
-6. numeric feature engineering (sometimes even numerical features are not useful in their current state so they too need to be converted, not on the same scale, binning to reduce range of data etc)
+1. [Gather your data](#gather-your-data)
+2. [Handle missing data](#handle-missing-data)
+3. [Feature extraction](#feature-extraction)
+4. [Decide which features are important](#feature-selection)
+5. [Encode categorical values](#encoding-categorical-values)
+6. [Numeric feature engineering](#numerical-feature-engineering)
 7. Split data between test and training
 
 > [!TIP]
@@ -17,6 +17,10 @@ Seven steps to prepare your data:
 
 ## Gather your data
 
+> Description: Retrieval of raw data into machine learning pipeline input.
+
+What data do you need for your problem? where are your sources of data from? Are we pulling from a database etc, scrapping?
+
 > [!IMPORTANT] Understand when to use the following AWS services to gather data:
 > - Amazon Data pipeline
 > - AWS Glue
@@ -24,11 +28,12 @@ Seven steps to prepare your data:
 > - Amazon SageMaker
 > - Amazon Athena
 
-## Missing Data
-
-
 ## Handle missing data
-There are many methods that can be used to handle missing data:
+
+> Description: The replacing (or leaving alone) of missing data
+
+(how should missing data be handled? Should columns be deleted, values inputted etc? There are many methods that can be 
+used to handle missing data:
 
 >[!TIP]
 > Ensure you understand when to use these and when not too
@@ -49,3 +54,29 @@ There are many methods that can be used to handle missing data:
       3. [Deep Learning](../Machine_Learning/MLTheory/README.md#overview---deep-learning)
 6. Interpolation/extrapolation
 7. Forward filling/ Backward filling
+8. Hot deck imputation
+
+## [Feature Extraction](../Machine_Learning/MLTheory/README.md#feature-extraction--creation)
+
+> Description: Create new features in your data. 
+
+What features can you extract from your data? This is regarding ensuring dimensions make sense for the model (too many, too little, need new ones) or the columns make sense
+
+## [Feature Selection](../Machine_Learning/MLTheory/README.md#feature-selection)
+
+> Description: Removing unimportant features from your data. 
+
+Which features do you need to prove your hypothesis? Validate through methods like PCA, rank, confusion matrix.
+
+## [Encoding Categorical values](../Machine_Learning/MLTheory/README.md#encoding)
+
+> Description: Converting human to computer representations of data
+
+Models can't deal with human language, they deal with numerics. Converting and transforming features into computer useful values
+
+## [Numerical Feature Engineering](../Machine_Learning/MLTheory/README.md#encoding)
+
+> Description: Simplifying numerical input to help the model learn better
+
+Sometimes even numerical features are not useful in their current state so they too need to be converted, not on the same 
+scale, binning to reduce range of data etc. 
