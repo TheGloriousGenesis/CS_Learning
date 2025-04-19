@@ -1,12 +1,24 @@
+
 const REPO = "CS_Learning";
 const USER = "TheGloriousGenesis";
 const API_BASE = `https://api.github.com/repos/${USER}/${REPO}/git/trees/gh-pages?recursive=1`;
 const POSTS_PER_PAGE = 3;
 let currentPage = 1;
+let allPosts = [];
+
+function getQueryParam(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
 
 async function fetchBlogPosts() {
-  const blogContainer = document.getElementById("blogPosts");
-  blogContainer.innerHTML = "<p>Loading...</p>";
+  const postContainer = document.getElementById("blogPosts");
+  const fullPostContainer = document.getElementById("fullPost");
+  const paginationContainer = document.getElementById("pagination");
+
+  postContainer.innerHTML = "<p>Loading...</p>";
+  if (fullPostContainer) fullPostContainer.innerHTML = "";
+  if (paginationContainer) paginationContainer.innerHTML = "";
 
   try {
     const res = await fetch(API_BASE);
@@ -22,14 +34,20 @@ async function fetchBlogPosts() {
       const content = await res.text();
       const title = content.match(/^#\s(.+)/)?.[1] || file.path;
       const tags = content.match(/tags:\s*(.+)/i)?.[1]?.split(",")?.map(tag => tag.trim()) || [];
-
-      return { title, tags, content };
+      const summary = content.split('\n').find(line => line && !line.startsWith("#") && !line.startsWith("tags")) || "";
+      return { title, tags, content, summary, path: file.path };
     }));
 
-    window.blogData = posts;
-    displayPosts();
+    allPosts = posts;
+    const postPath = getQueryParam("path");
+    if (postPath) {
+      showFullPost(postPath);
+    } else {
+      displayPosts();
+    }
+
   } catch (err) {
-    blogContainer.innerHTML = `<p>Error loading blog posts: ${err.message}</p>`;
+    postContainer.innerHTML = `<p>Error loading blog posts: ${err.message}</p>`;
   }
 }
 
@@ -39,11 +57,11 @@ function displayPosts(filter = "") {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.innerHTML = "";
 
-  const filtered = window.blogData.filter(post =>
+  const filtered = allPosts.filter(post =>
     post.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
   );
 
-  const postsToDisplay = filter ? filtered : window.blogData;
+  const postsToDisplay = filter ? filtered : allPosts;
   const totalPages = Math.ceil(postsToDisplay.length / POSTS_PER_PAGE);
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
@@ -55,8 +73,9 @@ function displayPosts(filter = "") {
 
     postEl.innerHTML = `
       <h3>${post.title}</h3>
+      <p>${post.summary}</p>
       <div>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</div>
-      <div>${marked.parse(post.content)}</div>
+      <a href="blog.html?path=${encodeURIComponent(post.path)}">Read more</a>
     `;
 
     blogContainer.appendChild(postEl);
@@ -74,6 +93,24 @@ function displayPosts(filter = "") {
       paginationContainer.appendChild(btn);
     }
   }
+}
+
+function showFullPost(path) {
+  const post = allPosts.find(p => p.path === path);
+  if (!post) return;
+  const fullPostContainer = document.getElementById("fullPost");
+  const blogContainer = document.getElementById("blogPosts");
+  const paginationContainer = document.getElementById("pagination");
+  blogContainer.innerHTML = "";
+  paginationContainer.innerHTML = "";
+  fullPostContainer.innerHTML = `
+    <div class="card">
+      <h2>${post.title}</h2>
+      <div>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</div>
+      <div>${marked.parse(post.content)}</div>
+      <p><a href="blog.html">← Back to blog</a></p>
+    </div>
+  `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
