@@ -66,15 +66,31 @@
     }
 
     .content {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 2rem auto;
       padding: 1rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      flex: 1;
+      max-width: 250px;
+    }
+
+    .main-content {
+      flex: 3;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
 
     .card {
       background-color: var(--card-bg);
       padding: 1.5rem;
-      margin-bottom: 2rem;
       border-left: 5px solid var(--purple);
       border-radius: 8px;
     }
@@ -85,10 +101,6 @@
       background-color: var(--nav-bg);
       color: var(--text-color);
       font-size: 0.9rem;
-    }
-
-    .search-box {
-      margin-bottom: 1rem;
     }
 
     .search-box input {
@@ -105,8 +117,7 @@
       color: var(--text-color);
       padding: 0.3rem 0.6rem;
       border-radius: 4px;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin: 0.2rem;
       font-size: 0.8rem;
     }
 
@@ -114,7 +125,7 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     .pagination button {
@@ -139,29 +150,34 @@
     <a href="#contact">Contact</a>
   </nav>
   <div class="content">
-    <section class="card" id="home">
-      <h2>Home</h2>
-      <p>This is a sample homepage using a purple, black, and white color scheme.</p>
-    </section>
-
-    <section class="card" id="about">
-      <h2>About</h2>
-      <p>This site is hosted on GitHub Pages and is styled with simple HTML and CSS.</p>
-    </section>
-
-    <section class="card" id="blog">
-      <h2>Blog</h2>
+    <aside class="sidebar">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="Search by tag...">
       </div>
-      <div id="blogPosts"></div>
-      <div class="pagination" id="pagination"></div>
-    </section>
+    </aside>
 
-    <section class="card" id="contact">
-      <h2>Contact</h2>
-      <p>Reach out via <a href="mailto:youremail@example.com" style="color: var(--purple);">email</a>.</p>
-    </section>
+    <main class="main-content">
+      <section id="home" class="card">
+        <h2>Home</h2>
+        <p>This is a sample homepage using a purple, black, and white color scheme.</p>
+      </section>
+
+      <section id="about" class="card">
+        <h2>About</h2>
+        <p>This site is hosted on GitHub Pages and is styled with simple HTML and CSS.</p>
+      </section>
+
+      <section id="blog">
+        <h2>Blog</h2>
+        <div class="card-grid" id="blogPosts"></div>
+        <div class="pagination" id="pagination"></div>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p>Reach out via <a href="mailto:youremail@example.com" style="color: var(--purple);">email</a>.</p>
+      </section>
+    </main>
   </div>
 
   <footer>
