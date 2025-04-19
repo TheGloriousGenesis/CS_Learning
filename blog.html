@@ -6,6 +6,17 @@
   <title>Blog</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
+    id="markdown-light"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css"
+    id="markdown-dark"
+    disabled
+  />
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
@@ -38,7 +49,19 @@
     function toggleTheme() {
       const html = document.documentElement;
       const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+      const newTheme = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+
+      const lightCSS = document.getElementById("markdown-light");
+      const darkCSS = document.getElementById("markdown-dark");
+
+      if (newTheme === "dark") {
+        lightCSS.disabled = true;
+        darkCSS.disabled = false;
+      } else {
+        lightCSS.disabled = false;
+        darkCSS.disabled = true;
+      }
     }
   </script>
 </body>
