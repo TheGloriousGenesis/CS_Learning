@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
     <h1>About This Site</h1>
   </header>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
+
   <div class="content">
     <main class="main-content">
       <section>
         <h2>About</h2>
-        <p>This website is built using GitHub Pages with a custom theme. It's styled using a consistent purple, black, and white palette and includes dynamically loaded blog posts from Markdown files in a GitHub repository published from the <code>gh-pages</code> branch.</p>
+        <p>This site is a personal knowledge base for learning computer science and software development. It's powered by GitHub Pages and dynamically loads blog posts directly from Markdown files located within a GitHub repository.</p>
+      </section>
+      <section>
+        <h2>Features</h2>
+        <ul>
+          <li>Markdown rendering using markdown-it with support for admonitions like [!NOTE]</li>
+          <li>Dark/light theme toggle</li>
+          <li>Clean card layout for blog previews</li>
+          <li>Pagination, search by tag, and rich content styling</li>
+        </ul>
       </section>
     </main>
   </div>
+
   <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
+    <p>&copy; 2025 TheGloriousGenesis. All rights reserved.</p>
   </footer>
+
   <script>
     function toggleTheme() {
       const html = document.documentElement;
