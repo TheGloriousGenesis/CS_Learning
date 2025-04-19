@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
 
-  <!-- Site styles -->
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- GitHub Markdown styling -->
+  <!-- GitHub Markdown Styling -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
@@ -21,11 +21,14 @@
     disabled
   />
 
-  <!-- Markdown-it core -->
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+  <!-- Markdown-it and GitHub Alert using Skypack -->
+  <script type="module">
+    import markdownit from 'https://cdn.skypack.dev/markdown-it';
+    import markdownitGithubAlert from 'https://cdn.skypack.dev/markdown-it-github-alert';
 
-  <!-- GitHub Alert extension -->
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it-github-alert@0.2.0/dist/index.umd.min.js"></script>
+    window.markdownit = markdownit;
+    window.markdownitGithubAlert = markdownitGithubAlert;
+  </script>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
