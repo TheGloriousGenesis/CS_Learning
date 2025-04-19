@@ -106,7 +106,7 @@ function showFullPost(path) {
     <div class="card">
       <h2>${post.title}</h2>
       <div>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</div>
-      <div>${marked.parse(post.content)}</div>
+      <div class="markdown-body">${marked.parse(post.content)}</div>
       <p><a href="blog.html">← Back to blog</a></p>
     </div>
   `;
