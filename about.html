@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
-  <span id="theme-icon">🌞</span>
+ <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+  <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
 </button>
 
   <header>
@@ -55,15 +56,9 @@
       const lightCSS = document.getElementById("markdown-light");
       const darkCSS = document.getElementById("markdown-dark");
 
-      if (newTheme === "dark") {
-        lightCSS.disabled = true;
-        darkCSS.disabled = false;
-        icon.textContent = "🌙";
-      } else {
-        lightCSS.disabled = false;
-        darkCSS.disabled = true;
-        icon.textContent = "🌞";
-      }
+      lightCSS.disabled = newTheme === "dark";
+      darkCSS.disabled = newTheme !== "dark";
+      icon.textContent = newTheme === "dark" ? "dark_mode" : "light_mode";
     }
   </script>
 </body>
