@@ -13,7 +13,7 @@ async function fetchBlogPosts() {
     const data = await res.json();
 
     const postFiles = data.tree.filter(item =>
-      item.path.endsWith("/posts/README.md")
+      /\/posts\/README.md$/.test(item.path)
     );
 
     const posts = await Promise.all(postFiles.map(async file => {
