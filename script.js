@@ -119,15 +119,15 @@ function showFullPost(path) {
   paginationContainer.style.display = "none";
   if (sidebar) sidebar.style.display = "none";
 
-  const md = window.markdownit().use(window.markdownitAdmonition);
-  const html = md.render(post.content);
+  // const md = window.markdownit().use(window.markdownitAdmonition);
+  // const html = md.render(post.content);
 
   window.scrollTo(0, 0);
 
   fullPostContainer.innerHTML = `
     <a class="back-to-blog" href="blog.html">← Back</a>
     <article class="markdown-body post-content">
-      ${html}
+      ${marked.parse(post.content)}
     </article>
   `;
 }
