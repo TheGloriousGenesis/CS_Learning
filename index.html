@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+  <span id="theme-icon">🌞</span>
+</button>
 
   <header>
     <h1>Welcome to My Site</h1>
@@ -40,9 +42,25 @@
   <script>
     function toggleTheme() {
       const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
       const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+      const newTheme = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+
+      const lightCSS = document.getElementById("markdown-light");
+      const darkCSS = document.getElementById("markdown-dark");
+
+      if (newTheme === "dark") {
+        lightCSS.disabled = true;
+        darkCSS.disabled = false;
+        icon.textContent = "🌙";
+      } else {
+        lightCSS.disabled = false;
+        darkCSS.disabled = true;
+        icon.textContent = "🌞";
+      }
     }
+
   </script>
 </body>
 </html>

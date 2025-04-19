@@ -26,7 +26,9 @@
 
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+  <span id="theme-icon">🌞</span>
+</button>
 
   <header>
     <h1>My Blog</h1>
@@ -61,6 +63,7 @@
   <script>
     function toggleTheme() {
       const html = document.documentElement;
+      const icon = document.getElementById("theme-icon");
       const current = html.getAttribute("data-theme");
       const newTheme = current === "dark" ? "light" : "dark";
       html.setAttribute("data-theme", newTheme);
@@ -68,8 +71,15 @@
       const lightCSS = document.getElementById("markdown-light");
       const darkCSS = document.getElementById("markdown-dark");
 
-      lightCSS.disabled = newTheme === "dark";
-      darkCSS.disabled = newTheme !== "dark";
+      if (newTheme === "dark") {
+        lightCSS.disabled = true;
+        darkCSS.disabled = false;
+        icon.textContent = "🌙";
+      } else {
+        lightCSS.disabled = false;
+        darkCSS.disabled = true;
+        icon.textContent = "🌞";
+      }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
