@@ -1,5 +1,7 @@
 # React
 
+Everything i've noted down from my journey with react
+
 ### React vs Angular
 |Angular|React|
 |:-----:|:---:|
