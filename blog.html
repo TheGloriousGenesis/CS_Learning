@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- GitHub Markdown CSS for light and dark -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
@@ -17,33 +18,41 @@
     id="markdown-dark"
     disabled
   />
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
   <header>
     <h1>My Blog</h1>
   </header>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="blog.html">Blog</a>
     <a href="contact.html">Contact</a>
   </nav>
+
   <div class="content">
     <aside class="sidebar">
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="Search by tag..." />
       </div>
     </aside>
+
     <main class="main-content">
       <div class="card-grid" id="blogPosts"></div>
       <div id="fullPost"></div>
       <div class="pagination" id="pagination"></div>
     </main>
   </div>
+
   <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
+    <p>&copy; 2025 TheGloriousGenesis. All rights reserved.</p>
   </footer>
+
   <script src="script.js"></script>
   <script>
     function toggleTheme() {
