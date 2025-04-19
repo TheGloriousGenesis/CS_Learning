@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -150,27 +150,30 @@
     <a href="#contact">Contact</a>
   </nav>
   <div class="content">
-    <aside class="sidebar">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search by tag...">
-      </div>
-    </aside>
-
     <main class="main-content">
       <section id="home" class="card">
         <h2>Home</h2>
-        <p>This is a sample homepage using a purple, black, and white color scheme.</p>
+        <p>Welcome to the homepage.</p>
       </section>
 
       <section id="about" class="card">
         <h2>About</h2>
-        <p>This site is hosted on GitHub Pages and is styled with simple HTML and CSS.</p>
+        <p>This site is hosted on GitHub Pages and styled with simple HTML and CSS.</p>
       </section>
 
       <section id="blog">
-        <h2>Blog</h2>
-        <div class="card-grid" id="blogPosts"></div>
-        <div class="pagination" id="pagination"></div>
+        <div class="content">
+          <aside class="sidebar">
+            <div class="search-box">
+              <input type="text" id="searchInput" placeholder="Search by tag...">
+            </div>
+          </aside>
+          <div class="main-content">
+            <h2>Blog</h2>
+            <div class="card-grid" id="blogPosts"></div>
+            <div class="pagination" id="pagination"></div>
+          </div>
+        </div>
       </section>
 
       <section id="contact" class="card">
