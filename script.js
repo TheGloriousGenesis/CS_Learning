@@ -103,17 +103,14 @@ function showFullPost(path) {
   blogContainer.innerHTML = "";
   paginationContainer.innerHTML = "";
 
-  // Custom markdown replacement for [!NOTE]
-  const parsedContent = post.content.replace(
-    /\[!NOTE\](.*)/g,
-    '<div class="note"><strong>Note:</strong>$1</div>'
-  );
+  const md = window.markdownit().use(window.markdownitAdmonition);
+  const html = md.render(post.content);
 
   fullPostContainer.innerHTML = `
     <div class="card">
       <h2>${post.title}</h2>
       <div>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</div>
-      <div class="markdown-body">${marked.parse(parsedContent)}</div>
+      <div class="markdown-body">${html}</div>
       <p><a href="blog.html">← Back to blog</a></p>
     </div>
   `;

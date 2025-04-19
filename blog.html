@@ -4,22 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
+
+  <!-- Main site style -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- GitHub Markdown CSS for light and dark -->
+  <!-- GitHub Markdown styling (light/dark) -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-light.min.css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
     id="markdown-light"
   />
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css"
     id="markdown-dark"
     disabled
   />
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Markdown-it & Admonition Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mdit-vue/plugin-admonition/dist/index.global.js"></script>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
@@ -64,13 +68,8 @@
       const lightCSS = document.getElementById("markdown-light");
       const darkCSS = document.getElementById("markdown-dark");
 
-      if (newTheme === "dark") {
-        lightCSS.disabled = true;
-        darkCSS.disabled = false;
-      } else {
-        lightCSS.disabled = false;
-        darkCSS.disabled = true;
-      }
+      lightCSS.disabled = newTheme === "dark";
+      darkCSS.disabled = newTheme !== "dark";
     }
   </script>
 </body>
