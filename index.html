@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Purple Themed Website</title>
+  <style>
+    :root {
+      --purple: #a259ff;
+      --black: #0e0e0e;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header {
+      background-color: var(--purple);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--white);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #1a1a1a;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--purple);
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #1a1a1a;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Site</h1>
+  </header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="content">
+    <section class="card" id="home">
+      <h2>Home</h2>
+      <p>This is a sample homepage using a purple, black, and white color scheme.</p>
+    </section>
+    <section class="card" id="about">
+      <h2>About</h2>
+      <p>This site is hosted on GitHub Pages and is styled with simple HTML and CSS.</p>
+    </section>
+    <section class="card" id="contact">
+      <h2>Contact</h2>
+      <p>Reach out via <a href="mailto:youremail@example.com" style="color: var(--purple);">email</a>.</p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
+  </footer>
+</body>
+</html>
