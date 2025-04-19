@@ -1,5 +1,7 @@
 # FastApi
 
+tags: python, api, fastapi
+
 Produces interactive API docs (provided by Swagger UI or ReDoc)
 
 Looking into broken links in API docs
