@@ -1,4 +1,3 @@
-
 ## Prepare data
 Seven steps to prepare your data:
 1. [Gather your data](#gather-your-data)
@@ -23,7 +22,7 @@ What data do you need for your problem? where are your sources of data from? Are
 
 > [!IMPORTANT] Understand when to use the following AWS services to gather data:
 > - Amazon Data pipeline
-> - AWS Glue
+> - AWS Glue 
 > - AWS Database Migration Service (DMS)
 > - Amazon SageMaker
 > - Amazon Athena

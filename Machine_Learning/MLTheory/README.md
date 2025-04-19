@@ -327,7 +327,7 @@ binning is done to numerical values when there is not a linear relationship betw
 
 *Binning*
 - Numerical 
-  - normalization  
+  - normalization  (rescales the values into a range of [0,1])
   - standardisation (mean of zero, standard deviation of 1)
   - binning (quartile - equal bins, numerical - no. of bins)
 

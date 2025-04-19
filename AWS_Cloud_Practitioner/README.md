@@ -21,23 +21,6 @@ Additional Learning:
 |Recovery Point Objective (RPO)| It is the acceptable amount of data loss measured in time|
 |Elastic | The ability to scale computing resources up and down easily, with minimal friction|
 
-
-## Amazon Kinesis Overview
-
-Makes it easier to connect analyze and process data streams in real-time/near real-time.
-
-It processes streams from both binary encoded data (audio and video) and base64 text-encoded data.
-
-Auto-scaling is not automatic
-
-Kinesis data stream is a set of shards which contains a sequence of data records.
-
-The stream processing layer is managed by consumers, but once the data records are streamed, they can not be modified.
-
-Data is stored for 24 hours by default.
-
-Kinesis data stream is a stream storage layer.
-
 ## Pre-requisites
 
 ### Cloud Service Models - Core
@@ -174,6 +157,22 @@ Client side data encryption, data integrity authentication, server side encrypti
   - Compute, Storage, Database, Network
 - AWS Global Infrastructure
   - Regions, Availability Zones, Edge Locations
+
+## Amazon Kinesis Overview
+
+Makes it easier to connect analyze and process data streams in real-time/near real-time.
+
+It processes streams from both binary encoded data (audio and video) and base64 text-encoded data.
+
+Auto-scaling is not automatic
+
+Kinesis data stream is a set of shards which contains a sequence of data records.
+
+The stream processing layer is managed by consumers, but once the data records are streamed, they can not be modified.
+
+Data is stored for 24 hours by default.
+
+Kinesis data stream is a stream storage layer.
 
 ### Pricing
 
@@ -331,6 +330,9 @@ managed search solution
 - Workload includes apache Spark applications
 - Create pipelines to move data from multiple sources into data lake
 - When you want a service to do the data ingestion (ETL) section of ml pipeline
+
+#### How
+- Crawlers and classifiers
 
 ### AWS Step Function
 
