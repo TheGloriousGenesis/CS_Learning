@@ -1,6 +1,6 @@
 const REPO = "CS_Learning";
 const USER = "TheGloriousGenesis";
-const API_BASE = `https://api.github.com/repos/${USER}/${REPO}/git/trees/main?recursive=1`;
+const API_BASE = `https://api.github.com/repos/${USER}/${REPO}/git/trees/gh-pages?recursive=1`;
 const POSTS_PER_PAGE = 3;
 let currentPage = 1;
 
@@ -13,11 +13,11 @@ async function fetchBlogPosts() {
     const data = await res.json();
 
     const postFiles = data.tree.filter(item =>
-      /\/posts\/README.md$/.test(item.path)
+      /\/posts\/README\.md$/i.test(item.path)
     );
 
     const posts = await Promise.all(postFiles.map(async file => {
-      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/main/${file.path}`;
+      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/gh-pages/${file.path}`;
       const res = await fetch(rawUrl);
       const content = await res.text();
       const title = content.match(/^#\s(.+)/)?.[1] || file.path;
