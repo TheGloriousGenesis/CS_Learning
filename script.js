@@ -97,22 +97,33 @@ function displayPosts(filter = "") {
 function showFullPost(path) {
   const post = allPosts.find(p => p.path === path);
   if (!post) return;
-  const fullPostContainer = document.getElementById("fullPost");
+
+  // Add post-mode class to <body>
+  document.body.classList.add("post-mode");
+
   const blogContainer = document.getElementById("blogPosts");
   const paginationContainer = document.getElementById("pagination");
-  blogContainer.innerHTML = "";
-  paginationContainer.innerHTML = "";
+  const fullPostContainer = document.getElementById("fullPost");
+  const sidebar = document.querySelector(".sidebar");
 
+  // Hide the card grid, pagination, and sidebar
+  blogContainer.style.display = "none";
+  paginationContainer.style.display = "none";
+  if (sidebar) sidebar.style.display = "none";
+
+  // Use markdown-it with admonition
   const md = window.markdownit().use(window.markdownitAdmonition);
   const html = md.render(post.content);
 
+  // Scroll to top on load
+  window.scrollTo(0, 0);
+
+  // Render full post
   fullPostContainer.innerHTML = `
-    <div class="card">
-      <h2>${post.title}</h2>
-      <div>${post.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</div>
-      <div class="markdown-body">${html}</div>
-      <p><a href="blog.html">← Back to blog</a></p>
-    </div>
+  <a class="back-to-blog" href="blog.html">← Back</a>
+  <article class="markdown-body post-content">
+    ${html}
+  </article>
   `;
 }
 

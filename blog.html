@@ -71,6 +71,14 @@
       lightCSS.disabled = newTheme === "dark";
       darkCSS.disabled = newTheme !== "dark";
     }
+    window.addEventListener("DOMContentLoaded", () => {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const current = document.documentElement.getAttribute("data-theme");
+
+      if (prefersDark && current !== "dark") {
+        toggleTheme();
+      }
+    });
   </script>
 </body>
 </html>
