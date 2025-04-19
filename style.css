@@ -195,3 +195,18 @@ body.post-mode .main-content {
 .back-to-blog:hover {
   background-color: #8c3eff;
 }
+
+/* GitHub-style alert blocks (markdown-it-github-alert) */
+.alert {
+  border-left: 4px solid var(--purple);
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+.alert-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--purple);
+}

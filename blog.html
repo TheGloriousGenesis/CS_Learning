@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
+
+  <!-- Site styles -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- GitHub Markdown styling -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
@@ -16,8 +20,12 @@
     id="markdown-dark"
     disabled
   />
-<!--  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>-->
-<!--  <script src="https://cdn.jsdelivr.net/npm/@mdit-vue/plugin-admonition/dist/index.global.js"></script>-->
+
+  <!-- Markdown-it core -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+
+  <!-- GitHub Alert extension -->
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-github-alert@0.2.0/dist/index.umd.min.js"></script>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>

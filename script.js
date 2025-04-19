@@ -28,7 +28,7 @@ async function fetchBlogPosts() {
     );
 
     const posts = await Promise.all(postFiles.map(async file => {
-      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/gh-pages/${file.path}`;
+      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/main/${file.path}`;
       const res = await fetch(rawUrl);
       const content = await res.text();
       const title = content.match(/^#\s(.+)/)?.[1] || file.path;
@@ -119,15 +119,16 @@ function showFullPost(path) {
   paginationContainer.style.display = "none";
   if (sidebar) sidebar.style.display = "none";
 
-  // const md = window.markdownit().use(window.markdownitAdmonition);
-  // const html = md.render(post.content);
+  const md = window.markdownit();
+  md.use(window.markdownitGithubAlert);
+  const html = md.render(post.content);
 
   window.scrollTo(0, 0);
 
   fullPostContainer.innerHTML = `
     <a class="back-to-blog" href="blog.html">← Back</a>
     <article class="markdown-body post-content">
-      ${marked.parse(post.content)}
+      ${html}
     </article>
   `;
 }
