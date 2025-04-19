@@ -158,13 +158,3 @@ footer {
   font-size: 0.9rem;
 }
 
-.note {
-  padding: 1rem;
-  border-left: 4px solid var(--purple);
-  background: #f6f8fa;
-  margin: 1rem 0;
-  border-radius: 6px;
-}
-.note strong {
-  color: var(--purple);
-}
