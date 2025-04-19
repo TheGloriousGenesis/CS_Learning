@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
 
-  <!-- Main site style -->
+  <!-- Custom styles -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- GitHub Markdown styling (light/dark) -->
+  <!-- GitHub Markdown (light/dark themes) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
@@ -21,7 +21,7 @@
     disabled
   />
 
-  <!-- Markdown-it & Admonition Plugin -->
+  <!-- Markdown parser + admonitions -->
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mdit-vue/plugin-admonition/dist/index.global.js"></script>
 </head>
@@ -71,6 +71,8 @@
       lightCSS.disabled = newTheme === "dark";
       darkCSS.disabled = newTheme !== "dark";
     }
+
+    // Auto-detect system preference on first load
     window.addEventListener("DOMContentLoaded", () => {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const current = document.documentElement.getAttribute("data-theme");

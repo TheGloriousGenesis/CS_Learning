@@ -158,7 +158,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* When in full blog post mode */
+/* Post mode layout */
 body.post-mode .sidebar,
 body.post-mode .card-grid,
 body.post-mode .pagination {
@@ -191,7 +191,7 @@ body.post-mode .main-content {
   text-decoration: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+
 .back-to-blog:hover {
   background-color: #8c3eff;
 }
-

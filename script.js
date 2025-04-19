@@ -51,10 +51,17 @@ async function fetchBlogPosts() {
 }
 
 function displayPosts(filter = "") {
+  document.body.classList.remove("post-mode");
+
   const blogContainer = document.getElementById("blogPosts");
-  blogContainer.innerHTML = "";
   const paginationContainer = document.getElementById("pagination");
-  paginationContainer.innerHTML = "";
+  const fullPostContainer = document.getElementById("fullPost");
+  const sidebar = document.querySelector(".sidebar");
+
+  blogContainer.style.display = "grid";
+  paginationContainer.style.display = "flex";
+  if (sidebar) sidebar.style.display = "block";
+  fullPostContainer.innerHTML = "";
 
   const filtered = allPosts.filter(post =>
     post.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
@@ -65,6 +72,8 @@ function displayPosts(filter = "") {
   const start = (currentPage - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
   const pagePosts = postsToDisplay.slice(start, end);
+
+  blogContainer.innerHTML = "";
 
   pagePosts.forEach(post => {
     const postEl = document.createElement("div");
@@ -81,6 +90,7 @@ function displayPosts(filter = "") {
   });
 
   if (totalPages > 1) {
+    paginationContainer.innerHTML = "";
     for (let i = 1; i <= totalPages; i++) {
       const btn = document.createElement("button");
       btn.textContent = i;
@@ -98,7 +108,6 @@ function showFullPost(path) {
   const post = allPosts.find(p => p.path === path);
   if (!post) return;
 
-  // Add post-mode class to <body>
   document.body.classList.add("post-mode");
 
   const blogContainer = document.getElementById("blogPosts");
@@ -106,24 +115,20 @@ function showFullPost(path) {
   const fullPostContainer = document.getElementById("fullPost");
   const sidebar = document.querySelector(".sidebar");
 
-  // Hide the card grid, pagination, and sidebar
   blogContainer.style.display = "none";
   paginationContainer.style.display = "none";
   if (sidebar) sidebar.style.display = "none";
 
-  // Use markdown-it with admonition
   const md = window.markdownit().use(window.markdownitAdmonition);
   const html = md.render(post.content);
 
-  // Scroll to top on load
   window.scrollTo(0, 0);
 
-  // Render full post
   fullPostContainer.innerHTML = `
-  <a class="back-to-blog" href="blog.html">← Back</a>
-  <article class="markdown-body post-content">
-    ${html}
-  </article>
+    <a class="back-to-blog" href="blog.html">← Back</a>
+    <article class="markdown-body post-content">
+      ${html}
+    </article>
   `;
 }
 
