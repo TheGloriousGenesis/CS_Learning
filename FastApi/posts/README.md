@@ -72,5 +72,4 @@ app = FastAPI(
 )
 
 FastAPIInstrumentor.instrument_app(app)
-
 ```

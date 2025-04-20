@@ -5,32 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog</title>
 
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- GitHub Markdown Styling -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css"
-    id="markdown-light"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css"
-    id="markdown-dark"
-    disabled
-  />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" id="markdown-light" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css" id="markdown-dark" disabled />
 
+  <!-- highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="hljs-light" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="hljs-dark" disabled />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+  <!-- markdown-it + plugins -->
   <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-admon/dist/markdown-it-admon.min.js"></script>
 
-
+  <!-- Google Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-  <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
-</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+    <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+  </button>
 
   <header>
     <h1>My Blog</h1>
@@ -62,6 +58,7 @@
   </footer>
 
   <script src="script.js"></script>
+
   <script>
     function toggleTheme() {
       const html = document.documentElement;
@@ -70,11 +67,10 @@
       html.setAttribute("data-theme", newTheme);
       localStorage.setItem("theme", newTheme);
 
-      const lightCSS = document.getElementById("markdown-light");
-      const darkCSS = document.getElementById("markdown-dark");
-
-      lightCSS.disabled = newTheme === "dark";
-      darkCSS.disabled = newTheme !== "dark";
+      document.getElementById("markdown-light").disabled = newTheme === "dark";
+      document.getElementById("markdown-dark").disabled = newTheme !== "dark";
+      document.getElementById("hljs-light").disabled = newTheme === "dark";
+      document.getElementById("hljs-dark").disabled = newTheme !== "dark";
 
       const icon = document.getElementById("theme-icon");
       if (icon) {
@@ -88,14 +84,10 @@
       const theme = savedTheme || (prefersDark ? "dark" : "light");
 
       document.documentElement.setAttribute("data-theme", theme);
-
-      const lightCSS = document.getElementById("markdown-light");
-      const darkCSS = document.getElementById("markdown-dark");
-
-      if (lightCSS && darkCSS) {
-        lightCSS.disabled = theme === "dark";
-        darkCSS.disabled = theme !== "dark";
-      }
+      document.getElementById("markdown-light").disabled = theme === "dark";
+      document.getElementById("markdown-dark").disabled = theme !== "dark";
+      document.getElementById("hljs-light").disabled = theme === "dark";
+      document.getElementById("hljs-dark").disabled = theme !== "dark";
 
       const icon = document.getElementById("theme-icon");
       if (icon) {
@@ -103,6 +95,5 @@
       }
     });
   </script>
-
 </body>
 </html>

@@ -312,18 +312,25 @@ body.post-mode .main-content {
   font-size: 0.85rem;
 }
 
-/* Optional: highlight.js GitHub theme override (light/dark) */
-pre code {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+/* Syntax highlighting using highlight.js GitHub theme */
+.hljs {
   background: #f6f8fa;
   color: #24292e;
   padding: 1rem;
-  display: block;
-  overflow-x: auto;
   border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.95rem;
 }
 
-[data-theme="dark"] pre code {
+[data-theme="dark"] .hljs {
   background: #1e1e1e;
   color: #d4d4d4;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  overflow: visible;
+  border-radius: 0;
+  font-size: inherit;
 }

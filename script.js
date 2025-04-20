@@ -119,12 +119,22 @@ function showFullPost(path) {
   paginationContainer.style.display = "none";
   if (sidebar) sidebar.style.display = "none";
 
-  const md = window.markdownit();
+  const md = window.markdownit({
+    highlight: function (str, lang) {
+      if (window.hljs && lang && hljs.getLanguage(lang)) {
+        try {
+          return `<pre><code class="hljs language-${lang}">${hljs.highlight(str, { language: lang }).value}</code></pre>`;
+        } catch (__) {}
+      }
+      return `<pre><code class="hljs">${md.utils.escapeHtml(str)}</code></pre>`;
+    }
+  });
+
   if (window.markdownitAdmon) {
     md.use(window.markdownitAdmon);
   }
-  const html = md.render(post.content);
 
+  const html = md.render(post.content);
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
   const headings = doc.querySelectorAll('h2, h3');
