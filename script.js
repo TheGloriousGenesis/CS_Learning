@@ -1,4 +1,4 @@
-const REPO = "CS_Learning";
+const REPO = "tech_learning";
 const USER = "TheGloriousGenesis";
 const API_BASE = `https://api.github.com/repos/${USER}/${REPO}/git/trees/gh-pages?recursive=1`;
 const POSTS_PER_PAGE = 3;
