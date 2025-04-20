@@ -1,4 +1,7 @@
-/* Color Scheme */
+/** ============================ **/
+/* Color Scheme & Typography  */
+/** ============================ **/
+
 :root {
   --purple: #a099b6;
   --bg-color: #fefdfd;
@@ -16,13 +19,44 @@
 
 body {
   margin: 0;
-  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  font-size: 100%;
-  font-style: inherit;
-  font-weight: inherit;
+  overflow-x: hidden;
+  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
+
+/* ============================ */
+/* Layout Containers           */
+/* ============================ */
+
+.content {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  display: flex;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.post-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.sidebar {
+  flex: 1;
+  max-width: 250px;
+}
+
+.main-content {
+  flex: 3;
+}
+
+/* ============================ */
+/* Navigation & Header         */
+/* ============================ */
 
 header {
   background-color: var(--purple);
@@ -57,29 +91,26 @@ nav a:hover {
   position: absolute;
   right: 1rem;
   top: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-color);
 }
 
-.content {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
-  display: flex;
-  gap: 2rem;
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
 }
 
-.sidebar {
-  flex: 1;
-  max-width: 250px;
-}
-
-.main-content {
-  flex: 3;
-}
+/* ============================ */
+/* Blog Cards                  */
+/* ============================ */
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .card {
@@ -105,7 +136,6 @@ nav a:hover {
   font-size: 0.95rem;
   margin: 0.5rem 0;
   line-height: 1.5;
-  color: var(--text-color);
 }
 
 .card a {
@@ -128,12 +158,20 @@ nav a:hover {
   font-size: 0.75rem;
 }
 
+/* ============================ */
+/* Footer & Utility Elements   */
+/* ============================ */
+
 footer {
   text-align: center;
   padding: 2rem 1rem;
   background-color: var(--nav-bg);
   color: var(--text-color);
   font-size: 0.9rem;
+}
+
+.search-box {
+  margin-top: 1rem;
 }
 
 .search-box input {
@@ -161,7 +199,10 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Post mode layout */
+/* ============================ */
+/* Blog Post Page              */
+/* ============================ */
+
 body.post-mode .sidebar,
 body.post-mode .card-grid,
 body.post-mode .pagination {
@@ -171,14 +212,6 @@ body.post-mode .pagination {
 body.post-mode .main-content {
   display: flex;
   justify-content: center;
-}
-
-.markdown-body.post-content {
-  max-width: 800px;
-  padding: 2rem;
-  margin: 0 auto;
-  background: var(--bg-color);
-  border-radius: 8px;
 }
 
 .back-to-blog {
@@ -199,75 +232,18 @@ body.post-mode .main-content {
   background-color: #8c3eff;
 }
 
-/* GitHub-style alert blocks (markdown-it-github-alert) */
-.alert {
-  border-left: 4px solid var(--purple);
-  background: #f9f9f9;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 6px;
-}
-
-.alert-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: var(--purple);
-}
-
-.theme-toggle {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--text-color);
-}
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 1;
-}
-
-/* --- ToC Sidebar --- */
-.post-layout {
-  display: flex;
-  gap: 3rem;
-  margin-top: 2rem;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.post-toc li.active > a {
-  font-weight: bold;
-  color: var(--purple);
-  text-decoration: underline;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .markdown-body.post-content {
   flex: 1 1 auto;
   max-width: 720px;
-  padding: 2rem 0;
+  padding: 1rem 0;
   margin: 0;
+  color: var(--text-color) !important;
   animation: fadeIn 0.6s ease both;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* ============================ */
+/* Table of Contents (ToC)     */
+/* ============================ */
 
 .post-toc {
   flex: 0 0 220px;
@@ -278,7 +254,15 @@ body.post-mode .main-content {
   font-size: 0.95rem;
   border-left: 2px solid var(--purple);
   padding-left: 1rem;
-  animation: fadeIn 0.6s ease both 0.2s;
+  animation: fadeIn 0.3s ease both 0.1s;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+@media (max-width: 1024px) {
+  .post-toc {
+    display: none;
+  }
 }
 
 .post-toc h3 {
@@ -301,11 +285,16 @@ body.post-mode .main-content {
   color: var(--text-color);
   text-decoration: none;
   font-size: 0.88rem;
-  transition: color 0.2s ease;
+  transition: color 0.1s ease;
 }
 
-.post-toc a:hover {
+.post-toc li.active > a {
+  font-weight: bold;
+  color: #a099b6 !important;
   text-decoration: underline;
+}
+
+.post-toc li.active > a:hover {
   color: var(--purple);
 }
 
@@ -319,7 +308,10 @@ body.post-mode .main-content {
   font-size: 0.85rem;
 }
 
-/* Syntax highlighting using highlight.js GitHub theme */
+/* ============================ */
+/* Markdown Syntax Highlighting */
+/* ============================ */
+
 .hljs {
   background: #f6f8fa;
   color: #24292e;
@@ -342,14 +334,32 @@ pre code {
   font-size: inherit;
 }
 
+/* ============================ */
+/* Global Markdown Links       */
+/* ============================ */
+
+.markdown-body a,
 a {
-  color: #551A8B;
-}
-
-.markdown-body {
-  color:  var(--text-color) !important;
-}
-
-.markdown-body a {
   color: #551A8B !important;
+}
+
+.markdown-body a:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================ */
+/* Animations                  */
+/* ============================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

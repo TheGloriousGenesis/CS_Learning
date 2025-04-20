@@ -151,7 +151,7 @@ function showFullPost(path) {
     <a class="back-to-blog" href="blog.html">← Back</a>
     <div class="post-layout">
       <aside class="post-toc">
-        <h3>On this page</h3>
+        <h3>SUMMARY</h3>
         <ul>${toc}</ul>
       </aside>
       <article class="markdown-body post-content">
