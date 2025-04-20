@@ -142,7 +142,7 @@ function showFullPost(path) {
   const toc = Array.from(headings).map(h => {
     const id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
     h.id = id;
-    return `<li class="toc-${h.tagName.toLowerCase()}"><a href="#${id}">${h.textContent}</a></li>`;
+    return `<li class="toc-${h.tagName.toLowerCase()}" data-target="${id}"><a href="#${id}">${h.textContent}</a></li>`;
   }).join('');
 
   window.scrollTo(0, 0);
@@ -159,6 +159,25 @@ function showFullPost(path) {
       </article>
     </div>
   `;
+
+  // ScrollSpy activation
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const tocLink = document.querySelector(`.post-toc li[data-target="${id}"]`);
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".post-toc li").forEach(li => li.classList.remove("active"));
+        if (tocLink) tocLink.classList.add("active");
+      }
+    });
+  }, {
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0
+  });
+
+  document.querySelectorAll(".post-content h2, .post-content h3").forEach(section => {
+    observer.observe(section);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
