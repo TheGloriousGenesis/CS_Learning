@@ -341,3 +341,7 @@ pre code {
   border-radius: 0;
   font-size: inherit;
 }
+
+.markdown-body {
+  color:  var(--text-color) !important;
+}
