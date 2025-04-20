@@ -65,27 +65,44 @@
   <script>
     function toggleTheme() {
       const html = document.documentElement;
-      const icon = document.getElementById("theme-icon");
       const current = html.getAttribute("data-theme");
       const newTheme = current === "dark" ? "light" : "dark";
       html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
 
       const lightCSS = document.getElementById("markdown-light");
       const darkCSS = document.getElementById("markdown-dark");
 
       lightCSS.disabled = newTheme === "dark";
       darkCSS.disabled = newTheme !== "dark";
-      icon.textContent = newTheme === "dark" ? "dark_mode" : "light_mode";
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = newTheme === "dark" ? "dark_mode" : "light_mode";
+      }
     }
 
     window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const current = document.documentElement.getAttribute("data-theme");
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
 
-      if (prefersDark && current !== "dark") {
-        toggleTheme();
+      document.documentElement.setAttribute("data-theme", theme);
+
+      const lightCSS = document.getElementById("markdown-light");
+      const darkCSS = document.getElementById("markdown-dark");
+
+      if (lightCSS && darkCSS) {
+        lightCSS.disabled = theme === "dark";
+        darkCSS.disabled = theme !== "dark";
+      }
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = theme === "dark" ? "dark_mode" : "light_mode";
       }
     });
   </script>
+
 </body>
 </html>
