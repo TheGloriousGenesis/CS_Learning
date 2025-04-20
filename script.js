@@ -28,7 +28,7 @@ async function fetchBlogPosts() {
     );
 
     const posts = await Promise.all(postFiles.map(async file => {
-      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/gh-pages/${file.path}`;
+      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/main/${file.path}`;
       const res = await fetch(rawUrl);
       const content = await res.text();
       const title = content.match(/^#\s(.+)/)?.[1] || file.path;
@@ -125,13 +125,29 @@ function showFullPost(path) {
   }
   const html = md.render(post.content);
 
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const headings = doc.querySelectorAll('h2, h3');
+
+  const toc = Array.from(headings).map(h => {
+    const id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    h.id = id;
+    return `<li class="toc-${h.tagName.toLowerCase()}"><a href="#${id}">${h.textContent}</a></li>`;
+  }).join('');
+
   window.scrollTo(0, 0);
 
   fullPostContainer.innerHTML = `
     <a class="back-to-blog" href="blog.html">← Back</a>
-    <article class="markdown-body post-content">
-      ${html}
-    </article>
+    <div class="post-layout">
+      <aside class="post-toc">
+        <h3>On this page</h3>
+        <ul>${toc}</ul>
+      </aside>
+      <article class="markdown-body post-content">
+        ${doc.body.innerHTML}
+      </article>
+    </div>
   `;
 }
 
