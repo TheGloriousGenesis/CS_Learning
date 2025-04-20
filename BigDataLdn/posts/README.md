@@ -1,10 +1,10 @@
 # Big Data London Conference
 
-A detailed summary of the things I've learned during my time at BigDataLdn Confernce!
+A detailed summary of the things I've learned during my time at BigDataLdn Confernce 2024!
 
 tags: AI, platform, tools
 
-## BusinessValue in AI
+## Business Value in AI
 Multiple steps can be taken to ensure sustained sponsorship: [Microsofts AI strategy roadmap](https://info.microsoft.com/ww-landing-AI-Strategy-Roadmap-Navigating-the-stages-of-AI-value-creation.html)
 - find the strategic initiative of the company (company wild OKRS) and align with them. 
 - Find what the business strategy is for the firm (buying, vertical integration) ==List different types of business strategy one can take for company==  
@@ -23,7 +23,7 @@ Platform tools, a one stop shop for creation, deployment, runtime (monitoring op
 	- CI/CD
 	- Governance
 	- Lineage
-- ==FEATURE ADD: Business usecase builder==
+- **FEATURE ADD**: Business usecase builder
 - Integrate your outputs/analytics
 
 ### Tooling that supports platform (manage data product lifecycle)
