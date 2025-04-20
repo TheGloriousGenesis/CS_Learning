@@ -28,7 +28,7 @@ async function fetchBlogPosts() {
     );
 
     const posts = await Promise.all(postFiles.map(async file => {
-      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/main/${file.path}`;
+      const rawUrl = `https://raw.githubusercontent.com/${USER}/${REPO}/gh-pages/${file.path}`;
       const res = await fetch(rawUrl);
       const content = await res.text();
       const title = content.match(/^#\s(.+)/)?.[1] || file.path;
