@@ -1,3 +1,9 @@
+# Big Data London Conference
+
+A detailed summary of the things I've learned during my time at BigDataLdn Confernce!
+
+tags: AI, platform, tools
+
 ## BusinessValue in AI
 Multiple steps can be taken to ensure sustained sponsorship: [Microsofts AI strategy roadmap](https://info.microsoft.com/ww-landing-AI-Strategy-Roadmap-Navigating-the-stages-of-AI-value-creation.html)
 - find the strategic initiative of the company (company wild OKRS) and align with them. 
@@ -19,15 +25,17 @@ Platform tools, a one stop shop for creation, deployment, runtime (monitoring op
 	- Lineage
 - ==FEATURE ADD: Business usecase builder==
 - Integrate your outputs/analytics
-- 
+
 ### Tooling that supports platform (manage data product lifecycle)
 - #DataContract[[BigDataLDN#DataContract]]
 - Catalog lineage (similar to data lineage but for catalog entries): through versioning
 - ==FEATURE ADD: We could have quality checks & Notifications when schema has changed (e.g column name or type) and the downstream impact. Then create notification on  GithubPR  to state X has changed and the upstream/downstream impact==
+
 ### Metrics
 Platforms must include metrics at all points of the data product cycle:
 - During deployment time (using the tool to execute pipelines and create deployment), collecting data surrounding user behaviour is beneficial. 
 - At runtime (model actually executing), collecting data regarding how the data is interacting with the model - model drift, number of hits the model takes etc) ==what metrics are taken at runtime==
+
 ### Buy or create?
 Creation use to bring about the innovation many companies require. But due to the influx of high quality software on the market that is specialised, the innovation is now happening on the business logic side (which falls in line with less custom code, more scalable well built sturdy components). Example: Palantir started with propertiary software, and later moved onto buying from competitors to improve their winning edge
 
