@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Verdana','Geneva','DejaVu Sans',sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
