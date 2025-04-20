@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+ <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+  <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+</button>
+
+  <header>
+    <h1>About This Site</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+    <main class="main-content">
+      <section>
+        <h2>About</h2>
+        <p>This site is a personal knowledge base for learning computer science, machine learning and software development. It's powered by GitHub Pages and dynamically loads blog posts directly from Markdown files located within a GitHub repository.</p>
+      </section>
+      <section>
+        <h2>Features</h2>
+        <ul>
+          <li>Markdown rendering using markdown-it with support for admonitions like [!NOTE]</li>
+          <li>Dark/light theme toggle</li>
+          <li>Clean card layout for blog previews</li>
+          <li>Pagination, search by tag, and rich content styling</li>
+          <li>Uses <a href="https://fonts.google.com/icons?icon.size=24&icon.color=%231f1f1f">Google material icons</a> </li>
+          <li> Colour inspirations from <a href="https://www.colorhexa.com/">ColorHexa</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 TheGloriousGenesis. All rights reserved.</p>
+  </footer>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = newTheme === "dark" ? "dark_mode" : "light_mode";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      document.documentElement.setAttribute("data-theme", theme);
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = theme === "dark" ? "dark_mode" : "light_mode";
+      }
+    });
+  </script>
+</body>
+</html>

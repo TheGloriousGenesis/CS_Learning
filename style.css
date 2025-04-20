@@ -1,0 +1,368 @@
+/** ============================ **/
+/* Color Scheme & Typography  */
+/** ============================ **/
+
+:root {
+  --purple: #a099b6;
+  --bg-color: #fefdfd;
+  --text-color: #545555;
+  --nav-bg: #f0f0f0;
+  --card-bg: #fefdfd;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0e0e0e;
+  --text-color: #ffffff;
+  --nav-bg: #1a1a1a;
+  --card-bg: #1f1f1f;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ============================ */
+/* Layout Containers           */
+/* ============================ */
+
+.content {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  display: flex;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.post-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.sidebar {
+  flex: 1;
+  max-width: 250px;
+}
+
+.main-content {
+  flex: 3;
+}
+
+/* ============================ */
+/* Navigation & Header         */
+/* ============================ */
+
+header {
+  background-color: var(--purple);
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--text-color);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: var(--nav-bg);
+  padding: 1rem;
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--purple);
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* ============================ */
+/* Blog Cards                  */
+/* ============================ */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 1.2rem 1rem;
+  border-left: 4px solid var(--purple);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.card p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.card a {
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--purple);
+  color: var(--text-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin: 0.2rem 0.2rem 0 0;
+  font-size: 0.75rem;
+}
+
+/* ============================ */
+/* Footer & Utility Elements   */
+/* ============================ */
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.search-box {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background-color: var(--purple);
+  color: var(--text-color);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ============================ */
+/* Blog Post Page              */
+/* ============================ */
+
+body.post-mode .sidebar,
+body.post-mode .card-grid,
+body.post-mode .pagination {
+  display: none !important;
+}
+
+body.post-mode .main-content {
+  display: flex;
+  justify-content: center;
+}
+
+.back-to-blog {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+  background-color: var(--purple);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-blog:hover {
+  background-color: #8c3eff;
+}
+
+.markdown-body.post-content {
+  flex: 1 1 auto;
+  max-width: 720px;
+  padding: 1rem 0;
+  margin: 0;
+  color: var(--text-color) !important;
+  animation: fadeIn 0.6s ease both;
+}
+
+/* ============================ */
+/* Table of Contents (ToC)     */
+/* ============================ */
+
+.post-toc {
+  flex: 0 0 220px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 100px;
+  font-size: 0.95rem;
+  border-left: 2px solid var(--purple);
+  padding-left: 1rem;
+  animation: fadeIn 0.3s ease both 0.1s;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+@media (max-width: 1024px) {
+  .post-toc {
+    display: none;
+  }
+}
+
+.post-toc h3 {
+  margin-top: 0;
+  font-size: 0.9rem;
+  color: var(--purple);
+}
+
+.post-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.post-toc li {
+  margin: 0.4rem 0;
+}
+
+.post-toc a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.1s ease;
+}
+
+.post-toc li.active > a {
+  font-weight: bold;
+  color: #a099b6 !important;
+  text-decoration: underline;
+}
+
+.post-toc li.active > a:hover {
+  color: var(--purple);
+}
+
+.toc-h2 {
+  margin-left: 0;
+  font-weight: bold;
+}
+
+.toc-h3 {
+  margin-left: 1rem;
+  font-size: 0.85rem;
+}
+
+/* ============================ */
+/* Markdown Syntax Highlighting */
+/* ============================ */
+
+.hljs {
+  background: #f6f8fa;
+  color: #24292e;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.95rem;
+}
+
+[data-theme="dark"] .hljs {
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  overflow: visible;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* ============================ */
+/* Global Markdown Links       */
+/* ============================ */
+
+.markdown-body a,
+a {
+  color: #551A8B !important;
+}
+
+.markdown-body a:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================ */
+/* Animations                  */
+/* ============================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

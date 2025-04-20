@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+ <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+  <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+</button>
+
+  <header>
+    <h1>The Glorious Genesis's Site</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+    <main class="main-content">
+      <section>
+        <h2>Overview</h2>
+        <p>This project is a personal CS learning log hosted on GitHub Pages. It auto-loads blog posts written in Markdown directly from folders in the repository.</p>
+      </section>
+      <section>
+        <h2>Why?</h2>
+        <p>To organize, review, and share my notes as I explore new tools and concepts — from software engineering to systems design to machine learning, with clean visual presentation and Markdown support.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 TheGloriousGenesis. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = newTheme === "dark" ? "dark_mode" : "light_mode";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      document.documentElement.setAttribute("data-theme", theme);
+
+      const icon = document.getElementById("theme-icon");
+      if (icon) {
+        icon.textContent = theme === "dark" ? "dark_mode" : "light_mode";
+      }
+    });
+  </script>
+
+</body>
+</html>

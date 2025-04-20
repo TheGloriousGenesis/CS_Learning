@@ -1,6 +1,8 @@
 # React
 
-### React vs Angular
+Everything i've noted down from my journey with react
+
+## React vs Angular
 |Angular|React|
 |:-----:|:---:|
 |App with many users and interactions |App with frequently variable data|
