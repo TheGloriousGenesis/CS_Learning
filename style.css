@@ -342,6 +342,14 @@ pre code {
   font-size: inherit;
 }
 
+a {
+  color: #551A8B;
+}
+
 .markdown-body {
   color:  var(--text-color) !important;
+}
+
+.markdown-body a {
+  color: #551A8B !important;
 }
