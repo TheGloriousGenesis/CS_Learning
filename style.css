@@ -171,7 +171,8 @@ footer {
 }
 
 .search-box {
-  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
 }
 
 .search-box input {
