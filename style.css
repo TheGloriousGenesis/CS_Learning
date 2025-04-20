@@ -228,8 +228,6 @@ body.post-mode .main-content {
   font-variation-settings: 'FILL' 1;
 }
 
-/* Existing styles preserved above */
-
 /* --- ToC Sidebar --- */
 .post-layout {
   display: flex;
@@ -244,6 +242,7 @@ body.post-mode .main-content {
 .post-toc li.active > a {
   font-weight: bold;
   color: var(--purple);
+  text-decoration: underline;
 }
 
 @keyframes fadeInUp {
